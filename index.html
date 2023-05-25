@@ -1,24 +1,945 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.tailwindcss.com" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script src="https://cdn.tailwindcss.com/3.3.0"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                fontFamily: {
+                    sans: ["Roboto", "sans-serif"],
+                    body: ["Roboto", "sans-serif"],
+                    mono: ["ui-monospace", "monospace"],
+                },
+            },
+            corePlugins: {
+                preflight: false,
+            },
+        };
+    </script>
+    <title>MundoTools</title>
 </head>
 
-<body>
-    <main class="h-screen w-full  bg-[url('https://cdn.pixabay.com/photo/2020/02/19/21/49/workshop-4863393_1280.jpg')]">
-        <div class="w-full h-full flex flex-col justify-center items-center backdrop-blur-sm backdrop-brightness-50">
+<body class="bg-gray-200  ">
+    <!-- Header Navbar -->
+    <div class="[ w-full p-3 bg-black flex gap-5 justify-end items-center text-white ]">
+        <!-- Behance -->
+
+
+
+
+
+        <!-- Facebook -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 cursor-pointer hover:scale-125 transition-all"
+            fill="currentColor" viewBox="0 0 24 24">
+            <path
+                d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z">
+            </path>
+        </svg>
+
+        <!-- Messenger -->
+
+
+        <!-- Twitter -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 cursor-pointer hover:scale-125 transition-all"
+            fill="currentColor" viewBox="0 0 24 24">
+            <path
+                d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z">
+            </path>
+        </svg>
+
+        <!-- Google -->
+
+
+        <!-- Instagram -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 cursor-pointer hover:scale-125 transition-all"
+            fill="currentColor" viewBox="0 0 24 24">
+            <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z">
+            </path>
+        </svg>
+
+
+    </div>
+    <!-- Main navigation container -->
+    <nav class="[  relative flex w-full flex-wrap items-center justify-between bg-[#FFA300] py-5 text-neutral-200 shadow-lg lg:flex-wrap lg:justify-start lg:py-4 ]  "
+        data-te-navbar-ref>
+        <div class="flex w-full flex-wrap items-center justify-between px-3">
+            <!-- Hamburger button for mobile view -->
+            <a class="flex items-center [ w-14 h-10 ] [ md:w-32 md:h-32 ] [ lg:w-48 lg:h-20 ]" href="#">
+                <img src="./assets/img/logo.png" alt="" srcset="">
+            </a>
+            <button
+                class="flex gap-1 items-center  border-0 bg-transparent px-2 text-black hover:no-underline hover:shadow-none focus:no-underline focus:shadow-none focus:outline-none focus:ring-0 lg:hidden"
+                type="button" data-te-collapse-init data-te-target="#navbarSupportedContent4"
+                aria-controls="navbarSupportedContent4" aria-expanded="false" aria-label="Toggle navigation">
+                <!-- Hamburger icon -->
+                <span class="[&>svg]:w-7">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-7 w-7">
+                        <path fill-rule="evenodd"
+                            d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </span>
+
+            </button>
+
+            <!-- Collapsible navigation container -->
+            <div class="!visible mt-2 hidden flex-grow  basis-[100%] items-center lg:mt-0 lg:!flex lg:basis-auto"
+                id="navbarSupportedContent4" data-te-collapse-item>
+                <!-- Navbar title -->
+
+                <!-- Left navigation links -->
+                <ul class="[ list-style-none  w-full flex   flex-col justify-end  pl-0 lg:flex-row ] [ lg:gap-3 ]"
+                    data-te-navbar-nav-ref>
+                    <!-- Dashboard link -->
+                    <li class="my-4 lg:my-0 lg:pr-2" data-te-nav-item-ref role="button" data-te-collapse-init
+                        data-te-target="#navbarSupportedContent4" aria-controls="navbarSupportedContent4"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <a class="text-black flex flex-nowrap gap-1 items-center" href="#" data-te-nav-link-ref>
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                                </svg>
+                            </span>
+                            Inicio
+                        </a>
+                    </li>
+                    <!-- Team link -->
+                    <li class="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
+                        <a class="text-black flex flex-nowrap gap-1 items-center w-full" href="#preguntafrecuentes"
+                            data-te-nav-link-ref>
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z" />
+                                </svg>
+
+                            </span>
+                            Preguntas Frecuentes
+                        </a>
+                    </li>
+                    <!-- Projects link -->
+                    <li class="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
+                        <a class="text-black flex flex-nowrap gap-1 items-center" href="#contactanos"
+                            data-te-nav-link-ref>
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+                                </svg>
+
+                            </span>
+                            Contactanos
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+
+
+        </div>
+    </nav>
+
+
+    <!---
+
+    <div id="carouselExampleCrossfade" class="relative" data-te-carousel-init data-te-carousel-slide>
+    
+        <div class="absolute inset-x-0 bottom-0 z-[2] mx-[15%] mb-4 flex list-none justify-center p-0"
+            data-te-carousel-indicators>
+            <button type="button" data-te-target="#carouselExampleCrossfade" data-te-slide-to="0"
+                data-te-carousel-active
+                class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-te-target="#carouselExampleCrossfade" data-te-slide-to="1"
+                class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
+                aria-label="Slide 2"></button>
+            <button type="button" data-te-target="#carouselExampleCrossfade" data-te-slide-to="2"
+                class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
+                aria-label="Slide 3"></button>
+        </div>
+
+       
+        <div class="relative w-full overflow-hidden after:clear-both after:block after:content-['']">
+          
+            <div class="relative float-left -mr-[100%] w-full !transform-none opacity-0 transition-opacity duration-[600ms] ease-in-out motion-reduce:transition-none"
+                data-te-carousel-fade data-te-carousel-item data-te-carousel-active>
+                <img src="./assets/img/bannerpublicidad3.webp" class="block w-full object-cover h-72 [ lg:h-[600px] ]"
+                    alt="Publicidad" />
+            </div>
+           
+            <div class="relative float-left -mr-[100%] hidden w-full !transform-none opacity-0 transition-opacity duration-[600ms] ease-in-out motion-reduce:transition-none"
+                data-te-carousel-fade data-te-carousel-item>
+                <img src="./assets/img/bannerpublicidad4.webp" class="block w-full object-cover h-72 [ lg:h-[600px] ]"
+                    alt="Publicidad" />
+            </div>
+           
+            <div class="relative float-left -mr-[100%] hidden w-full !transform-none opacity-0 transition-opacity duration-[600ms] ease-in-out motion-reduce:transition-none"
+                data-te-carousel-fade data-te-carousel-item>
+                <img src="https://orion91.com/blog/wp-content/uploads/2021/04/herramientas_bricolaje_orion91_1.jpg"
+                    class="block w-full object-cover h-72 [ lg:h-[600px] ]" alt="Publicidad" />
+            </div>
+        </div>
+
+      
+        <button
+            class="absolute bottom-0 left-0 top-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
+            type="button" data-te-target="#carouselExampleCrossfade" data-te-slide="prev">
+            <span class="inline-block h-8 w-8">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="h-6 w-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                </svg>
+            </span>
+            <span
+                class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Previous</span>
+        </button>
+       
+        <button
+            class="absolute bottom-0 right-0 top-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
+            type="button" data-te-target="#carouselExampleCrossfade" data-te-slide="next">
+            <span class="inline-block h-8 w-8">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="h-6 w-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                </svg>
+            </span>
+            <span
+                class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Next</span>
+        </button>
+    </div>
+---->
+    <header
+        class="relative flex items-center justify-center h-72 mb-12 overflow-hidden [ md:h-[400px] ] [ lg:h-[600px] ]">
+        <div
+            class="relative z-30 p-5 text-2xl text-white bg-gray-800 bg-opacity-50 rounded-xl w-full  h-full  [ lg:text-center  ] ">
+
             <h1
-                class="[ text-lg break-words font-extrabold text-white tracking-widest ] [ md:text-3xl ] [ lg:text-9xl ]">
-                En Construcción</h1>
+                class="capitalize text-5xl md:text-6xl xl:text-7xl font-bold tracking-tight  my-auto [ md:mt-44 ] [ lg:mt-44 ] ">
+                Las mejores oferta del mercado.
+                <br><span>para tu negocio </span>
+            </h1>
+
+
+        </div>
+        <video autoplay loop muted class="absolute z-10 w-auto min-w-full min-h-full max-w-none">
+            <source src="./assets/videos/soldadura.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+        </video>
+    </header>
+    <!------
+    <div class="[ h-[500px] ] [  md:h-[500px]  ] [ lg:h-[500px] ] relative overflow-hidden bg-no-repeat bg-cover  bg-[url('https://orion91.com/blog/wp-content/uploads/2021/04/herramientas_bricolaje_orion91_1.jpg')]"
+        style="background-position: 50%;">
+        <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed"
+            style="background-color: rgba(0, 0, 0, 0.75)">
+            <div class="flex justify-center items-center h-full">
+                <div class="text-center text-white px-6 md:px-12">
+                    <h1 class="capitalize text-5xl md:text-6xl xl:text-7xl font-bold tracking-tight mb-12">
+                        Las mejores oferta del mercado.
+                        <br><span>para tu negocio </span>
+                    </h1>
+
+                    <button type="button" data-te-ripple-init data-te-ripple-color="light"
+                        class=" rounded px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal transition duration-150 ease-in-out bg-[#FFA300] text-white focus:text-primary-600 focus:outline-none focus:ring-0 active:text-primary-700 dark:hover:bg-neutral-700">
+                        Ir
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+------->
+
+    <div class="flex flex-wrap justify-center">
+        <div class="[ py-1 px-4  w-full mb-12 ] [ md:w-1/2 md:p-4 ]  [ lg:w-1/4 lg:p-4  ]   ">
+            <div class="bg-neutral-900 h-full rounded-lg mb-6 flex flex-col relative overflow-hidden shadow-xl">
+                <div class="text-4xl text-white mt-4 ml-4">¿Quiénes somos?</div>
+                <div class="pt-8 pl-4 pr-4 flex rounded-lg items-center text-gray-300">
+                    <p>
+                        MUNDO TOOLS GROUP,C.A., Somos una Empresa Distribuidora Autorizada de la Marca TOOLSEN,
+                        orientada a brindar soluciones a través de la venta de Herramientas Especializadas y suministros
+                        para la reparación, construcción y mantenimiento en edificaciones, hogares, sector energético y
+                        la industria petrolera, en el ámbito Nacional e Internacional.
+                        Ofrecemos una amplia gama de productos de alta calidad, y contamos con personal capacitado para
+                        brindar asesoramiento a nuestros clientes.
+                        Nos enfocamos en proporcionar excelente servicio al cliente y precios competitivos en el
+                        mercado.
+
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="[ py-1 px-4  w-full mb-12 ] [ md:w-1/2 md:p-4 ]  [ lg:w-1/4 lg:p-4  ]   ">
+            <div class="bg-neutral-900 h-full rounded-lg mb-6 flex flex-col relative overflow-hidden shadow-xl">
+
+                <div class="text-4xl text-white mt-4 ml-4">Vision</div>
+                <div class="pt-8 pl-4 pr-4 flex rounded-lg items-center text-gray-300">
+                    <p>
+                        Ser la principal empresa proveedora de soluciones y herramientas ferreteras especializadas de
+                        alta calidad para profesionales y consumidores, a través de un servicio excepcional y una amplia
+                        variedad de productos innovadores y funcionales.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+        <div class="[ py-1 px-4  w-full mb-12 ] [ md:w-1/2 md:p-4 ]  [ lg:w-1/4 lg:p-4  ]   ">
+            <div class="bg-neutral-900 h-full rounded-lg mb-6 flex flex-col relative overflow-hidden shadow-xl">
+
+                <div class="text-4xl text-white mt-4 ml-4">Mision</div>
+                <div class="pt-8 pl-4 pr-4 flex rounded-lg items-center text-gray-300">
+                    <p>
+                        Proporcionar herramientas especializadas y materiales de calidad a precios competitivos,
+                        ofreciendo un excelente servicio al cliente y ayudando a satisfacer las necesidades de
+                        construcción y mantenimiento en edificaciones, hogares, sector energético y la industria
+                        petrolera, en el ámbito Nacional e Internacional, comprometidos con los principios de calidad y
+                        la generación de confianza y tranquilidad a nuestros clientes.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+        <br>
+        <div class="[ py-1 px-4  w-full mb-12 ] [ md:w-1/2 md:p-4 ]  [ lg:w-1/4 lg:p-4  ]   ">
+            <div class="bg-neutral-900 h-full rounded-lg mb-6 flex flex-col relative overflow-hidden shadow-xl">
+
+                <div class="text-4xl text-white mt-4 ml-4">Objetivos</div>
+                <div class="pt-8 pl-4 pr-4 flex rounded-lg items-center text-gray-300">
+                    <ul class="px-3 list-disc">
+                        <li>Satisfacer las necesidades y expectativas de nuestros clientes </li>
+                        <li>Mejorar continuamente la calidad de nuestros productos y servicios </li>
+                        <li>Aumentar la participación en el mercado </li>
+                        <li>Aumentar la eficiencia en la gestión de inventarios </li>
+                        <li>Expandirnos a nuevas ubicaciones geográficas </li>
+
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <div class="[ py-1 px-4  w-full mb-12 ] [ md:w-1/2 md:p-4 ]  [ lg:w-1/4 lg:p-4  ]   ">
+            <div class="bg-neutral-900 h-full rounded-lg mb-6 flex flex-col relative overflow-hidden shadow-xl">
+
+                <div class="text-4xl text-white mt-4 ml-4">Nuestros Valores</div>
+                <div class="pt-8 pl-4 pr-4 flex rounded-lg items-center text-gray-300">
+                    <ul class="px-3 list-disc">
+                        <li>Excelencia</li>
+                        <li>Calidad de los productos </li>
+                        <li>Atención al cliente </li>
+                        <li>Eficiencia en la entrega de productos </li>
+                        <li>Innovación</li>
+                        <li>Responsabilidad social y ambiental </li>
+                    </ul>
+                </div>
+            </div>
 
         </div>
 
+    </div>
+
+    <section
+        class="   flex items-center justify-center  m-auto   bg-fixed bg-center bg-cover bg-[url('https://orion91.com/blog/wp-content/uploads/2021/04/herramientas_bricolaje_orion91_1.jpg')] h-[100px] [ md:h-[300px] ]  [ lg:h-[500px] ]">
+        <div
+            class="p-5 md:text-6xl xl:text-7xl  text-white bg-neutral-900 bg-opacity-50 rounded-xl w-full h-full flex justify-center items-center">
+            El Mejor Servicio
+        </div>
+    </section>
+
+
+
+    <div class="[ container my-24  mx-auto px-1 ]   [ md:px-6 ] [ lg:px-6 ]">
+
+        <!-- Section: Design Block -->
+        <section class="mb-32 text-gray-800 text-center md:text-left">
+
+            <!-----<h2 class="text-3xl font-bold mb-12 text-center">Latest articles</h2>--->
+
+            <div data-aos="fade-up"
+                class="grid md:grid-cols-2 gap-x-6 xl:gap-x-12 items-center mb-12 rounded-lg bg-neutral-900">
+
+                <div class="mb-6 md:mb-0 group ">
+                    <div class="relative  overflow-hidden bg-no-repeat bg-cover relative overflow-hidden bg-no-repeat bg-cover ripple shadow-lg rounded-lg"
+                        data-mdb-ripple="true" data-mdb-ripple-color="light">
+                        <img src="https://images.unsplash.com/photo-1645651964715-d200ce0939cc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+                            class="[ mx-auto object-cover   ] [ lg:w-full lg:h-[400px] ]" alt="Louvre" />
+                        <a href="#!">
+                            <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed opacity-0 hover:opacity-100 transition duration-300 ease-in-out"
+                                style="background-color: rgba(251, 251, 251, 0.2)"></div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-3 text-white">La herramienta perfecta para cada proyecto</h3>
+
+
+                    <p class="text-white capitalize">
+                        Herramientas especializadas para proyectos específicos
+                    </p>
+                    <div
+                        class="[ w-full flex items-center  justify-center  mt-3 ] [ md:justify-start ]  [ lg:justify-start ]">
+                        <button type="button" data-te-ripple-init data-te-ripple-color="light"
+                            class="rounded px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal transition duration-150 ease-in-out bg-[#FFA300] text-white focus:text-primary-600 focus:outline-none focus:ring-0 active:text-primary-700 dark:hover:bg-neutral-700">
+                            Ir
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+            <div data-aos="fade-up" data-aos-anchor-placement="bottom-bottom"
+                class="grid md:grid-cols-2 gap-x-6 xl:gap-x-12 items-center mb-12 rounded-lg bg-neutral-900">
+                <div class="mb-6 md:mb-0 md:order-2">
+                    <div class="relative overflow-hidden bg-no-repeat bg-cover relative overflow-hidden bg-no-repeat bg-cover ripple shadow-lg rounded-lg"
+                        data-mdb-ripple="true" data-mdb-ripple-color="light">
+                        <img src="https://images.unsplash.com/photo-1631856955350-77f4023dff2b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1176&q=80"
+                            class="[ mx-auto object-cover ] [ lg:w-full lg:h-[400px] ]" alt="Louvre" />
+                        <a href="#!">
+                            <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed opacity-0 hover:opacity-100 transition duration-300 ease-in-out"
+                                style="background-color: rgba(251, 251, 251, 0.2)"></div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="mb-6 md:mb-0 md:order-1">
+                    <h3 class="text-2xl font-bold mb-3 text-white [ md:ml-5 ] [ lg:ml-5 ]">Soluciones para todas tus
+                        necesidades</h3>
+
+                    <p class="text-white capitalize [ md:ml-5 ] [ lg:ml-5 ]">
+                        Una solución para cada problema
+                    </p>
+                    <div
+                        class="[ w-full flex items-center  justify-center  mt-3 ] [ md:justify-start  md:ml-5 ]  [ lg:justify-start lg:ml-5 ]">
+                        <button type="button" data-te-ripple-init data-te-ripple-color="light"
+                            class=" rounded px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal transition duration-150 ease-in-out bg-[#FFA300] text-white focus:text-primary-600 focus:outline-none focus:ring-0 active:text-primary-700 dark:hover:bg-neutral-700">
+                            Ir
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div data-aos="fade-up" data-aos-anchor-placement="bottom-bottom"
+                class="grid md:grid-cols-2 gap-x-6 xl:gap-x-12 items-center mb-12 rounded-lg bg-neutral-900">
+                <div class="mb-6 md:mb-0">
+                    <div class="relative overflow-hidden bg-no-repeat bg-cover relative overflow-hidden bg-no-repeat bg-cover ripple shadow-lg rounded-lg"
+                        data-mdb-ripple="true" data-mdb-ripple-color="light">
+                        <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+                            class="[ mx-auto object-cover ] [ lg:w-full lg:h-[400px] ]" alt="Louvre" />
+                        <a href="#!">
+                            <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed opacity-0 hover:opacity-100 transition duration-300 ease-in-out"
+                                style="background-color: rgba(251, 251, 251, 0.2)"></div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-3 text-white">Herramientas para cada tarea</h3>
+
+                    <p class="text-white capitalize">
+                        La herramienta adecuada para la tarea específica
+                    </p>
+                    <div
+                        class="[ w-full flex items-center  justify-center  mt-3 ] [ md:justify-start ]  [ lg:justify-start ]">
+                        <button type="button" data-te-ripple-init data-te-ripple-color="light"
+                            class=" rounded px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal transition duration-150 ease-in-out bg-[#FFA300] text-white focus:text-primary-600 focus:outline-none focus:ring-0 active:text-primary-700 dark:hover:bg-neutral-700">
+                            Ir
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <div data-aos="zoom-in-up" class="container mx-auto xl:px-32 text-center lg:text-left">
+            <div class="grid lg:grid-cols-2 flex items-center">
+                <div class="mb-12 lg:mb-0">
+                    <div class="block text-white rounded-lg shadow-lg px-6 py-12 md:px-12 lg:-mr-14"
+                        style="background: hsla(0, 0%, 0%, 0.747); backdrop-filter: blur(30px)">
+                        <h2 class="text-3xl font-bold mb-6">Enjoy the moment</h2>
+                        <p class=" mb-6 pb-2 lg:pb-0">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A soluta corporis
+                            voluptate ab error quam dolores doloremque, quae consectetur.
+                        </p>
+
+                        <div class="flex flex-col md:flex-row md:justify-around lg:justify-between mb-6 mx-auto">
+                            <p class="flex items-center mb-4 md:mb-2 lg:mb-0 mx-auto md:mx-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-4 h-4 mr-2">
+                                    <path fill="currentColor"
+                                        d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z">
+                                    </path>
+                                </svg>
+                                El Mejor Equipo
+                            </p>
+
+                            <p class="flex items-center mb-4 md:mb-2 lg:mb-0 mx-auto md:mx-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-4 h-4 mr-2">
+                                    <path fill="currentColor"
+                                        d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z">
+                                    </path>
+                                </svg>
+                                La Mejor Calidad
+                            </p>
+
+                            <p class="flex items-center mb-2 lg:mb-0 mx-auto md:mx-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-4 h-4 mr-2">
+                                    <path fill="currentColor"
+                                        d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z">
+                                    </path>
+                                </svg>
+                                La Mejor Experiencia
+                            </p>
+                        </div>
+
+                        <p class="  mb-0">
+                            In ac turpis justo. Vivamus auctor quam vitae odio feugiat pulvinar. Sed semper
+                            ligula sed lorem tincidunt dignissim. Nam sed cursus lectus. Proin non rutrum
+                            magna. Proin gravida, justo et imperdiet tristique, turpis nisi viverra est, nec
+                            posuere ex arcu sit amet erat. Sed a dictum sem. Duis pretium condimentum nulla,
+                            ut aliquet erat auctor sed. Aenean facilisis neque id ligula maximus scelerisque.
+                            Nunc sed velit rhoncus, interdum dolor at, lacinia lacus. Proin eleifend viverra
+                            posuere. Ut commodo risus lacus, ac scelerisque quam aliquam dictum. Etiam
+                            dignissim pulvinar eros eget auctor. Quisque congue turpis quis libero ullamcorper
+                            imperdiet. Vivamus a orci maximus, dignissim ligula a, congue dui. Morbi et lectus
+                            sit amet neque luctus viverra.
+                        </p>
+                    </div>
+                </div>
+
+                <div>
+                    <img src="https://cdn.pixabay.com/photo/2019/03/29/04/35/tools-4088531_960_720.jpg"
+                        class="h-[600px] w-full rounded-lg shadow-lg object-cover" alt="">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <picture data-aos="zoom-in-up">
+        <source media="(min-width: 100px) and (max-width: 600px)" srcset="./assets/img/bannerpublicidad_mobile.png">
+
+        <img src="./assets/img/bannerpublicidad.png" class="block w-full sm:h-auto lg:h-60   object-cover  ">
+
+    </picture>
+
+
+
+
+    <!-- Container for demo purpose -->
+    <!------- 
+
+        <main class="flex flex-col items-center justify-center mt-32">
+
+ 
+        <section class="flex flex-col  w-full  bg-cover bg-fixed bg-center flex justify-center items-center " style="
+            background-image: url(https://static.vecteezy.com/system/resources/previews/003/498/690/non_2x/wood-texture-background-wood-planks-or-wood-wall-free-photo.jpg);
+        ">
+            <h1 class="text-white  text-5xl font-semibold mt-20 mb-10">
+                This is Parallax Effect
+            </h1>
+
+            <span class="text-center font-bold my-20 text-white/90 ">
+                <a href="https://egoistdeveloper.github.io/twcss-to-sass-playground/" target="_blank"
+                    class="text-white/90 hover:text-white">
+                    Convetert to SASS
+                </a>
+
+                <hr class="my-4" />
+
+                <a href="https://unsplash.com/photos/8Pm_A-OHJGg" target="_blank"
+                    class="text-white/90 hover:text-white">
+                    Image Source
+                </a>
+
+                <hr class="my-4" />
+
+                <p>
+                    <a href="https://github.com/EgoistDeveloper/my-tailwind-components/blob/main/src/templates/parallax-landing-page.html"
+                        target="_blank" class="text-white/90 hover:text-white">
+                        Source Code
+                    </a>
+                    |
+                    <a href="https://egoistdeveloper.github.io/my-tailwind-components/./src/templates/parallax-landing-page.html"
+                        target="_blank" class="text-white/90 hover:text-white">
+                        Full Preview
+                    </a>
+                </p>
+            </span>
+        </section>
+
+        
+        <section class="p-20 space-y-8">
+        <h1 class="text-4xl text-center my-20">Tempor sit labore nostrud</h1>
+
+        <p>
+            Exercitation non Lorem exercitation tempor amet ad esse velit. Anim
+            deserunt id nulla quis ex magna culpa exercitation. Mollit consequat
+            enim eiusmod cupidatat commodo eiusmod nulla. Id quis amet incididunt
+            cillum dolore consectetur nulla incididunt laborum excepteur
+            consectetur consectetur sunt tempor. Minim fugiat sint sunt ad elit
+            laboris est sit est laboris labore do velit. Cillum aliquip pariatur
+            deserunt eiusmod. Consequat irure nulla adipisicing deserunt culpa.
+            Veniam enim deserunt sint consequat labore. Enim ullamco ea aute duis
+            et nostrud voluptate fugiat consectetur et velit cillum anim dolore.
+            In exercitation proident proident nostrud voluptate. Fugiat elit esse
+            labore pariatur ex. Ex labore esse voluptate nisi in. Ad anim deserunt
+            reprehenderit est. Aliquip pariatur nulla dolor amet quis aliqua sit
+            nisi officia enim velit. Ad enim eu dolor quis ipsum. Nulla amet
+            consectetur adipisicing ullamco qui tempor dolor excepteur dolore anim
+            pariatur quis laboris consequat. Consectetur ullamco consectetur minim
+            eiusmod quis veniam esse consectetur anim nostrud est pariatur
+            laborum. Mollit tempor minim amet esse. Lorem officia consequat
+            eiusmod sunt. Proident occaecat velit et consequat irure est cupidatat
+            tempor ullamco. Aliquip est pariatur ea ut qui ad sit dolor laboris
+            adipisicing officia eiusmod sit. Proident Lorem ex cillum sint
+            cupidatat amet nulla veniam laborum velit pariatur. Fugiat excepteur
+            culpa sunt est anim sunt. Ea voluptate non do proident sunt ad cillum
+            enim esse.
+        </p>
+
+        <p>
+            Incididunt eu pariatur laborum reprehenderit duis ex cillum fugiat.
+            Occaecat tempor commodo officia esse reprehenderit commodo. Irure nisi
+            culpa anim velit esse do esse veniam dolore fugiat. Non anim elit ad
+            ad esse veniam dolore labore consectetur nulla dolor occaecat quis
+            tempor. Ad do exercitation cillum duis consequat. Ea anim aute elit
+            velit duis quis. Anim sint ut occaecat officia id exercitation ea
+            incididunt exercitation sint ex. Reprehenderit ut qui eiusmod
+            cupidatat incididunt ad reprehenderit culpa tempor quis. Elit eu dolor
+            anim tempor eu fugiat voluptate dolor aliqua sint ex proident ullamco.
+            Labore deserunt velit quis cupidatat aliquip elit do labore ut.
+            Laborum dolore incididunt officia esse reprehenderit pariatur ullamco
+            consectetur tempor officia. Dolor culpa irure enim aute ex non veniam
+            eiusmod ipsum elit est sit mollit dolor. Est ad anim pariatur
+            consequat ad sit nisi.
+        </p>
+
+        <p>
+            Ipsum ea ad fugiat incididunt ea sit laborum cupidatat in ullamco
+            ullamco fugiat et id. Sit commodo enim enim veniam do. Ad id ad tempor
+            deserunt cupidatat reprehenderit ullamco officia excepteur culpa.
+            Officia amet in do voluptate exercitation pariatur officia et sit.
+            Adipisicing deserunt do aliquip ad id elit sint voluptate sit anim
+            nulla pariatur dolore. Lorem do commodo aute veniam deserunt magna
+            commodo cillum magna veniam. Ea amet nostrud commodo nisi adipisicing
+            cillum commodo. Nostrud aliquip cupidatat veniam culpa aute officia
+            commodo velit. Laborum quis aute nulla amet officia esse proident sunt
+            irure dolor fugiat incididunt occaecat. Commodo esse eiusmod fugiat eu
+            enim nisi sit id ut adipisicing. Enim nisi mollit ea aliqua nisi qui
+            ullamco eu velit et ullamco. Magna eiusmod eiusmod culpa proident
+            minim laboris fugiat enim laborum quis mollit minim do nisi. Elit
+            irure incididunt duis ullamco exercitation nulla fugiat. Eu ullamco
+            aliquip aute consectetur excepteur consequat. Non nostrud officia sint
+            enim et ad sunt amet pariatur deserunt enim reprehenderit. Aute Lorem
+            adipisicing laborum labore labore tempor officia officia reprehenderit
+            incididunt enim officia laborum. Proident eu irure occaecat ipsum elit
+            elit anim eu aute commodo ullamco reprehenderit incididunt elit.
+            Mollit voluptate eiusmod ullamco fugiat ex enim in fugiat et
+            consectetur duis do. Et aliqua ad labore labore ea ipsum nostrud
+            veniam et reprehenderit. Sint ad sit voluptate consequat cillum do
+            fugiat Lorem. Pariatur ad ad reprehenderit cupidatat nulla ipsum
+            voluptate. Dolore pariatur ea laboris est excepteur.
+        </p>
+    </section>
     </main>
+
+    ----->
+    <div class=" [ flex flex-col gap-4 lg:p-4 p-2  rounde-lg m-2 ] [ lg:px-0 ] [ lg:px-72 ] ">
+
+        <div class="lg:text-2xl md:text-xl text-lg lg:p-3 p-1 font-black text-gray-700" id="preguntafrecuentes">
+            Preguntas Frecuentes</div>
+
+        <div data-te-collapse-init data-te-ripple-init data-te-ripple-color="light" href="#multiCollapseExample1"
+            role="button" aria-expanded="false" aria-controls="multiCollapseExample1"
+            class="flex items-center justify-between w-full p-2 lg:rounded-full md:rounded-full hover:bg-gray-100 cursor-pointer border-2 rounded-lg bg-white">
+
+            <div class="flex items-center">
+                <div class="h-12 w-12 mb-2 lg:mb-0 flex justify-center items-center  md:mb-0 rounded-full mr-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-9 h-9">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                    </svg>
+                </div>
+
+                <div class="flex flex-col gap-3">
+
+                    <div class="text-sm leading-3 text-gray-700 font-bold w-full">Quienes Somos?</div>
+
+                    <div class="multi-collapse !visible hidden rounded-lg  " data-te-collapse-item
+                        id="multiCollapseExample1">
+                        <div class="block rounded-lg p-3 ">
+                            Some placeholder content for the first collapse component of this
+                            multi-collapse example. This panel is hidden by default but
+                            revealed when the user activates the relevant trigger.
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <svg class="h-6 w-6 mr-1 invisible md:visible lg:visible xl:visible" xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd"
+                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                        clip-rule="evenodd"></path>
+                </svg>
+
+            </div>
+
+        </div>
+        <div data-te-collapse-init data-te-ripple-init data-te-ripple-color="light" href="#multiCollapseExample2"
+            role="button" aria-expanded="false" aria-controls="multiCollapseExample2"
+            class="flex items-center justify-between w-full p-2 lg:rounded-full md:rounded-full hover:bg-gray-100 cursor-pointer border-2 rounded-lg bg-white">
+
+            <div class="flex items-center">
+                <div class="h-12 w-12 mb-2 lg:mb-0 flex justify-center items-center  md:mb-0 rounded-full mr-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-9 h-9">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                    </svg>
+                </div>
+
+                <div class="flex flex-col  gap-3">
+
+                    <div class="text-sm leading-3 text-gray-700 font-bold w-full">Nuestra Mision ?</div>
+
+                    <div class="multi-collapse !visible hidden rounded-lg  " data-te-collapse-item
+                        id="multiCollapseExample2">
+                        <div class="block rounded-lg p-3 ">
+                            Some placeholder content for the first collapse component of this
+                            multi-collapse example. This panel is hidden by default but
+                            revealed when the user activates the relevant trigger.
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <svg class="h-6 w-6 mr-1 invisible md:visible lg:visible xl:visible" xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd"
+                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                        clip-rule="evenodd"></path>
+                </svg>
+
+            </div>
+
+        </div>
+        <div data-te-collapse-init data-te-ripple-init data-te-ripple-color="light" href="#multiCollapseExample3"
+            role="button" aria-expanded="false" aria-controls="multiCollapseExample3"
+            class="flex items-center justify-between w-full p-2 lg:rounded-full md:rounded-full hover:bg-gray-100 cursor-pointer border-2 rounded-lg bg-white">
+
+            <div class="flex items-center">
+                <div class="h-12 w-12 mb-2 lg:mb-0 flex justify-center items-center  md:mb-0 rounded-full mr-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-9 h-9">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                    </svg>
+                </div>
+
+                <div class="flex flex-col gap-3">
+
+                    <div class="text-sm leading-3 text-gray-700 font-bold w-full">Nuestra Vision ? </div>
+
+                    <div class="multi-collapse !visible hidden rounded-lg  " data-te-collapse-item
+                        id="multiCollapseExample3">
+                        <div class="block rounded-lg p-3 ">
+                            Some placeholder content for the first collapse component of this
+                            multi-collapse example. This panel is hidden by default but
+                            revealed when the user activates the relevant trigger.
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <svg class="h-6 w-6 mr-1 invisible md:visible lg:visible xl:visible" xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd"
+                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                        clip-rule="evenodd"></path>
+                </svg>
+
+            </div>
+
+        </div>
+        <div data-te-collapse-init data-te-ripple-init data-te-ripple-color="light" href="#multiCollapseExample4"
+            role="button" aria-expanded="false" aria-controls="multiCollapseExample4"
+            class="flex items-center justify-between w-full p-2 lg:rounded-full md:rounded-full hover:bg-gray-100 cursor-pointer border-2 rounded-lg bg-white">
+
+            <div class="flex items-center">
+                <div class="h-12 w-12 mb-2 lg:mb-0 flex justify-center items-center  md:mb-0 rounded-full mr-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-9 h-9">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                    </svg>
+                </div>
+
+                <div class="flex flex-col gap-3">
+
+                    <div class="text-sm leading-3 text-gray-700 font-bold w-full">Donde Estamos Ubicados ? </div>
+
+                    <div class="multi-collapse !visible hidden rounded-lg  " data-te-collapse-item
+                        id="multiCollapseExample4">
+                        <div class="block rounded-lg p-3 ">
+                            Some placeholder content for the first collapse component of this
+                            multi-collapse example. This panel is hidden by default but
+                            revealed when the user activates the relevant trigger.
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <svg class="h-6 w-6 mr-1 invisible md:visible lg:visible xl:visible" xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd"
+                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                        clip-rule="evenodd"></path>
+                </svg>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Container for demo purpose -->
+    <div class="container my-24 px-6 mx-auto">
+
+        <!-- Container for demo purpose -->
+
+        <!-- Container for demo purpose -->
+
+
+    </div>
+
+
+    <!-- Footer section with social media icons and newsletter sign-up -->
+    <!-- Footer container -->
+    <footer id="Contactanos"
+        class="bg-neutral-100 text-center text-neutral-600 dark:bg-neutral-600 dark:text-neutral-200 lg:text-left">
+        <!-- Main container div: holds the entire content of the footer, including four sections (Tailwind Elements, Products, Useful links, and Contact), with responsive styling and appropriate padding/margins. -->
+        <div class="mx-6 py-10 text-center md:text-left">
+            <div class="grid-1 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+                <!-- Tailwind Elements section -->
+                <div class="">
+                    <h6 class="mb-4 flex items-center justify-center font-semibold uppercase md:justify-start">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                            class="mr-3 h-4 w-4">
+                            <path
+                                d="M12.378 1.602a.75.75 0 00-.756 0L3 6.632l9 5.25 9-5.25-8.622-5.03zM21.75 7.93l-9 5.25v9l8.628-5.032a.75.75 0 00.372-.648V7.93zM11.25 22.18v-9l-9-5.25v8.57a.75.75 0 00.372.648l8.628 5.033z" />
+                        </svg>
+                        MundoTools Group
+                    </h6>
+                    <p>
+                        Here you can use rows and columns to organize your footer
+                        content. Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit.
+                    </p>
+                </div>
+                <!-- Products section -->
+                <div class="">
+                    <h6 class="mb-4 flex justify-center font-semibold uppercase md:justify-start">
+                        Products
+                    </h6>
+                    <p class="mb-4">
+                        <a href="#!" class="text-neutral-600 dark:text-neutral-200">Angular</a>
+                    </p>
+                    <p class="mb-4">
+                        <a href="#!" class="text-neutral-600 dark:text-neutral-200">React</a>
+                    </p>
+                    <p class="mb-4">
+                        <a href="#!" class="text-neutral-600 dark:text-neutral-200">Vue</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-neutral-600 dark:text-neutral-200">Laravel</a>
+                    </p>
+                </div>
+                <!-- Useful links section -->
+                <div class="">
+                    <h6 class="mb-4 flex justify-center font-semibold uppercase md:justify-start">
+                        Useful links
+                    </h6>
+                    <p class="mb-4">
+                        <a href="#!" class="text-neutral-600 dark:text-neutral-200">Pricing</a>
+                    </p>
+                    <p class="mb-4">
+                        <a href="#!" class="text-neutral-600 dark:text-neutral-200">Settings</a>
+                    </p>
+                    <p class="mb-4">
+                        <a href="#!" class="text-neutral-600 dark:text-neutral-200">Orders</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-neutral-600 dark:text-neutral-200">Help</a>
+                    </p>
+                </div>
+                <!-- Contact section -->
+                <div>
+                    <h6 class="mb-4 flex justify-center font-semibold uppercase md:justify-start">
+                        Contacto
+                    </h6>
+                    <p class="mb-4 flex items-center justify-center md:justify-start">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                            class="mr-3 h-5 w-5">
+                            <path
+                                d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z" />
+                            <path
+                                d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z" />
+                        </svg>
+                        New York, NY 10012, US
+                    </p>
+                    <p class="mb-4 flex items-center justify-center md:justify-start">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                            class="mr-3 h-5 w-5">
+                            <path
+                                d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />
+                            <path
+                                d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
+                        </svg>
+                        mundotoolsgroupca@gmail.com
+                    </p>
+                    <p class="mb-4 flex items-center justify-center md:justify-start">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                            class="mr-3 h-5 w-5">
+                            <path fill-rule="evenodd"
+                                d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        +58 0424-8611944
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!--Copyright section-->
+        <div class="bg-neutral-200 p-6 text-center dark:bg-neutral-700">
+            <span>© 2023 Copyright:</span>
+            <a class="font-semibold text-neutral-600 dark:text-neutral-400" href="./">Mundotools Group C.A</a>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
+    <script>
+        AOS.init();
+    </script>
 </body>
 
 </html>
