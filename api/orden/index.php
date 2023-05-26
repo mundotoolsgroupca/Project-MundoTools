@@ -654,7 +654,7 @@ function agregardetalle($id, $data, $carritostorage)
     date_default_timezone_set('America/Caracas');
     $fecha_actual = date('Y-m-d');
     $hora_actual = date('h:i A');
-    $token = isset($data['token']) ? "<label style='border: 1px solid black; text-align: center; padding: 10px;'>Token Utilizado" . $formDataArray['token'] . "</label><br> " : "";
+    $token = isset($data['token']) ? "<label style='font-weight: bold;'>" . $formDataArray['token'] . "</label><br>" : "";
 
 
     $correotabla = "
