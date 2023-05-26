@@ -616,6 +616,10 @@ function agregardetalle($id, $data, $carritostorage)
         echo json_encode($resultado);
         return  $resultado;
     }
+
+
+    $token = isset($formDataArray['token']) ? "<td style='border: 1px solid black; text-align: center; padding: 10px;'>Token Utilizado" . $formDataArray['token'] . "</td> " : "";
+
     include '../../php/conexion.php';
     $realizados = 0;
 
@@ -641,6 +645,7 @@ function agregardetalle($id, $data, $carritostorage)
             <td style='border: 1px solid black; text-align: center; padding: 10px;'>$cantidad</td> 
             <td style='border: 1px solid black; text-align: center; padding: 10px;'>$precio" . '' . "$simbolo</td>
             <td style='border: 1px solid black; text-align: center; padding: 10px;'>" . $precio * $cantidad . '' . $simbolo . " </td>
+            $token
         </tr>";
 
             $totalTabla += $precio * $cantidad;
