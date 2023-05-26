@@ -618,7 +618,6 @@ function agregardetalle($id, $data, $carritostorage)
     }
 
 
-    $token = isset($data['token']) ? "<td style='border: 1px solid black; text-align: center; padding: 10px;'>Token Utilizado" . $formDataArray['token'] . "</td> " : "";
 
     include '../../php/conexion.php';
     $realizados = 0;
@@ -655,6 +654,8 @@ function agregardetalle($id, $data, $carritostorage)
     date_default_timezone_set('America/Caracas');
     $fecha_actual = date('Y-m-d');
     $hora_actual = date('h:i A');
+    $token = isset($data['token']) ? "<label style='border: 1px solid black; text-align: center; padding: 10px;'>Token Utilizado" . $formDataArray['token'] . "</label><br> " : "";
+
 
     $correotabla = "
     <label style='font-size: 2.5em;'>Orden de Compra</label><br>
@@ -663,6 +664,7 @@ function agregardetalle($id, $data, $carritostorage)
     <label>Numero de Contacto: <label style='font-weight: bold;'>$telefono</label></label><br>
     <label>Fecha: <label style='font-weight: bold;'>$fecha_actual</label></label><br>
     <label>Hora: <label style='font-weight: bold;'>$hora_actual</label></label><br>
+    $token
     <table style='border-collapse: collapse;'>
         <tr>
             <th style='border: 1px solid black; padding: 10px;background-color: black;color:white'>Id</th>
