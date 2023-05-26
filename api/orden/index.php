@@ -731,7 +731,7 @@ function agregar_orden($_DataPOST, $carritostorage, $check_correo, $correo)
     }
     if ($check_correo == true) {
         //$check_correo = $check_correo;
-
+        echo $correo;
         if (!validar_correo($correo)) {
             http_response_code(409); //codigo de conflicto
             $resultado = new stdClass();
