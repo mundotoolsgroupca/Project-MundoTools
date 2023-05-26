@@ -376,7 +376,7 @@ session_start();
 
                 Toast.fire({
                     icon: 'info',
-                    title: 'Por favor ingrese el rif'
+                    title: 'Ingrese el Numero de Documento'
                 })
                 $('#rif').focus();
                 return false;
