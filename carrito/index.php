@@ -459,7 +459,8 @@ session_start();
                 data: {
                     formData,
                     carritostorage,
-                    check_correo
+                    check_correo,
+                    correo
                 },
                 beforeSend: () => {
                     $('#btn_CargarPedido').prop('disabled', true);

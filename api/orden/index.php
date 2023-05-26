@@ -120,7 +120,7 @@ switch ($method) {
                     parse_str($formDataString, $formDataArray);
 
 
-                    agregar_orden($formDataArray, $_POST['carritostorage'], $_POST['check_correo']);
+                    agregar_orden($formDataArray, $_POST['carritostorage'], $_POST['check_correo'], $_POST['correo']);
                 } else {
                     // Log this as a warning and keep an eye on these attempts
                     $resultado = new stdClass();
@@ -138,7 +138,7 @@ switch ($method) {
                 parse_str($formDataString, $formDataArray);
 
 
-                agregar_orden($formDataArray, $_POST['carritostorage'], $_POST['check_correo']);
+                agregar_orden($formDataArray, $_POST['carritostorage'], $_POST['check_correo'], $_POST['correo']);
                 break;
                 /*
                 $resultado = new stdClass();
@@ -551,7 +551,7 @@ function obtenerid($formDataArray, $carritostorage) //se inserta el registro en 
 }
 
 
-function agregardetalle($id, $data, $carritostorage, $check_correo)
+function agregardetalle($id, $data, $carritostorage, $check_correo, $correo)
 {
     include_once '../../php/FuncionesGenerales.php';
     if (isset($data['nombreempresa']) && validar_string($data['nombreempresa'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ') && strlen($data['nombreempresa']) <= 100) {
@@ -712,7 +712,7 @@ function agregardetalle($id, $data, $carritostorage, $check_correo)
     echo  json_encode($resultado);
     return;
 }
-function agregar_orden($_DataPOST, $carritostorage, $check_correo)
+function agregar_orden($_DataPOST, $carritostorage, $check_correo, $correo)
 {
     include_once '../../php/FuncionesGenerales.php';
 
@@ -730,9 +730,9 @@ function agregar_orden($_DataPOST, $carritostorage, $check_correo)
         return;
     }
     if (isset($check_correo) && $check_correo == true) {
-        $check_correo = $check_correo;
+        //$check_correo = $check_correo;
 
-        if (!validar_correo($_DataPOST['correo'])) {
+        if (!validar_correo($correo)) {
             http_response_code(409); //codigo de conflicto
             $resultado = new stdClass();
             $resultado->result = FALSE;
@@ -877,7 +877,7 @@ function agregar_orden($_DataPOST, $carritostorage, $check_correo)
     if ($datavalided->result == true) {
         $newid = $datavalided->data;
 
-        $datavalided2 = agregardetalle($newid, $_DataPOST, $carritostorage, $check_correo);
+        $datavalided2 = agregardetalle($newid, $_DataPOST, $carritostorage, $check_correo, $correo);
         http_response_code(200); //listo
         return;
     }
