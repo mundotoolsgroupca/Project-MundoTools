@@ -446,7 +446,7 @@ session_start();
                         })
                         Carrito.clear(); //si guardo los datos limpamos el carrito
                         setInterval(() => {
-                            window.location.href = '../index.php';
+                            window.location.href = '../tienda.php';
                         }, 3000);
 
 
