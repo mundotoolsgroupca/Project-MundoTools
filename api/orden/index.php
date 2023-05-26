@@ -654,13 +654,13 @@ function agregardetalle($id, $data, $carritostorage)
     date_default_timezone_set('America/Caracas');
     $fecha_actual = date('Y-m-d');
     $hora_actual = date('h:i A');
-    $token = isset($data['token']) ? "<label style='font-weight: bold;'>Token Utilizado: " . $data['token'] . "</label><br>" : "";
+    $token = isset($data['token']) ? " <label>Responsable: <label style='font-weight: bold;'>Token Utilizado: " . $data['token'] . "</label></label><br>" : "";
 
 
     $correotabla = "
     <label style='font-size: 2.5em;'>Orden de Compra</label><br>
     <label style='font-weight: bold;'>$nombreempresa</label><br>
-    <label>Responsable: <label style='font-weight: bold;'>$responsable</label></label><br>
+    
     <label>Numero de Contacto: <label style='font-weight: bold;'>$telefono</label></label><br>
     <label>Fecha: <label style='font-weight: bold;'>$fecha_actual</label></label><br>
     <label>Hora: <label style='font-weight: bold;'>$hora_actual</label></label><br>
