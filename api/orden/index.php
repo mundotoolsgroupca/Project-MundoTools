@@ -618,7 +618,7 @@ function agregardetalle($id, $data, $carritostorage)
     }
 
 
-    $token = isset($formDataArray['token']) ? "<td style='border: 1px solid black; text-align: center; padding: 10px;'>Token Utilizado" . $formDataArray['token'] . "</td> " : "";
+    $token = isset($data['token']) ? "<td style='border: 1px solid black; text-align: center; padding: 10px;'>Token Utilizado" . $formDataArray['token'] . "</td> " : "";
 
     include '../../php/conexion.php';
     $realizados = 0;
