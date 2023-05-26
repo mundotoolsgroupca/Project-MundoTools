@@ -382,7 +382,7 @@ session_start();
                     icon: 'info',
                     title: 'Seleccione el Tipo de Documento'
                 })
-                $('#nombreempresa').focus();
+                $('#tipo_documento').focus();
                 return false;
             }
             // verifica si el nombre del responsable es válido (no está vacío)
@@ -403,7 +403,7 @@ session_start();
                     icon: 'info',
                     title: 'Ingrese el Numero de Documento'
                 })
-                $('#rif').focus();
+                $('#nro_documento').focus();
                 return false;
             }
             // verifica si el nombre del responsable es válido (no está vacío)
@@ -428,7 +428,7 @@ session_start();
                 return false;
             }
 
-            if (!correo.trim()) {
+            if (check_correo == true && !correo.trim() && !validateEmail(correo)) {
                 const Toast = Swal.mixin({
                     toast: true,
                     position: 'top-end',
@@ -445,7 +445,7 @@ session_start();
                     icon: 'info',
                     title: 'Correo no Valido'
                 })
-                $('#direccion').focus();
+                $('#correo').focus();
                 return false;
             }
 
