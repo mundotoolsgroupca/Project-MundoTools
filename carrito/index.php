@@ -240,7 +240,7 @@ session_start();
         $(document).ready(function() {
 
             if (carritostorage.length == 0) {
-                window.location.href = '../index.php'
+                window.location.href = '../tienda.php'
             }
         });
 
