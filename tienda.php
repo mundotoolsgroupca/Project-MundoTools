@@ -16,6 +16,7 @@ session_start();
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
     <script src="https://cdn.tailwindcss.com/3.3.0"></script>
+    <link rel="icon" href="./assets/img/logo-white.png" />
     <script>
         tailwind.config = {
             darkMode: "class",
@@ -38,7 +39,7 @@ session_start();
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@200&display=swap" rel="stylesheet">
-    <title>Preview</title>
+    <title>Tienda</title>
 </head>
 
 <body class="bg-white">
@@ -55,12 +56,18 @@ session_start();
 
 
 
-        <div class='w-1/2'>
+        <div class='w-1/2 flex gap-1'>
             <a href="./">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5 cursor-pointer hover:scale-125 transition-all">
                     <path d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z" />
                     <path d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z" />
                 </svg>
+            </a>
+            <a href="./tienda.php">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5 cursor-pointer hover:scale-125 transition-all">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                </svg>
+
             </a>
 
 
@@ -90,11 +97,11 @@ session_start();
 
     </div>
     <!-- Header Navbar -->
-    <nav class="  top-0 left-0 z-20 w-full    bg-[#FFA300] shadow-lg py-2.5 px-6 sm:px-4">
-        <div class="max-w-screen-xl flex   items-center justify-center gap-3 mx-auto 4 ">
+    <nav class="z-20 w-full    bg-[#FFA300]  shadow-lg p-3 sm:px-4">
+        <div class="max-w-screen-xl flex   items-center justify-between gap-3 mx-auto 4 ">
             <div class="[ lg:w-2/4 ]">
-                <a href="./" class="flex items-center [ w-14 h-10 ] [ md:w-32 md:h-32 ] [ lg:w-32 lg:h-32 ]">
-                    <img src="./assets/img/logo.png" class="w-full h-full   " alt="">
+                <a class="flex items-center [ w-14 h-10 ] [ md:w-32 md:h-32 ] [ lg:w-48 lg:h-20 ]" href="#">
+                    <img src="./assets/img/logo.png" alt="" srcset="">
                 </a>
             </div>
             <div class="[ lg:w-3/4 ]">
@@ -102,27 +109,29 @@ session_start();
                     <div class="flex gap-1 items-center flex-col [ md:flex-row ] [ lg:flex-row ]">
                         <div class="[    items-center justify-between w-full  ] [ lg:w-full ]" id="navbar-sticky">
                             <div class="relative   flex w-full flex-wrap items-stretch">
-                                <input type="Buscar" value="<?php if (isset($_GET['query'])) {
-                                                                echo $_GET['query'];
-                                                            } else {
-                                                                echo "";
-                                                            } ?>" placeholder="Palabra Clave" class="placeholder-gray-700  relative m-0 -mr-0.5 block w-32 min-w-0 flex-auto  border-b border-black   bg-transparent bg-clip-padding px-3 py-[0.25rem] text-sm font-normal leading-[1.6] text-black outline-none transition duration-200 ease-in-out " name="query" aria-label="Search" aria-describedby="button-addon1" />
+                                <input type="Buscar" value="" placeholder="Buscar Productos" class="placeholder-gray-700  relative m-0 -mr-0.5 block w-32 min-w-0 flex-auto  border-b border-black   bg-transparent bg-clip-padding px-3 py-[0.25rem] text-sm font-normal leading-[1.6] text-black outline-none transition duration-200 ease-in-out " name="query" aria-label="Search" aria-describedby="button-addon1" />
                                 <!--Search button-->
 
                             </div>
                         </div>
-                        <div class="  flex   items-center justify-center gap-3 mx-auto 4   " data-te-dropdown-ref>
-                            <button class="flex items-center whitespace-nowrap rounded   px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white  transition duration-150 ease-in-out    focus:outline-none focus:ring-0   active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] motion-reduce:transition-none" type="button" id="dropdownMenuButton3" data-te-dropdown-toggle-ref aria-expanded="false" data-te-ripple-init data-te-ripple-color="light">
-                                Categorias
-                                <span class="ml-2 w-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
-                                        <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
-                                    </svg>
-                                </span>
-                            </button>
-                            <ul id="navcategoria" class="absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block" aria-labelledby="dropdownMenuButton3" data-te-dropdown-menu-ref>
+                        <div class="[ hidden items-center justify-center gap-3 mx-auto 4  mt-3 ] [ md:flex ] [ lg:flex ] ">
+                            <div class="flex items-center">
+                                <a href="./tienda.php" class=" whitespace-nowrap rounded   px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white  transition duration-150 ease-in-out    focus:outline-none focus:ring-0   active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] motion-reduce:transition-none">
+                                    Categorias
+                                </a>
+                                <button class="text-white" type="button" id="dropdownMenuButton3" data-te-dropdown-toggle-ref aria-expanded="false" data-te-ripple-init data-te-ripple-color="light">
 
-                            </ul>
+                                    <span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
+                                            <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                                        </svg>
+                                    </span>
+                                </button>
+                                <ul id="navcategoria" class="absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block" aria-labelledby="dropdownMenuButton3" data-te-dropdown-menu-ref>
+
+                                </ul>
+                            </div>
+
                         </div>
                     </div>
                 </form>
@@ -137,7 +146,7 @@ session_start();
                         isset($_SESSION['usuario']['nombre']) ?
                             " <span class='text-white'>" . $_SESSION['usuario']['nombre'] . "</span> <img src='https://unavatar.io/midudev' class='rounded-full' style='height: 25px; width: 25px' alt='' loading='lazy' />"
                             :
-                            " <a class='text-white' href='./login'>" . "Inicia Sesion" . "</a>";
+                            " <a class='text-white text-[15px]  [ lg:text-lg ]' href='./login'>" . "Inicia Sesion" . "</a>";
                         ?>
                     </a>
                     <!-- Second dropdown menu -->
@@ -158,6 +167,24 @@ session_start();
 
 
         </div>
+        <div class="[ flex w-full justify-end ] [ md:hidden ] [ lg:hidden ]">
+            <div class="flex items-center">
+                <a href="./tienda.php" class=" whitespace-nowrap rounded   px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white  transition duration-150 ease-in-out    focus:outline-none focus:ring-0   active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] motion-reduce:transition-none">
+                    Categorias
+                </a>
+                <button class="text-white" type="button" id="dropdownMenuButton3_mobile" data-te-dropdown-toggle-ref aria-expanded="false" data-te-ripple-init data-te-ripple-color="light">
+
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
+                            <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                        </svg>
+                    </span>
+                </button>
+                <ul id="navcategoria_mobile" class="absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block" aria-labelledby="dropdownMenuButton3_mobile" data-te-dropdown-menu-ref>
+
+                </ul>
+            </div>
+        </div>
 
 
 
@@ -166,7 +193,7 @@ session_start();
 
 
 
-    <div id="carouselExampleIndicators" class="relative" data-te-carousel-init data-te-carousel-slide>
+    <div id="carouselExampleIndicators" class="relative mt-3" data-te-carousel-init data-te-carousel-slide>
         <div class="absolute right-0 bottom-0 left-0 z-[2] mx-[15%] mb-4 flex list-none justify-center p-0" data-te-carousel-indicators>
             <button type="button" data-te-target="#carouselExampleIndicators" data-te-slide-to="0" data-te-carousel-active class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none" aria-current="true" aria-label="Slide 1"></button>
             <button type="button" data-te-target="#carouselExampleIndicators" data-te-slide-to="1" class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none" aria-label="Slide 2"></button>
@@ -175,16 +202,22 @@ session_start();
         </div>
         <div class="relative w-full overflow-hidden after:clear-both after:block after:content-['']">
             <div class="relative float-left -mr-[100%] w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none" data-te-carousel-item data-te-carousel-active>
-                <img loading="lazy" src="https://images.unsplash.com/photo-1631856954913-c751a44490ec?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" class="block w-full h-[300px] object-cover object-center" alt="Wild Landscape" />
+                <picture>
+                    <source media="(min-width: 100px) and (max-width: 600px)" srcset="./assets/img/publicidad1_mobile.png">
+
+                    <img loading="lazy" src="./assets/img/publicidad1.webp" class="block w-full   object-cover object-center" alt="Publicidad" />
+
+                </picture>
+
             </div>
             <div class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none" data-te-carousel-item>
-                <img loading="lazy" src="https://images.unsplash.com/photo-1631856954655-966f97d809de?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1146&q=80" class="block w-full h-[300px] object-cover object-center" alt="Camera" />
-            </div>
-            <div class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none" data-te-carousel-item>
-                <img loading="lazy" src="https://images.unsplash.com/photo-1620388640785-892616248ec8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80" class="block w-full h-[300px] object-cover object-center" alt="Exotic Fruits" />
-            </div>
-            <div class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none" data-te-carousel-item>
-                <img loading="lazy" src="https://images.unsplash.com/photo-1631856955350-77f4023dff2b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1176&q=80" class="block w-full h-[300px] object-cover object-center" alt="Exotic Fruits" />
+                <picture>
+                    <source media="(min-width: 100px) and (max-width: 600px)" srcset="./assets/img/publicidad2_mobile.png">
+
+                    <img loading="lazy" src="./assets/img/publicidad2.jpg" class="block w-full   object-cover object-center" alt="Publicidad" />
+
+                </picture>
+
             </div>
         </div>
         <button class="absolute top-0 bottom-0 left-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none" type="button" data-te-target="#carouselExampleIndicators" data-te-slide="prev">
@@ -435,6 +468,11 @@ session_start();
 
             data.map((item) => {
                 $('#navcategoria').append(`
+                <li>
+                    <a href='./search/?categoria=${item.id}' class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600" href="#" data-te-dropdown-item-ref>${item.nombre}</a>
+                </li>
+                `);
+                $('#navcategoria_mobile').append(`
                 <li>
                     <a href='./search/?categoria=${item.id}' class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600" href="#" data-te-dropdown-item-ref>${item.nombre}</a>
                 </li>

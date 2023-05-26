@@ -27,7 +27,7 @@ if (isset($_SESSION['token'])) {
     <meta name="csrf-token" content="<?php echo $_SESSION['token']; ?>">
     <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+    <link rel="icon" href="../assets/img/logo-white.png" />
     <script>
         tailwind.config = {
             darkMode: "class",
@@ -60,7 +60,7 @@ if (isset($_SESSION['token'])) {
                                     <div class="[ text-center ]">
                                         <img class="[ mx-auto w-48 ]" src="../assets/img/logo.png" alt="logo" />
                                         <h4 class="mb-12 mt-1 pb-1 text-xl font-semibold">
-                                            Mundo Tools Group
+                                            Mundo Tools Group CA.
                                         </h4>
                                     </div>
 

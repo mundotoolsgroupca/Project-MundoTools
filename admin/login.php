@@ -54,7 +54,7 @@
      <!---------sweetalert-------->
      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
      <script src="./assets/js/index.js"></script>
-     <title>Preview</title>
+     <title>Entrar</title>
  </head>
 
  <body class="bg-gray-100">

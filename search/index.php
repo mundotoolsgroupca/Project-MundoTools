@@ -19,6 +19,7 @@
     <!---------Tailwind-------->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
+    <link rel="icon" href="../assets/img/logo-white.png" />
     <script src="https://cdn.tailwindcss.com/3.3.0"></script>
     <script>
         tailwind.config = {
@@ -55,48 +56,66 @@
 <body class="[ bg-gray-200 ]">
 
     <!-- Header Navbar -->
-    <div class="[ w-full p-3 bg-black flex gap-5 justify-end items-center text-white ]">
+    <div class="[ w-full p-3 bg-black flex gap-5 justify-betweend items-center text-white ]">
         <!-- Behance -->
 
 
 
 
 
-        <!-- Facebook -->
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 cursor-pointer hover:scale-125 transition-all" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path>
-        </svg>
+        <div class='w-1/2 flex gap-1'>
+            <a href="../">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5 cursor-pointer hover:scale-125 transition-all">
+                    <path d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z" />
+                    <path d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z" />
+                </svg>
+            </a>
+            <a href="../tienda.php">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5 cursor-pointer hover:scale-125 transition-all">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                </svg>
 
-        <!-- Messenger -->
+            </a>
 
 
-        <!-- Twitter -->
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 cursor-pointer hover:scale-125 transition-all" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path>
-        </svg>
+        </div>
+        <div class='w-1/2 flex justify-end gap-1'> <!-- Facebook -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 cursor-pointer hover:scale-125 transition-all" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path>
+            </svg>
 
-        <!-- Google -->
+            <!-- Messenger -->
 
 
-        <!-- Instagram -->
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 cursor-pointer hover:scale-125 transition-all" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path>
-        </svg>
+            <!-- Twitter -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 cursor-pointer hover:scale-125 transition-all" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path>
+            </svg>
+
+            <!-- Google -->
+
+
+            <!-- Instagram -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 cursor-pointer hover:scale-125 transition-all" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path>
+            </svg>
+        </div>
 
 
     </div>
 
-    <nav class="  top-0 left-0 z-20 w-full    bg-[#FFA300] shadow-lg py-2.5 px-6 sm:px-4">
-        <div class="max-w-screen-xl flex   items-center justify-center gap-3 mx-auto 4 ">
+    <!-- Header Navbar -->
+    <nav class="z-20 w-full    bg-[#FFA300]  shadow-lg p-3 sm:px-4">
+        <div class="max-w-screen-xl flex   items-center justify-between gap-3 mx-auto 4 ">
             <div class="[ lg:w-2/4 ]">
-                <a href="../" class="flex items-center [ w-14 h-10 ] [ md:w-32 md:h-32 ] [ lg:w-48 lg:h-20 ]">
-                    <img src="../assets/img/logo.png" class="w-full h-full   " alt="">
+                <a class="flex items-center [ w-14 h-10 ] [ md:w-32 md:h-32 ] [ lg:w-48 lg:h-20 ]" href="../tienda.php">
+                    <img src="../assets/img/logo.png" alt="" srcset="">
                 </a>
             </div>
             <div class="[ lg:w-3/4 ]">
                 <form action="./" method="get">
                     <div class="flex gap-1 items-center flex-col [ md:flex-row ] [ lg:flex-row ]">
-                        <div class="[  mt-3  items-center justify-between w-full  ] [ lg:w-full ]" id="navbar-sticky">
+                        <div class="[    items-center justify-between w-full  ] [ lg:w-full ]" id="navbar-sticky">
                             <div class="relative   flex w-full flex-wrap items-stretch">
                                 <input type="Buscar" value="<?php
                                                             include_once '../php/conexion.php';
@@ -107,34 +126,86 @@
                                                                 echo $query;
                                                             } else {
                                                                 echo "";
-                                                            } ?>" placeholder="Palabra Clave" class="placeholder-gray-700  relative m-0 -mr-0.5 block w-32 min-w-0 flex-auto  border-b border-black   bg-transparent bg-clip-padding px-3 py-[0.25rem] text-sm font-normal leading-[1.6] text-black outline-none transition duration-200 ease-in-out " name="query" aria-label="Search" aria-describedby="button-addon1" />
+                                                            } ?>" placeholder="Buscar Productos" class="placeholder-gray-700  relative m-0 -mr-0.5 block w-32 min-w-0 flex-auto  border-b border-black   bg-transparent bg-clip-padding px-3 py-[0.25rem] text-sm font-normal leading-[1.6] text-black outline-none transition duration-200 ease-in-out " name="query" aria-label="Search" aria-describedby="button-addon1" />
                                 <!--Search button-->
-                               
+
                             </div>
                         </div>
-                        <div class="  flex   items-center justify-center gap-3 mx-auto 4  mt-3" data-te-dropdown-ref>
-                            <button class="flex items-center whitespace-nowrap rounded   px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white  transition duration-150 ease-in-out    focus:outline-none focus:ring-0   active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] motion-reduce:transition-none" type="button" id="dropdownMenuButton3" data-te-dropdown-toggle-ref aria-expanded="false" data-te-ripple-init data-te-ripple-color="light">
-                                Categorias
-                                <span class="ml-2 w-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
-                                        <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
-                                    </svg>
-                                </span>
-                            </button>
-                            <ul id="navcategoria" class="absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block" aria-labelledby="dropdownMenuButton3" data-te-dropdown-menu-ref>
+                        <div class="[ hidden items-center justify-center gap-3 mx-auto 4  mt-3 ] [ md:flex ] [ lg:flex ] ">
+                            <div class="flex items-center">
+                                <a href="../tienda.php" class=" whitespace-nowrap rounded   px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white  transition duration-150 ease-in-out    focus:outline-none focus:ring-0   active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] motion-reduce:transition-none">
+                                    Categorias
+                                </a>
+                                <button class="text-white" type="button" id="dropdownMenuButton3" data-te-dropdown-toggle-ref aria-expanded="false" data-te-ripple-init data-te-ripple-color="light">
 
-                            </ul>
+                                    <span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
+                                            <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                                        </svg>
+                                    </span>
+                                </button>
+                                <ul id="navcategoria" class="absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block" aria-labelledby="dropdownMenuButton3" data-te-dropdown-menu-ref>
+
+                                </ul>
+                            </div>
+
                         </div>
                     </div>
                 </form>
             </div>
-            <div class="[ lg:w-2/4 ]">
-
+            <div class="[ lg:w-2/4 flex justify-end ]">
+                <div class="relative" data-te-dropdown-ref>
+                    <!-- Second dropdown trigger -->
+                    <a class="hidden-arrow flex  gap-2  items-center whitespace-nowrap transition duration-150 ease-in-out motion-reduce:transition-none" href="#" id="dropdownMenuButton2" role="button" data-te-dropdown-toggle-ref aria-expanded="false">
+                        <!-- User avatar -->
+                        <?php
+                        echo
+                        isset($_SESSION['usuario']['nombre']) ?
+                            " <span class='text-white'>" . $_SESSION['usuario']['nombre'] . "</span> <img src='https://unavatar.io/midudev' class='rounded-full' style='height: 25px; width: 25px' alt='' loading='lazy' />"
+                            :
+                            " <a class='text-white text-[15px]  [ lg:text-lg ]' href='../login'>" . "Inicia Sesion" . "</a>";
+                        ?>
+                    </a>
+                    <!-- Second dropdown menu -->
+                    <ul class="absolute left-auto right-0 z-[1000] float-left m-0 mt-1 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block" aria-labelledby="dropdownMenuButton2" data-te-dropdown-menu-ref>
+                        <!-- Second dropdown menu items -->
+                        <li>
+                            <a class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30" href="./perfil/" data-te-dropdown-item-ref>Perfil</a>
+                        </li>
+                        <li>
+                            <a class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30" href="#" data-te-dropdown-item-ref>Opciones</a>
+                        </li>
+                        <li>
+                            <a class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30" href="./php/logout.php" data-te-dropdown-item-ref>Cerrar Sesion</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
 
 
-
         </div>
+        <div class="[ flex w-full justify-end ] [ md:hidden ] [ lg:hidden ]">
+            <div class="flex items-center">
+                <a href="../tienda.php" class=" whitespace-nowrap rounded   px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white  transition duration-150 ease-in-out    focus:outline-none focus:ring-0   active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] motion-reduce:transition-none">
+                    Categorias
+                </a>
+                <button class="text-white" type="button" id="dropdownMenuButton3_mobile" data-te-dropdown-toggle-ref aria-expanded="false" data-te-ripple-init data-te-ripple-color="light">
+
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
+                            <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                        </svg>
+                    </span>
+                </button>
+                <ul id="navcategoria_mobile" class="absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block" aria-labelledby="dropdownMenuButton3_mobile" data-te-dropdown-menu-ref>
+
+                </ul>
+            </div>
+        </div>
+
+
+
+
     </nav>
 
 
@@ -224,6 +295,23 @@
                             
                             ";
                         }
+                    } elseif (isset($_GET['categoria']) && validar_int($_GET['categoria'])) {
+                        $categoria = mysqli_real_escape_string($conexion, $_GET['categoria']);
+                        $categoriaselected = isset($_GET['categoria']) ? $categoria : "";
+                        $consulta = "
+                        SELECT * FROM `categorias` WHERE  id = '$categoriaselected' ";
+                        $resultado = mysqli_query($conexion, $consulta);
+
+                        $row = mysqli_fetch_assoc($resultado);
+
+
+                        $consulta_cantidad_productos = "SELECT count(*) as cantidad FROM `productos` WHERE categoria = '$categoriaselected' ";
+                        $resultado_cantidad_productos = mysqli_query($conexion, $consulta_cantidad_productos);
+                        $cantidad_productos = mysqli_fetch_assoc($resultado_cantidad_productos);
+                        $cantidad_productos =  $cantidad_productos['cantidad'];
+
+                        echo "<p class='[ text-lg font-bold ]'>Categoria <label class='text-[#FFA300]'>'" . $row['nombre'] . " ($cantidad_productos)'</label></p>";
+                        $categoria = "<p class='text-[#FFA300] font-bold transition duration-150 ease-in-out hover:text-[#FFA300] focus:text-[#FFA300] active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-[#FFA300]'>" . $row['nombre'] . " ($cantidad_productos)</p>";
                     }
                     ?>
 
@@ -410,24 +498,30 @@
                                     $offset = ($current_page - 1) * $results_per_page;
 
                                     $categoria =  isset($_GET['categoria']) ?   "and c1.categoria = " . htmlspecialchars($_GET['categoria'], ENT_QUOTES, 'UTF-8') : "";
-                                     
+
 
 
                                     include_once '../php/conexion.php';
                                     $query = $_GET['query'];
                                     $consulta = "
                                     SELECT
-                                    c1.id,
-                                    c1.nombre,
-                                    c1.descripcion,
-                                    c1.categoria,
-                                    c1.imagen,
-                                    c1.precio,
-                                    c2.simbolo,
-                                    c2.cod_moneda
+                                        c1.id,
+                                        c1.nombre,
+                                        c1.descripcion,
+                                        c1.categoria,
+                                        c1.imagen,
+                                        c1.precio,
+                                        c2.simbolo,
+                                        c2.cod_moneda,
+                                        c3.cantidad 
                                     FROM
-                                    productos as c1
-                                    INNER JOIN moneda_ref as c2 ON c2.cod_moneda = c1.moneda
+                                        productos AS c1
+                                        INNER JOIN moneda_ref AS c2
+                                        ON
+                                            c2.cod_moneda = c1.moneda $categoria
+                                        INNER JOIN stock AS c3
+                                        ON
+                                            c1.id = c3.idProducto 
                                     WHERE
                                     nombre LIKE '%$query%' or id LIKE '%$query%'
                                     $categoria
@@ -449,6 +543,7 @@
                                             "precio" =>  floatval($row['precio']),
                                             "simbolo" => $row['simbolo'],
                                             "cod_moneda" => intval($row['cod_moneda']),
+                                            "stock" => intval($row['cantidad']),
                                         ]);
                                     }
 
@@ -471,11 +566,12 @@
                                             $descripcion = (strlen($data['result'][$i]['descripcion']) > 60) ? substr($data['result'][$i]['descripcion'], 0, 60) . '...' : $data['result'][$i]['descripcion'];
                                             $precio = $data['result'][$i]['precio'];
                                             $simbolo = $data['result'][$i]['simbolo'];
+                                            $stock = $data['result'][$i]['stock'];
 
 
 
                                             echo "
-                                            <div class='group relative   border-2 hover:border-gray-400 transition-all border   mx-auto p-3 rounded-lg w-full '>
+                                            <div onclick='modalinfoview(`$id`)' class='group cursor-pointer relative   border-2 hover:border-gray-400 transition-all border   mx-auto p-3 rounded-lg w-full '>
                                                 <div class='absolute  font-bold text-lg   w-full flex justify-end right-3 '>
                                                 $id
                                                 </div>
@@ -486,7 +582,7 @@
                                         
                                                     src='../$imagen' onerror=\"this.onerror=null;this.src='../assets/img/imgerror.png'\"\" title='$nombre' loading='lazy' alt='$nombre' class='mx-auto  hover:scale-150 transition-all h-32 w-32 object-cover object-center [ lg:w-44 lg:h-44 ]  ' />
                                                 </div>
-                                                <div class='[ cursor-pointer  ]' onclick='modalinfoview(`$id`)'>
+                                                <div class='[ cursor-pointer  ]' >
                                                     <div class='mt-4 flex justify-between'>
                                                         <div class='w-full'>
                                                         <h3 class='text-sm text-gray-700'>
@@ -495,7 +591,7 @@
                                                         </h3>
                                                         <hr class='h-px my-3 bg-gray-200 border-0 dark:bg-gray-700'>
                                                         <label class='font-bold'>Ref: $precio$simbolo</label>
-                                                        <p class='mt-1 text-[12px] font-bold text-gray-500 break-words'>$descripcion</p>
+                                                        <p class='mt-1 text-[12px] font-bold text-gray-500 break-words'>Disponibles: $stock</p>
                                                         </div>
                                                         <p class='text-sm font-medium text-gray-900'></p>
                                                     </div>
@@ -561,7 +657,7 @@
                                 "; //retornamos los datos
                                     }
                                 }
-                            } elseif (isset($_GET['categoria'])) {
+                            } elseif (isset($_GET['categoria']) && validar_int($_GET['categoria'])) {
 
                                 if (strlen(trim($_GET['categoria'])) != 0 &&  is_numeric($_GET['categoria'])) {
                                     $categoria = $_GET['categoria'];
@@ -581,7 +677,7 @@
                                 include_once '../php/conexion.php';
 
                                 $consulta = "
-                                 SELECT
+                                SELECT
                                     c1.id,
                                     c1.nombre,
                                     c1.descripcion,
@@ -589,12 +685,16 @@
                                     c1.imagen,
                                     c1.precio,
                                     c2.simbolo,
-                                    c2.cod_moneda
-                                 FROM
-                                    productos as c1
-                                    INNER JOIN moneda_ref as c2 ON c2.cod_moneda = c1.moneda
-                                 WHERE
-                                     c1.categoria = '$categoria'  
+                                    c2.cod_moneda,
+                                    c3.cantidad 
+                                FROM
+                                    productos AS c1
+                                    INNER JOIN moneda_ref AS c2
+                                    ON
+                                        c2.cod_moneda = c1.moneda AND c1.categoria = '$categoria'
+                                    INNER JOIN stock AS c3
+                                    ON
+                                        c1.id = c3.idProducto 
                                  ORDER 
                                     BY c1.precio $order  
                                  LIMIT $results_per_page OFFSET $offset "; //consulta para obtener los resultados segun la pagina 
@@ -615,6 +715,7 @@
                                         "precio" =>  floatval($row['precio']),
                                         "simbolo" => $row['simbolo'],
                                         "cod_moneda" => intval($row['cod_moneda']),
+                                        "stock" => intval($row['cantidad']),
                                     ]);
                                 }
 
@@ -635,51 +736,54 @@
                                         $descripcion = (strlen($data['result'][$i]['descripcion']) > 60) ? substr($data['result'][$i]['descripcion'], 0, 60) . '...' : $data['result'][$i]['descripcion'];
                                         $precio = $data['result'][$i]['precio'];
                                         $simbolo = $data['result'][$i]['simbolo'];
-
+                                        $stock = $data['result'][$i]['stock'];
 
 
                                         echo "
-                                                <div class='group relative   border-2 hover:border-gray-400 transition-all border   mx-auto p-3 rounded-lg w-full '>
+                                                <div class='border border-2 hover:border-gray-400 rounded-lg p-3 '>
+                                                <div onclick='modalinfoview(`$id`)' class='group relative cursor-pointer transition-all mx-auto   w-full ' >
                                                     <div class='absolute  font-bold text-lg   w-full flex justify-end right-3 '>
-                                                    $id
-                                                    </div>
-                                                    <div class=' m-auto aspect-h-1 aspect-w-1 lg:aspect-none h-60 overflow-hidden rounded-md [ lg:h-auto  ]   '>
-                                                        <img data-te-animation-init
-                                                        data-te-animation-start='onLoad'
-                                                        data-te-animation='[fade-in_1s_ease-in-out]'
-                                            
-                                                        src='../$imagen' onerror=\"this.onerror=null;this.src='../assets/img/imgerror.png'\"\"  title='$nombre' loading='lazy' alt='$nombre' class='mx-auto  hover:scale-150 transition-all   w-full object-cover object-center [ lg:w-44 lg:h-44 ]  ' />
-                                                    </div>
-                                                    <div class='[ cursor-pointer  ]' onclick='modalinfoview(`$id`)'>
-                                                        <div class='mt-4 flex justify-between'>
-                                                            <div class='w-full'>
-                                                            <h3 class='text-sm text-gray-700'>
-                                                                
-                                                                <p class='w-full text-center text-black bg-[#FFA300] uppercase font-bold text-lg' style='font-family: `Montserrat`, cursive;' >$nombre</p>
-                                                            </h3>
-                                                            <hr class='h-px my-3 bg-gray-200 border-0 dark:bg-gray-700'>
-                                                            <label class='font-bold'>Ref: $precio$simbolo</label>
-                                                            <p class='mt-1 text-[12px] font-bold text-gray-500 break-words'>$descripcion</p>
+                                                        $id
+                                                        </div>
+                                                        <div class=' m-auto aspect-h-1 aspect-w-1 lg:aspect-none h-60 overflow-hidden rounded-md [ lg:h-auto  ]   '>
+                                                            <img data-te-animation-init
+                                                            data-te-animation-start='onLoad'
+                                                            data-te-animation='[fade-in_1s_ease-in-out]'
+                                                
+                                                            src='../$imagen' onerror=\"this.onerror=null;this.src='../assets/img/imgerror.png'\"\"  title='$nombre' loading='lazy' alt='$nombre' class='mx-auto  hover:scale-150 transition-all   w-full object-cover object-center [ lg:w-44 lg:h-44 ]  ' />
+                                                        </div>
+                                                        <div class='[ cursor-pointer  ]' >
+                                                            <div class='mt-4 flex justify-between'>
+                                                                <div class='w-full'>
+                                                                <h3 class='text-sm text-gray-700'>
+                                                                    
+                                                                    <p class='w-full text-center text-black bg-[#FFA300] uppercase font-bold text-lg' style='font-family: `Montserrat`, cursive;' >$nombre</p>
+                                                                </h3>
+                                                                <hr class='h-px my-3 bg-gray-200 border-0 dark:bg-gray-700'>
+                                                                <label class='font-bold'>Ref: $precio$simbolo</label>
+                                                                <p class='mt-1 text-[12px] font-bold text-gray-500 break-words'>Disponibles: $stock</p>
+                                                                </div>
+                                                                <p class='text-sm font-medium text-gray-900'></p>
                                                             </div>
-                                                            <p class='text-sm font-medium text-gray-900'></p>
                                                         </div>
                                                     </div>
                                                     <form>
                                                     <div class='relative    flex w-full flex-wrap items-stretch flex-nowrap'>
-                                                        <input min='0' id='$id' type='number'
-                                                        class='relative m-0 block w-14 text-center  min-w-0 flex-auto rounded-l border border-r-0 border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition ease-in-out   focus:border-warning-600 focus:text-neutral-700 focus:shadow-te-warning focus:outline-none '
-                                                        aria-label='Recipient' username value='1' aria-describedby='button-addon2' />
-                                                        <button   data-te-ripple-init data-te-ripple-color='light' type='submit' data-te-ripple-init data-te-ripple-color='warning'
-                                                        class='relative   rounded-r bg-[#FFA300] opa px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-warning-700 hover:shadow-lg   focus:bg-warning-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-warning-800 active:shadow-lg'
-                                                        type='button' id='button-addon2'>
-                                                        <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor'
-                                                            class='h-4 w-4'>
-                                                            <path stroke-linecap='round' stroke-linejoin='round'
-                                                            d='M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z' />
-                                                        </svg>
-                                                        </button>
-                                                    </div>
-                                                    </form>
+                                                            <input min='0' id='$id' type='number'
+                                                            class='relative m-0 block z-20 w-14 text-center  min-w-0 flex-auto rounded-l border border-r-0 border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition ease-in-out   focus:border-warning-600 focus:text-neutral-700 focus:shadow-te-warning focus:outline-none '
+                                                            aria-label='Recipient' username value='1' aria-describedby='button-addon2' />
+                                                            <button   data-te-ripple-init data-te-ripple-color='light' type='submit' data-te-ripple-init data-te-ripple-color='warning'
+                                                            class='relative   rounded-r bg-[#FFA300] opa px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-warning-700 hover:shadow-lg   focus:bg-warning-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-warning-800 active:shadow-lg'
+                                                            type='button' id='button-addon2'>
+                                                            <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor'
+                                                                class='h-4 w-4'>
+                                                                <path stroke-linecap='round' stroke-linejoin='round'
+                                                                d='M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z' />
+                                                            </svg>
+                                                            </button>
+                                                        </div>
+                                                        </form>
+                                                    
                                                 </div> ";
                                     }
 
@@ -738,15 +842,15 @@
                     </div>
                 </div>
             </div>
-            <div class="[ fixed flex justify-end bottom-0 right-0 ]" style="font-family: Raleway;" id="BtnTicket">
+            <div class="[ fixed flex z-30 justify-end bottom-0 right-0 ]" style="font-family: Raleway;" id="BtnTicket">
                 <div class="border  border-gray-300  rounded-lg   bg-white ">
                     <h2 class="mb-0" id="headingTwo">
                         <button class="group relative flex w-full items-center   border-0 bg-white py-2 px-3 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none  [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-warning [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] " type="button" data-te-collapse-init data-te-collapse-collapsed data-te-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                             <div class="[ flex gap-1 items-center relative ]">
 
                                 <div id="newitemadd_status" class="[ hidden absolute w-full  ]">
-                                    <span class="animate-ping  absolute inline-flex h-2 w-2 bottom-2 left-3 rounded-full bg-warning-400 "></span>
-                                    <span class="absolute inline-flex h-2 w-2 bottom-2 left-3 rounded-full bg-[#FFA300] "></span>
+                                    <span class="animate-ping  absolute inline-flex h-3 w-3 bottom-2 left-3 rounded-full bg-warning-400 "></span>
+                                    <span class="absolute inline-flex h-3 w-3 bottom-2 left-3 rounded-full bg-[#FFA300] "></span>
 
                                 </div>
 
@@ -812,6 +916,7 @@
         <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
         <script>
             $(document).ready(function() {
+
                 localreaddata();
                 toggleView('1x1'); //stilo de vista de los resultados
                 categorias();
@@ -826,15 +931,23 @@
 
                 data.map((item) => {
                     $('#navcategoria').append(`
-    <li>
-        <a href='../search/?categoria=${item.id}' class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600" href="#" data-te-dropdown-item-ref>${item.nombre}</a>
-    </li>
-    `);
+                        <li>
+                            <a href='../search/?categoria=${item.id}' class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600" href="#" data-te-dropdown-item-ref>${item.nombre}</a>
+                        </li>`);
+
+                    $('#navcategoria_mobile').append(`
+                        <li>
+                            <a href='../search/?categoria=${item.id}' class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600" href="#" data-te-dropdown-item-ref>${item.nombre}</a>
+                        </li>  `);
                 });
 
             }
             <?php
-            echo "let arrresult = " . json_encode($data['result']) . "\n    ";
+
+            if (isset($data['result'])) {
+                echo "let arrresult = " . json_encode($data['result']) . "\n    ";
+            }
+
             ?>
             const myModalEl = document.getElementById("modalinfo");
             const modal = new te.Modal(myModalEl);
