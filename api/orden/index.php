@@ -312,7 +312,7 @@ function obtenerid_token($formDataArray, $carritostorage) //se inserta el regist
         echo json_encode($resultado);
         return  $resultado;
     }
-    if (isset($formDataArray['tipo_documento']) && validar_string($formDataArray['tipo_documento'], 'JGEV') && strlen($formDataArray['nro_documento']) <= 1 && $formDataArray['tipo_documento'] == 'J' || $formDataArray['tipo_documento'] == 'G' || $formDataArray['tipo_documento'] == 'E' || $formDataArray['tipo_documento'] == 'V') {
+    if (isset($formDataArray['tipo_documento']) && validar_string($formDataArray['tipo_documento'], 'JGEV') && strlen($formDataArray['nro_documento']) <= 1 || $formDataArray['tipo_documento'] == 'J' || $formDataArray['tipo_documento'] == 'G' || $formDataArray['tipo_documento'] == 'E' || $formDataArray['tipo_documento'] == 'V') {
         $tipo_documento = $formDataArray['tipo_documento'];
     } else {
         http_response_code(409); //codigo de conflicto
