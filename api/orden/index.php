@@ -742,15 +742,6 @@ function agregar_orden($_DataPOST, $carritostorage, $check_correo, $correo)
             echo json_encode($resultado);
             return;
         }
-    } else {
-        http_response_code(409); //codigo de conflicto
-        $resultado = new stdClass();
-        $resultado->result = FALSE;
-        $resultado->icono = "error";
-        $resultado->titulo = "Error!";
-        $resultado->mensaje = 'Parametro No Valido';
-        echo json_encode($resultado);
-        return;
     }
 
 
