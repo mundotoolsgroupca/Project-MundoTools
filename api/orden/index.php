@@ -695,7 +695,7 @@ function agregardetalle($id, $data, $carritostorage, $check_correo)
     include "../../php/correo.php";
 
 
-    $correo = $formDataArray['correo'];
+    $correo = $data['correo'];
     if ($check_correo == true) {
         $statusEmail =  EnviarCorreo("mundotoolsgroupca@gmail.com", "ryrajpjcmsqkcbmv", "mundotoolsgroupca@gmail.com", "MundoTools", "$correo", "MundoTools", 'Orden', $correotabla);
     }
