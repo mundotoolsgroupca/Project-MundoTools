@@ -93,7 +93,7 @@ session_start();
 
                         <div class="[ flex gap-1 ]">
                             <div class="w-1/6">
-                                <select id="tipo_documento" data-te-select-init>
+                                <select name="tipo_documento" id="tipo_documento" data-te-select-init>
                                     <option value="J">
                                         J
                                     </option>
