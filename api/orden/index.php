@@ -729,7 +729,7 @@ function agregar_orden($_DataPOST, $carritostorage, $check_correo, $correo)
         echo json_encode($resultado);
         return;
     }
-    if ($check_correo == true) {
+    if ($check_correo == 'true') {
         //$check_correo = $check_correo;
         echo $check_correo;
         return;
