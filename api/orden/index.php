@@ -738,7 +738,7 @@ function agregar_orden($_DataPOST, $carritostorage, $check_correo, $correo)
             $resultado->result = FALSE;
             $resultado->icono = "error";
             $resultado->titulo = "Error!";
-            $resultado->mensaje = 'Parametro No Valido';
+            $resultado->mensaje = 'Correo No Valido';
             echo json_encode($resultado);
             return;
         }
