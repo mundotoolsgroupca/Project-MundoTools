@@ -644,7 +644,7 @@ function agregardetalle($id, $data, $carritostorage)
             <td style='border: 1px solid black; text-align: center; padding: 10px;'>$cantidad</td> 
             <td style='border: 1px solid black; text-align: center; padding: 10px;'>$precio" . '' . "$simbolo</td>
             <td style='border: 1px solid black; text-align: center; padding: 10px;'>" . $precio * $cantidad . '' . $simbolo . " </td>
-            $token
+           
         </tr>";
 
             $totalTabla += $precio * $cantidad;
