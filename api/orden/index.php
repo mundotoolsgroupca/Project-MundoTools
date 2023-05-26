@@ -729,10 +729,10 @@ function agregar_orden($_DataPOST, $carritostorage, $check_correo)
         echo json_encode($resultado);
         return;
     }
-    if (isset($check_correo)) {
+    if (isset($check_correo) && $check_correo == true) {
         $check_correo = $check_correo;
 
-        if ($check_correo &&  !validar_correo($_DataPOST['correo'])) {
+        if (!validar_correo($_DataPOST['correo'])) {
             http_response_code(409); //codigo de conflicto
             $resultado = new stdClass();
             $resultado->result = FALSE;
