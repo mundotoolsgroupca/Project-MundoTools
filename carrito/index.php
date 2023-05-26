@@ -458,7 +458,8 @@ session_start();
                 },
                 data: {
                     formData,
-                    carritostorage
+                    carritostorage,
+                    check_correo
                 },
                 beforeSend: () => {
                     $('#btn_CargarPedido').prop('disabled', true);

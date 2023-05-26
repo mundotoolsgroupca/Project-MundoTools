@@ -120,7 +120,7 @@ switch ($method) {
                     parse_str($formDataString, $formDataArray);
 
 
-                    agregar_orden($formDataArray, $_POST['carritostorage']);
+                    agregar_orden($formDataArray, $_POST['carritostorage'], $_POST['check_correo']);
                 } else {
                     // Log this as a warning and keep an eye on these attempts
                     $resultado = new stdClass();
@@ -138,7 +138,7 @@ switch ($method) {
                 parse_str($formDataString, $formDataArray);
 
 
-                agregar_orden($formDataArray, $_POST['carritostorage']);
+                agregar_orden($formDataArray, $_POST['carritostorage'], $_POST['check_correo']);
                 break;
                 /*
                 $resultado = new stdClass();
@@ -350,6 +350,21 @@ function obtenerid_token($formDataArray, $carritostorage) //se inserta el regist
         return  $resultado;
     }
 
+    if (isset($formDataArray['token']) && validar_string($formDataArray['token'], 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789') && strlen($formDataArray['token']) <= 10) {
+        $token = $formDataArray['token'];
+    } else {
+        http_response_code(409); //codigo de conflicto
+        $resultado = new stdClass();
+        $resultado->result = FALSE;
+        $resultado->icono = "error";
+        $resultado->titulo = "Error!";
+        $resultado->mensaje = 'Check no Valido';
+        echo json_encode($resultado);
+        return  $resultado;
+    }
+
+
+
 
 
 
@@ -536,7 +551,7 @@ function obtenerid($formDataArray, $carritostorage) //se inserta el registro en 
 }
 
 
-function agregardetalle($id, $data, $carritostorage)
+function agregardetalle($id, $data, $carritostorage, $check_correo)
 {
     include_once '../../php/FuncionesGenerales.php';
     if (isset($data['nombreempresa']) && validar_string($data['nombreempresa'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ') && strlen($data['nombreempresa']) <= 100) {
@@ -679,7 +694,13 @@ function agregardetalle($id, $data, $carritostorage)
 
     include "../../php/correo.php";
 
-    $statusEmail =  EnviarCorreo("mundotoolsgroupca@gmail.com", "ryrajpjcmsqkcbmv", "mundotoolsgroupca@gmail.com", "MundoTools", "mundotoolsgroupca@gmail.com", "MundoTools", 'Orden', $correotabla);
+
+    $correo = $formDataArray['correo'];
+    if ($check_correo == true) {
+        $statusEmail =  EnviarCorreo("mundotoolsgroupca@gmail.com", "ryrajpjcmsqkcbmv", "mundotoolsgroupca@gmail.com", "MundoTools", "$correo", "MundoTools", 'Orden', $correotabla);
+    } else {
+        $statusEmail =  EnviarCorreo("mundotoolsgroupca@gmail.com", "ryrajpjcmsqkcbmv", "mundotoolsgroupca@gmail.com", "MundoTools", "mundotoolsgroupca@gmail.com", "MundoTools", 'Orden', $correotabla);
+    }
 
 
     $resultado = new stdClass();
@@ -692,7 +713,7 @@ function agregardetalle($id, $data, $carritostorage)
     echo  json_encode($resultado);
     return;
 }
-function agregar_orden($_DataPOST, $carritostorage)
+function agregar_orden($_DataPOST, $carritostorage, $check_correo)
 {
     include_once '../../php/FuncionesGenerales.php';
 
@@ -709,6 +730,31 @@ function agregar_orden($_DataPOST, $carritostorage)
         echo json_encode($resultado);
         return;
     }
+    if (isset($check_correo)) {
+        $check_correo = $check_correo;
+
+        if ($check_correo &&  !validar_correo($_DataPOST['correo'])) {
+            http_response_code(409); //codigo de conflicto
+            $resultado = new stdClass();
+            $resultado->result = FALSE;
+            $resultado->icono = "error";
+            $resultado->titulo = "Error!";
+            $resultado->mensaje = 'Parametro No Valido';
+            echo json_encode($resultado);
+            return;
+        }
+    } else {
+        http_response_code(409); //codigo de conflicto
+        $resultado = new stdClass();
+        $resultado->result = FALSE;
+        $resultado->icono = "error";
+        $resultado->titulo = "Error!";
+        $resultado->mensaje = 'Parametro No Valido';
+        echo json_encode($resultado);
+        return;
+    }
+
+
 
 
     //validamos que los datos del array enviado estan correctos
@@ -832,7 +878,7 @@ function agregar_orden($_DataPOST, $carritostorage)
     if ($datavalided->result == true) {
         $newid = $datavalided->data;
 
-        $datavalided2 = agregardetalle($newid, $_DataPOST, $carritostorage);
+        $datavalided2 = agregardetalle($newid, $_DataPOST, $carritostorage, $check_correo);
         http_response_code(200); //listo
         return;
     }
