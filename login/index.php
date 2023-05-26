@@ -58,14 +58,16 @@ if (isset($_SESSION['token'])) {
                                 <div class="md:mx-6 md:p-12">
                                     <!--Logo-->
                                     <div class="[ text-center ]">
-                                        <img class="[ mx-auto w-48 ]" src="../assets/img/logo.png" alt="logo" />
+                                        <a href="../">
+                                            <img class="[ mx-auto w-48 ]" src="../assets/img/logo.png" alt="logo" />
+                                        </a>
                                         <h4 class="mb-12 mt-1 pb-1 text-xl font-semibold">
-                                            Mundo Tools Group CA.
+                                            Panel del Vendedor
                                         </h4>
                                     </div>
 
                                     <form id='form_ingresa'>
-                                        <p class="mb-4">Por favor, ingrese a su cuenta</p>
+                                        <p class="mb-4">Datos De Usuario</p>
                                         <!--Username input-->
                                         <div class="relative mb-4" data-te-input-wrapper-init>
                                             <input type="text" name="nombre" class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0" id="exampleFormControlInput1" placeholder="Username" />
@@ -92,33 +94,14 @@ if (isset($_SESSION['token'])) {
 
                                         </div>
 
-                                        <!--Register button-->
-                                        <div class="flex items-center justify-between pb-6">
-                                            <p class="mb-0 mr-2">¿No tienes una cuenta?</p>
-                                            <button type="button" class="inline-block rounded border-2 border-danger px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-danger transition duration-150 ease-in-out hover:border-danger-600 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-danger-600 focus:border-danger-600 focus:text-danger-600 focus:outline-none focus:ring-0 active:border-danger-700 active:text-danger-700 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10" data-te-ripple-init data-te-ripple-color="light">
-                                                Registrate
-                                            </button>
-                                        </div>
+
                                     </form>
                                 </div>
                             </div>
 
                             <!-- Right column container with background and description-->
-                            <div class="flex items-center rounded-b-lg lg:w-6/12 lg:rounded-r-lg lg:rounded-bl-none hidden [ md:hidden ] [ lg:block ] bg-[url('https://cdn.pixabay.com/photo/2012/11/28/10/32/welding-67640_960_720.jpg')]  ">
-                                <div class='inset-0 h-full  z-0   backdrop-filter backdrop-blur-sm bg-opacity-20'>
-                                    <div class="px-4 py-6 text-white md:mx-6 md:p-12">
-                                        <h4 class="mb-6 text-xl font-semibold">
-                                            We are more than just a company
-                                        </h4>
-                                        <p class="text-sm">
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing
-                                            elit, sed do eiusmod tempor incididunt ut labore et
-                                            dolore magna aliqua. Ut enim ad minim veniam, quis
-                                            nostrud exercitation ullamco laboris nisi ut aliquip ex
-                                            ea commodo consequat.
-                                        </p>
-                                    </div>
-                                </div>
+                            <div class="flex items-center rounded-b-lg lg:w-6/12 lg:rounded-r-lg lg:rounded-bl-none hidden bg-cover bg-no-repeat bg-center [ md:hidden ] [ lg:block ] bg-[url('../assets/img/login-banner.jpg')]  ">
+
                             </div>
                         </div>
                     </div>
@@ -146,7 +129,7 @@ if (isset($_SESSION['token'])) {
                     debugger
                     if (response.result) {
                         $('#btn_ingresar').html(`Ingresando...`);
-                        window.location.href = "../";
+                        window.location.href = "../tienda.php";
                     } else {
                         $('#btn_ingresar').html(`Entrar`);
                         const Toast = Swal.mixin({

@@ -52,7 +52,7 @@ session_start();
                     <div class="flex gap-1 items-center">
                         <h1 class="relative text-2xl font-medium text-gray-700 sm:text-3xl capitalize">
                             <div class="flex items-center gap-1 ">
-                                <a class="text-[#FFA300]" href="../">
+                                <a class="text-[#FBAA35]" href="../">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15m0 0l6.75 6.75M4.5 12l6.75-6.75"></path>
                                     </svg>
@@ -60,7 +60,7 @@ session_start();
                                 Datos de la Empresa
                             </div>
 
-                            <span class="mt-2 block h-1 w-10 bg-[#FFA300] sm:w-20"></span>
+                            <span class="mt-2 block h-1 w-10 bg-[#FBAA35] sm:w-20"></span>
                         </h1>
                         <span id="loader" class='mt-[2rem]'>
 
@@ -91,14 +91,32 @@ session_start();
                             <div class="absolute w-full text-sm text-neutral-500 peer-focus:text-primary dark:text-neutral-200 dark:peer-focus:text-primary" data-te-input-helper-ref></div>
                         </div>
 
+                        <div class="[ flex gap-1 ]">
+                            <div class="w-1/6">
+                                <select id="tipo_documento" data-te-select-init>
+                                    <option value="J">
+                                        J
+                                    </option>
+                                    <option value="G">
+                                        G
+                                    </option>
+                                    <option value="E">
+                                        E
+                                    </option>
+                                    <option selected value="V">
+                                        V
+                                    </option>
+                                </select>
+                            </div>
 
-                        <div class="relative" data-te-input-wrapper-init>
-                            <input type="text" oninput="validarNumeros(this)" class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0" id="rif" name='rif' placeholder="Example label" data-te-input-showcounter="true" maxlength="10" />
-                            <label for="rif" class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary">Rif
-                            </label>
-                            <div class="absolute w-full text-sm text-neutral-500 peer-focus:text-primary dark:text-neutral-200 dark:peer-focus:text-primary" data-te-input-helper-ref></div>
+
+                            <div class="relative w-5/6" data-te-input-wrapper-init>
+                                <input type="text" oninput="validarNumeros(this)" class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0" id="nro_documento" name='nro_documento' placeholder="Example label" data-te-input-showcounter="true" maxlength="10" />
+                                <label for="nro_documento" class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary">Documento
+                                </label>
+                                <div class="absolute w-full text-sm text-neutral-500 peer-focus:text-primary dark:text-neutral-200 dark:peer-focus:text-primary" data-te-input-helper-ref></div>
+                            </div>
                         </div>
-
                         <div class="relative" data-te-input-wrapper-init>
                             <input oninput="validateInput(this);" type="text" class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0" id="direccion" name='direccion' placeholder="Example label" data-te-input-showcounter="true" maxlength="50" />
                             <label for="direccion" class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary">Direccion
@@ -122,12 +140,8 @@ session_start();
                         ?>
 
 
-
-
-
-
                         <div class="[ w-full flex justify-center  ] [ lg:justify-end ]">
-                            <button id="btn_CargarPedido" type="submit" data-te-ripple-init data-te-ripple-color="light" class="inline-block rounded bg-[#FFA300] disabled:opacity-50 mt-3 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out   hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]  focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0   active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]">
+                            <button id="btn_CargarPedido" type="submit" data-te-ripple-init data-te-ripple-color="light" class="inline-block rounded bg-[#FBAA35] disabled:opacity-50 mt-3 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out   hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]  focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0   active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]">
                                 Procesar Pedido
                             </button>
                         </div>
@@ -139,7 +153,7 @@ session_start();
                 <h2 class="sr-only">Order summary</h2>
                 <div>
 
-                    <div class="absolute inset-0 h-full w-full bg-gradient-to-t from-[#A37313] to-[#FFA300] opacity-95"></div>
+                    <div class="absolute inset-0 h-full w-full bg-gradient-to-t from-[#A37313] to-[#FBAA35] opacity-95"></div>
                 </div>
                 <h1 class="relative text-white text-xl font-medium text-gray-700 p-0 m-0  ">
                     Detalle Del Pedido
@@ -279,8 +293,10 @@ session_start();
             let nombreempresa = $('#nombreempresa').val();
             let responsable = $('#responsable').val();
             let telefono = $('#telefono').val();
-            let rif = $('#rif').val();
+            let tipo_documento = $('#tipo_documento').val();
+            let nro_documento = $('#nro_documento').val();
             let direccion = $('#direccion').val();
+
 
             if (!nombreempresa.trim()) {
                 const Toast = Swal.mixin({
@@ -324,9 +340,28 @@ session_start();
                 $('#responsable').focus();
                 return false;
             }
+            if (!tipo_documento.trim()) {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
 
+                Toast.fire({
+                    icon: 'info',
+                    title: 'Seleccione el Tipo de Documento'
+                })
+                $('#nombreempresa').focus();
+                return false;
+            }
             // verifica si el nombre del responsable es válido (no está vacío)
-            if (!rif.trim()) {
+            if (!nro_documento.trim()) {
                 const Toast = Swal.mixin({
                     toast: true,
                     position: 'top-end',

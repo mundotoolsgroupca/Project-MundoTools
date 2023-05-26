@@ -105,7 +105,7 @@
     </div>
 
     <!-- Header Navbar -->
-    <nav class="z-20 w-full    bg-[#FFA300]  shadow-lg p-3 sm:px-4">
+    <nav class="z-20 w-full    bg-[#FBAA35]  shadow-lg p-3 sm:px-4">
         <div class="max-w-screen-xl flex   items-center justify-between gap-3 mx-auto 4 ">
             <div class="[ lg:w-2/4 ]">
                 <a class="flex items-center [ w-14 h-10 ] [ md:w-32 md:h-32 ] [ lg:w-48 lg:h-20 ]" href="../tienda.php">
@@ -211,7 +211,7 @@
 
     <div class="[ relative    ] [ md:mt-32 ] [ lg:mt-32 ]">
         <div class="[  lg:w-5/5   ] [ mx-auto ]">
-            <div class="[ mx-auto p-3  ] [ lg:flex lg:h-full lg:justify-center lg:p-0  lg:w-4/5 lg:gap-3  ]">
+            <div class="[ mx-auto p-3  ] [ lg:flex lg:h-full lg:justify-center    lg:w-4/5 lg:gap-3  ]">
 
                 <div class="[ flex gap-5 justify-center pt-3 pb-3  ][ md:flex ][ lg:hidden ]">
                     <a class=" flex justify-end gap-1 items-center inline-block rounded px-2 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary hover:text-primary-600 focus:text-primary-600 focus:outline-none focus:ring-0 active:text-primary-700 " data-te-collapse-init data-te-ripple-init data-te-ripple-color="light" href="#ordenarmobile" role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -259,7 +259,7 @@
                             $resultado = mysqli_query($conexion, $consulta);
 
                             echo "
-                                <p class='[ text-lg font-bold ]'>Categorías Encontradas con el Termino <label class='text-[#FFA300]'>'$query'</label></p>
+                                <p class='[ text-lg font-bold ]'>Categorías Encontradas con el Termino <label class='text-[#FBAA35]'>'$query'</label></p>
                                 <div class='w-full ml-2 mt-2'>";
 
 
@@ -273,15 +273,15 @@
 
                                 if ($id == $categoriaselected) {
                                     $categoria .= " 
-                                        <a href='javascript:CategoriaFilter($id)' class='text-[#FFA300] font-bold transition duration-150 ease-in-out hover:text-[#FFA300] focus:text-[#FFA300] active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-[#FFA300]'>
+                                        <a href='javascript:CategoriaFilter($id)' class='text-[#FBAA35] font-bold transition duration-150 ease-in-out hover:text-[#FBAA35] focus:text-[#FBAA35] active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-[#FBAA35]'>
                                             $nombre ($total_count)
                                         </a> 
                                         <br>
                                         ";
                                 } else {
                                     $categoria .= "
-                                         <a href='javascript:CategoriaFilter($id)' class='group text-black text-sm transition duration-150 ease-in-out hover:text-[#FFA300] focus:text-[#FFA300] active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-[#FFA300]'>
-                                           <label class='text-gray-400 group-hover:text-[#FFA300]'> $nombre</label> ($total_count)
+                                         <a href='javascript:CategoriaFilter($id)' class='group text-black text-sm transition duration-150 ease-in-out hover:text-[#FBAA35] focus:text-[#FBAA35] active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-[#FBAA35]'>
+                                           <label class='text-gray-400 group-hover:text-[#FBAA35]'> $nombre</label> ($total_count)
                                         </a> 
                                         <br>
                                         ";
@@ -310,8 +310,8 @@
                         $cantidad_productos = mysqli_fetch_assoc($resultado_cantidad_productos);
                         $cantidad_productos =  $cantidad_productos['cantidad'];
 
-                        echo "<p class='[ text-lg font-bold ]'>Categoria <label class='text-[#FFA300]'>'" . $row['nombre'] . " ($cantidad_productos)'</label></p>";
-                        $categoria = "<p class='text-[#FFA300] font-bold transition duration-150 ease-in-out hover:text-[#FFA300] focus:text-[#FFA300] active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-[#FFA300]'>" . $row['nombre'] . " ($cantidad_productos)</p>";
+                        echo "<p class='[ text-lg font-bold ]'>Categoria <label class='text-[#FBAA35]'>'" . $row['nombre'] . " ($cantidad_productos)'</label></p>";
+                        $categoria = "<p class='text-[#FBAA35] font-bold transition duration-150 ease-in-out hover:text-[#FBAA35] focus:text-[#FBAA35] active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-[#FBAA35]'>" . $row['nombre'] . " ($cantidad_productos)</p>";
                     }
                     ?>
 
@@ -380,7 +380,7 @@
                         <div data-te-modal-init class="fixed left-0 top-0 z-[1055] p-5 hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none" id="modalinfo" tabindex="-1" aria-labelledby="modalinfoLabel" aria-hidden="true">
                             <div data-te-modal-dialog-ref class="pointer-events-none relative h-[calc(100%-1rem)] w-auto translate-y-[-50px] opacity-0 transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:mt-7 min-[576px]:h-[calc(100%-3.5rem)] min-[576px]:max-w-[700px]">
                                 <div class="pointer-events-auto relative flex max-h-[100%] w-full flex-col overflow-hidden rounded-md border-none bg-white bg-clip-padding text-current shadow-lg outline-none dark:bg-neutral-600">
-                                    <div class="flex  shadow-lg  flex-shrink-0items-center bg-[#FFA300] text-white justify-between rounded-t-md border-b-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
+                                    <div class="flex  shadow-lg  flex-shrink-0items-center bg-[#FBAA35] text-white justify-between rounded-t-md border-b-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
                                         <!--Modal title-->
                                         <h5 class="text-xl font-medium leading-normal text-black " id="modalinfoLabel">
                                             Info del Producto
@@ -418,7 +418,7 @@
                                                 <div class="lg:col-span-3">
                                                     <div class="border-b border-gray-300">
                                                         <nav class="flex gap-4">
-                                                            <a href="#" title="" class="border-b-2 border-[#FFA300] py-4 text-sm font-medium text-gray-900 hover:border-gray-400 hover:text-gray-800"> Descripcion </a>
+                                                            <a href="#" title="" class="border-b-2 border-[#FBAA35] py-4 text-sm font-medium text-gray-900 hover:border-gray-400 hover:text-gray-800"> Descripcion </a>
                                                         </nav>
                                                     </div>
 
@@ -433,7 +433,7 @@
 
                                     <!--Modal footer-->
                                     <div class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
-                                        <button type="button" class="inline-block rounded bg-[#FFA300] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200" data-te-modal-dismiss data-te-ripple-init data-te-ripple-color="light">
+                                        <button type="button" class="inline-block rounded bg-[#FBAA35] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200" data-te-modal-dismiss data-te-ripple-init data-te-ripple-color="light">
                                             Cerrar
                                         </button>
 
@@ -462,13 +462,13 @@
                                 if (view === '2x2') {
                                     $('#result').removeClass('grid-cols-1');
                                     $('#result').addClass('grid-cols-2');
-                                    $('#1x1').removeClass('text-[#FFA300]');
-                                    $('#2x2').addClass('text-[#FFA300]');
+                                    $('#1x1').removeClass('text-[#FBAA35]');
+                                    $('#2x2').addClass('text-[#FBAA35]');
                                 } else if (view === '1x1') {
                                     $('#result').removeClass('grid-cols-2');
                                     $('#result').addClass('grid-cols-1');
-                                    $('#2x2').removeClass('text-[#FFA300]');
-                                    $('#1x1').addClass('text-[#FFA300]');
+                                    $('#2x2').removeClass('text-[#FBAA35]');
+                                    $('#1x1').addClass('text-[#FBAA35]');
                                 }
                             }
                         </script>
@@ -571,47 +571,50 @@
 
 
                                             echo "
-                                            <div onclick='modalinfoview(`$id`)' class='group cursor-pointer relative   border-2 hover:border-gray-400 transition-all border   mx-auto p-3 rounded-lg w-full '>
-                                                <div class='absolute  font-bold text-lg   w-full flex justify-end right-3 '>
-                                                $id
-                                                </div>
-                                                <div class=' mx-auto aspect-h-1 aspect-w-1 lg:aspect-none  overflow-hidden rounded-md [ lg:h-auto  ]   '>
-                                                    <img data-te-animation-init
-                                                    data-te-animation-start='onLoad'
-                                                    data-te-animation='[fade-in_1s_ease-in-out]'
-                                        
-                                                    src='../$imagen' onerror=\"this.onerror=null;this.src='../assets/img/imgerror.png'\"\" title='$nombre' loading='lazy' alt='$nombre' class='mx-auto  hover:scale-150 transition-all h-32 w-32 object-cover object-center [ lg:w-44 lg:h-44 ]  ' />
-                                                </div>
-                                                <div class='[ cursor-pointer  ]' >
-                                                    <div class='mt-4 flex justify-between'>
-                                                        <div class='w-full'>
-                                                        <h3 class='text-sm text-gray-700'>
-                                                            
-                                                            <p class='w-full text-center text-black bg-[#FFA300] uppercase font-bold text-lg' style='font-family: `Montserrat`, cursive;' >$nombre</p>
-                                                        </h3>
-                                                        <hr class='h-px my-3 bg-gray-200 border-0 dark:bg-gray-700'>
-                                                        <label class='font-bold'>Ref: $precio$simbolo</label>
-                                                        <p class='mt-1 text-[12px] font-bold text-gray-500 break-words'>Disponibles: $stock</p>
+                                            <div class='border border-2 hover:border-gray-400 rounded-lg p-3 '>
+                                            <div onclick='modalinfoview(`$id`)' class='group relative cursor-pointer transition-all mx-auto   w-full ' >
+                                                <div class='absolute  font-bold text-lg   w-full flex justify-end right-3 text-[#FBAA35]'>
+                                                    $id
+                                                    </div>
+                                                    <div class=' m-auto aspect-h-1 aspect-w-1 h-auto lg:aspect-none  overflow-hidden rounded-md    '>
+                                                        <img data-te-animation-init
+                                                        data-te-animation-start='onLoad'
+                                                        data-te-animation='[fade-in_1s_ease-in-out]'
+                                            
+                                                        src='../$imagen' onerror=\"this.onerror=null;this.src='../assets/img/imgerror.png'\"\"  title='$nombre' loading='lazy' alt='$nombre' class='mx-auto  hover:scale-150 transition-all   w-full object-cover object-center [ lg:w-44 lg:h-44 ]  ' />
+                                                    </div>
+                                                    <div class='[ cursor-pointer  ]' >
+                                                        <div class='mt-4 flex justify-between'>
+                                                            <div class='w-full'>
+                                                            <h3 class='text-sm text-gray-700'>
+                                                                
+                                                                <p class=' [ text-[15px] w-full text-center text-black bg-[#FBAA35] uppercase font-bold ] [ md:text-md ] [ lg:text-lg ]' style='font-family: `Montserrat`, cursive;' >$nombre</p>
+                                                            </h3>
+                                                            <hr class='h-px my-3 bg-gray-200 border-0 dark:bg-gray-700'>
+                                                            <label class='font-bold'>Ref: $precio$simbolo</label>
+                                                            <p class='mt-1 text-[12px] font-bold text-gray-500 break-words'>Disponibles: $stock</p>
+                                                            </div>
+                                                            <p class='text-sm font-medium text-gray-900'></p>
                                                         </div>
-                                                        <p class='text-sm font-medium text-gray-900'></p>
                                                     </div>
                                                 </div>
                                                 <form>
                                                 <div class='relative    flex w-full flex-wrap items-stretch flex-nowrap'>
-                                                    <input min='0' id='$id' type='number'
-                                                    class='relative m-0 block w-14 text-center  min-w-0 flex-auto rounded-l border border-r-0 border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition ease-in-out   focus:border-warning-600 focus:text-neutral-700 focus:shadow-te-warning focus:outline-none '
-                                                    aria-label='Recipient' username value='1' aria-describedby='button-addon2' />
-                                                    <button   data-te-ripple-init data-te-ripple-color='light' type='submit' data-te-ripple-init data-te-ripple-color='warning'
-                                                    class='relative   rounded-r bg-[#FFA300] opa px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-warning-700 hover:shadow-lg   focus:bg-warning-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-warning-800 active:shadow-lg'
-                                                    type='button' id='button-addon2'>
-                                                    <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor'
-                                                        class='h-4 w-4'>
-                                                        <path stroke-linecap='round' stroke-linejoin='round'
-                                                        d='M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z' />
-                                                    </svg>
-                                                    </button>
-                                                </div>
-                                                </form>
+                                                        <input min='0' id='$id' type='number'
+                                                        class='relative m-0 block z-20 w-14 text-center  min-w-0 flex-auto rounded-l border border-r-0 border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition ease-in-out   focus:border-warning-600 focus:text-neutral-700 focus:shadow-te-warning focus:outline-none '
+                                                        aria-label='Recipient' username value='1' aria-describedby='button-addon2' />
+                                                        <button   data-te-ripple-init data-te-ripple-color='light' type='submit' data-te-ripple-init data-te-ripple-color='warning'
+                                                        class='relative   rounded-r bg-[#FBAA35] opa px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-warning-700 hover:shadow-lg   focus:bg-warning-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-warning-800 active:shadow-lg'
+                                                        type='button' id='button-addon2'>
+                                                        <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor'
+                                                            class='h-4 w-4'>
+                                                            <path stroke-linecap='round' stroke-linejoin='round'
+                                                            d='M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z' />
+                                                        </svg>
+                                                        </button>
+                                                    </div>
+                                                    </form>
+                                                
                                             </div> ";
                                         }
                                         echo " </div>
@@ -742,10 +745,10 @@
                                         echo "
                                                 <div class='border border-2 hover:border-gray-400 rounded-lg p-3 '>
                                                 <div onclick='modalinfoview(`$id`)' class='group relative cursor-pointer transition-all mx-auto   w-full ' >
-                                                    <div class='absolute  font-bold text-lg   w-full flex justify-end right-3 '>
+                                                    <div class='absolute  font-bold text-lg   w-full flex justify-end right-3 text-[#FBAA35]'>
                                                         $id
                                                         </div>
-                                                        <div class=' m-auto aspect-h-1 aspect-w-1 lg:aspect-none h-60 overflow-hidden rounded-md [ lg:h-auto  ]   '>
+                                                        <div class=' m-auto aspect-h-1 aspect-w-1 h-auto lg:aspect-none  overflow-hidden rounded-md    '>
                                                             <img data-te-animation-init
                                                             data-te-animation-start='onLoad'
                                                             data-te-animation='[fade-in_1s_ease-in-out]'
@@ -757,7 +760,7 @@
                                                                 <div class='w-full'>
                                                                 <h3 class='text-sm text-gray-700'>
                                                                     
-                                                                    <p class='w-full text-center text-black bg-[#FFA300] uppercase font-bold text-lg' style='font-family: `Montserrat`, cursive;' >$nombre</p>
+                                                                    <p class=' [ text-[15px] w-full text-center text-black bg-[#FBAA35] uppercase font-bold ] [ md:text-md ] [ lg:text-lg ]' style='font-family: `Montserrat`, cursive;' >$nombre</p>
                                                                 </h3>
                                                                 <hr class='h-px my-3 bg-gray-200 border-0 dark:bg-gray-700'>
                                                                 <label class='font-bold'>Ref: $precio$simbolo</label>
@@ -773,7 +776,7 @@
                                                             class='relative m-0 block z-20 w-14 text-center  min-w-0 flex-auto rounded-l border border-r-0 border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition ease-in-out   focus:border-warning-600 focus:text-neutral-700 focus:shadow-te-warning focus:outline-none '
                                                             aria-label='Recipient' username value='1' aria-describedby='button-addon2' />
                                                             <button   data-te-ripple-init data-te-ripple-color='light' type='submit' data-te-ripple-init data-te-ripple-color='warning'
-                                                            class='relative   rounded-r bg-[#FFA300] opa px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-warning-700 hover:shadow-lg   focus:bg-warning-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-warning-800 active:shadow-lg'
+                                                            class='relative   rounded-r bg-[#FBAA35] opa px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-warning-700 hover:shadow-lg   focus:bg-warning-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-warning-800 active:shadow-lg'
                                                             type='button' id='button-addon2'>
                                                             <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor'
                                                                 class='h-4 w-4'>
@@ -850,7 +853,7 @@
 
                                 <div id="newitemadd_status" class="[ hidden absolute w-full  ]">
                                     <span class="animate-ping  absolute inline-flex h-3 w-3 bottom-2 left-3 rounded-full bg-warning-400 "></span>
-                                    <span class="absolute inline-flex h-3 w-3 bottom-2 left-3 rounded-full bg-[#FFA300] "></span>
+                                    <span class="absolute inline-flex h-3 w-3 bottom-2 left-3 rounded-full bg-[#FBAA35] "></span>
 
                                 </div>
 
@@ -913,6 +916,68 @@
                 </div>
             </div>
         </div>
+
+        <footer id="Contactanos" class="bg-[#FBAA35] text-center text-neutral-900 dark:bg-neutral-600   lg:text-left">
+            <!-- Main container div: holds the entire content of the footer, including four sections (Tailwind Elements, Products, Useful links, and Contact), with responsive styling and appropriate padding/margins. -->
+            <div class="mx-6 py-10 text-center md:text-left">
+                <div class="grid-1 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+                    <!-- Tailwind Elements section -->
+                    <div class="">
+                        <h6 class="mb-4 flex items-center justify-center font-semibold uppercase md:justify-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="mr-3 h-4 w-4">
+                                <path d="M12.378 1.602a.75.75 0 00-.756 0L3 6.632l9 5.25 9-5.25-8.622-5.03zM21.75 7.93l-9 5.25v9l8.628-5.032a.75.75 0 00.372-.648V7.93zM11.25 22.18v-9l-9-5.25v8.57a.75.75 0 00.372.648l8.628 5.033z" />
+                            </svg>
+                            MundoTools Group
+                        </h6>
+                        <p>
+                        </p>
+                    </div>
+                    <!-- Products section -->
+                    <div class="">
+
+                    </div>
+                    <!-- Useful links section -->
+                    <div class="">
+
+                    </div>
+                    <!-- Contact section -->
+                    <div>
+                        <h6 class="mb-4 flex justify-center font-semibold uppercase md:justify-start">
+                            Contacto
+                        </h6>
+                        <p class="mb-4 flex items-center justify-center md:justify-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="mr-3 h-5 w-5">
+                                <path d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z" />
+                                <path d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z" />
+                            </svg>
+                            <span class="text-[12px]"> Galpo #8, del centro industrial Barcelona, ubicado en la av. Fuerzas
+                                armadas.</span>
+                        </p>
+                        <p class="mb-4 flex items-center justify-center md:justify-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="mr-3 h-5 w-5">
+                                <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />
+                                <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
+                            </svg>
+                            <a href="mailto:contacto@mundotoolsgroup.com">contacto@mundotoolsgroup.com</a>
+                        </p>
+                        <p class="mb-4 flex items-center justify-center md:justify-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="mr-3 h-5 w-5">
+                                <path fill-rule="evenodd" d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z" clip-rule="evenodd" />
+                            </svg>
+                            <a href="https://wa.me/+5804248611944">+58 0424-8611944</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!--Copyright section-->
+            <div class="bg-black p-6 text-center text-white/90 ">
+                <span>© 2023 Copyright:</span>
+                <a class="font-semibold text-white  " href="./">Mundotools Group C.A Rif:
+                    J503585285</a>
+            </div>
+        </footer>
+
         <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
         <script>
             $(document).ready(function() {

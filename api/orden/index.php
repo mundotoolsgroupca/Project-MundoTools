@@ -8,7 +8,7 @@ switch ($method) {
         session_name("ecomercer_user_data");
         session_start();
 
-        if (!empty($http['X-Csrf-Token'] )) {
+        if (!empty($http['X-Csrf-Token'])) {
 
             if (!isset($_SESSION['usuario']['id'])) {
                 // Log this as a warning and keep an eye on these attempts
@@ -21,7 +21,7 @@ switch ($method) {
                 return;
             }
 
-            if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'] )) {
+            if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'])) {
 
                 include_once '../../php/FuncionesGenerales.php';
                 if (isset($_GET['fecha']) && validar_fecha($_GET['fecha'])) {
@@ -108,10 +108,10 @@ switch ($method) {
             $http = getallheaders();
             session_name("ecomercer_user_data");
             session_start();
-            if (!empty($http['X-Csrf-Token'] )) {
+            if (!empty($http['X-Csrf-Token'])) {
 
 
-                if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'] )) {
+                if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'])) {
                     include_once '../../php/FuncionesGenerales.php';
                     include_once '../../php/conexion.php';
 
@@ -155,7 +155,7 @@ switch ($method) {
             $http = getallheaders();
             session_name("ecomercer_user_data");
             session_start();
-            if (!empty($http['X-Csrf-Token'] )) {
+            if (!empty($http['X-Csrf-Token'])) {
 
                 if (!isset($_SESSION['usuario'])) {
                     http_response_code(409); //codigo de conflicto
@@ -169,7 +169,7 @@ switch ($method) {
                     return;
                 }
 
-                if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'] )) {
+                if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'])) {
 
                     include_once '../../php/FuncionesGenerales.php';
 
@@ -300,15 +300,27 @@ function obtenerid_token($formDataArray, $carritostorage) //se inserta el regist
         return  $resultado;
     }
 
-    if (isset($formDataArray['rif']) && validar_string($formDataArray['rif'], '0123456789-+') && strlen($formDataArray['rif']) <= 10) {
-        $rif = $formDataArray['rif'];
+    if (isset($formDataArray['nro_documento']) && validar_string($formDataArray['nro_documento'], '0123456789-+') && strlen($formDataArray['nro_documento']) <= 10) {
+        $nro_documento = $formDataArray['nro_documento'];
     } else {
         http_response_code(409); //codigo de conflicto
         $resultado = new stdClass();
         $resultado->result = FALSE;
         $resultado->icono = "error";
         $resultado->titulo = "Error!";
-        $resultado->mensaje = 'Rif No Valido';
+        $resultado->mensaje = 'Documento no Valido';
+        echo json_encode($resultado);
+        return  $resultado;
+    }
+    if (isset($formDataArray['tipo_documento']) && validar_string($formDataArray['tipo_documento'], 'JGEV') && strlen($formDataArray['nro_documento']) <= 1 && $formDataArray['tipo_documento'] == 'J' || $formDataArray['tipo_documento'] == 'G' || $formDataArray['tipo_documento'] == 'E' || $formDataArray['tipo_documento'] == 'V') {
+        $tipo_documento = $formDataArray['tipo_documento'];
+    } else {
+        http_response_code(409); //codigo de conflicto
+        $resultado = new stdClass();
+        $resultado->result = FALSE;
+        $resultado->icono = "error";
+        $resultado->titulo = "Error!";
+        $resultado->mensaje = 'Tipo de Documento no Valido';
         echo json_encode($resultado);
         return  $resultado;
     }
@@ -348,7 +360,7 @@ function obtenerid_token($formDataArray, $carritostorage) //se inserta el regist
 
     $id_vendedor = isset($_SESSION['usuario']['id']) ? $_SESSION['usuario']['id'] : 0;
     $tipo = isset($_SESSION['usuario']['id']) ? 1 : 2;
-    $consulta = "CALL usr_agregar_orden($id_vendedor,'$nombreempresa','$responsable','$telefono',$rif,'$direccion'," . intval($carritostorage[0]['cod_moneda']) . ",'$token',$tipo);"; //consulta para obtener los resultados segun la pagina 
+    $consulta = "CALL usr_agregar_orden($id_vendedor,'$nombreempresa','$responsable','$telefono','$tipo_documento" . "-" . "$nro_documento','$direccion'," . intval($carritostorage[0]['cod_moneda']) . ",'$token',$tipo);"; //consulta para obtener los resultados segun la pagina 
     $resultado = mysqli_query($conexion, $consulta);
     $newid = "";
     if ($resultado) {
@@ -434,18 +446,33 @@ function obtenerid($formDataArray, $carritostorage) //se inserta el registro en 
         return  $resultado;
     }
 
-    if (isset($formDataArray['rif']) && validar_string($formDataArray['rif'], '0123456789-+') && strlen($formDataArray['rif']) <= 10) {
-        $rif = $formDataArray['rif'];
+    if (isset($formDataArray['nro_documento']) && validar_string($formDataArray['nro_documento'], '0123456789-+') && strlen($formDataArray['nro_documento']) <= 10) {
+        $nro_documento = $formDataArray['nro_documento'];
     } else {
         http_response_code(409); //codigo de conflicto
         $resultado = new stdClass();
         $resultado->result = FALSE;
         $resultado->icono = "error";
         $resultado->titulo = "Error!";
-        $resultado->mensaje = 'Rif No Valido';
+        $resultado->mensaje = 'Documento no Valido';
         echo json_encode($resultado);
         return  $resultado;
     }
+
+    if (isset($formDataArray['tipo_documento']) && validar_string($formDataArray['tipo_documento'], 'JGEV') && strlen($formDataArray['nro_documento']) <= 1 && $formDataArray['tipo_documento'] == 'J' || $formDataArray['tipo_documento'] == 'G' || $formDataArray['tipo_documento'] == 'E' || $formDataArray['tipo_documento'] == 'V') {
+        $tipo_documento = $formDataArray['tipo_documento'];
+    } else {
+        http_response_code(409); //codigo de conflicto
+        $resultado = new stdClass();
+        $resultado->result = FALSE;
+        $resultado->icono = "error";
+        $resultado->titulo = "Error!";
+        $resultado->mensaje = 'Tipo de Documento no Valido';
+        echo json_encode($resultado);
+        return  $resultado;
+    }
+
+
 
     if (isset($formDataArray['direccion']) && validar_string($formDataArray['direccion'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ') && strlen($formDataArray['direccion']) <= 50) {
         $direccion = $formDataArray['direccion'];
@@ -468,7 +495,7 @@ function obtenerid($formDataArray, $carritostorage) //se inserta el registro en 
 
     $id_vendedor = $_SESSION['usuario']['id'];
     $tipo =  1;
-    $consulta = "CALL usr_agregar_orden($id_vendedor,'$nombreempresa','$responsable','$telefono',$rif,'$direccion'," . intval($carritostorage[0]['cod_moneda']) . ",'0',$tipo);"; //consulta para obtener los resultados segun la pagina 
+    $consulta = "CALL usr_agregar_orden($id_vendedor,'$nombreempresa','$responsable','$telefono','$tipo_documento" . "-" . "$nro_documento','$direccion'," . intval($carritostorage[0]['cod_moneda']) . ",'0',$tipo);"; //consulta para obtener los resultados segun la pagina 
     $resultado = mysqli_query($conexion, $consulta);
     $newid = "";
     if ($resultado) {
@@ -551,8 +578,8 @@ function agregardetalle($id, $data, $carritostorage)
         return  $resultado;
     }
 
-    if (isset($data['rif']) && validar_string($data['rif'], '0123456789-+') && strlen($data['rif']) <= 10) {
-        $rif = $data['rif'];
+    if (isset($data['nro_documento']) && validar_string($data['nro_documento'], '0123456789-+') && strlen($data['nro_documento']) <= 10) {
+        $nro_documento = $data['nro_documento'];
     } else {
         http_response_code(409); //codigo de conflicto
         $resultado = new stdClass();
