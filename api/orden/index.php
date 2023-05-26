@@ -698,10 +698,9 @@ function agregardetalle($id, $data, $carritostorage, $check_correo)
     $correo = $formDataArray['correo'];
     if ($check_correo == true) {
         $statusEmail =  EnviarCorreo("mundotoolsgroupca@gmail.com", "ryrajpjcmsqkcbmv", "mundotoolsgroupca@gmail.com", "MundoTools", "$correo", "MundoTools", 'Orden', $correotabla);
-    } else {
-        $statusEmail =  EnviarCorreo("mundotoolsgroupca@gmail.com", "ryrajpjcmsqkcbmv", "mundotoolsgroupca@gmail.com", "MundoTools", "mundotoolsgroupca@gmail.com", "MundoTools", 'Orden', $correotabla);
     }
 
+    $statusEmail =  EnviarCorreo("mundotoolsgroupca@gmail.com", "ryrajpjcmsqkcbmv", "mundotoolsgroupca@gmail.com", "MundoTools", "mundotoolsgroupca@gmail.com", "MundoTools", 'Orden', $correotabla);
 
     $resultado = new stdClass();
     $resultado->result = TRUE;
