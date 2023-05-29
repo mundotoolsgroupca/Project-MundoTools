@@ -42,7 +42,7 @@ switch ($method) {
                     c1.precio,
                     c3.simbolo,
                     c3.cod_moneda,
-                    c5.cantidad AS stok 
+                    c5.cantidad AS stock 
                 FROM
                     productos AS c1
                     INNER JOIN productos_agrupados AS c2 ON c1.id = c2.id_grupo
