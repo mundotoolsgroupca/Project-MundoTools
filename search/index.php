@@ -703,7 +703,7 @@
                                             c4.id_grupo,
                                             c2.simbolo,
                                             c4.imagen,
-                                            c2.moneda
+                                            c1.moneda
                                         FROM
                                             productos AS c1
                                             INNER JOIN moneda_ref AS c2 ON c2.cod_moneda = c1.moneda
