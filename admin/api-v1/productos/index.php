@@ -31,29 +31,34 @@ switch ($method) {
 
                 if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'] )) {
                     $consulta = "
-                            SELECT
-                            c1.id,
-                            c1.nombre,
-                            c1.descripcion,
-                            c1.categoria AS categoria_id,
-                            c1.imagen,
-                            c1.precio,
-                            c2.simbolo,
-                            c2.cod_moneda,
-                            c3.nombre AS categoria,
-                            c4.cantidad AS stock
-                            FROM
-                                productos AS c1
-                            INNER JOIN moneda_ref AS c2
-                            ON
-                                c2.cod_moneda = c1.moneda
-                            INNER JOIN categorias AS c3
-                            ON
-                                c3.id = c1.categoria
-                            INNER JOIN stock AS c4
-                            ON
-                            c4.idProducto = c1.id
-                            ";
+                    SELECT
+                    c2.nombre as categoria, 
+                    c2.descripcion, 
+                    c2.id_grupo, 
+                    c2.categoria as categoria_id, 
+                    c2.imagen, 
+                    c1.precio, 
+                    c3.simbolo, 
+                    c3.cod_moneda, 
+                    c5.cantidad as stok
+                FROM
+                    productos AS c1
+                    INNER JOIN
+                    productos_agrupados AS c2
+                    ON 
+                        c1.id = c2.id_grupo
+                    INNER JOIN
+                    moneda_ref AS c3
+                    ON 
+                        c1.moneda = c3.cod_moneda
+                    INNER JOIN
+                    categorias AS c4
+                    ON 
+                        c2.categoria = c4.id
+                    INNER JOIN
+                    stock AS c5
+                    ON 
+                        c1.id = c5.idProducto";
 
 
                     $resultado = mysqli_query($conexion, $consulta);
