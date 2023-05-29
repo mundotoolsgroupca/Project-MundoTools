@@ -16,28 +16,25 @@ switch ($method) {
                     // Configurar los encabezados de la respuesta
 
                     $consulta = "
-                    SELECT 
-                    c.nombre as categoria,
-                    c.id as id,
-                    CONCAT (
-                        '{ \"productos\" : [',
-                        GROUP_CONCAT(
-                            JSON_OBJECT(
-                            'id', p.id,
-                            'nombre', p.nombre,
-                            'descripcion', p.descripcion,
-                            'imagen', p.imagen,
-                            'categoria', p.categoria,
-                            'precio', p.precio,
-                            'moneda', p.moneda
-                            )
-                            ORDER BY p.id LIMIT 9
-                        ),
-                        ']}'
-                    ) as datos_categoria
-                    FROM productos p
-                    JOIN categorias c ON p.categoria = c.id
-                    GROUP BY c.nombre";
+                    SELECT
+                        c.nombre AS categoria,
+                        c.id AS id,
+                        CONCAT (
+                            '{ \"productos\" : [',
+                            GROUP_CONCAT(
+                                JSON_OBJECT( 'id', p.id, 'nombre', pa.nombre, 'imagen', pa.imagen, 'categoria', pa.categoria ) 
+                            ORDER BY
+                                p.id 
+                                LIMIT 9 
+                            ),
+                            ']}' 
+                        ) AS datos_categoria 
+                    FROM
+                        productos AS p
+                        INNER JOIN productos_agrupados AS pa ON p.id_grupo = pa.id_grupo
+                        INNER JOIN categorias AS c ON pa.categoria = c.id 
+                    GROUP BY
+                        c.nombre";
 
 
                     $resultado = mysqli_query($conexion, $consulta);
