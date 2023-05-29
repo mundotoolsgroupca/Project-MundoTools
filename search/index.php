@@ -695,7 +695,7 @@
                                         t3.descripcion ,
                                         t2.simbolo,
                                         t2.imagen,
-                                        t2.moneda as cod_moneda
+                                        t2.cod_moneda
                                     FROM
                                         productos t1
                                         INNER JOIN (
@@ -703,7 +703,7 @@
                                             c4.id_grupo,
                                             c2.simbolo,
                                             c4.imagen,
-                                            c1.moneda
+                                            c1.moneda as cod_moneda
                                         FROM
                                             productos AS c1
                                             INNER JOIN moneda_ref AS c2 ON c2.cod_moneda = c1.moneda
