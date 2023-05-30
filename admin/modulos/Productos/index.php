@@ -230,7 +230,7 @@
 
 <div class="[ flex gap-3 flex-col mt-3 ] [ lg:flex-row ]">
     <!-- Modulo -->
-    <div class="[ h-auto rounded-lg bg-white p-6 shadow-lg w-full ] [ lg:w-4/5 lg:h-full  ]">
+    <div class="[ h-auto rounded-lg bg-white p-6 shadow-lg w-full ] [   lg:h-full  ]">
 
         <div class="[ flex items-center gap-1 flex-nowrap mb-3 ]">
             <p id="titulo_tabla_agrupados" class="[ text-lg font-bold ]">LOREM</p>
