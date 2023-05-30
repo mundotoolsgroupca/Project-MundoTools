@@ -262,12 +262,12 @@
         let status_view = $("#tabla_productos_agrupados").attr("view"); //obtenemos la propiedad personalizada para saber si el modulo esta a la vista
 
         if (status_view == 0) {
-            $(`#tabla_productos_agrupados`).slideToggle("slow"); // mostramos la caja
+            $(`#tabla_productos_agrupados`).slideToggle("slow", () => {
+                window.location.href = '#tabla_productos_agrupados';
+            }); // mostramos la caja
             $("#tabla_productos_agrupados").attr("view", '1'); //actualizamos el estado
             //foco en el nuevo modulo
-            setTimeout(() => {
-                window.location.href = '#tabla_productos_agrupados';
-            }, 500); // Ejecuta miFuncion después de un segundo (1000 milisegundos)
+
         }
 
     }
