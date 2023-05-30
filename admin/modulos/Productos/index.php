@@ -225,61 +225,63 @@
 
 
 
-    <script id="tailwindelements_script" src="./assets/js/tw-elements.umd.min.js"></script>
-    <script>
-        function toggle(id) {
 
-            $(`#${id}`).slideToggle("slow");
+</div>
 
-        }
-        tabla_producto = new DataTable('#tabla_producto');
-        Producto_consulta();
+<div class="[ flex gap-3 flex-col ] [ lg:flex-row ]">
+    <!-- Modulo -->
+    <div class="[ h-auto rounded-lg bg-white p-6 shadow-lg w-full ] [ lg:w-4/5 lg:h-full  ]">
 
-        $.ajax({
-            url: "./api-v1/categorias/index.php",
-            type: 'GET',
-            headers: {
-                'x-csrf-token': $('meta[name="csrf-token"]').attr('content')
-            },
+        <div class="[ flex items-center gap-1 flex-nowrap mb-3 ]">
+            <p id="titulo_tabla_agrupados" class="[ text-lg font-bold ]">LOREM</p>
+            <span id="ProductosLoader"></span>
+            <span onclick="toggle('producto_modulo')" class='[ block ] [ md:hidden ] [ lg:hidden ]'>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                </svg>
 
-            beforeSend: () => {
-                $('#NuevoProductoLoader').html(`<div class="inline-block h-4 w-4 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]" role="status">
+            </span>
+        </div>
+
+        <div id='tabla_productos_agrupados'>
+
+        </div>
+    </div>
+</div>
+<script id="tailwindelements_script" src="./assets/js/tw-elements.umd.min.js"></script>
+<script>
+    function toggle(id) {
+
+        $(`#${id}`).slideToggle("slow");
+
+    }
+    tabla_producto = new DataTable('#tabla_producto');
+    Producto_consulta();
+
+    $.ajax({
+        url: "./api-v1/categorias/index.php",
+        type: 'GET',
+        headers: {
+            'x-csrf-token': $('meta[name="csrf-token"]').attr('content')
+        },
+
+        beforeSend: () => {
+            $('#NuevoProductoLoader').html(`<div class="inline-block h-4 w-4 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]" role="status">
                                     <span class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
                                     </div>`);
 
-            },
-            success: (response) => {
-                $('#NuevoProductoLoader').html(``);
-                if (response.result == true) {
+        },
+        success: (response) => {
+            $('#NuevoProductoLoader').html(``);
+            if (response.result == true) {
 
-                    response.data.map((item) => {
-                        $('#categoria').append(`<option value="${item.id}">${item.nombre}</option>`);
-                        $('#ModalEditarCategoria').append(`<option value="${item.id}">${item.nombre}</option>`);
-                    })
-                    document.getElementById("categoria").disabled = false;
-                    document.getElementById("ModalEditarCategoria").disabled = false;
-                } else {
-                    let Toast = Swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: 3000,
-                        timerProgressBar: true,
-                        didOpen: (toast) => {
-                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                            toast.addEventListener('mouseleave', Swal.resumeTimer)
-                        }
-                    });
-
-                    Toast.fire({
-                        icon: 'error',
-                        title: response.mensaje
-                    });
-                }
-
-            },
-            error: function(xhr, status) {
-                $('#NuevoProductoLoader').html(``);
+                response.data.map((item) => {
+                    $('#categoria').append(`<option value="${item.id}">${item.nombre}</option>`);
+                    $('#ModalEditarCategoria').append(`<option value="${item.id}">${item.nombre}</option>`);
+                })
+                document.getElementById("categoria").disabled = false;
+                document.getElementById("ModalEditarCategoria").disabled = false;
+            } else {
                 let Toast = Swal.mixin({
                     toast: true,
                     position: 'top-end',
@@ -294,60 +296,60 @@
 
                 Toast.fire({
                     icon: 'error',
-                    title: xhr.responseJSON.mensaje
+                    title: response.mensaje
                 });
-            },
-        });
+            }
+
+        },
+        error: function(xhr, status) {
+            $('#NuevoProductoLoader').html(``);
+            let Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            });
+
+            Toast.fire({
+                icon: 'error',
+                title: xhr.responseJSON.mensaje
+            });
+        },
+    });
 
 
 
 
-        $.ajax({
-            url: "./api-v1/monedas/index.php",
-            type: 'GET',
-            headers: {
-                'x-csrf-token': $('meta[name="csrf-token"]').attr('content')
-            },
+    $.ajax({
+        url: "./api-v1/monedas/index.php",
+        type: 'GET',
+        headers: {
+            'x-csrf-token': $('meta[name="csrf-token"]').attr('content')
+        },
 
-            beforeSend: () => {
-                $('#NuevoProductoLoader').html(`<div class="inline-block h-4 w-4 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]" role="status">
+        beforeSend: () => {
+            $('#NuevoProductoLoader').html(`<div class="inline-block h-4 w-4 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]" role="status">
                                     <span class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
                                     </div>`);
 
-            },
-            success: (response) => {
-                $('#NuevoProductoLoader').html(``);
-                if (response.result == true) {
+        },
+        success: (response) => {
+            $('#NuevoProductoLoader').html(``);
+            if (response.result == true) {
 
-                    response.data.map((item) => {
-                        $('#moneda').append(`<option value="${item.cod_moneda}">${item.simbolo}</option>`);
-                        $('#ModalEditarMoneda').append(`<option value="${item.cod_moneda}">${item.simbolo}</option>`);
-                    })
-                    document.getElementById("moneda").disabled = false;
-                    document.getElementById("ModalEditarMoneda").disabled = false;
+                response.data.map((item) => {
+                    $('#moneda').append(`<option value="${item.cod_moneda}">${item.simbolo}</option>`);
+                    $('#ModalEditarMoneda').append(`<option value="${item.cod_moneda}">${item.simbolo}</option>`);
+                })
+                document.getElementById("moneda").disabled = false;
+                document.getElementById("ModalEditarMoneda").disabled = false;
 
-                } else {
-                    let Toast = Swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: 3000,
-                        timerProgressBar: true,
-                        didOpen: (toast) => {
-                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                            toast.addEventListener('mouseleave', Swal.resumeTimer)
-                        }
-                    });
-
-                    Toast.fire({
-                        icon: 'error',
-                        title: response.mensaje
-                    });
-
-                }
-            },
-            error: function(xhr, status) {
-                $('#NuevoProductoLoader').html(``);
+            } else {
                 let Toast = Swal.mixin({
                     toast: true,
                     position: 'top-end',
@@ -362,87 +364,108 @@
 
                 Toast.fire({
                     icon: 'error',
-                    title: xhr.responseJSON.mensaje
+                    title: response.mensaje
                 });
+
+            }
+        },
+        error: function(xhr, status) {
+            $('#NuevoProductoLoader').html(``);
+            let Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            });
+
+            Toast.fire({
+                icon: 'error',
+                title: xhr.responseJSON.mensaje
+            });
+        },
+    });
+
+
+
+
+
+
+    async function Producto_consulta() {
+
+
+        $.ajax({
+            url: "./api-v1/productos/index.php",
+            type: 'GET',
+            headers: {
+                'x-csrf-token': $('meta[name="csrf-token"]').attr('content')
             },
-        });
-
-
-
-
-
-
-        async function Producto_consulta() {
-
-
-            $.ajax({
-                url: "./api-v1/productos/index.php",
-                type: 'GET',
-                headers: {
-                    'x-csrf-token': $('meta[name="csrf-token"]').attr('content')
-                },
-                beforeSend: () => {
-                    $('#ProductosLoader').html(`<div class="inline-block h-4 w-4 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]" role="status">
+            beforeSend: () => {
+                $('#ProductosLoader').html(`<div class="inline-block h-4 w-4 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]" role="status">
                                     <span class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
                                     </div>`);
 
-                },
-                success: (response) => {
-                    $('#ProductosLoader').html(``);
-                    if (response.result == true) {
+            },
+            success: (response) => {
+                $('#ProductosLoader').html(``);
+                if (response.result == true) {
 
-                        tabla_producto = $('#tabla_producto').DataTable({
-                            "bDestroy": true,
-                            order: [
-                                [0, 'desc']
-                            ],
-                            paging: true,
-                            select: true,
-                            targets: 20,
-                            scrollY: '40vh',
-                            "processing": true,
-                            "autoWidth": false,
-                            language: {
-                                //?dataTable en Español
-                                url: '//cdn.datatables.net/plug-ins/1.12.0/i18n/es-ES.json',
-                                //? input de buscar tengo un texto
-                                searchPlaceholder: "Filtrar"
+                    tabla_producto = $('#tabla_producto').DataTable({
+                        "bDestroy": true,
+                        order: [
+                            [0, 'desc']
+                        ],
+                        paging: true,
+                        select: true,
+                        targets: 20,
+                        scrollY: '40vh',
+                        "processing": true,
+                        "autoWidth": false,
+                        language: {
+                            //?dataTable en Español
+                            url: '//cdn.datatables.net/plug-ins/1.12.0/i18n/es-ES.json',
+                            //? input de buscar tengo un texto
+                            searchPlaceholder: "Filtrar"
 
-                            },
-                            "data": response.data,
-                            "columns": [{
-                                    "data": null,
-                                    "bSortable": false,
-                                    "mRender": function(data, type, value) {
-                                        return `<button
+                        },
+                        "data": response.data,
+                        "columns": [{
+                                "data": null,
+                                "bSortable": false,
+                                "mRender": function(data, type, value) {
+                                    return `<button
                                                 type="button"
                                                 data-te-ripple-init
                                                 data-te-ripple-color="light"
                                                 class="rounded px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary transition duration-150 ease-in-out hover:bg-neutral-100 hover:text-primary-600 focus:text-primary-600 focus:outline-none focus:ring-0 active:text-primary-700 dark:hover:bg-neutral-700">
                                                 ${data.id_grupo}
                                                 </button>`;
-                                    }
-                                }, {
-                                    "data": "nombre"
-                                },
-                                {
-                                    "data": "categoria"
-                                },
-                                {
-                                    "data": "descripcion"
-                                },
+                                }
+                            }, {
+                                "data": "nombre"
+                            },
+                            {
+                                "data": "categoria"
+                            },
+                            {
+                                "data": "descripcion"
+                            },
 
-                                {
-                                    "data": "precio"
-                                },
-                                {
-                                    "data": "simbolo"
-                                },
-                                {
-                                    "data": null,
-                                    "bSortable": false,
-                                    "mRender": function(data, type, value) {
-                                        return `
+                            {
+                                "data": "precio"
+                            },
+                            {
+                                "data": "simbolo"
+                            },
+                            {
+                                "data": null,
+                                "bSortable": false,
+                                "mRender": function(data, type, value) {
+                                    return `
                                     <div class="[ flex gap-1 ]">
                                     <button
                                     onclick='modal.show()'
@@ -470,34 +493,13 @@
                                     </button> 
                                     </div>
                                     `;
-                                    }
-                                },
+                                }
+                            },
 
-                            ],
-                            responsive: true,
-                        });
-                    } else {
-                        let Toast = Swal.mixin({
-                            toast: true,
-                            position: 'top-end',
-                            showConfirmButton: false,
-                            timer: 3000,
-                            timerProgressBar: true,
-                            didOpen: (toast) => {
-                                toast.addEventListener('mouseenter', Swal.stopTimer)
-                                toast.addEventListener('mouseleave', Swal.resumeTimer)
-                            }
-                        });
-
-                        Toast.fire({
-                            icon: 'error',
-                            title: response.mensaje
-                        });
-
-                    }
-                },
-                error: function(xhr, status) {
-                    $('#ProductosLoader').html(``);
+                        ],
+                        responsive: true,
+                    });
+                } else {
                     let Toast = Swal.mixin({
                         toast: true,
                         position: 'top-end',
@@ -512,119 +514,119 @@
 
                     Toast.fire({
                         icon: 'error',
-                        title: 'Error al Consultar'
+                        title: response.mensaje
                     });
-                },
-            });
 
+                }
+            },
+            error: function(xhr, status) {
+                $('#ProductosLoader').html(``);
+                let Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                });
 
-
-
-        }
-        $('#tabla_producto tbody').on('click', 'tr', function() {
-
-            let data = tabla_producto.row(this).data();
-            $('#ModalEditarID').val(data.id);
-            $('#ModalEditarNombreProducto').val(data.nombre);
-            document.getElementById("ModalEditarMoneda").value = data.cod_moneda;
-            $('#ModalEditarPrecio').val(data.precio);
-            $('#ModalEditarStock').val(data.stock);
-            $('#ModalEditarCategoria').val(data.categoria_id);
-            $('#ModalEditarDescripcion').val(data.descripcion);
-            $('#Modalimgpreview').attr("src", "../../../" + data.imagen);
-            $('#Modalimgpreview').attr("title", data.nombre);
-
+                Toast.fire({
+                    icon: 'error',
+                    title: 'Error al Consultar'
+                });
+            },
         });
 
-        myModalEl = document.getElementById("staticBackdrop");
-        modal = new te.Modal(myModalEl);
 
-        form = document.getElementById('nuevoproductoform');
 
-        function renderimage(formData) {
 
-            let file = formData.get('imagen');
-            let img = URL.createObjectURL(file)
-            document.getElementById('imgpreview').setAttribute('src', img);
-        }
+    }
+    $('#tabla_producto tbody').on('click', 'tr', function() {
 
-        async function eliminarproducto(id = 0) {
-            Swal.fire({
-                title: 'Estas Seguro de Eliminar?',
-                text: "Los Datos Seran Eliminado Permanentemente",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Si',
-                cancelButtonText: 'No'
-            }).then(async (result) => {
-                if (result.isConfirmed) {
-                    $.ajax({
-                        url: "./api-v1/productos/index.php",
-                        type: 'GET',
-                        headers: {
-                            'x-csrf-token': $('meta[name="csrf-token"]').attr('content')
-                        },
+        let data = tabla_producto.row(this).data();
+        $('#ModalEditarID').val(data.id);
+        $('#ModalEditarNombreProducto').val(data.nombre);
+        document.getElementById("ModalEditarMoneda").value = data.cod_moneda;
+        $('#ModalEditarPrecio').val(data.precio);
+        $('#ModalEditarStock').val(data.stock);
+        $('#ModalEditarCategoria').val(data.categoria_id);
+        $('#ModalEditarDescripcion').val(data.descripcion);
+        $('#Modalimgpreview').attr("src", "../../../" + data.imagen);
+        $('#Modalimgpreview').attr("title", data.nombre);
 
-                        beforeSend: () => {
-                            $('#ProductosLoader').html(`<div class="inline-block h-4 w-4 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]" role="status">
+    });
+
+    myModalEl = document.getElementById("staticBackdrop");
+    modal = new te.Modal(myModalEl);
+
+    form = document.getElementById('nuevoproductoform');
+
+    function renderimage(formData) {
+
+        let file = formData.get('imagen');
+        let img = URL.createObjectURL(file)
+        document.getElementById('imgpreview').setAttribute('src', img);
+    }
+
+    async function eliminarproducto(id = 0) {
+        Swal.fire({
+            title: 'Estas Seguro de Eliminar?',
+            text: "Los Datos Seran Eliminado Permanentemente",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si',
+            cancelButtonText: 'No'
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: "./api-v1/productos/index.php",
+                    type: 'GET',
+                    headers: {
+                        'x-csrf-token': $('meta[name="csrf-token"]').attr('content')
+                    },
+
+                    beforeSend: () => {
+                        $('#ProductosLoader').html(`<div class="inline-block h-4 w-4 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]" role="status">
                                     <span class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
                                     </div>`);
 
-                        },
-                        data: {
-                            _method: "DELETE",
-                            id: id
-                        },
-                        success: (response) => {
+                    },
+                    data: {
+                        _method: "DELETE",
+                        id: id
+                    },
+                    success: (response) => {
 
-                            $('#ProductosLoader').html(``);
+                        $('#ProductosLoader').html(``);
 
-                            if (response.result == true) {
-                                if (response.data.status == 1) {
-                                    let Toast = Swal.mixin({
-                                        toast: true,
-                                        position: 'top-end',
-                                        showConfirmButton: false,
-                                        timer: 5000,
-                                        timerProgressBar: true,
-                                        didOpen: (toast) => {
-                                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                                            toast.addEventListener('mouseleave', Swal.resumeTimer)
-                                        }
-                                    })
-
-                                    Toast.fire({
-                                        icon: 'success',
-                                        title: response.data.msg
-                                    })
-
-                                    Producto_consulta();
-
-                                }
-                            } else {
+                        if (response.result == true) {
+                            if (response.data.status == 1) {
                                 let Toast = Swal.mixin({
                                     toast: true,
                                     position: 'top-end',
                                     showConfirmButton: false,
-                                    timer: 3000,
+                                    timer: 5000,
                                     timerProgressBar: true,
                                     didOpen: (toast) => {
                                         toast.addEventListener('mouseenter', Swal.stopTimer)
                                         toast.addEventListener('mouseleave', Swal.resumeTimer)
                                     }
-                                });
+                                })
 
                                 Toast.fire({
-                                    icon: 'error',
-                                    title: response.mensaje
-                                });
+                                    icon: 'success',
+                                    title: response.data.msg
+                                })
+
+                                Producto_consulta();
 
                             }
-                        },
-                        error: function(xhr, status) {
-                            $('#StockLoader').html(` `);
+                        } else {
                             let Toast = Swal.mixin({
                                 toast: true,
                                 position: 'top-end',
@@ -639,115 +641,13 @@
 
                             Toast.fire({
                                 icon: 'error',
-                                title: xhr.responseJSON.mensaje
+                                title: response.mensaje
                             });
-                            if (typeof xhr.responseJSON.mensaje !== 'undefined') {
-                                let Toast = Swal.mixin({
-                                    toast: true,
-                                    position: 'top-end',
-                                    showConfirmButton: false,
-                                    timer: 5000,
-                                    timerProgressBar: true,
-                                    didOpen: (toast) => {
-                                        toast.addEventListener('mouseenter', Swal.stopTimer)
-                                        toast.addEventListener('mouseleave', Swal.resumeTimer)
-                                    }
-                                })
 
-                                Toast.fire({
-                                    icon: 'error',
-                                    title: xhr.responseJSON.mensaje
-                                })
-                            } else {
-                                let Toast = Swal.mixin({
-                                    toast: true,
-                                    position: 'top-end',
-                                    showConfirmButton: false,
-                                    timer: 5000,
-                                    timerProgressBar: true,
-                                    didOpen: (toast) => {
-                                        toast.addEventListener('mouseenter', Swal.stopTimer)
-                                        toast.addEventListener('mouseleave', Swal.resumeTimer)
-                                    }
-                                })
-
-                                Toast.fire({
-                                    icon: 'error',
-                                    title: "Error"
-                                })
-                            }
-                            Producto_consulta();
-                        },
-                    });
-
-
-
-
-                }
-            })
-        }
-        $("#nuevoproductoform").on("submit", async function(event) {
-            event.preventDefault();
-            let formdata = new FormData(event.currentTarget);
-            let result
-
-            result = await $.ajax({
-                url: "./api-v1/productos/index.php",
-                type: 'POST',
-                data: new FormData(this),
-                headers: {
-                    'x-csrf-token': $('meta[name="csrf-token"]').attr('content')
-                },
-
-                beforeSend: () => {
-                    $('#NuevoProductoLoader').html(`<div class="inline-block h-4 w-4 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]" role="status">
-                                    <span class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
-                                    </div>`);
-
-                },
-                success: (response) => {
-                    $('#NuevoProductoLoader').html(``);
-                    if (response.result == true) {
-                        if (response.data.status == 1) {
-                            let Toast = Swal.mixin({
-                                toast: true,
-                                position: 'top-end',
-                                showConfirmButton: false,
-                                timer: 5000,
-                                timerProgressBar: true,
-                                didOpen: (toast) => {
-                                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                                    toast.addEventListener('mouseleave', Swal.resumeTimer)
-                                }
-                            })
-
-                            Toast.fire({
-                                icon: 'success',
-                                title: response.data.msg
-                            })
-                            Producto_consulta();
-                            form.reset(); //si se realizo se limpia el form
-                            document.getElementById('imgpreview').src = "";
-                            document.getElementById('formFile').value = ""; // se limpia la preview de la imagen
-                        } else if (response.data.status == 0) {
-                            let Toast = Swal.mixin({
-                                toast: true,
-                                position: 'top-end',
-                                showConfirmButton: false,
-                                timer: 5000,
-                                timerProgressBar: true,
-                                didOpen: (toast) => {
-                                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                                    toast.addEventListener('mouseleave', Swal.resumeTimer)
-                                }
-                            })
-
-                            Toast.fire({
-                                icon: 'error',
-                                title: response.data.msg
-                            })
                         }
-                    } else {
+                    },
+                    error: function(xhr, status) {
+                        $('#StockLoader').html(` `);
                         let Toast = Swal.mixin({
                             toast: true,
                             position: 'top-end',
@@ -762,12 +662,115 @@
 
                         Toast.fire({
                             icon: 'error',
-                            title: response.mensaje
+                            title: xhr.responseJSON.mensaje
                         });
+                        if (typeof xhr.responseJSON.mensaje !== 'undefined') {
+                            let Toast = Swal.mixin({
+                                toast: true,
+                                position: 'top-end',
+                                showConfirmButton: false,
+                                timer: 5000,
+                                timerProgressBar: true,
+                                didOpen: (toast) => {
+                                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                }
+                            })
 
+                            Toast.fire({
+                                icon: 'error',
+                                title: xhr.responseJSON.mensaje
+                            })
+                        } else {
+                            let Toast = Swal.mixin({
+                                toast: true,
+                                position: 'top-end',
+                                showConfirmButton: false,
+                                timer: 5000,
+                                timerProgressBar: true,
+                                didOpen: (toast) => {
+                                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                }
+                            })
+
+                            Toast.fire({
+                                icon: 'error',
+                                title: "Error"
+                            })
+                        }
+                        Producto_consulta();
+                    },
+                });
+
+
+
+
+            }
+        })
+    }
+    $("#nuevoproductoform").on("submit", async function(event) {
+        event.preventDefault();
+        let formdata = new FormData(event.currentTarget);
+        let result
+
+        result = await $.ajax({
+            url: "./api-v1/productos/index.php",
+            type: 'POST',
+            data: new FormData(this),
+            headers: {
+                'x-csrf-token': $('meta[name="csrf-token"]').attr('content')
+            },
+
+            beforeSend: () => {
+                $('#NuevoProductoLoader').html(`<div class="inline-block h-4 w-4 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]" role="status">
+                                    <span class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
+                                    </div>`);
+
+            },
+            success: (response) => {
+                $('#NuevoProductoLoader').html(``);
+                if (response.result == true) {
+                    if (response.data.status == 1) {
+                        let Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 5000,
+                            timerProgressBar: true,
+                            didOpen: (toast) => {
+                                toast.addEventListener('mouseenter', Swal.stopTimer)
+                                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            }
+                        })
+
+                        Toast.fire({
+                            icon: 'success',
+                            title: response.data.msg
+                        })
+                        Producto_consulta();
+                        form.reset(); //si se realizo se limpia el form
+                        document.getElementById('imgpreview').src = "";
+                        document.getElementById('formFile').value = ""; // se limpia la preview de la imagen
+                    } else if (response.data.status == 0) {
+                        let Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 5000,
+                            timerProgressBar: true,
+                            didOpen: (toast) => {
+                                toast.addEventListener('mouseenter', Swal.stopTimer)
+                                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            }
+                        })
+
+                        Toast.fire({
+                            icon: 'error',
+                            title: response.data.msg
+                        })
                     }
-                },
-                error: function(xhr, status) {
+                } else {
                     let Toast = Swal.mixin({
                         toast: true,
                         position: 'top-end',
@@ -782,146 +785,137 @@
 
                     Toast.fire({
                         icon: 'error',
-                        title: xhr.responseJSON.mensaje
+                        title: response.mensaje
                     });
-                },
-                dataType: 'json',
-                contentType: false,
-                cache: false,
-                processData: false,
-            });
 
+                }
+            },
+            error: function(xhr, status) {
+                let Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                });
 
-
+                Toast.fire({
+                    icon: 'error',
+                    title: xhr.responseJSON.mensaje
+                });
+            },
+            dataType: 'json',
+            contentType: false,
+            cache: false,
+            processData: false,
         });
-        $("#ModalEditar").on("submit", async function(event) {
 
-            event.preventDefault();
-            ModalEditarID = $("#ModalEditarID").val();
-            ModalEditarNombreProducto = $("#ModalEditarNombreProducto").val();
-            ModalEditarMoneda = $("#ModalEditarMoneda").val();
-            ModalEditarStock = $("#ModalEditarStock").val();
-            ModalEditarCategoria = $("#ModalEditarCategoria").val();
-            ModalEditarDescripcion = $("#ModalEditarDescripcion").val();
-            let result = [];
 
-            result = await $.ajax({
-                url: "./api-v1/productos/index.php",
-                type: 'POST',
-                headers: {
-                    'x-csrf-token': $('meta[name="csrf-token"]').attr('content')
-                },
 
-                data: {
-                    ModalEditarID: ModalEditarID,
-                    ModalEditarNombreProducto: ModalEditarNombreProducto,
-                    ModalEditarMoneda: ModalEditarMoneda,
-                    ModalEditarStock: ModalEditarStock,
-                    ModalEditarCategoria: ModalEditarCategoria,
-                    ModalEditarDescripcion: ModalEditarDescripcion,
-                    _method: "PUT"
-                },
+    });
+    $("#ModalEditar").on("submit", async function(event) {
 
-                beforeSend: () => {
+        event.preventDefault();
+        ModalEditarID = $("#ModalEditarID").val();
+        ModalEditarNombreProducto = $("#ModalEditarNombreProducto").val();
+        ModalEditarMoneda = $("#ModalEditarMoneda").val();
+        ModalEditarStock = $("#ModalEditarStock").val();
+        ModalEditarCategoria = $("#ModalEditarCategoria").val();
+        ModalEditarDescripcion = $("#ModalEditarDescripcion").val();
+        let result = [];
 
-                    $('#ModalEditarLoader').html(`<div class="inline-block h-4 w-4 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]" role="status">
+        result = await $.ajax({
+            url: "./api-v1/productos/index.php",
+            type: 'POST',
+            headers: {
+                'x-csrf-token': $('meta[name="csrf-token"]').attr('content')
+            },
+
+            data: {
+                ModalEditarID: ModalEditarID,
+                ModalEditarNombreProducto: ModalEditarNombreProducto,
+                ModalEditarMoneda: ModalEditarMoneda,
+                ModalEditarStock: ModalEditarStock,
+                ModalEditarCategoria: ModalEditarCategoria,
+                ModalEditarDescripcion: ModalEditarDescripcion,
+                _method: "PUT"
+            },
+
+            beforeSend: () => {
+
+                $('#ModalEditarLoader').html(`<div class="inline-block h-4 w-4 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]" role="status">
                                     <span class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
                                     </div>`);
 
-                },
-                success: (response) => {
-                    if (response.result == true) {
-                        $('#ModalEditarLoader').html(``);
-                        if (response.data.status == 1) {
-                            let Toast = Swal.mixin({
-                                toast: true,
-                                position: 'top-end',
-                                showConfirmButton: false,
-                                timer: 5000,
-                                timerProgressBar: true,
-                                didOpen: (toast) => {
-                                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                                    toast.addEventListener('mouseleave', Swal.resumeTimer)
-                                }
-                            })
-
-                            Toast.fire({
-                                icon: 'success',
-                                title: response.data.msg
-                            })
-                            modal.hide();
-                            Producto_consulta();
-                        } else if (response.data.status == 0) {
-                            let Toast = Swal.mixin({
-                                toast: true,
-                                position: 'top-end',
-                                showConfirmButton: false,
-                                timer: 5000,
-                                timerProgressBar: true,
-                                didOpen: (toast) => {
-                                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                                    toast.addEventListener('mouseleave', Swal.resumeTimer)
-                                }
-                            })
-
-                            Toast.fire({
-                                icon: 'error',
-                                title: response.data.msg
-                            })
-                            Producto_consulta();
-                        }
-                    } else {
+            },
+            success: (response) => {
+                if (response.result == true) {
+                    $('#ModalEditarLoader').html(``);
+                    if (response.data.status == 1) {
                         let Toast = Swal.mixin({
                             toast: true,
                             position: 'top-end',
                             showConfirmButton: false,
-                            timer: 3000,
+                            timer: 5000,
                             timerProgressBar: true,
                             didOpen: (toast) => {
                                 toast.addEventListener('mouseenter', Swal.stopTimer)
                                 toast.addEventListener('mouseleave', Swal.resumeTimer)
                             }
-                        });
+                        })
+
+                        Toast.fire({
+                            icon: 'success',
+                            title: response.data.msg
+                        })
+                        modal.hide();
+                        Producto_consulta();
+                    } else if (response.data.status == 0) {
+                        let Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 5000,
+                            timerProgressBar: true,
+                            didOpen: (toast) => {
+                                toast.addEventListener('mouseenter', Swal.stopTimer)
+                                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            }
+                        })
 
                         Toast.fire({
                             icon: 'error',
-                            title: response.mensaje
-                        });
-
+                            title: response.data.msg
+                        })
+                        Producto_consulta();
                     }
-
-                },
-                error: (error) => {
-                    $('#ModalEditarLoader').html(``);
+                } else {
                     let Toast = Swal.mixin({
                         toast: true,
                         position: 'top-end',
                         showConfirmButton: false,
-                        timer: 5000,
+                        timer: 3000,
                         timerProgressBar: true,
                         didOpen: (toast) => {
                             toast.addEventListener('mouseenter', Swal.stopTimer)
                             toast.addEventListener('mouseleave', Swal.resumeTimer)
                         }
-                    })
+                    });
 
                     Toast.fire({
                         icon: 'error',
-                        title: error.responseJSON.mensaje
-                    })
-                    Producto_consulta();
-                },
-                dataType: 'json'
-            });
+                        title: response.mensaje
+                    });
 
+                }
 
-        });
-
-        function validarTamanoImagen(inputFile) {
-            var maxTamano = 5242880; // tamaño máximo en bytes (5 MB)
-            var archivo = inputFile.files[0];
-
-            if (archivo.size > maxTamano) {
+            },
+            error: (error) => {
+                $('#ModalEditarLoader').html(``);
                 let Toast = Swal.mixin({
                     toast: true,
                     position: 'top-end',
@@ -936,36 +930,43 @@
 
                 Toast.fire({
                     icon: 'error',
-                    title: "tamaño maximo de la imagen es 5 MB"
+                    title: error.responseJSON.mensaje
                 })
-                document.getElementById('imgpreview').setAttribute('src', "");
-                document.getElementById('formFile').value = "";
-                return;
-            } else {
-                let formData = new FormData(form);
-                renderimage(formData);
-            }
+                Producto_consulta();
+            },
+            dataType: 'json'
+        });
+
+
+    });
+
+    function validarTamanoImagen(inputFile) {
+        var maxTamano = 5242880; // tamaño máximo en bytes (5 MB)
+        var archivo = inputFile.files[0];
+
+        if (archivo.size > maxTamano) {
+            let Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 5000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            Toast.fire({
+                icon: 'error',
+                title: "tamaño maximo de la imagen es 5 MB"
+            })
+            document.getElementById('imgpreview').setAttribute('src', "");
+            document.getElementById('formFile').value = "";
+            return;
+        } else {
+            let formData = new FormData(form);
+            renderimage(formData);
         }
-    </script>
-
-</div>
-
-
-<!-- Modulo -->
-<div class="[ h-auto rounded-lg bg-white p-6 shadow-lg w-full ] [ lg:w-4/5 lg:h-full  ]">
-
-    <div class="[ flex items-center gap-1 flex-nowrap mb-3 ]">
-        <p id="titulo_tabla_agrupados" class="[ text-lg font-bold ]">LOREM</p>
-        <span id="ProductosLoader"></span>
-        <span onclick="toggle('producto_modulo')" class='[ block ] [ md:hidden ] [ lg:hidden ]'>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-            </svg>
-
-        </span>
-    </div>
-
-    <div id='tabla_productos_agrupados'>
-
-    </div>
-</div>
+    }
+</script>
