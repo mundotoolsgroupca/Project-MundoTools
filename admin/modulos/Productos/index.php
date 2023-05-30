@@ -223,24 +223,6 @@
     </div>
 
 
-    <!-- Modulo -->
-    <div class="[ h-auto rounded-lg bg-white p-6 shadow-lg w-full ] [ lg:w-4/5 lg:h-full  ]">
-
-        <div class="[ flex items-center gap-1 flex-nowrap mb-3 ]">
-            <p id="titulo_tabla_agrupados" class="[ text-lg font-bold ]">LOREM</p>
-            <span id="ProductosLoader"></span>
-            <span onclick="toggle('producto_modulo')" class='[ block ] [ md:hidden ] [ lg:hidden ]'>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                </svg>
-
-            </span>
-        </div>
-
-        <div id='tabla_productos_agrupados'>
-
-        </div>
-    </div>
 
 
     <script id="tailwindelements_script" src="./assets/js/tw-elements.umd.min.js"></script>
@@ -966,4 +948,24 @@
         }
     </script>
 
+</div>
+
+
+<!-- Modulo -->
+<div class="[ h-auto rounded-lg bg-white p-6 shadow-lg w-full ] [ lg:w-4/5 lg:h-full  ]">
+
+    <div class="[ flex items-center gap-1 flex-nowrap mb-3 ]">
+        <p id="titulo_tabla_agrupados" class="[ text-lg font-bold ]">LOREM</p>
+        <span id="ProductosLoader"></span>
+        <span onclick="toggle('producto_modulo')" class='[ block ] [ md:hidden ] [ lg:hidden ]'>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+            </svg>
+
+        </span>
+    </div>
+
+    <div id='tabla_productos_agrupados'>
+
+    </div>
 </div>
