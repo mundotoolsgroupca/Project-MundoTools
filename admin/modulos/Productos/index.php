@@ -233,7 +233,7 @@
 
         function toggle(id) {
 
-            $(`#${id}`).toggle();
+            $(`#${id}`).slideToggle("slow");
 
         }
         tabla_producto = new DataTable('#tabla_producto');
