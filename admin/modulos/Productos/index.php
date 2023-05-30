@@ -244,6 +244,30 @@
         </div>
 
         <div>
+            <div class="flex flex-col overflow-x-auto">
+                <div class="sm:-mx-6 lg:-mx-8">
+                    <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+                        <div class="overflow-x-auto">
+                            <table id="tabla_agrupados_producto" class="min-w-full text-left text-sm font-light">
+                                <thead class="bg-neutral-800 text-white border-b font-medium dark:border-neutral-500">
+                                    <tr>
+                                        <th scope="col" class="px-6 py-4">ID</th>
+                                        <th scope="col" class="px-6 py-4">Nombre</th>
+                                        <th scope="col" class="px-6 py-4">Descripcion1</th>
+                                        <th scope="col" class="px-6 py-4">Descripcion2</th>
+                                        <th scope="col" class="px-6 py-4">Descripcion3</th>
+                                        <th scope="col" class="px-6 py-4">Descripcion4</th>
+                                        <th scope="col" class="px-6 py-4">Descripcion5</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </div>
     </div>
