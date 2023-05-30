@@ -267,7 +267,7 @@
             //foco en el nuevo modulo
             setTimeout(() => {
                 window.location.href = '#tabla_productos_agrupados';
-            }, 1000); // Ejecuta miFuncion después de un segundo (1000 milisegundos)
+            }, 100); // Ejecuta miFuncion después de un segundo (1000 milisegundos)
         }
 
     }
