@@ -292,6 +292,9 @@
         if (status_view == 0) {
             $(`#tabla_productos_agrupados`).slideToggle("slow", () => {
                 window.location.href = '#tabla_productos_agrupados';
+                toggle('producto_modulo');
+                toggle('nuevo_producto_modulo');
+
             }); // mostramos la caja
             $("#tabla_productos_agrupados").attr("view", '1'); //actualizamos el estado
             //foco en el nuevo modulo
