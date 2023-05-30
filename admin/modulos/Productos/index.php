@@ -741,7 +741,7 @@
 
                 Toast.fire({
                     icon: 'error',
-                    title: 'Error al Consultar'
+                    title: xhr.responseJSON.mensaje
                 });
             },
         });
