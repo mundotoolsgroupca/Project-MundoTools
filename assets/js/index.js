@@ -27,7 +27,7 @@ const Carrito = {
   idcantidad: "Cantidad_produtos",
   idTotales: "CarritoTotales",
   add: (id, Count, Productosarr) => {
-debugger
+
 
 
     let Datos = new ProductosTicket();

@@ -87,12 +87,9 @@
                             <table id="tabla_producto" class="min-w-full text-left text-sm font-light">
                                 <thead class="bg-neutral-800 text-white border-b font-medium dark:border-neutral-500">
                                     <tr>
-                                        <th scope="col" class="px-6 py-4">Id</th>
                                         <th scope="col" class="px-6 py-4">Producto</th>
-                                        <th scope="col" class="px-6 py-4">stock</th>
                                         <th scope="col" class="px-6 py-4">Categoria</th>
-                                        <th scope="col" class="px-6 py-4">precio</th>
-                                        <th scope="col" class="px-6 py-4">Acciones</th>
+                                        <th scope="col" class="px-6 py-4">Descripcion</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -382,19 +379,14 @@
                             },
                             "data": response.data,
                             "columns": [{
-                                    "data": "id"
-                                }, {
                                     "data": "nombre"
-                                },
-                                {
-                                    "data": "stock"
                                 },
                                 {
                                     "data": "categoria"
                                 },
 
                                 {
-                                    "data": "precio"
+                                    "data": "descripcion"
                                 },
                                 {
                                     "data": null,
