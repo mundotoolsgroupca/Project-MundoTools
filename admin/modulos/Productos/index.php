@@ -444,7 +444,7 @@
                                 "bSortable": false,
                                 "mRender": function(data, type, value) {
                                     return `<button
-                                                onclick='agrupados_view(${data.id_grupo})'
+                                                onclick='agrupados_view("${data.id_grupo}")'
                                                 type="button"
                                                 data-te-ripple-init
                                                 data-te-ripple-color="light"
