@@ -228,7 +228,7 @@
 
 </div>
 
-<div class="[ flex gap-3 flex-col ] [ lg:flex-row ]">
+<div class="[ flex gap-3 flex-col mt-3 ] [ lg:flex-row ]">
     <!-- Modulo -->
     <div class="[ h-auto rounded-lg bg-white p-6 shadow-lg w-full ] [ lg:w-4/5 lg:h-full  ]">
 
