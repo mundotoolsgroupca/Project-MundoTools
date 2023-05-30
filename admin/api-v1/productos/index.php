@@ -36,7 +36,7 @@ switch ($method) {
                     c1.id_grupo,
                     c2.nombre,
                     c4.nombre AS categoria,
-                    c2.descripcion,
+                    c2.descripcion, 
                     c2.id_grupo,
                     c2.categoria AS categoria_id,
                     c2.imagen,
