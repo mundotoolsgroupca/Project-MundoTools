@@ -293,19 +293,14 @@
             $(`#tabla_productos_agrupados`).slideToggle("slow", () => {
                 toggle('producto_modulo');
                 toggle('nuevo_producto_modulo');
-                window.location.href = '#tabla_productos_agrupados';
-
-
+                window.location.href = '#tabla_productos_agrupados'; //foco en el nuevo modulo
             }); // mostramos la caja
             $("#tabla_productos_agrupados").attr("view", '1'); //actualizamos el estado
-            //foco en el nuevo modulo
 
         }
-
     }
 
     function toggle_agrupados() {
-
         let status_view = $("#tabla_productos_agrupados").attr("view"); //obtenemos la propiedad personalizada para saber si el modulo esta a la vista
         status_view = status_view == 1 ? 0 : 1
         $("#tabla_productos_agrupados").attr("view", status_view);
