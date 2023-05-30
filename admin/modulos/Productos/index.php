@@ -264,6 +264,7 @@
         if (status_view == 0) {
             $(`#tabla_productos_agrupados`).slideToggle("slow"); // mostramos la caja
             $("#tabla_productos_agrupados").attr("view", '1'); //actualizamos el estado
+            window.location.href = '#tabla_productos_agrupados'; //foco en el nuevo modulo
         }
 
     }
