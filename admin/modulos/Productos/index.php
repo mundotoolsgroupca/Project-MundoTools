@@ -228,7 +228,7 @@
 
 </div>
 
-<div class="[ flex gap-3 flex-col mt-3 ] [ lg:flex-row ]">
+<div id='tabla_productos_agrupados' class="[ flex gap-3 flex-col mt-3 ] [ lg:flex-row ]">
     <!-- Modulo -->
     <div class="[ h-auto rounded-lg bg-white p-6 shadow-lg w-full ] [   lg:h-full  ]">
 
@@ -243,7 +243,7 @@
             </span>
         </div>
 
-        <div id='tabla_productos_agrupados'>
+        <div>
 
         </div>
     </div>
@@ -254,6 +254,11 @@
 
         $(`#${id}`).slideToggle("slow");
 
+
+    }
+
+    function agrupados_view() {
+        $(`#tabla_productos_agrupados`).slideToggle("slow");
     }
     tabla_producto = new DataTable('#tabla_producto');
     Producto_consulta();
