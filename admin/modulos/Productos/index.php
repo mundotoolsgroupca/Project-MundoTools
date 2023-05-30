@@ -386,6 +386,9 @@
                                 {
                                     "data": "categoria"
                                 },
+                                {
+                                    "data": "descripcion"
+                                },
 
                                 {
                                     "data": "precio"
