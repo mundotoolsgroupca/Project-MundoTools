@@ -228,7 +228,7 @@
 
 </div>
 
-<div id='tabla_productos_agrupados' class="[ flex gap-3 flex-col mt-3 ] [ lg:flex-row ]">
+<div id='tabla_productos_agrupados' class="[ flex gap-3 flex-col mt-3 hidden ] [ lg:flex-row ]">
     <!-- Modulo -->
     <div class="[ h-auto rounded-lg bg-white p-6 shadow-lg w-full ] [   lg:h-full  ]">
 
