@@ -224,13 +224,6 @@
 
     <script id="tailwindelements_script" src="./assets/js/tw-elements.umd.min.js"></script>
     <script>
-        $(`#nuevo_producto_modulo`).on('click', () => {
-            toggle(this);
-        });
-        $(`#producto_modulo`).on('click', () => {
-            toggle(this);
-        });
-
         function toggle(id) {
 
             $(`#${id}`).slideToggle("slow");
