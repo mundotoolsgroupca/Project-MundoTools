@@ -4,7 +4,7 @@ $method = $_SERVER['REQUEST_METHOD'];
 switch ($method) {
     case 'GET':
 
-        session_name("ecomercer_user_data");
+        session_name("ecomercer_admin_data");
         session_start();
         $http = getallheaders();
         if (!empty($http['X-Csrf-Token'])) {
