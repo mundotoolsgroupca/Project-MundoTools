@@ -1,5 +1,6 @@
 <?php
 
+header('Content-Type: application/json; charset=utf-8');
 $method = $_SERVER['REQUEST_METHOD'];
 switch ($method) {
     case 'GET':
