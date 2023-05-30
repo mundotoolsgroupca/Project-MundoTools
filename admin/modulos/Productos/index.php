@@ -294,6 +294,7 @@
                 toggle('producto_modulo');
                 toggle('nuevo_producto_modulo');
                 window.location.href = '#tabla_productos_agrupados'; //foco en el nuevo modulo
+                tabla_productos_agrupados_consultar(id);
             }); // mostramos la caja
             $("#tabla_productos_agrupados").attr("view", '1'); //actualizamos el estado
 
@@ -618,31 +619,31 @@
                 $('#ProductosLoader').html(``);
                 if (response.result == true) {
                     console.log(response.data);
-                    /*
-                                        tabla_producto = $('#tabla_producto').DataTable({
-                                            "bDestroy": true,
-                                            order: [
-                                                [0, 'desc']
-                                            ],
-                                            paging: true,
-                                            select: true,
-                                            targets: 20,
-                                            scrollY: '40vh',
-                                            "processing": true,
-                                            "autoWidth": false,
-                                            language: {
-                                                //?dataTable en Español
-                                                url: '//cdn.datatables.net/plug-ins/1.12.0/i18n/es-ES.json',
-                                                //? input de buscar tengo un texto
-                                                searchPlaceholder: "Filtrar"
 
-                                            },
-                                            "data": response.data,
-                                            "columns": [{
-                                                    "data": null,
-                                                    "bSortable": false,
-                                                    "mRender": function(data, type, value) {
-                                                        return `<button
+                    tabla_agrupados_data = $('#tabla_agrupados_producto').DataTable({
+                        "bDestroy": true,
+                        order: [
+                            [0, 'desc']
+                        ],
+                        paging: true,
+                        select: true,
+                        targets: 20,
+                        scrollY: '40vh',
+                        "processing": true,
+                        "autoWidth": false,
+                        language: {
+                            //?dataTable en Español
+                            url: '//cdn.datatables.net/plug-ins/1.12.0/i18n/es-ES.json',
+                            //? input de buscar tengo un texto
+                            searchPlaceholder: "Filtrar"
+
+                        },
+                        "data": response.data,
+                        "columns": [{
+                                "data": null,
+                                "bSortable": false,
+                                "mRender": function(data, type, value) {
+                                    return `<button
                                                                     onclick='agrupados_view("${data.id_grupo}")'
                                                                     type="button"
                                                                     data-te-ripple-init
@@ -650,28 +651,28 @@
                                                                     class="rounded px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary transition duration-150 ease-in-out hover:bg-neutral-100 hover:text-primary-600 focus:text-primary-600 focus:outline-none focus:ring-0 active:text-primary-700 dark:hover:bg-neutral-700">
                                                                     ${data.id_grupo}
                                                                     </button>`;
-                                                    }
-                                                }, {
-                                                    "data": "nombre"
-                                                },
-                                                {
-                                                    "data": "categoria"
-                                                },
-                                                {
-                                                    "data": "descripcion"
-                                                },
+                                }
+                            }, {
+                                "data": "nombre"
+                            },
+                            {
+                                "data": "categoria"
+                            },
+                            {
+                                "data": "descripcion"
+                            },
 
-                                                {
-                                                    "data": "precio"
-                                                },
-                                                {
-                                                    "data": "simbolo"
-                                                },
-                                                {
-                                                    "data": null,
-                                                    "bSortable": false,
-                                                    "mRender": function(data, type, value) {
-                                                        return `
+                            {
+                                "data": "precio"
+                            },
+                            {
+                                "data": "simbolo"
+                            },
+                            {
+                                "data": null,
+                                "bSortable": false,
+                                "mRender": function(data, type, value) {
+                                    return `
                                                         <div class="[ flex gap-1 ]">
                                                         <button
                                                         onclick='modal.show()'
@@ -699,12 +700,12 @@
                                                         </button> 
                                                         </div>
                                                         `;
-                                                    }
-                                                },
+                                }
+                            },
 
-                                            ],
-                                            responsive: true,
-                                        });*/
+                        ],
+                        responsive: true,
+                    });
                 } else {
                     let Toast = Swal.mixin({
                         toast: true,
