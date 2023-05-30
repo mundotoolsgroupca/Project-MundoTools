@@ -274,6 +274,10 @@
 </div>
 <script id="tailwindelements_script" src="./assets/js/tw-elements.umd.min.js"></script>
 <script>
+    tabla_producto = new DataTable('#tabla_producto');
+    tabla_agrupados_data = new DataTable('#tabla_agrupados_producto');
+    Producto_consulta();
+
     function toggle(id) {
 
         $(`#${id}`).slideToggle("slow");
@@ -297,15 +301,13 @@
     }
 
     function toggle_agrupados() {
-        debugger
+
         let status_view = $("#tabla_productos_agrupados").attr("view"); //obtenemos la propiedad personalizada para saber si el modulo esta a la vista
         status_view = status_view == 1 ? 0 : 1
         $("#tabla_productos_agrupados").attr("view", status_view);
         $(`#tabla_productos_agrupados`).slideToggle("slow");
     }
 
-    tabla_producto = new DataTable('#tabla_producto');
-    Producto_consulta();
 
     $.ajax({
         url: "./api-v1/categorias/index.php",
