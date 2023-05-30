@@ -1,6 +1,6 @@
 <div class="[ flex gap-3 flex-col ] [ lg:flex-row ]">
 
-    <div class="[  rounded-lg bg-white p-6 shadow-lg w-full ] [ lg:w-1/5 ]">
+    <div id="nuevo_producto_modulo" class="[  rounded-lg bg-white p-6 shadow-lg w-full ] [ lg:w-1/5 ]">
 
         <form id="nuevoproductoform">
             <div class="[ flex items-center gap-1 flex-nowrap mb-3 ]">
@@ -72,7 +72,7 @@
         </form>
     </div>
 
-    <div class="[ h-auto rounded-lg bg-white p-6 shadow-lg w-full ] [ lg:w-4/5 lg:h-full  ]">
+    <div id="producto_modulo" class="[ h-auto rounded-lg bg-white p-6 shadow-lg w-full ] [ lg:w-4/5 lg:h-full  ]">
         <div class="[ flex items-center gap-1 flex-nowrap mb-3 ]">
             <p class="[ text-lg font-bold ]">Productos</p>
             <span id="ProductosLoader"></span>
@@ -203,6 +203,18 @@
 
     <script id="tailwindelements_script" src="./assets/js/tw-elements.umd.min.js"></script>
     <script>
+        $(`#nuevo_producto_modulo`).on('click', (this) => {
+            toggle(this);
+        });
+        $(`#producto_modulo`).on('click', (this) => {
+            toggle(this);
+        });
+
+        function toggle(div) {
+            $("#botonToggle").click(function() {
+                $(`#${div.id}`).toggle();
+            });
+        }
         tabla_producto = new DataTable('#tabla_producto');
         Producto_consulta();
 
