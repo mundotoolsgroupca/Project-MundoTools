@@ -90,6 +90,8 @@
                                         <th scope="col" class="px-6 py-4">Producto</th>
                                         <th scope="col" class="px-6 py-4">Categoria</th>
                                         <th scope="col" class="px-6 py-4">Descripcion</th>
+                                        <th scope="col" class="px-6 py-4">Precio</th>
+                                        <th scope="col" class="px-6 py-4">Moneda</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -386,7 +388,10 @@
                                 },
 
                                 {
-                                    "data": "descripcion"
+                                    "data": "precio"
+                                },
+                                {
+                                    "data": "simbolo"
                                 },
                                 {
                                     "data": null,
