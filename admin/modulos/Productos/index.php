@@ -258,11 +258,12 @@
     }
 
     function agrupados_view(id) {
-        debugger
-        let status_view = $("#tabla_productos_agrupados").attr("view");
+
+        let status_view = $("#tabla_productos_agrupados").attr("view"); //obtenemos la propiedad personalizada para saber si el modulo esta a la vista
 
         if (status_view == 0) {
-            $(`#tabla_productos_agrupados`).slideToggle("slow");
+            $(`#tabla_productos_agrupados`).slideToggle("slow"); // mostramos la caja
+            $("#tabla_productos_agrupados").attr("view", '0'); //actualizamos el estado
         }
 
     }
