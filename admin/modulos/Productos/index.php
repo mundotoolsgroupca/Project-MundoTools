@@ -269,7 +269,9 @@
     }
 
     function toggle_agrupados() {
+        debugger
         let status_view = $("#tabla_productos_agrupados").attr("view"); //obtenemos la propiedad personalizada para saber si el modulo esta a la vista
+        $("#tabla_productos_agrupados").attr("view", status_view === 1 ? 0 : 1)
         $(`#tabla_productos_agrupados`).slideToggle("slow");
     }
 
