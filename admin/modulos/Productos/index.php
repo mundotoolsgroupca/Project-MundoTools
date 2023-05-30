@@ -257,9 +257,10 @@
 
     }
 
-    function agrupados_view() {
+    function agrupados_view(id) {
         $(`#tabla_productos_agrupados`).slideToggle("slow");
     }
+
     tabla_producto = new DataTable('#tabla_producto');
     Producto_consulta();
 
@@ -443,6 +444,7 @@
                                 "bSortable": false,
                                 "mRender": function(data, type, value) {
                                     return `<button
+                                                onclick='agrupados_view(${data.id_grupo})'
                                                 type="button"
                                                 data-te-ripple-init
                                                 data-te-ripple-color="light"
