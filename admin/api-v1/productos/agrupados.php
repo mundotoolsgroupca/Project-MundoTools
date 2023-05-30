@@ -9,8 +9,8 @@ switch ($method) {
         $http = getallheaders();
         if (!empty($http['X-Csrf-Token'])) {
 
-            if (!isset($_SESSION['usuario'])) {
-                http_response_code(409); //codigo de conflicto
+
+            if (!isset($_SESSION['token'])) {
                 // Log this as a warning and keep an eye on these attempts
                 $resultado = new stdClass();
                 $resultado->result = FALSE;
@@ -18,9 +18,8 @@ switch ($method) {
                 $resultado->titulo = "Error!";
                 $resultado->mensaje = 'Parametro No Valido';
                 echo json_encode($resultado);
-                return;
+                break;
             }
-
             if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'])) {
 
                 include_once '../../php/FuncionesGenerales.php';
