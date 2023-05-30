@@ -104,6 +104,7 @@
                                 <table id="tabla_producto" class="min-w-full text-left text-sm font-light">
                                     <thead class="bg-neutral-800 text-white border-b font-medium dark:border-neutral-500">
                                         <tr>
+                                            <th scope="col" class="px-6 py-4">Id Grupo</th>
                                             <th scope="col" class="px-6 py-4">Producto</th>
                                             <th scope="col" class="px-6 py-4">Categoria</th>
                                             <th scope="col" class="px-6 py-4">Descripcion</th>
@@ -408,6 +409,8 @@
                             },
                             "data": response.data,
                             "columns": [{
+                                    "data": "id_grupo"
+                                }, {
                                     "data": "nombre"
                                 },
                                 {
