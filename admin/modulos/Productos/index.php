@@ -1,112 +1,121 @@
 <div class="[ flex gap-3 flex-col ] [ lg:flex-row ]">
 
-    <div id="nuevo_producto_modulo" class="[  rounded-lg bg-white p-6 shadow-lg w-full ] [ lg:w-1/5 ]">
+    <div class="[  rounded-lg bg-white p-6 shadow-lg w-full ] [ lg:w-1/5 ]">
+        <div class="[ flex items-center gap-1 flex-nowrap mb-3 ]">
+            <p class="[ text-lg font-bold ]">Nuevo Producto</p>
+            <span id="NuevoProductoLoader"></span>
+        </div>
+        <div id="nuevo_producto_modulo">
+            <form id="nuevoproductoform">
 
-        <form id="nuevoproductoform">
-            <div class="[ flex items-center gap-1 flex-nowrap mb-3 ]">
-                <p class="[ text-lg font-bold ]">Nuevo Producto</p>
-                <span id="NuevoProductoLoader"></span>
-            </div>
 
-            <div class="relative mb-6" data-te-input-wrapper-init>
-                <input maxlength="11" data-te-input-showcounter="true" max name="idproducto" type="text" class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none  [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0" id="idproducto" placeholder="id" required />
-                <label for="idproducto" class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none  ">Id del Prducto
-                </label>
-                <div class="absolute w-full text-sm text-neutral-500 dark:text-neutral-200" data-te-input-helper-ref></div>
-            </div>
+                <div class="relative mb-6" data-te-input-wrapper-init>
+                    <input maxlength="11" data-te-input-showcounter="true" max name="idproducto" type="text" class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none  [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0" id="idproducto" placeholder="id" required />
+                    <label for="idproducto" class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none  ">Id del Prducto
+                    </label>
+                    <div class="absolute w-full text-sm text-neutral-500 dark:text-neutral-200" data-te-input-helper-ref></div>
+                </div>
 
-            <div class="relative mb-6" data-te-input-wrapper-init>
-                <input maxlength="40" data-te-input-showcounter="true" name="nombreproducto" type="text" class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none  [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0" id="exampleInput7" placeholder="Name" required />
-                <label for="exampleInput7" class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none  ">Nombre del Producto
-                </label>
-                <div class="absolute w-full text-sm text-neutral-500 dark:text-neutral-200" data-te-input-helper-ref></div>
-            </div>
+                <div class="relative mb-6" data-te-input-wrapper-init>
+                    <input maxlength="40" data-te-input-showcounter="true" name="nombreproducto" type="text" class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none  [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0" id="exampleInput7" placeholder="Name" required />
+                    <label for="exampleInput7" class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none  ">Nombre del Producto
+                    </label>
+                    <div class="absolute w-full text-sm text-neutral-500 dark:text-neutral-200" data-te-input-helper-ref></div>
+                </div>
 
-            <div class="mb-3 w-full">
-                <div class="relative  flex w-full  items-stretch">
-                    <input min="0.00" max="10000.00" step="0.01" name="precio" type="number" class="relative m-0 -mr-px block w-4/5  flex-auto rounded-l border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-1.5 text-base font-normal text-neutral-700 outline-none transition duration-300 ease-in-out focus:border-primary-600 focus:text-neutral-700 focus:shadow-te-primary focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-neutral-200" placeholder="precio" aria-label="Search" aria-describedby="button-addon3" />
-                    <!--Search button-->
-                    <select name="moneda" class="w-[1/5]" disabled id="moneda" data-te-select-init required>
+                <div class="mb-3 w-full">
+                    <div class="relative  flex w-full  items-stretch">
+                        <input min="0.00" max="10000.00" step="0.01" name="precio" type="number" class="relative m-0 -mr-px block w-4/5  flex-auto rounded-l border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-1.5 text-base font-normal text-neutral-700 outline-none transition duration-300 ease-in-out focus:border-primary-600 focus:text-neutral-700 focus:shadow-te-primary focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-neutral-200" placeholder="precio" aria-label="Search" aria-describedby="button-addon3" />
+                        <!--Search button-->
+                        <select name="moneda" class="w-[1/5]" disabled id="moneda" data-te-select-init required>
+                        </select>
+                        <label data-te-select-label-ref>Moneda</label>
+                    </div>
+                </div>
+
+
+
+                <div class="relative mb-6" data-te-input-wrapper-init>
+                    <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="11" name="stock" type="number" class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none  [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0" id="exampleInput8" placeholder="Email address" required />
+                    <label for="exampleInput8" class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none  ">Stock
+                    </label>
+                </div>
+
+
+                <div class="[ mb-6 w-full ]">
+                    <select name="categoria" disabled id="categoria" data-te-select-init required>
+
                     </select>
-                    <label data-te-select-label-ref>Moneda</label>
+                    <label data-te-select-label-ref>Categoria</label>
                 </div>
-            </div>
+                <div class="[ mb-6 w-full ]">
+                    <label for="formFile" class="mb-2 inline-block text-neutral-700 dark:text-neutral-200">Imagen del Producto</label>
+                    <input name="imagen" class="relative m-0 block w-full min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-clip-padding px-3 py-[0.32rem] text-base font-normal text-neutral-700 transition duration-300 ease-in-out file:-mx-3 file:-my-[0.32rem] file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit file:bg-neutral-100 file:px-3 file:py-[0.32rem] file:text-neutral-700 file:transition file:duration-150 file:ease-in-out file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem] hover:file:bg-neutral-200 focus:border-primary focus:text-neutral-700 focus:shadow-[0_0_0_1px] focus:shadow-primary focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:file:bg-neutral-700 dark:file:text-neutral-100" accept="image/png,image/jpeg,image/webp" onchange="validarTamanoImagen(this)" type="file" id="formFile" required />
+                    <div class="[ flex justify-center  ]">
+                        <img id="imgpreview" class="[ transition-shadow  hover:shadow-lg hover:shadow-black/30  max-h-32 mt-3 object-cover rounded-lg ]" src="" />
+                    </div>
 
-
-
-            <div class="relative mb-6" data-te-input-wrapper-init>
-                <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="11" name="stock" type="number" class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none  [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0" id="exampleInput8" placeholder="Email address" required />
-                <label for="exampleInput8" class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none  ">Stock
-                </label>
-            </div>
-
-
-            <div class="[ mb-6 w-full ]">
-                <select name="categoria" disabled id="categoria" data-te-select-init required>
-
-                </select>
-                <label data-te-select-label-ref>Categoria</label>
-            </div>
-            <div class="[ mb-6 w-full ]">
-                <label for="formFile" class="mb-2 inline-block text-neutral-700 dark:text-neutral-200">Imagen del Producto</label>
-                <input name="imagen" class="relative m-0 block w-full min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-clip-padding px-3 py-[0.32rem] text-base font-normal text-neutral-700 transition duration-300 ease-in-out file:-mx-3 file:-my-[0.32rem] file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit file:bg-neutral-100 file:px-3 file:py-[0.32rem] file:text-neutral-700 file:transition file:duration-150 file:ease-in-out file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem] hover:file:bg-neutral-200 focus:border-primary focus:text-neutral-700 focus:shadow-[0_0_0_1px] focus:shadow-primary focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:file:bg-neutral-700 dark:file:text-neutral-100" accept="image/png,image/jpeg,image/webp" onchange="validarTamanoImagen(this)" type="file" id="formFile" required />
-                <div class="[ flex justify-center  ]">
-                    <img id="imgpreview" class="[ transition-shadow  hover:shadow-lg hover:shadow-black/30  max-h-32 mt-3 object-cover rounded-lg ]" src="" />
+                </div>
+                <div class="relative mb-6" data-te-input-wrapper-init>
+                    <textarea maxlength="300" data-te-input-showcounter="true" name="descripcion" class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none  [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0" id="exampleFormControlTextarea13" rows="3" placeholder="Descripcion" required></textarea>
+                    <label for="exampleFormControlTextarea13" class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none  ">Descripcion
+                    </label>
+                    <div class="absolute w-full text-sm text-neutral-500 dark:text-neutral-200" data-te-input-helper-ref></div>
                 </div>
 
-            </div>
-            <div class="relative mb-6" data-te-input-wrapper-init>
-                <textarea maxlength="300" data-te-input-showcounter="true" name="descripcion" class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none  [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0" id="exampleFormControlTextarea13" rows="3" placeholder="Descripcion" required></textarea>
-                <label for="exampleFormControlTextarea13" class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none  ">Descripcion
-                </label>
-                <div class="absolute w-full text-sm text-neutral-500 dark:text-neutral-200" data-te-input-helper-ref></div>
-            </div>
 
 
 
+                <!--Submit button-->
+                <button type="submit" class="inline-block w-full rounded bg-warning px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#e4a11b] transition duration-150 ease-in-out hover:bg-warning-600 hover:shadow-[0_8px_9px_-4px_rgba(228,161,27,0.3),0_4px_18px_0_rgba(228,161,27,0.2)] focus:bg-warning-600 focus:shadow-[0_8px_9px_-4px_rgba(228,161,27,0.3),0_4px_18px_0_rgba(228,161,27,0.2)] focus:outline-none focus:ring-0 active:bg-warning-700 active:shadow-[0_8px_9px_-4px_rgba(228,161,27,0.3),0_4px_18px_0_rgba(228,161,27,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(228,161,27,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(228,161,27,0.2),0_4px_18px_0_rgba(228,161,27,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(228,161,27,0.2),0_4px_18px_0_rgba(228,161,27,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(228,161,27,0.2),0_4px_18px_0_rgba(228,161,27,0.1)]" data-te-ripple-init data-te-ripple-color="light">
+                    Guardar
+                </button>
+            </form>
 
-            <!--Submit button-->
-            <button type="submit" class="inline-block w-full rounded bg-warning px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#e4a11b] transition duration-150 ease-in-out hover:bg-warning-600 hover:shadow-[0_8px_9px_-4px_rgba(228,161,27,0.3),0_4px_18px_0_rgba(228,161,27,0.2)] focus:bg-warning-600 focus:shadow-[0_8px_9px_-4px_rgba(228,161,27,0.3),0_4px_18px_0_rgba(228,161,27,0.2)] focus:outline-none focus:ring-0 active:bg-warning-700 active:shadow-[0_8px_9px_-4px_rgba(228,161,27,0.3),0_4px_18px_0_rgba(228,161,27,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(228,161,27,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(228,161,27,0.2),0_4px_18px_0_rgba(228,161,27,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(228,161,27,0.2),0_4px_18px_0_rgba(228,161,27,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(228,161,27,0.2),0_4px_18px_0_rgba(228,161,27,0.1)]" data-te-ripple-init data-te-ripple-color="light">
-                Guardar
-            </button>
-        </form>
+        </div>
+
     </div>
 
-    <div id="producto_modulo" class="[ h-auto rounded-lg bg-white p-6 shadow-lg w-full ] [ lg:w-4/5 lg:h-full  ]">
+
+    <div class="[ h-auto rounded-lg bg-white p-6 shadow-lg w-full ] [ lg:w-4/5 lg:h-full  ]">
         <div class="[ flex items-center gap-1 flex-nowrap mb-3 ]">
             <p class="[ text-lg font-bold ]">Productos</p>
             <span id="ProductosLoader"></span>
         </div>
+        <div id="producto_modulo">
+            <div class="mb-3 w-full">
 
-        <div class="mb-3 w-full">
+                <div class="flex flex-col overflow-x-auto">
+                    <div class="sm:-mx-6 lg:-mx-8">
+                        <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+                            <div class="overflow-x-auto">
+                                <table id="tabla_producto" class="min-w-full text-left text-sm font-light">
+                                    <thead class="bg-neutral-800 text-white border-b font-medium dark:border-neutral-500">
+                                        <tr>
+                                            <th scope="col" class="px-6 py-4">Producto</th>
+                                            <th scope="col" class="px-6 py-4">Categoria</th>
+                                            <th scope="col" class="px-6 py-4">Descripcion</th>
+                                            <th scope="col" class="px-6 py-4">Precio</th>
+                                            <th scope="col" class="px-6 py-4">Moneda</th>
+                                            <th scope="col" class="px-6 py-4">Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
 
-            <div class="flex flex-col overflow-x-auto">
-                <div class="sm:-mx-6 lg:-mx-8">
-                    <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
-                        <div class="overflow-x-auto">
-                            <table id="tabla_producto" class="min-w-full text-left text-sm font-light">
-                                <thead class="bg-neutral-800 text-white border-b font-medium dark:border-neutral-500">
-                                    <tr>
-                                        <th scope="col" class="px-6 py-4">Producto</th>
-                                        <th scope="col" class="px-6 py-4">Categoria</th>
-                                        <th scope="col" class="px-6 py-4">Descripcion</th>
-                                        <th scope="col" class="px-6 py-4">Precio</th>
-                                        <th scope="col" class="px-6 py-4">Moneda</th>
-                                        <th scope="col" class="px-6 py-4">Acciones</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-
-                                </tbody>
-                            </table>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <button onclick="Producto_consulta()" type="button" class="inline-block rounded bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200">
+                Actualizar
+            </button>
         </div>
-        <button onclick="Producto_consulta()" type="button" class="inline-block rounded bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200">
-            Actualizar
-        </button>
+
+
+
     </div>
 
     <!-- Modal -->
@@ -203,10 +212,10 @@
 
     <script id="tailwindelements_script" src="./assets/js/tw-elements.umd.min.js"></script>
     <script>
-        $(`#nuevo_producto_modulo`).on('click', (this) => {
+        $(`#nuevo_producto_modulo`).on('click', () => {
             toggle(this);
         });
-        $(`#producto_modulo`).on('click', (this) => {
+        $(`#producto_modulo`).on('click', () => {
             toggle(this);
         });
 
