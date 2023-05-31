@@ -123,4 +123,185 @@ switch ($method) {
             echo json_encode($resultado);
             break;
         }
+    case 'POST':
+        include "./admin/php/FuncionesGenerales.php";
+        session_name("ecomercer_admin_data");
+        session_start();
+        $http = getallheaders();
+        if (!empty($http['X-Csrf-Token'])) {
+
+
+            if (!isset($_SESSION['token'])) {
+                // Log this as a warning and keep an eye on these attempts
+                $resultado = new stdClass();
+                $resultado->result = FALSE;
+                $resultado->icono = "error";
+                $resultado->titulo = "Error!";
+                $resultado->mensaje = 'Parametro No Valido';
+                echo json_encode($resultado);
+                break;
+            }
+            if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'])) {
+                if ($_POST['_method'] == "PUT") {
+
+                    if (isset($_POST['ModalEditar_agrupadosdescripcionProducto']) && validar_string($_POST['ModalEditar_agrupadosdescripcionProducto'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
+                        $caracteristica1 = $_POST['ModalEditar_agrupadosdescripcionProducto'];
+                        $caracteristica1 = eliminar_palabras_sql($caracteristica1);
+                    } else {
+                        http_response_code(409); //codigo de conflicto
+                        $resultado = new stdClass();
+                        $resultado->result = FALSE;
+                        $resultado->icono = "error";
+                        $resultado->titulo = "Error!";
+                        $resultado->mensaje = 'Descripcion 1 Contiene Caracteres no Permitidos';
+                        echo json_encode($resultado);
+                        break;
+                    }
+                    if (isset($_POST['ModalEditar_agrupadosdescripcionProducto2']) && validar_string($_POST['ModalEditar_agrupadosdescripcionProducto2'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
+                        $caracteristica2 = $_POST['ModalEditar_agrupadosdescripcionProducto2'];
+                        $caracteristica2 = eliminar_palabras_sql($caracteristica2);
+                    } else {
+                        http_response_code(409); //codigo de conflicto
+                        $resultado = new stdClass();
+                        $resultado->result = FALSE;
+                        $resultado->icono = "error";
+                        $resultado->titulo = "Error!";
+                        $resultado->mensaje = 'Descripcion 2 Contiene Caracteres no Permitidos';
+                        echo json_encode($resultado);
+                        break;
+                    }
+                    if (isset($_POST['ModalEditar_agrupadosdescripcionProducto3']) && validar_string($_POST['ModalEditar_agrupadosdescripcionProducto3'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
+                        $caracteristica3 = $_POST['ModalEditar_agrupadosdescripcionProducto3'];
+                        $caracteristica3 = eliminar_palabras_sql($caracteristica3);
+                    } else {
+                        http_response_code(409); //codigo de conflicto
+                        $resultado = new stdClass();
+                        $resultado->result = FALSE;
+                        $resultado->icono = "error";
+                        $resultado->titulo = "Error!";
+                        $resultado->mensaje = 'Descripcion 3 Contiene Caracteres no Permitidos';
+                        echo json_encode($resultado);
+                        break;
+                    }
+                    if (isset($_POST['ModalEditar_agrupadosdescripcionProducto4']) && validar_string($_POST['ModalEditar_agrupadosdescripcionProducto4'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
+                        $caracteristica4 = $_POST['ModalEditar_agrupadosdescripcionProducto4'];
+                        $caracteristica4 = eliminar_palabras_sql($caracteristica4);
+                    } else {
+                        http_response_code(409); //codigo de conflicto
+                        $resultado = new stdClass();
+                        $resultado->result = FALSE;
+                        $resultado->icono = "error";
+                        $resultado->titulo = "Error!";
+                        $resultado->mensaje = 'Descripcion 4 Contiene Caracteres no Permitidos';
+                        echo json_encode($resultado);
+                        break;
+                    }
+                    if (isset($_POST['ModalEditar_agrupadosdescripcionProducto5']) && validar_string($_POST['ModalEditar_agrupadosdescripcionProducto5'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
+                        $caracteristica5 = $_POST['ModalEditar_agrupadosdescripcionProducto5'];
+                        $caracteristica5 = eliminar_palabras_sql($caracteristica5);
+                    } else {
+                        http_response_code(409); //codigo de conflicto
+                        $resultado = new stdClass();
+                        $resultado->result = FALSE;
+                        $resultado->icono = "error";
+                        $resultado->titulo = "Error!";
+                        $resultado->mensaje = 'Descripcion 5 Contiene Caracteres no Permitidos';
+                        echo json_encode($resultado);
+                        break;
+                    }
+
+
+                    if (isset($_POST['ModalEditar_agrupadosID']) && validar_string($_POST['ModalEditar_agrupadosID'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
+                        $id_agrupado = $_POST['ModalEditar_agrupadosdescripcionProducto5'];
+                        $id_agrupado = eliminar_palabras_sql($id_agrupado);
+                    } else {
+                        http_response_code(409); //codigo de conflicto
+                        $resultado = new stdClass();
+                        $resultado->result = FALSE;
+                        $resultado->icono = "error";
+                        $resultado->titulo = "Error!";
+                        $resultado->mensaje = 'Parametro no Valido';
+                        echo json_encode($resultado);
+                        break;
+                    }
+
+
+                    if (isset($_POST['ModalEditar_agrupadosMoneda']) &&  validar_int($_POST['ModalEditar_agrupadosMoneda'])) {
+                        $cod_moneda = $_POST['ModalEditar_agrupadosMoneda'];
+                        $cod_moneda = eliminar_palabras_sql($cod_moneda);
+                    } else {
+                        http_response_code(409); //codigo de conflicto
+                        $resultado = new stdClass();
+                        $resultado->result = FALSE;
+                        $resultado->icono = "error";
+                        $resultado->titulo = "Error!";
+                        $resultado->mensaje = 'Parametro No valido';
+                        echo json_encode($resultado);
+                        break;
+                    }
+                    
+                    if (isset($_POST['ModalEditar_id_producto']) && validar_string($_POST['ModalEditar_id_producto'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
+                        $id_producto = $_POST['ModalEditar_id_producto'];
+                        $id_producto = eliminar_palabras_sql($id_producto);
+                    } else {
+                        http_response_code(409); //codigo de conflicto
+                        $resultado = new stdClass();
+                        $resultado->result = FALSE;
+                        $resultado->icono = "error";
+                        $resultado->titulo = "Error!";
+                        $resultado->mensaje = 'Parametro no Valido';
+                        echo json_encode($resultado);
+                        break;
+                    }
+
+                    $id_admin = $_SESSION['Usuario']['id'];
+                    $consulta = "CALL adm_editar_producto_agupado('$id_agrupado','$id_producto','$caracteristica1','$caracteristica2','$caracteristica3','$caracteristica4','$caracteristica5','$cod_moneda','$id_admin')";
+                    $resultado = mysqli_query($conexion, $consulta);
+
+                    if ($resultado) {
+                        $data = mysqli_fetch_assoc($resultado);
+                        $resultado = new stdClass();
+                        $resultado->result = TRUE;
+                        $resultado->icono = "success";
+                        $resultado->titulo = "";
+                        $resultado->mensaje = $data['msg'];
+                        $resultado->data =  array(
+                            "status" => $data['status']
+                        );
+                        echo  json_encode($resultado);
+                        break;
+                    } else {
+                        http_response_code(409); //codigo de conflicto
+                        // Log this as a warning and keep an eye on these attempts
+                        $resultado = new stdClass();
+                        $resultado->result = FALSE;
+                        $resultado->icono = "error";
+                        $resultado->titulo = "Error!";
+                        $resultado->mensaje = 'Error Interno';
+                        echo json_encode($resultado);
+                        break;
+                    }
+                }
+            } else {
+                http_response_code(409); //codigo de conflicto
+                // Log this as a warning and keep an eye on these attempts
+                $resultado = new stdClass();
+                $resultado->result = FALSE;
+                $resultado->icono = "error";
+                $resultado->titulo = "Error!";
+                $resultado->mensaje = 'El token enviado no es valido';
+                echo json_encode($resultado);
+                break;
+            }
+        } else {
+            http_response_code(409); //codigo de conflicto
+            $resultado = new stdClass();
+            $resultado->result = FALSE;
+            $resultado->icono = "error";
+            $resultado->titulo = "Error!";
+            $resultado->mensaje = 'El token no fue enviado en el formulario';
+            echo json_encode($resultado);
+            break;
+        }
+        break;
 }
