@@ -42,12 +42,13 @@ switch ($method) {
 
                 include_once '../../php/conexion.php';
                 $consulta = "
-                SELECT
+                    SELECT
                     t1.*,
                     t3.nombre,
-                    t3.descripcion 
+                    t3.descripcion,
+                    t4.nombre AS categoria 
                 FROM
-                    productos t1
+                    productos AS t1
                     INNER JOIN (
                     SELECT
                         c4.id_grupo 
@@ -55,16 +56,18 @@ switch ($method) {
                         productos AS c1
                         INNER JOIN moneda_ref AS c2 ON c2.cod_moneda = c1.moneda
                         INNER JOIN stock AS c3 ON c1.id = c3.idProducto
-                        INNER JOIN productos_agrupados c4 ON c4.id_grupo = c1.id_grupo 
+                        INNER JOIN productos_agrupados AS c4 ON c4.id_grupo = c1.id_grupo 
                     WHERE
                         c4.id_grupo LIKE '%$id_agrupado%' 
                     GROUP BY
                         c4.nombre 
                     ORDER BY
                         c1.precio ASC 
-                        LIMIT 50 OFFSET 0 
-                    ) t2 ON t2.id_grupo = t1.id_grupo
-                    INNER JOIN productos_agrupados t3 ON t3.id_grupo = t1.id_grupo 
+                        LIMIT 0,
+                        50 
+                    ) AS t2 ON t2.id_grupo = t1.id_grupo
+                    INNER JOIN productos_agrupados AS t3 ON t3.id_grupo = t1.id_grupo
+                    INNER JOIN categorias AS t4 ON t3.categoria = t4.id 
                 ORDER BY
                     t1.id ASC";
                 $data = [];
