@@ -1113,7 +1113,7 @@
         })
     }
     $("#ModalEditar_agrupados").on("submit", async function(event) {
-
+        event.preventDefault();
         editar_producto_agrupado();
 
     });
