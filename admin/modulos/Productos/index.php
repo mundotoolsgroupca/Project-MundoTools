@@ -610,7 +610,7 @@
                                     return `
                                     <div class="[ flex gap-1 ]">
                                     <button
-                                    onclick='modal_editar_agrupados.show()'
+                                    onclick='modal.show()'
                                     type="button"
                                     data-te-ripple-init
                                     data-te-ripple-color="primary"
@@ -763,7 +763,7 @@
                                     return `
                                                         <div class="[ flex gap-1 ]">
                                                         <button
-                                                        onclick='modal.show()'
+                                                        onclick='modal_editar_agrupados.show()'
                                                         type="button"
                                                         data-te-ripple-init
                                                         data-te-ripple-color="primary"
