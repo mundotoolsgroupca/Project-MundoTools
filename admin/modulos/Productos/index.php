@@ -239,7 +239,7 @@
                 </svg>
             </span>
             <p id="titulo_tabla_agrupados" class="[ text-lg font-bold ]">Agrupados</p>
-            <span id="ProductosLoader"></span>
+            <span id="titulo_tabla_agrupadosLoader"></span>
 
         </div>
 
@@ -621,13 +621,13 @@
                 id_agrupado: id
             },
             beforeSend: () => {
-                $('#ProductosLoader').html(`<div class="inline-block h-4 w-4 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]" role="status">
+                $('#titulo_tabla_agrupadosLoader').html(`<div class="inline-block h-4 w-4 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]" role="status">
                                     <span class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
                                     </div>`);
 
             },
             success: (response) => {
-                $('#ProductosLoader').html(``);
+                $('#titulo_tabla_agrupadosLoader').html(``);
                 if (response.result == true) {
 
                     debugger
@@ -739,7 +739,7 @@
                 }
             },
             error: function(xhr, status) {
-                $('#ProductosLoader').html(``);
+                $('#titulo_tabla_agrupadosLoader').html(``);
                 let Toast = Swal.mixin({
                     toast: true,
                     position: 'top-end',
