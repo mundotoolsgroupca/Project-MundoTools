@@ -885,6 +885,7 @@
                 if (response.result == true) {
                     let id_grupo_producto = $('#ModalEditar_agrupadosID').val();
                     tabla_productos_agrupados_consultar(id_grupo_producto);
+                    modal_editar_agrupados.hide();
                     let Toast = Swal.mixin({
                         toast: true,
                         position: 'top-end',
