@@ -266,6 +266,10 @@ switch ($method) {
                     $consulta = "CALL adm_editar_producto_agupado('$id_agrupado','$id_producto','$caracteristica1','$caracteristica2','$caracteristica3','$caracteristica4','$caracteristica5','$cod_moneda','$id_admin')";
                     $resultado = mysqli_query($conexion, $consulta);
 
+
+                    echo $consulta;
+                    return;
+
                     if ($resultado) {
                         $data = mysqli_fetch_assoc($resultado);
 
