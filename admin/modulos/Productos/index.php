@@ -648,19 +648,19 @@
                                 "data": "categoria"
                             },
                             {
-                                "data": "descripcion"
+                                "data": "caracteristica"
                             },
                             {
-                                "data": "descripcion2"
+                                "data": "caracteristica2"
                             },
                             {
-                                "data": "descripcion3"
+                                "data": "caracteristica3"
                             },
                             {
-                                "data": "descripcion4"
+                                "data": "caracteristica4"
                             },
                             {
-                                "data": "descripcion5"
+                                "data": "caracteristica5"
                             },
                             {
                                 "data": "precio"
