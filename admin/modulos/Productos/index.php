@@ -625,12 +625,8 @@
             success: (response) => {
                 $('#ProductosLoader').html(``);
                 if (response.result == true) {
-                    
-                    $('#tabla_producto tbody').on('click', 'tr', function() {
-                        debugger
-                        data = tabla_agrupados_data.row(this).data();
-                        $('#titulo_tabla_agrupados').html(`${data.nombre}`);
-                    });
+
+
                     tabla_agrupados_data = $('#tabla_agrupados_producto').DataTable({
                         "bDestroy": true,
                         order: [
@@ -761,6 +757,11 @@
 
     }
 
+    $('#tabla_producto tbody').on('click', 'tr', function() {
+        debugger
+        data = tabla_agrupados_data.row(this).data();
+        $('#titulo_tabla_agrupados').html(`${data.nombre}`);
+    });
     $('#tabla_producto tbody').on('click', 'tr', function() {
 
         let data = tabla_producto.row(this).data();
