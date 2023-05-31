@@ -252,7 +252,7 @@
                                 </p>
                             </blockquote>
                         </figure>
-                        <div class="[ flex gap-3 flex-col ]">
+                        <div class="[ flex gap-3 flex-col mt-3 ]">
                             <input class="[ hidden ]" type="text" name="ModalEditar_agrupadosID" id="ModalEditar_agrupadosID" />
 
                             <div class="relative w-full" data-te-input-wrapper-init>
