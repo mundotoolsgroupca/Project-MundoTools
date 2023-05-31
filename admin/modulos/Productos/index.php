@@ -238,7 +238,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15m0 0l6.75 6.75M4.5 12l6.75-6.75" />
                 </svg>
             </span>
-            <p id="titulo_tabla_agrupados" class="[ text-lg font-bold ]">LOREM</p>
+            <p id="titulo_tabla_agrupados" class="[ text-lg font-bold ]">Agrupados</p>
             <span id="ProductosLoader"></span>
 
         </div>
@@ -279,8 +279,8 @@
 </div>
 <script id="tailwindelements_script" src="./assets/js/tw-elements.umd.min.js"></script>
 <script>
-    tabla_producto = new DataTable('#tabla_producto');
-    tabla_agrupados_data = new DataTable('#tabla_agrupados_producto');
+    let tabla_producto = new DataTable('#tabla_producto');
+    let tabla_agrupados_data = new DataTable('#tabla_agrupados_producto');
     Producto_consulta();
 
     function toggle(id) {
@@ -756,12 +756,12 @@
         });
 
     }
-
-    $('#tabla_producto tbody').on('click', 'tr', function() {
-        debugger
-        data = tabla_agrupados_data.row(this).data();
-        $('#titulo_tabla_agrupados').html(`${data.nombre}`);
-    });
+     
+        $('#tabla_producto tbody').on('click', 'tr', function() {
+            debugger
+            data = tabla_agrupados_data.row(this).data();
+            $('#titulo_tabla_agrupados').html(`${data.nombre}`);
+        }); 
     $('#tabla_producto tbody').on('click', 'tr', function() {
 
         let data = tabla_producto.row(this).data();
