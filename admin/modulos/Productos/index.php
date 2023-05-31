@@ -262,7 +262,7 @@
                                         <th scope="col" class="px-6 py-4">Precio</th>
                                         <th scope="col" class="px-6 py-4">Moneda</th>
                                         <th scope="col" class="px-6 py-4">Acciones</th>
-                                        
+
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -289,6 +289,11 @@
 
 
     }
+
+    $('#tabla_producto tbody').on('click', 'tr', function() {
+        tabla_agrupados_data = table.row(this).data();
+        $('#titulo_tabla_agrupados').html(`${data.nombre}`);
+    });
 
     function agrupados_view(id) {
 
