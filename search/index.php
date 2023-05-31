@@ -432,6 +432,7 @@
                                                                                 <th scope="col" class="px-6 py-4">caracteristica3</th>
                                                                                 <th scope="col" class="px-6 py-4">caracteristica4</th>
                                                                                 <th scope="col" class="px-6 py-4">caracteristica5</th>
+                                                                                <th scope="col" class="px-6 py-4">Precio</th>
                                                                             </tr>
                                                                         </thead>
                                                                         <tbody class='font-bold'>
