@@ -363,6 +363,18 @@
     }
 
 
+    $('#tabla_agrupados_producto tbody').on('click', 'tr', function() {
+        debugger
+        data = tabla_agrupados_data.row(this).data();
+        $('#ModalEditar_agrupadosID').val(data.id);
+        $('#ModalEditar_agrupadosdescripcionProducto').val(data.descripcion);
+        $('#ModalEditar_agrupadosdescripcionProducto2').val(data.descripcion2);
+        $('#ModalEditar_agrupadosdescripcionProducto3').val(data.descripcion3);
+        $('#ModalEditar_agrupadosdescripcionProducto4').val(data.descripcion4);
+        $('#ModalEditar_agrupadosdescripcionProducto5').val(data.descripcion5);
+        $('#titulo_tabla_agrupados').html(`${data.nombre}`);
+    });
+
 
     function agrupados_view(id) {
 
@@ -523,17 +535,7 @@
     });
 
 
-    $('#tabla_producto tbody').on('click', 'tr', function() {
-        debugger
-        data = tabla_producto.row(this).data();
-        $('#ModalEditar_agrupadosID').val(data.id);
-        $('#ModalEditar_agrupadosdescripcionProducto').val(data.descripcion);
-        $('#ModalEditar_agrupadosdescripcionProducto2').val(data.descripcion2);
-        $('#ModalEditar_agrupadosdescripcionProducto3').val(data.descripcion3);
-        $('#ModalEditar_agrupadosdescripcionProducto4').val(data.descripcion4);
-        $('#ModalEditar_agrupadosdescripcionProducto5').val(data.descripcion5);
-        $('#titulo_tabla_agrupados').html(`${data.nombre}`);
-    });
+
 
 
 
