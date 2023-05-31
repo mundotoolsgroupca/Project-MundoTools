@@ -859,6 +859,88 @@
     }
 
 
+    function editar_producto_agrupado() {
+        $.ajax({
+            url: "./api-v1/productos/agrupados.php",
+            type: 'POST',
+            data: {
+                _method: "PUT",
+                data: $("#ModalEditar_agrupados").serialize()
+            },
+            headers: {
+                'x-csrf-token': $('meta[name="csrf-token"]').attr('content')
+            },
+
+            beforeSend: () => {
+                $('#ModalEditar_agrupadosLoader').html(`<div class="inline-block h-4 w-4 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]" role="status">
+                                    <span class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
+                                    </div>`);
+
+            },
+            success: (response) => {
+                $('#ModalEditar_agrupadosLoader').html(``);
+                if (response.result == true) {
+
+                    let Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    });
+
+                    Toast.fire({
+                        icon: 'success',
+                        title: response.mensaje
+                    });
+
+                } else {
+                    let Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    });
+
+                    Toast.fire({
+                        icon: 'error',
+                        title: response.mensaje
+                    });
+
+                }
+            },
+            error: function(xhr, status) {
+                $('#ModalEditar_agrupadosLoader').html(``);
+                let Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                });
+
+                Toast.fire({
+                    icon: 'error',
+                    title: xhr.responseJSON.mensaje
+                });
+            },
+        });
+
+    }
+
     $('#tabla_producto tbody').on('click', 'tr', function() {
 
         let data = tabla_producto.row(this).data();
