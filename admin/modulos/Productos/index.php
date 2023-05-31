@@ -650,7 +650,18 @@
                             {
                                 "data": "descripcion"
                             },
-
+                            {
+                                "data": "descripcion2"
+                            },
+                            {
+                                "data": "descripcion3"
+                            },
+                            {
+                                "data": "descripcion4"
+                            },
+                            {
+                                "data": "descripcion5"
+                            },
                             {
                                 "data": "precio"
                             },
