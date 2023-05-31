@@ -144,7 +144,13 @@ switch ($method) {
             if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'])) {
                 if ($_POST['_method'] == "PUT") {
 
+                    $formDataString = $_POST['data'];
+                    $formDataArray = array();
+                    parse_str($formDataString, $formDataArray);
+                    $_POST['data'] = $formDataArray;
+
                     echo json_encode($_POST);
+                    return;
 
                     if (isset($_POST['data']['ModalEditar_agrupadosdescripcionProducto']) && validar_string($_POST['data']['ModalEditar_agrupadosdescripcionProducto'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$&/ ')) {
                         $caracteristica1 = $_POST['data']['ModalEditar_agrupadosdescripcionProducto'];
