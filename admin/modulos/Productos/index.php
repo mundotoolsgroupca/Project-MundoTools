@@ -254,6 +254,7 @@
                         </figure>
                         <div class="[ flex gap-3 flex-col mt-3 ]">
                             <input class="[ hidden ]" type="text" name="ModalEditar_agrupadosID" id="ModalEditar_agrupadosID" />
+                            <input class="[ hidden ]" type="text" name="ModalEditar_id_producto" id="ModalEditar_id_producto" />
 
                             <div class="relative w-full" data-te-input-wrapper-init>
                                 <input maxlength="40" type="text" class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0" name="ModalEditar_agrupadosdescripcionProducto" id="ModalEditar_agrupadosdescripcionProducto" placeholder="Example label" />
@@ -298,7 +299,7 @@
                         <button type="button" class="inline-block rounded bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200" data-te-modal-dismiss data-te-ripple-init data-te-ripple-color="light">
                             Cancelar
                         </button>
-                        <button onclick="editar_producto_agrupado()" class="ml-1 inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]" data-te-ripple-init data-te-ripple-color="light">
+                        <button type="submit" class="ml-1 inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]" data-te-ripple-init data-te-ripple-color="light">
                             Guardar
                         </button>
                     </div>
@@ -380,7 +381,8 @@
         debugger
 
         data = tabla_agrupados_data.row(this).data();
-        $('#ModalEditar_agrupadosID').val(data.id);
+        $('#ModalEditar_agrupadosID').val(data.id_grupo);
+        $('#ModalEditar_id_producto').val(data.id);
         $('#ModalEditar_agrupadosTitulo').html(data.nombre);
         $('#ModalEditar_agrupadosdescripcionProducto').val(data.caracteristica);
         $('#ModalEditar_agrupadosdescripcionProducto2').val(data.caracteristica2);
@@ -1110,6 +1112,11 @@
             }
         })
     }
+    $("#ModalEditar_agrupados").on("submit", async function(event) {
+
+        editar_producto_agrupado();
+
+    });
     $("#nuevoproductoform").on("submit", async function(event) {
         event.preventDefault();
         let formdata = new FormData(event.currentTarget);
