@@ -290,11 +290,7 @@
 
     }
 
-    $('#tabla_producto tbody').on('click', 'tr', function() {
-        debugger
-        data = tabla_agrupados_data.row(this).data();
-        $('#titulo_tabla_agrupados').html(`${data.nombre}`);
-    });
+
 
     function agrupados_view(id) {
 
@@ -716,6 +712,10 @@
 
                         ],
                         responsive: true,
+                    });
+                    $('#tabla_producto tbody').on('click', 'tr', function() {
+                        data = tabla_agrupados_data.row(this).data();
+                        $('#titulo_tabla_agrupados').html(`${data.nombre}`);
                     });
                 } else {
                     let Toast = Swal.mixin({
