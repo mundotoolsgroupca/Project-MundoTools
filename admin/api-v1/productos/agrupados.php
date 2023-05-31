@@ -211,7 +211,7 @@ switch ($method) {
                     }
 
 
-                    if (isset($_POST['data']['ModalEditar_agrupadosID']) && validar_string($_POST['data']['ModalEditar_agrupadosID'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$&/ ')) {
+                    if (isset($_POST['data']['ModalEditar_agrupadosID']) && validar_string($_POST['data']['ModalEditar_agrupadosID'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
                         $id_agrupado = $_POST['data']['ModalEditar_agrupadosdescripcionProducto5'];
                         $id_agrupado = eliminar_palabras_sql($id_agrupado);
                     } else {
@@ -240,7 +240,7 @@ switch ($method) {
                         break;
                     }
 
-                    if (isset($_POST['data']['ModalEditar_id_producto']) && validar_string($_POST['data']['ModalEditar_id_producto'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$&/ ')) {
+                    if (isset($_POST['data']['ModalEditar_id_producto']) && validar_string($_POST['data']['ModalEditar_id_producto'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
                         $id_producto = $_POST['data']['ModalEditar_id_producto'];
                         $id_producto = eliminar_palabras_sql($id_producto);
                     } else {
