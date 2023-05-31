@@ -219,7 +219,7 @@ switch ($method) {
 
 
                     if (isset($_POST['data']['ModalEditar_agrupadosID']) && validar_string($_POST['data']['ModalEditar_agrupadosID'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
-                        $id_agrupado = $_POST['data']['ModalEditar_agrupadoscaracteristicaProducto5'];
+                        $id_agrupado = $_POST['data']['ModalEditar_agrupadosID'];
                         $id_agrupado = eliminar_palabras_sql($id_agrupado);
                     } else {
                         http_response_code(409); //codigo de conflicto
