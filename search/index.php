@@ -1151,7 +1151,7 @@
             let carritostorage = typeof localStorage.CARRITO == "undefined" ? [] : JSON.parse(localStorage.CARRITO);
 
             function modalinfoview(id) {
-                
+
                 let validar = arrresult.some(item => item.id === id);
 
                 if (validar) {
@@ -1188,6 +1188,7 @@
                             <td class="whitespace-nowrap px-6 py-4">${item.caracteristica3}</td>
                             <td class="whitespace-nowrap px-6 py-4">${item.caracteristica4}</td>
                             <td class="whitespace-nowrap px-6 py-4">${item.caracteristica5}</td>
+                            <td class="whitespace-nowrap px-6 py-4">${item.precio+""+item.simbolo}</td>
                         </tr>
                     
                     `);
