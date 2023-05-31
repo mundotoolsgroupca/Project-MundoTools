@@ -367,11 +367,11 @@
         debugger
         data = tabla_agrupados_data.row(this).data();
         $('#ModalEditar_agrupadosID').val(data.id);
-        $('#ModalEditar_agrupadosdescripcionProducto').val(data.descripcion);
-        $('#ModalEditar_agrupadosdescripcionProducto2').val(data.descripcion2);
-        $('#ModalEditar_agrupadosdescripcionProducto3').val(data.descripcion3);
-        $('#ModalEditar_agrupadosdescripcionProducto4').val(data.descripcion4);
-        $('#ModalEditar_agrupadosdescripcionProducto5').val(data.descripcion5);
+        $('#ModalEditar_agrupadosdescripcionProducto').val(data.caracteristica2);
+        $('#ModalEditar_agrupadosdescripcionProducto2').val(data.caracteristica2);
+        $('#ModalEditar_agrupadosdescripcionProducto3').val(data.caracteristica3);
+        $('#ModalEditar_agrupadosdescripcionProducto4').val(data.caracteristica4);
+        $('#ModalEditar_agrupadosdescripcionProducto5').val(data.caracteristica5);
         $('#titulo_tabla_agrupados').html(`${data.nombre}`);
     });
 
