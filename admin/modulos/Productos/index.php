@@ -241,16 +241,17 @@
                         </svg>
                     </button>
                 </div>
-                <figure>
-                    <blockquote>
-                        <p class="text-xl" id="ModalEditar_agrupadosTitulo">
 
-                        </p>
-                    </blockquote>
-                </figure>
                 <form id="ModalEditar_agrupados" method="post">
                     <!-------Modal body-->
                     <div data-te-modal-body-ref class="relative p-4">
+                        <figure>
+                            <blockquote>
+                                <p class="text-xl" id="ModalEditar_agrupadosTitulo">
+
+                                </p>
+                            </blockquote>
+                        </figure>
                         <div class="[ flex gap-3 flex-col ]">
                             <input class="[ hidden ]" type="text" name="ModalEditar_agrupadosID" id="ModalEditar_agrupadosID" />
 
