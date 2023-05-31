@@ -158,7 +158,7 @@
     </div>
 
     <!-- Modulo -->
-    <div class="[ h-auto rounded-lg bg-white p-6 shadow-lg w-full ] [ lg:w-4/5 lg:h-full  ]">
+    <div class="[ h-full rounded-lg bg-white p-6 shadow-lg w-full ] [ lg:w-4/5   ]">
         <div class="[ flex items-center gap-1 flex-nowrap mb-3 ]">
             <p class="[ text-lg font-bold ]">Productos</p>
             <span id="ProductosLoader"></span>
