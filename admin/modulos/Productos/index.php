@@ -291,7 +291,8 @@
     }
 
     $('#tabla_producto tbody').on('click', 'tr', function() {
-        tabla_agrupados_data = table.row(this).data();
+        debugger
+        tabla_agrupados_data = tabla_agrupados_data.row(this).data();
         $('#titulo_tabla_agrupados').html(`${data.nombre}`);
     });
 
