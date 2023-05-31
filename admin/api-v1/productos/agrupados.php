@@ -46,7 +46,8 @@ switch ($method) {
                     t1.*,
                     t3.nombre,
                     t3.descripcion,
-                    t4.nombre AS categoria 
+                    t4.nombre AS categoria,
+                    moneda_ref.simbolo 
                 FROM
                     productos AS t1
                     INNER JOIN (
@@ -68,6 +69,7 @@ switch ($method) {
                     ) AS t2 ON t2.id_grupo = t1.id_grupo
                     INNER JOIN productos_agrupados AS t3 ON t3.id_grupo = t1.id_grupo
                     INNER JOIN categorias AS t4 ON t3.categoria = t4.id 
+                    INNER JOIN moneda_ref ON t1.moneda = moneda_ref.cod_moneda 
                 ORDER BY
                     t1.id ASC";
                 $data = [];
