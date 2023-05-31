@@ -253,6 +253,7 @@
                                     <tr>
                                         <th scope="col" class="px-6 py-4">ID</th>
                                         <th scope="col" class="px-6 py-4">Nombre</th>
+                                        <th scope="col" class="px-6 py-4">Categoria</th>
                                         <th scope="col" class="px-6 py-4">Descripcion1</th>
                                         <th scope="col" class="px-6 py-4">Descripcion2</th>
                                         <th scope="col" class="px-6 py-4">Descripcion3</th>
