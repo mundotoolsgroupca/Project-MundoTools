@@ -24,7 +24,7 @@ switch ($method) {
             if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'])) {
 
                 include_once '../../php/FuncionesGenerales.php';
-                if (isset($_GET['id_agrupado']) && validar_string($_GET['id_agrupado'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$&/ ')) {
+                if (isset($_GET['id_agrupado']) && validar_string($_GET['id_agrupado'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$&/: ')) {
                     $id_agrupado = $_GET['id_agrupado'];
                     $id_agrupado = eliminar_palabras_sql($id_agrupado);
                 } else {
@@ -149,10 +149,9 @@ switch ($method) {
                     parse_str($formDataString, $formDataArray);
                     $_POST['data'] = $formDataArray;
 
-                    echo json_encode($_POST['data']['ModalEditar_agrupadoscaracteristicaProducto']);
-                    return;
 
-                    if (isset($_POST['data']['ModalEditar_agrupadoscaracteristicaProducto']) && validar_string($_POST['data']['ModalEditar_agrupadoscaracteristicaProducto'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$&/ ')) {
+
+                    if (isset($_POST['data']['ModalEditar_agrupadoscaracteristicaProducto']) && validar_string($_POST['data']['ModalEditar_agrupadoscaracteristicaProducto'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$&/: ')) {
                         $caracteristica1 = $_POST['data']['ModalEditar_agrupadoscaracteristicaProducto'];
                         $caracteristica1 = eliminar_palabras_sql($caracteristica1);
                     } else {
@@ -165,7 +164,7 @@ switch ($method) {
                         echo json_encode($resultado);
                         break;
                     }
-                    if (isset($_POST['data']['ModalEditar_agrupadoscaracteristicaProducto2']) && validar_string($_POST['data']['ModalEditar_agrupadoscaracteristicaProducto2'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$&/ ')) {
+                    if (isset($_POST['data']['ModalEditar_agrupadoscaracteristicaProducto2']) && validar_string($_POST['data']['ModalEditar_agrupadoscaracteristicaProducto2'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$&/: ')) {
                         $caracteristica2 = $_POST['data']['ModalEditar_agrupadoscaracteristicaProducto2'];
                         $caracteristica2 = eliminar_palabras_sql($caracteristica2);
                     } else {
@@ -178,7 +177,7 @@ switch ($method) {
                         echo json_encode($resultado);
                         break;
                     }
-                    if (isset($_POST['data']['ModalEditar_agrupadoscaracteristicaProducto3']) && validar_string($_POST['data']['ModalEditar_agrupadoscaracteristicaProducto3'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$&/ ')) {
+                    if (isset($_POST['data']['ModalEditar_agrupadoscaracteristicaProducto3']) && validar_string($_POST['data']['ModalEditar_agrupadoscaracteristicaProducto3'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$&/: ')) {
                         $caracteristica3 = $_POST['data']['ModalEditar_agrupadoscaracteristicaProducto3'];
                         $caracteristica3 = eliminar_palabras_sql($caracteristica3);
                     } else {
@@ -191,7 +190,7 @@ switch ($method) {
                         echo json_encode($resultado);
                         break;
                     }
-                    if (isset($_POST['data']['ModalEditar_agrupadoscaracteristicaProducto4']) && validar_string($_POST['data']['ModalEditar_agrupadoscaracteristicaProducto4'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$&/ ')) {
+                    if (isset($_POST['data']['ModalEditar_agrupadoscaracteristicaProducto4']) && validar_string($_POST['data']['ModalEditar_agrupadoscaracteristicaProducto4'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$&/: ')) {
                         $caracteristica4 = $_POST['data']['ModalEditar_agrupadoscaracteristicaProducto4'];
                         $caracteristica4 = eliminar_palabras_sql($caracteristica4);
                     } else {
@@ -204,7 +203,7 @@ switch ($method) {
                         echo json_encode($resultado);
                         break;
                     }
-                    if (isset($_POST['data']['ModalEditar_agrupadoscaracteristicaProducto5']) && validar_string($_POST['data']['ModalEditar_agrupadoscaracteristicaProducto5'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$&/ ')) {
+                    if (isset($_POST['data']['ModalEditar_agrupadoscaracteristicaProducto5']) && validar_string($_POST['data']['ModalEditar_agrupadoscaracteristicaProducto5'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$&/: ')) {
                         $caracteristica5 = $_POST['data']['ModalEditar_agrupadoscaracteristicaProducto5'];
                         $caracteristica5 = eliminar_palabras_sql($caracteristica5);
                     } else {
