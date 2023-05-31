@@ -524,6 +524,7 @@
 
 
     $('#tabla_producto tbody').on('click', 'tr', function() {
+        debugger
         data = tabla_producto.row(this).data();
         $('#ModalEditar_agrupadosID').val(data.id);
         $('#ModalEditar_agrupadosdescripcionProducto').val(data.descripcion);
