@@ -241,6 +241,13 @@
                         </svg>
                     </button>
                 </div>
+                <figure>
+                    <blockquote>
+                        <p class="text-xl" id="ModalEditar_agrupadosTitulo">
+
+                        </p>
+                    </blockquote>
+                </figure>
                 <form id="ModalEditar_agrupados" method="post">
                     <!-------Modal body-->
                     <div data-te-modal-body-ref class="relative p-4">
@@ -373,6 +380,7 @@
 
         data = tabla_agrupados_data.row(this).data();
         $('#ModalEditar_agrupadosID').val(data.id);
+        $('#ModalEditar_agrupadosTitulo').val(data.nombre);
         $('#ModalEditar_agrupadosdescripcionProducto').val(data.caracteristica);
         $('#ModalEditar_agrupadosdescripcionProducto2').val(data.caracteristica2);
         $('#ModalEditar_agrupadosdescripcionProducto3').val(data.caracteristica3);
