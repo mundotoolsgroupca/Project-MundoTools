@@ -262,6 +262,7 @@ switch ($method) {
                     }
 
                     $id_admin = $_SESSION['Usuario']['id'];
+                    include '../../php/conexion.php';
                     $consulta = "CALL adm_editar_producto_agupado('$id_agrupado','$id_producto','$caracteristica1','$caracteristica2','$caracteristica3','$caracteristica4','$caracteristica5','$cod_moneda','$id_admin')";
                     $resultado = mysqli_query($conexion, $consulta);
 
