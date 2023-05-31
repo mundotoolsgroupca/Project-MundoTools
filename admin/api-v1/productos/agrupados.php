@@ -124,7 +124,7 @@ switch ($method) {
             break;
         }
     case 'POST':
-        include "./php/FuncionesGenerales.php";
+        include '../../php/FuncionesGenerales.php';
         session_name("ecomercer_admin_data");
         session_start();
         $http = getallheaders();
