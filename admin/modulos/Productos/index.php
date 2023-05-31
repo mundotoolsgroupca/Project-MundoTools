@@ -883,7 +883,8 @@
             success: (response) => {
                 $('#ModalEditar_agrupadosLoader').html(``);
                 if (response.result == true) {
-
+                    let id_grupo_producto = $('#ModalEditar_agrupadosID').val();
+                    tabla_productos_agrupados_consultar(id_grupo_producto);
                     let Toast = Swal.mixin({
                         toast: true,
                         position: 'top-end',
