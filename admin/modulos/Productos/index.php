@@ -625,8 +625,12 @@
             success: (response) => {
                 $('#ProductosLoader').html(``);
                 if (response.result == true) {
-                    console.log(response.data);
-
+                    
+                    $('#tabla_producto tbody').on('click', 'tr', function() {
+                        debugger
+                        data = tabla_agrupados_data.row(this).data();
+                        $('#titulo_tabla_agrupados').html(`${data.nombre}`);
+                    });
                     tabla_agrupados_data = $('#tabla_agrupados_producto').DataTable({
                         "bDestroy": true,
                         order: [
@@ -713,11 +717,7 @@
                         ],
                         responsive: true,
                     });
-                    $('#tabla_producto tbody').on('click', 'tr', function() {
-                        debugger
-                        data = tabla_agrupados_data.row(this).data();
-                        $('#titulo_tabla_agrupados').html(`${data.nombre}`);
-                    });
+
                 } else {
                     let Toast = Swal.mixin({
                         toast: true,
