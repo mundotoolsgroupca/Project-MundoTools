@@ -261,6 +261,8 @@
                                         <th scope="col" class="px-6 py-4">Descripcion5</th>
                                         <th scope="col" class="px-6 py-4">Precio</th>
                                         <th scope="col" class="px-6 py-4">Moneda</th>
+                                        <th scope="col" class="px-6 py-4">Acciones</th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
