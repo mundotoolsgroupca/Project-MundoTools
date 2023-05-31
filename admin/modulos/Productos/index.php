@@ -378,6 +378,7 @@
         $('#ModalEditar_agrupadosdescripcionProducto3').val(data.caracteristica3);
         $('#ModalEditar_agrupadosdescripcionProducto4').val(data.caracteristica4);
         $('#ModalEditar_agrupadosdescripcionProducto5').val(data.caracteristica5);
+        document.getElementById("ModalEditar_agrupadosMoneda").value = data.moneda;
 
     });
 
