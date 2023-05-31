@@ -24,7 +24,7 @@ switch ($method) {
             if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'])) {
 
                 include_once '../../php/FuncionesGenerales.php';
-                if (isset($_GET['id_agrupado']) && validar_string($_GET['id_agrupado'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
+                if (isset($_GET['id_agrupado']) && validar_string($_GET['id_agrupado'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$&/ ')) {
                     $id_agrupado = $_GET['id_agrupado'];
                     $id_agrupado = eliminar_palabras_sql($id_agrupado);
                 } else {
@@ -144,7 +144,7 @@ switch ($method) {
             if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'])) {
                 if ($_POST['_method'] == "PUT") {
 
-                    if (isset($_POST['data']['ModalEditar_agrupadosdescripcionProducto']) && validar_string($_POST['data']['ModalEditar_agrupadosdescripcionProducto'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
+                    if (isset($_POST['data']['ModalEditar_agrupadosdescripcionProducto']) && validar_string($_POST['data']['ModalEditar_agrupadosdescripcionProducto'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$&/ ')) {
                         $caracteristica1 = $_POST['data']['ModalEditar_agrupadosdescripcionProducto'];
                         $caracteristica1 = eliminar_palabras_sql($caracteristica1);
                     } else {
@@ -153,11 +153,11 @@ switch ($method) {
                         $resultado->result = FALSE;
                         $resultado->icono = "error";
                         $resultado->titulo = "Error!";
-                        $resultado->mensaje = 'Descripcion 1 Contiene Caracteres no Permitidos';
+                        $resultado->mensaje = 'Caracteristica 1 Contiene Caracteres no Permitidos';
                         echo json_encode($resultado);
                         break;
                     }
-                    if (isset($_POST['data']['ModalEditar_agrupadosdescripcionProducto2']) && validar_string($_POST['data']['ModalEditar_agrupadosdescripcionProducto2'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
+                    if (isset($_POST['data']['ModalEditar_agrupadosdescripcionProducto2']) && validar_string($_POST['data']['ModalEditar_agrupadosdescripcionProducto2'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$&/ ')) {
                         $caracteristica2 = $_POST['data']['ModalEditar_agrupadosdescripcionProducto2'];
                         $caracteristica2 = eliminar_palabras_sql($caracteristica2);
                     } else {
@@ -166,11 +166,11 @@ switch ($method) {
                         $resultado->result = FALSE;
                         $resultado->icono = "error";
                         $resultado->titulo = "Error!";
-                        $resultado->mensaje = 'Descripcion 2 Contiene Caracteres no Permitidos';
+                        $resultado->mensaje = 'Caracteristica 2 Contiene Caracteres no Permitidos';
                         echo json_encode($resultado);
                         break;
                     }
-                    if (isset($_POST['data']['ModalEditar_agrupadosdescripcionProducto3']) && validar_string($_POST['data']['ModalEditar_agrupadosdescripcionProducto3'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
+                    if (isset($_POST['data']['ModalEditar_agrupadosdescripcionProducto3']) && validar_string($_POST['data']['ModalEditar_agrupadosdescripcionProducto3'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$&/ ')) {
                         $caracteristica3 = $_POST['data']['ModalEditar_agrupadosdescripcionProducto3'];
                         $caracteristica3 = eliminar_palabras_sql($caracteristica3);
                     } else {
@@ -179,11 +179,11 @@ switch ($method) {
                         $resultado->result = FALSE;
                         $resultado->icono = "error";
                         $resultado->titulo = "Error!";
-                        $resultado->mensaje = 'Descripcion 3 Contiene Caracteres no Permitidos';
+                        $resultado->mensaje = 'Caracteristica 3 Contiene Caracteres no Permitidos';
                         echo json_encode($resultado);
                         break;
                     }
-                    if (isset($_POST['data']['ModalEditar_agrupadosdescripcionProducto4']) && validar_string($_POST['data']['ModalEditar_agrupadosdescripcionProducto4'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
+                    if (isset($_POST['data']['ModalEditar_agrupadosdescripcionProducto4']) && validar_string($_POST['data']['ModalEditar_agrupadosdescripcionProducto4'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$&/ ')) {
                         $caracteristica4 = $_POST['data']['ModalEditar_agrupadosdescripcionProducto4'];
                         $caracteristica4 = eliminar_palabras_sql($caracteristica4);
                     } else {
@@ -192,11 +192,11 @@ switch ($method) {
                         $resultado->result = FALSE;
                         $resultado->icono = "error";
                         $resultado->titulo = "Error!";
-                        $resultado->mensaje = 'Descripcion 4 Contiene Caracteres no Permitidos';
+                        $resultado->mensaje = 'Caracteristica 4 Contiene Caracteres no Permitidos';
                         echo json_encode($resultado);
                         break;
                     }
-                    if (isset($_POST['data']['ModalEditar_agrupadosdescripcionProducto5']) && validar_string($_POST['data']['ModalEditar_agrupadosdescripcionProducto5'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
+                    if (isset($_POST['data']['ModalEditar_agrupadosdescripcionProducto5']) && validar_string($_POST['data']['ModalEditar_agrupadosdescripcionProducto5'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$&/ ')) {
                         $caracteristica5 = $_POST['data']['ModalEditar_agrupadosdescripcionProducto5'];
                         $caracteristica5 = eliminar_palabras_sql($caracteristica5);
                     } else {
@@ -205,13 +205,13 @@ switch ($method) {
                         $resultado->result = FALSE;
                         $resultado->icono = "error";
                         $resultado->titulo = "Error!";
-                        $resultado->mensaje = 'Descripcion 5 Contiene Caracteres no Permitidos';
+                        $resultado->mensaje = 'Caracteristica 5 Contiene Caracteres no Permitidos';
                         echo json_encode($resultado);
                         break;
                     }
 
 
-                    if (isset($_POST['data']['ModalEditar_agrupadosID']) && validar_string($_POST['data']['ModalEditar_agrupadosID'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
+                    if (isset($_POST['data']['ModalEditar_agrupadosID']) && validar_string($_POST['data']['ModalEditar_agrupadosID'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$&/ ')) {
                         $id_agrupado = $_POST['data']['ModalEditar_agrupadosdescripcionProducto5'];
                         $id_agrupado = eliminar_palabras_sql($id_agrupado);
                     } else {
@@ -240,7 +240,7 @@ switch ($method) {
                         break;
                     }
 
-                    if (isset($_POST['data']['ModalEditar_id_producto']) && validar_string($_POST['data']['ModalEditar_id_producto'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
+                    if (isset($_POST['data']['ModalEditar_id_producto']) && validar_string($_POST['data']['ModalEditar_id_producto'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$&/ ')) {
                         $id_producto = $_POST['data']['ModalEditar_id_producto'];
                         $id_producto = eliminar_palabras_sql($id_producto);
                     } else {
