@@ -144,6 +144,8 @@ switch ($method) {
             if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'])) {
                 if ($_POST['_method'] == "PUT") {
 
+                    echo json_encode($_POST);
+
                     if (isset($_POST['data']['ModalEditar_agrupadosdescripcionProducto']) && validar_string($_POST['data']['ModalEditar_agrupadosdescripcionProducto'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$&/ ')) {
                         $caracteristica1 = $_POST['data']['ModalEditar_agrupadosdescripcionProducto'];
                         $caracteristica1 = eliminar_palabras_sql($caracteristica1);
