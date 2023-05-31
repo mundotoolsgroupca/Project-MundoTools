@@ -149,7 +149,7 @@ switch ($method) {
                     parse_str($formDataString, $formDataArray);
                     $_POST['data'] = $formDataArray;
 
-                    echo json_encode($_POST['data']);
+                    echo json_encode($_POST['data']['ModalEditar_agrupadoscaracteristicaProducto']);
 
                     if (isset($_POST['data']['ModalEditar_agrupadoscaracteristicaProducto']) && validar_string($_POST['data']['ModalEditar_agrupadoscaracteristicaProducto'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$&/ ')) {
                         $caracteristica1 = $_POST['data']['ModalEditar_agrupadoscaracteristicaProducto'];
