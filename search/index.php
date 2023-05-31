@@ -1151,7 +1151,7 @@
             let carritostorage = typeof localStorage.CARRITO == "undefined" ? [] : JSON.parse(localStorage.CARRITO);
 
             function modalinfoview(id) {
-                debugger
+                
                 let validar = arrresult.some(item => item.id === id);
 
                 if (validar) {

@@ -398,7 +398,7 @@ if (!isset($_SESSION['usuario'])) {
 
 
             beforeSend: () => {
-                debugger
+                
                 if (typeof tabla_orden_Detalle != 'undefined') { //la variable debe estar iniciada para poder limpiar la tabla
                     tabla_orden_Detalle.clear().draw();
                 }

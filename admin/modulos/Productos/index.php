@@ -378,7 +378,7 @@
 
 
     $('#tabla_agrupados_producto tbody').on('click', 'tr', function() {
-        debugger
+        
 
         data = tabla_agrupados_data.row(this).data();
         $('#ModalEditar_agrupadosID').val(data.id_grupo);
@@ -862,7 +862,7 @@
 
 
     function editar_producto_agrupado() {
-        debugger
+        
         $.ajax({
             url: "./api-v1/productos/agrupados.php",
             type: 'POST',
