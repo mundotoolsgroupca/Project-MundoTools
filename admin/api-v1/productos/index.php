@@ -31,25 +31,16 @@ switch ($method) {
 
                 if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'])) {
                     $consulta = "
-                    SELECT
-                    c1.id,
-                    c1.id_grupo,
-                    c2.nombre,
-                    c4.nombre AS categoria,
-                    c2.descripcion, 
-                    c2.id_grupo,
-                    c2.categoria AS categoria_id,
-                    c2.imagen,
-                    c1.precio,
-                    c3.simbolo,
-                    c3.cod_moneda,
-                    c5.cantidad AS stock 
-                FROM
-                    productos AS c1
-                    INNER JOIN productos_agrupados AS c2 ON c1.id = c2.id_grupo
-                    INNER JOIN moneda_ref AS c3 ON c1.moneda = c3.cod_moneda
-                    INNER JOIN categorias AS c4 ON c2.categoria = c4.id
-                    INNER JOIN stock AS c5 ON c1.id = c5.idProducto";
+                        SELECT
+                        c1.id_grupo,
+                        c1.nombre,
+                        c1.descripcion,
+                        c1.categoria as categoria_id,
+                        c1.imagen,
+                        c2.nombre as nombre_categoria
+                    FROM
+                        productos_agrupados AS c1
+                        INNER JOIN categorias AS c2 ON c1.categoria = c2.id  ";
 
 
                     $resultado = mysqli_query($conexion, $consulta);
@@ -58,17 +49,12 @@ switch ($method) {
                         array_push(
                             $data,
                             [
-                                "id" => $row['id'],
                                 "id_grupo" => $row['id_grupo'],
                                 "nombre" =>  $row['nombre'],
                                 "descripcion" => $row['descripcion'],
+                                "nombre_categoria" =>  $row['nombre_categoria'],
                                 "categoria_id" =>  $row['categoria_id'],
                                 "imagen" =>  $row['imagen'],
-                                "precio" =>  number_format($row['precio'], 2),
-                                "simbolo" =>  $row['simbolo'],
-                                "cod_moneda" =>  $row['cod_moneda'],
-                                "categoria" => $row['categoria'],
-                                "stock" =>  $row['stock']
 
                             ]
                         );
