@@ -139,11 +139,11 @@ switch ($method) {
                         echo json_encode($resultado);
                         return;
                     }
-
+                    /*
                     $consulta = "select imagen from productos_agrupados where id = '$id' ";
                     $resultado = mysqli_query($conexion, $consulta);
                     $data = mysqli_fetch_assoc($resultado);
-
+*/
 
                     $consulta = "CALL adm_eliminar_producto('$id','" . $_SESSION['Usuario']['id'] . "')"; //eliminar Producto
                     $resultado = mysqli_query($conexion, $consulta);
@@ -151,11 +151,12 @@ switch ($method) {
 
                     if ($resultado) { //* si ejecuto la consulta sin errores
                         if ($datadeleted['status'] == 1) { //* si lo elimino
+                            /*
                             $url_img = $data['imagen'];
                             foreach (glob(dirname(__FILE__, 4) . "/$url_img") as $nombre_fichero) {
                                 unlink(dirname(__FILE__, 4) . "/$url_img"); //se elimina la  Imagen 
                             }
-
+*/
                             http_response_code(200); //codigo de relializado
                             $resultado = new stdClass();
                             $resultado->result = TRUE;
