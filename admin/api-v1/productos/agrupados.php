@@ -368,7 +368,7 @@ switch ($method) {
 
                     $id_admin = $_SESSION['Usuario']['id'];
                     include '../../php/conexion.php';
-                    $consulta = "CALL adm_editar_producto('$id_agrupado','$id_producto','$caracteristica1','$caracteristica2','$caracteristica3','$caracteristica4','$caracteristica5','$cod_moneda','precio','stock','$id_admin','0')";
+                    $consulta = "CALL adm_editar_producto('$id_agrupado','$id_producto','$caracteristica1','$caracteristica2','$caracteristica3','$caracteristica4','$caracteristica5','$cod_moneda','0','0','$id_admin','0')";
                     $resultado = mysqli_query($conexion, $consulta);
 
                     if ($resultado) {
