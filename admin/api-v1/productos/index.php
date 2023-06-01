@@ -458,7 +458,7 @@ switch ($method) {
                                 $url_img_guardar = "/assets/uploads/$new_img_name"; //dirrecion donde estara almacenada la imagen
 
                                 $consulta = " 
-                            CALL adm_agregar_producto('$id_grupo','$idproducto','$nombreproducto','$precio', '$stock','$categoria', '$descripcion','$url_img_guardar','$moneda','$caracteristica1','$caracteristica2','$caracteristica3','$caracteristica4','$caracteristica5','" . $_SESSION['Usuario']['id'] . "'); "; //[nombre][precio][stock][categoria][descripcion][imagen] 
+                            CALL adm_agregar_producto('$idproducto','$id_grupo','$nombreproducto','$precio', '$stock','$categoria', '$descripcion','$url_img_guardar','$moneda','$caracteristica1','$caracteristica2','$caracteristica3','$caracteristica4','$caracteristica5','" . $_SESSION['Usuario']['id'] . "'); "; //[nombre][precio][stock][categoria][descripcion][imagen] 
                                 //asi la ejecuta phpmyadmin
 
 
