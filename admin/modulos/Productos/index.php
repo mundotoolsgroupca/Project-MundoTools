@@ -492,7 +492,7 @@
         }).then(async (result) => {
 
             $.ajax({
-                url: "./api-v1/producto/agrupados.php",
+                url: "./api-v1/productos/agrupados.php",
                 type: 'GET',
                 data: {
                     _method: "DELETE",
