@@ -1082,6 +1082,8 @@
                         $('#ProductosLoader').html(``);
 
                         if (response.result == true) {
+                            id_grupo = $('#ModalEditar_agrupadosID').val();
+                            tabla_productos_agrupados_consultar(id_grupo);
                             if (response.data.status == 1) {
                                 let Toast = Swal.mixin({
                                     toast: true,
