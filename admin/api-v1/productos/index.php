@@ -698,18 +698,7 @@ switch ($method) {
                         break;
                     }
 
-                    if (isset($_POST['ModalEditarMoneda']) != false && $_POST['ModalEditarMoneda'] != "") {
-                        $ModalEditarMoneda = $_POST['ModalEditarMoneda'];
-                    } else {
-                        http_response_code(409); //codigo de conflicto
-                        $resultado = new stdClass();
-                        $resultado->result = false;
-                        $resultado->icono = "";
-                        $resultado->titulo = "";
-                        $resultado->mensaje = "Moneda No Valida";
-                        echo  json_encode($resultado);
-                        break;
-                    }
+
 
                     if (isset($_POST['ModalEditarCategoria']) != false && $_POST['ModalEditarCategoria'] != "") {
                         $ModalEditarCategoria = $_POST['ModalEditarCategoria'];
@@ -747,7 +736,7 @@ switch ($method) {
                     include_once "../../php/conexion.php";
                     //session_name("ecomercer_admin_data");
                     session_start();
-                    $consulta = "CALL adm_editar_producto( '$ModalEditarID',  '$ModalEditarNombreProducto', '$ModalEditarDescripcion', '$ModalEditarCategoria', '$ModalEditarMoneda','0','0',0,'" . $_SESSION['Usuario']['id'] . "')";
+                    $consulta = "CALL adm_editar_producto( '$ModalEditarID',  '$ModalEditarNombreProducto', '$ModalEditarDescripcion', '$ModalEditarCategoria', '0','0','0',0,'" . $_SESSION['Usuario']['id'] . "')";
                     $resultado = mysqli_query($conexion, $consulta);
                     $dataquery = mysqli_fetch_assoc($resultado);
                     if ($resultado) { //* si realizo la consulta sin problemas

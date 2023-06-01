@@ -1376,7 +1376,6 @@
         event.preventDefault();
         ModalEditarID = $("#ModalEditarID").val();
         ModalEditarNombreProducto = $("#ModalEditarNombreProducto").val();
-        ModalEditarStock = $("#ModalEditarStock").val();
         ModalEditarCategoria = $("#ModalEditarCategoria").val();
         ModalEditarDescripcion = $("#ModalEditarDescripcion").val();
         let result = [];
@@ -1391,7 +1390,6 @@
             data: {
                 ModalEditarID: ModalEditarID,
                 ModalEditarNombreProducto: ModalEditarNombreProducto,
-                ModalEditarStock: ModalEditarStock,
                 ModalEditarCategoria: ModalEditarCategoria,
                 ModalEditarDescripcion: ModalEditarDescripcion,
                 _method: "PUT"
