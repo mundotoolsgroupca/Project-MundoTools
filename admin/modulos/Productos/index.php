@@ -802,13 +802,6 @@
                             {
                                 "data": "descripcion"
                             },
-
-                            {
-                                "data": "precio"
-                            },
-                            {
-                                "data": "simbolo"
-                            },
                             {
                                 "data": null,
                                 "bSortable": false,
