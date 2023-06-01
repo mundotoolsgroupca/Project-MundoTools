@@ -1195,7 +1195,7 @@
 
     });
     $("#nuevoproductoform").on("submit", async function(event) {
-        debugger
+
         event.preventDefault();
         let formdata = new FormData(event.currentTarget);
         let result
@@ -1238,6 +1238,7 @@
                         form.reset(); //si se realizo se limpia el form
                         document.getElementById('imgpreview').src = "";
                         document.getElementById('formFile').value = ""; // se limpia la preview de la imagen
+                        modulo_productos();
                     } else if (response.data.status == 0) {
                         let Toast = Swal.mixin({
                             toast: true,
