@@ -656,7 +656,8 @@
                         paging: true,
                         select: true,
                         targets: 20,
-                        scrollY: '40vh',
+                        //scrollY: '40vh',
+                        scrollY: '100%',
                         "processing": true,
                         "autoWidth": false,
                         language: {
@@ -809,7 +810,8 @@
                         paging: true,
                         select: true,
                         targets: 20,
-                        scrollY: '40vh',
+                        //scrollY: '40vh',
+                        scrollY: '100%',
                         "processing": true,
                         "autoWidth": false,
                         language: {
