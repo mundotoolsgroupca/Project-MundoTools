@@ -46,7 +46,7 @@
      </div>
 
      <script>
-         tabla_productos = new DataTable('#Ordenestabla');
+         tablaordenes = new DataTable('#Ordenestabla');
          ordenes();
 
 
