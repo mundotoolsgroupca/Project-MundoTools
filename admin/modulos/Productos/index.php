@@ -797,7 +797,7 @@
                                 "data": "nombre"
                             },
                             {
-                                "data": "categoria"
+                                "data": "nombre_categoria"
                             },
                             {
                                 "data": "descripcion"
