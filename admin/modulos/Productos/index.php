@@ -1256,6 +1256,7 @@
                         })
                     }
                 } else {
+                    $('#NuevoProductoLoader').html(``);
                     let Toast = Swal.mixin({
                         toast: true,
                         position: 'top-end',
@@ -1276,6 +1277,7 @@
                 }
             },
             error: function(xhr, status) {
+                $('#NuevoProductoLoader').html(``);
                 let Toast = Swal.mixin({
                     toast: true,
                     position: 'top-end',
