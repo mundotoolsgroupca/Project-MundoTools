@@ -140,7 +140,7 @@ switch ($method) {
                         return;
                     }
 
-                    $consulta = "select * from productos where id = '$id' ";
+                    $consulta = "select imagen from productos_agrupados where id = '$id' ";
                     $resultado = mysqli_query($conexion, $consulta);
                     $data = mysqli_fetch_assoc($resultado);
 
