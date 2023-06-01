@@ -211,7 +211,7 @@
                 <div class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
                     <!--Modal title-->
                     <div class="[ flex items-center gap-1 flex-nowrap mb-3 ]">
-                        <p class="[ text-lg font-bold ]"> Editar Producto</p>
+                        <p class="[ text-lg font-bold ]"> Editar Grupo</p>
                         <span id="ModalEditarLoader"></span>
                     </div>
 
