@@ -657,7 +657,7 @@
                         select: true,
                         targets: 20,
                         //scrollY: '40vh',
-                        scrollY: '100%',
+                        scrollY: '50%',
                         "processing": true,
                         "autoWidth": false,
                         language: {
@@ -811,7 +811,7 @@
                         select: true,
                         targets: 20,
                         //scrollY: '40vh',
-                        scrollY: '100%',
+                        scrollY: '50%',
                         "processing": true,
                         "autoWidth": false,
                         language: {
