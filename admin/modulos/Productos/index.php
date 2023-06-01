@@ -1,6 +1,6 @@
 <div class="[ h-full flex gap-3 flex-col ] [ lg:flex-row ]">
     <!-- Modulo -->
-    <div class="[ h-auto  rounded-lg  bg-white p-6 shadow-lg w-full ] [   md:overflow-y-auto ] [ lg:w-1/5 lg:h-full lg:overflow-y-auto ]">
+    <div class="[ h-auto  rounded-lg  bg-white p-6 shadow-lg w-full ] [   md:overflow-y-auto ] [ lg:w-1/5   lg:overflow-y-auto ]">
         <div class="[ flex items-center gap-1 flex-nowrap mb-3 ]">
             <p class="[ text-lg font-bold ]">Nuevo Producto</p>
             <span id="NuevoProductoLoader"></span>
