@@ -479,46 +479,79 @@
     });
 
     function eliminar_agrupado(id_grupo) {
-        $.ajax({
-            url: "./api-v1/producto/agrupados.php",
-            type: 'GET',
-            data: {
-                _method: "DELETE",
-                id_grupo: id_grupo
-            },
-            headers: {
-                'x-csrf-token': $('meta[name="csrf-token"]').attr('content')
-            },
 
-            beforeSend: () => {
-                $('#ProductosLoader').html(`<div class="inline-block h-4 w-4 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]" role="status">
+        Swal.fire({
+            title: 'Estas Seguro de Eliminar?',
+            text: "Los Datos Seran Eliminado Permanentemente",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si',
+            cancelButtonText: 'No'
+        }).then(async (result) => {
+
+            $.ajax({
+                url: "./api-v1/producto/agrupados.php",
+                type: 'GET',
+                data: {
+                    _method: "DELETE",
+                    id_grupo: id_grupo
+                },
+                headers: {
+                    'x-csrf-token': $('meta[name="csrf-token"]').attr('content')
+                },
+
+                beforeSend: () => {
+                    $('#ProductosLoader').html(`<div class="inline-block h-4 w-4 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]" role="status">
                                     <span class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
                                     </div>`);
 
-            },
-            success: (response) => {
-                $('#ProductosLoader').html(``);
-                if (response.result == true) {
+                },
+                success: (response) => {
+                    $('#ProductosLoader').html(``);
+                    if (response.result == true) {
 
-                    Producto_consulta();
-                    let Toast = Swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: 3000,
-                        timerProgressBar: true,
-                        didOpen: (toast) => {
-                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                            toast.addEventListener('mouseleave', Swal.resumeTimer)
-                        }
-                    });
+                        Producto_consulta();
+                        let Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 3000,
+                            timerProgressBar: true,
+                            didOpen: (toast) => {
+                                toast.addEventListener('mouseenter', Swal.stopTimer)
+                                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            }
+                        });
 
-                    Toast.fire({
-                        icon: 'success',
-                        title: response.mensaje
-                    });
+                        Toast.fire({
+                            icon: 'success',
+                            title: response.mensaje
+                        });
 
-                } else {
+                    } else {
+                        let Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 3000,
+                            timerProgressBar: true,
+                            didOpen: (toast) => {
+                                toast.addEventListener('mouseenter', Swal.stopTimer)
+                                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            }
+                        });
+
+                        Toast.fire({
+                            icon: 'error',
+                            title: response.mensaje
+                        });
+                    }
+
+                },
+                error: function(xhr, status) {
+                    $('#ProductosLoader').html(``);
                     let Toast = Swal.mixin({
                         toast: true,
                         position: 'top-end',
@@ -533,31 +566,13 @@
 
                     Toast.fire({
                         icon: 'error',
-                        title: response.mensaje
+                        title: xhr.responseJSON.mensaje
                     });
-                }
+                },
+            });
 
-            },
-            error: function(xhr, status) {
-                $('#ProductosLoader').html(``);
-                let Toast = Swal.mixin({
-                    toast: true,
-                    position: 'top-end',
-                    showConfirmButton: false,
-                    timer: 3000,
-                    timerProgressBar: true,
-                    didOpen: (toast) => {
-                        toast.addEventListener('mouseenter', Swal.stopTimer)
-                        toast.addEventListener('mouseleave', Swal.resumeTimer)
-                    }
-                });
+        })
 
-                Toast.fire({
-                    icon: 'error',
-                    title: xhr.responseJSON.mensaje
-                });
-            },
-        });
 
     }
 
