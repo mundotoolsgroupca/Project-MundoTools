@@ -1195,6 +1195,7 @@
 
     });
     $("#nuevoproductoform").on("submit", async function(event) {
+        debugger
         event.preventDefault();
         let formdata = new FormData(event.currentTarget);
         let result
