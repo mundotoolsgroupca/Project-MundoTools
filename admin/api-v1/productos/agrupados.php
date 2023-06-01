@@ -4,44 +4,44 @@ header('Content-Type: application/json; charset=utf-8');
 $method = $_SERVER['REQUEST_METHOD'];
 switch ($method) {
     case 'GET':
+        if (!isset($_GET['_method'])) {
+            session_name("ecomercer_admin_data");
+            session_start();
+            $http = getallheaders();
+            if (!empty($http['X-Csrf-Token'])) {
 
-        session_name("ecomercer_admin_data");
-        session_start();
-        $http = getallheaders();
-        if (!empty($http['X-Csrf-Token'])) {
 
-
-            if (!isset($_SESSION['token'])) {
-                // Log this as a warning and keep an eye on these attempts
-                $resultado = new stdClass();
-                $resultado->result = FALSE;
-                $resultado->icono = "error";
-                $resultado->titulo = "Error!";
-                $resultado->mensaje = 'Parametro No Valido';
-                echo json_encode($resultado);
-                break;
-            }
-            if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'])) {
-
-                include_once '../../php/FuncionesGenerales.php';
-                if (isset($_GET['id_agrupado']) && validar_string($_GET['id_agrupado'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$&/: ')) {
-                    $id_agrupado = $_GET['id_agrupado'];
-                    $id_agrupado = eliminar_palabras_sql($id_agrupado);
-                } else {
+                if (!isset($_SESSION['token'])) {
                     // Log this as a warning and keep an eye on these attempts
                     $resultado = new stdClass();
                     $resultado->result = FALSE;
                     $resultado->icono = "error";
                     $resultado->titulo = "Error!";
-                    $resultado->mensaje = 'Id Agrupado No Valido';
+                    $resultado->mensaje = 'Parametro No Valido';
                     echo json_encode($resultado);
-                    return;
+                    break;
                 }
+                if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'])) {
+
+                    include_once '../../php/FuncionesGenerales.php';
+                    if (isset($_GET['id_agrupado']) && validar_string($_GET['id_agrupado'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$&/: ')) {
+                        $id_agrupado = $_GET['id_agrupado'];
+                        $id_agrupado = eliminar_palabras_sql($id_agrupado);
+                    } else {
+                        // Log this as a warning and keep an eye on these attempts
+                        $resultado = new stdClass();
+                        $resultado->result = FALSE;
+                        $resultado->icono = "error";
+                        $resultado->titulo = "Error!";
+                        $resultado->mensaje = 'Id Agrupado No Valido';
+                        echo json_encode($resultado);
+                        return;
+                    }
 
 
 
-                include_once '../../php/conexion.php';
-                $consulta = "
+                    include_once '../../php/conexion.php';
+                    $consulta = "
                     SELECT
                     t1.*,
                     t3.nombre,
@@ -72,25 +72,36 @@ switch ($method) {
                     INNER JOIN moneda_ref ON t1.moneda = moneda_ref.cod_moneda 
                 ORDER BY
                     t1.id ASC";
-                $data = [];
-                $resultado = mysqli_query($conexion, $consulta);
+                    $data = [];
+                    $resultado = mysqli_query($conexion, $consulta);
 
-                if ($resultado) {
-                    while ($row = mysqli_fetch_assoc($resultado)) {
+                    if ($resultado) {
+                        while ($row = mysqli_fetch_assoc($resultado)) {
 
 
-                        array_push($data, $row);
+                            array_push($data, $row);
+                        }
+                        http_response_code(200); //Success
+                        $resultado = new stdClass();
+                        $resultado->result = TRUE;
+                        $resultado->icono = "success";
+                        $resultado->titulo = "";
+                        $resultado->mensaje = "";
+                        $resultado->data = $data;
+
+                        echo  json_encode($resultado);
+                        break; //retornamos los datos 
+                    } else {
+                        http_response_code(409); //codigo de conflicto
+                        // Log this as a warning and keep an eye on these attempts
+                        $resultado = new stdClass();
+                        $resultado->result = FALSE;
+                        $resultado->icono = "error";
+                        $resultado->titulo = "Error!";
+                        $resultado->mensaje = 'Error Interno';
+                        echo json_encode($resultado);
+                        return;
                     }
-                    http_response_code(200); //Success
-                    $resultado = new stdClass();
-                    $resultado->result = TRUE;
-                    $resultado->icono = "success";
-                    $resultado->titulo = "";
-                    $resultado->mensaje = "";
-                    $resultado->data = $data;
-
-                    echo  json_encode($resultado);
-                    break; //retornamos los datos 
                 } else {
                     http_response_code(409); //codigo de conflicto
                     // Log this as a warning and keep an eye on these attempts
@@ -98,30 +109,124 @@ switch ($method) {
                     $resultado->result = FALSE;
                     $resultado->icono = "error";
                     $resultado->titulo = "Error!";
-                    $resultado->mensaje = 'Error Interno';
+                    $resultado->mensaje = 'El token enviado no es valido';
                     echo json_encode($resultado);
-                    return;
+                    break;
                 }
             } else {
                 http_response_code(409); //codigo de conflicto
-                // Log this as a warning and keep an eye on these attempts
                 $resultado = new stdClass();
                 $resultado->result = FALSE;
                 $resultado->icono = "error";
                 $resultado->titulo = "Error!";
-                $resultado->mensaje = 'El token enviado no es valido';
+                $resultado->mensaje = 'El token no fue enviado en el formulario';
                 echo json_encode($resultado);
                 break;
             }
-        } else {
-            http_response_code(409); //codigo de conflicto
-            $resultado = new stdClass();
-            $resultado->result = FALSE;
-            $resultado->icono = "error";
-            $resultado->titulo = "Error!";
-            $resultado->mensaje = 'El token no fue enviado en el formulario';
-            echo json_encode($resultado);
-            break;
+        } elseif ($_GET['_method'] == "DELETE") {
+            include_once '../../php/conexion.php';
+            include_once '../../php/FuncionesGenerales.php';
+            session_name("ecomercer_admin_data");
+            session_start();
+            $http = getallheaders();
+            if (!empty($http['X-Csrf-Token'])) {
+
+                if (!isset($_SESSION['token'])) {
+                    // Log this as a warning and keep an eye on these attempts
+                    $resultado = new stdClass();
+                    $resultado->result = FALSE;
+                    $resultado->icono = "error";
+                    $resultado->titulo = "Error!";
+                    $resultado->mensaje = 'Parametro no Valido';
+                    echo json_encode($resultado);
+                    return;
+                }
+
+
+                if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'])) {
+
+                    if (isset($_GET['id_grupo']) && validar_string($_GET['id_grupo'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
+                        $id_grupo = $_GET['id_grupo'];
+                        $id_grupo = eliminar_palabras_sql($id_grupo);
+                    } else {
+                        http_response_code(409); //codigo de conflicto
+                        // Log this as a warning and keep an eye on these attempts
+                        $resultado = new stdClass();
+                        $resultado->result = FALSE;
+                        $resultado->icono = "error";
+                        $resultado->titulo = "Error!";
+                        $resultado->mensaje = 'Id Grupo no Valido';
+                        echo json_encode($resultado);
+                        return;
+                    }
+                    /*
+                    $consulta = "select imagen from productos_agrupados where id = '$id' ";
+                    $resultado = mysqli_query($conexion, $consulta);
+                    $data = mysqli_fetch_assoc($resultado);
+*/
+
+                    $consulta = "CALL adm_eliminar_agrupado('$id_grupo','" . $_SESSION['Usuario']['id'] . "')"; //eliminar Producto
+                    $resultado = mysqli_query($conexion, $consulta);
+                    $datadeleted = mysqli_fetch_assoc($resultado);
+
+                    if ($resultado) { //* si ejecuto la consulta sin errores
+                        if ($datadeleted['status'] == 1) { //* si lo elimino
+
+                            http_response_code(200); //codigo de relializado
+                            $resultado = new stdClass();
+                            $resultado->result = TRUE;
+                            $resultado->icono = "success";
+                            $resultado->titulo = "";
+                            $resultado->mensaje = $datadeleted['msg'];
+                            $resultado->data =  array(
+                                "status" => $datadeleted['status'],
+                                "msg" => $datadeleted['msg']
+                            );
+                            echo  json_encode($resultado);
+                            break;
+                        } else { //!si no lo hizo 
+                            http_response_code(409); //codigo de conflicto
+                            $resultado = new stdClass();
+                            $resultado->result = false;
+                            $resultado->icono = "success";
+                            $resultado->titulo = "";
+                            $resultado->mensaje = $datadeleted['msg'];
+                            echo  json_encode($resultado);
+                            break;
+                        }
+                    } else { //!si hubo un error
+                        http_response_code(409); //codigo de conflicto
+                        $resultado = new stdClass();
+                        $resultado->result = TRUE;
+                        $resultado->icono = "success";
+                        $resultado->titulo = "";
+                        $resultado->mensaje = "";
+                        $resultado->data = array(
+                            "status" => 0,
+                            "msg" => "Error Interno"
+                        );
+                        echo  json_encode($resultado);
+                        break;
+                    }
+                } else {
+                    // Log this as a warning and keep an eye on these attempts
+                    $resultado = new stdClass();
+                    $resultado->result = FALSE;
+                    $resultado->icono = "error";
+                    $resultado->titulo = "Error!";
+                    $resultado->mensaje = 'El token enviado no es valido';
+                    echo json_encode($resultado);
+                    return;
+                }
+            } else {
+                $resultado = new stdClass();
+                $resultado->result = FALSE;
+                $resultado->icono = "error";
+                $resultado->titulo = "Error!";
+                $resultado->mensaje = 'El token no fue enviado en el formulario';
+                echo json_encode($resultado);
+                return;
+            }
         }
     case 'POST':
         include '../../php/FuncionesGenerales.php';
