@@ -176,15 +176,13 @@
                     <div class="sm:-mx-6 lg:-mx-8">
                         <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
                             <div class="overflow-x-auto">
-                                <table id="tabla_producto" class="min-w-full text-left text-sm font-light">
+                                <table id="tabla_grupos_producto" class="min-w-full text-left text-sm font-light">
                                     <thead class="bg-neutral-800 text-white border-b font-medium dark:border-neutral-500">
                                         <tr>
                                             <th scope="col" class="px-6 py-4">Id Grupo</th>
                                             <th scope="col" class="px-6 py-4">Producto</th>
                                             <th scope="col" class="px-6 py-4">Categoria</th>
                                             <th scope="col" class="px-6 py-4">Descripcion</th>
-                                            <th scope="col" class="px-6 py-4">Precio</th>
-                                            <th scope="col" class="px-6 py-4">Moneda</th>
                                             <th scope="col" class="px-6 py-4">Acciones</th>
                                         </tr>
                                     </thead>
@@ -436,8 +434,8 @@
 
 <script id="tailwindelements_script" src="./assets/js/tw-elements.umd.min.js"></script>
 <script>
-    if (typeof tabla_producto === 'undefined') {
-        let tabla_producto = new DataTable('#tabla_producto');
+    if (typeof tabla_grupos_producto === 'undefined') {
+        let tabla_grupos_producto = new DataTable('#tabla_grupos_producto');
     }
 
     if (typeof tabla_agrupados_data === 'undefined') {
@@ -760,7 +758,7 @@
                 $('#ProductosLoader').html(``);
                 if (response.result == true) {
 
-                    tabla_producto = $('#tabla_producto').DataTable({
+                    tabla_grupos_producto = $('#tabla_grupos_producto').DataTable({
                         "bDestroy": true,
                         order: [
                             [0, 'desc']
@@ -1124,14 +1122,11 @@
 
     }
 
-    $('#tabla_producto tbody').on('click', 'tr', function() {
+    $('#tabla_grupos_producto tbody').on('click', 'tr', function() {
 
-        let data = tabla_producto.row(this).data();
+        let data = tabla_grupos_producto.row(this).data();
         $('#ModalEditarID').val(data.id);
         $('#ModalEditarNombreProducto').val(data.nombre);
-        document.getElementById("ModalEditarMoneda").value = data.cod_moneda;
-        $('#ModalEditarPrecio').val(data.precio);
-        $('#ModalEditarStock').val(data.stock);
         $('#ModalEditarCategoria').val(data.categoria_id);
         $('#ModalEditarDescripcion').val(data.descripcion);
         $('#Modalimgpreview').attr("src", "../../../" + data.imagen);
