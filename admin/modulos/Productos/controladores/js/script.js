@@ -425,9 +425,17 @@ function editar_producto_agrupado() {
 
 function renderimage(formData) {
 
-    let file = formData.get('imagen');
-    let img = URL.createObjectURL(file)
-    document.getElementById('imgpreview').setAttribute('src', img);
+    // Arrange
+    const formData = new FormData();
+    const file = new File(['image'], 'image.png', { type: 'image/png' });
+    formData.append('imagen', file);
+
+    // Act
+    renderimage(formData);
+
+    // Assert
+    expect(document.getElementById('imgpreview').getAttribute('src')).toContain('blob:');
+
 }
 
 async function eliminarproducto(id = 0) {
