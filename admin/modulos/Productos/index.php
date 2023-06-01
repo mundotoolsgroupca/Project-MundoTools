@@ -1,3 +1,4 @@
+<script src="./controladores/js/script.js?v=<?php echo rand() ?>"></script>
 <div class="[ h-full flex gap-3 flex-col ] [ lg:flex-row ]">
     <!-- Modulo -->
     <div class="[ h-auto  rounded-lg  bg-white p-6 shadow-lg w-full ] [   md:overflow-y-auto ] [ lg:w-1/5   lg:overflow-y-auto ]">
@@ -435,7 +436,6 @@
 </div>
 
 <script id="tailwindelements_script" src="./assets/js/tw-elements.umd.min.js"></script>
-<script src="./controladores/js/script.js"></script>
 <script>
     if (typeof tabla_producto === 'undefined') {
         let tabla_producto = new DataTable('#tabla_producto');
