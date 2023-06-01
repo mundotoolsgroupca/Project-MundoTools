@@ -197,7 +197,7 @@
                     </div>
                 </div>
             </div>
-            <button onclick="Producto_consulta()" type="button" class="inline-block rounded bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200">
+            <button onclick="Producto_grupo_consulta()" type="button" class="inline-block rounded bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200">
                 Actualizar
             </button>
         </div>
@@ -453,7 +453,7 @@
     form = document.getElementById('nuevoproductoform');
 
 
-    Producto_consulta();
+    Producto_grupo_consulta();
 
     function toggle(id) {
 
@@ -512,7 +512,7 @@
                     $('#ProductosLoader').html(``);
                     if (response.result == true) {
 
-                        Producto_consulta();
+                        Producto_grupo_consulta();
                         let Toast = Swal.mixin({
                             toast: true,
                             position: 'top-end',
@@ -741,7 +741,7 @@
 
 
 
-    async function Producto_consulta() {
+    async function Producto_grupo_consulta() {
 
 
         $.ajax({
@@ -1208,7 +1208,7 @@
                                     title: response.data.msg
                                 })
 
-                                Producto_consulta();
+                                Producto_grupo_consulta();
 
                             }
                         } else {
@@ -1285,7 +1285,7 @@
                                 title: "Error"
                             })
                         }
-                        Producto_consulta();
+                        Producto_grupo_consulta();
                     },
                 });
 
@@ -1340,7 +1340,7 @@
                             icon: 'success',
                             title: response.data.msg
                         })
-                        Producto_consulta();
+                        Producto_grupo_consulta();
                         form.reset(); //si se realizo se limpia el form
                         document.getElementById('imgpreview').src = "";
                         document.getElementById('formFile').value = ""; // se limpia la preview de la imagen
@@ -1468,7 +1468,7 @@
                             title: response.data.msg
                         })
                         modal.hide();
-                        Producto_consulta();
+                        Producto_grupo_consulta();
                     } else if (response.data.status == 0) {
                         let Toast = Swal.mixin({
                             toast: true,
@@ -1486,7 +1486,7 @@
                             icon: 'error',
                             title: response.data.msg
                         })
-                        Producto_consulta();
+                        Producto_grupo_consulta();
                     }
                 } else {
                     let Toast = Swal.mixin({
@@ -1527,7 +1527,7 @@
                     icon: 'error',
                     title: error.responseJSON.mensaje
                 })
-                Producto_consulta();
+                Producto_grupo_consulta();
             },
             dataType: 'json'
         });
