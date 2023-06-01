@@ -435,7 +435,8 @@
 </div>
 
 <script id="tailwindelements_script" src="./assets/js/tw-elements.umd.min.js"></script>
-<script src="./controladores/js/script.js">
+<script src="./controladores/js/script.js"></script>
+<script>
     if (typeof tabla_producto === 'undefined') {
         let tabla_producto = new DataTable('#tabla_producto');
     }
