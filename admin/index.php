@@ -202,7 +202,7 @@ if (!isset($_SESSION['Usuario'])) { //si no existe una session sale del sistema
 ---->
 
 
-        <div id="principal" style="height:100%;width:100%"></div>
+        <div id="principal"></div>
     </main>
     <!--Main layout-->
 
