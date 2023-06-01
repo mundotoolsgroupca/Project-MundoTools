@@ -237,34 +237,6 @@
                                 </label>
                             </div>
 
-
-
-                            <div class="relative w-full" data-te-input-wrapper-init>
-                                <input disabled min="0.00" max="10000.00" step="0.01" disabled type="number" class="bg-neutral-100  peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0" name="ModalEditarPrecio" id="ModalEditarPrecio" placeholder="Example label" />
-                                <label for="ModalEditarPrecio" class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-neutral-200">Precio
-                                </label>
-                            </div>
-
-
-
-
-
-
-
-
-
-                            <div class="relative flex w-full flex-wrap items-stretch">
-                                <label class="flex items-center whitespace-nowrap rounded-l border border-r-0 border-solid border-neutral-300 px-3 py-[0.25rem] text-center text-base font-normal leading-[1.6] text-neutral-700 dark:border-neutral-600 dark:bg-zinc-800 dark:text-neutral-200 dark:placeholder:text-neutral-200" for="ModalEditarMoneda">Moneda</label>
-                                <select class="form-select relative m-0 block w-[1px] min-w-0 flex-auto appearance-none rounded-r border border-solid border-neutral-300 bg-white bg-clip-padding bg-no-repeat px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition ease-in-out focus:z-[3] focus:border-primary-600 focus:bg-white focus:text-neutral-700 focus:outline-none dark:border-neutral-600 dark:bg-zinc-800 dark:text-neutral-200 dark:placeholder:text-neutral-200" name="ModalEditarMoneda" id="ModalEditarMoneda">
-
-                                </select>
-                            </div>
-                            <div class="relative w-full" data-te-input-wrapper-init>
-                                <input maxlength="11" disabled type="text" class="bg-neutral-100  peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0" name="ModalEditarStock" id="ModalEditarStock" placeholder="Example label" />
-                                <label for="ModalEditarStock" class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-neutral-200">Stock
-                                </label>
-                            </div>
-
                             <div class="relative flex w-full flex-wrap items-stretch">
                                 <label class="flex items-center whitespace-nowrap rounded-l border border-r-0 border-solid border-neutral-300 px-3 py-[0.25rem] text-center text-base font-normal leading-[1.6] text-neutral-700 dark:border-neutral-600 dark:bg-zinc-800 dark:text-neutral-200 dark:placeholder:text-neutral-200" for="ModalEditarCategoria">Categoria</label>
                                 <select class="form-select relative m-0 block w-[1px] min-w-0 flex-auto appearance-none rounded-r border border-solid border-neutral-300 bg-white bg-clip-padding bg-no-repeat px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition ease-in-out focus:z-[3] focus:border-primary-600 focus:bg-white focus:text-neutral-700 focus:outline-none dark:border-neutral-600 dark:bg-zinc-800 dark:text-neutral-200 dark:placeholder:text-neutral-200" name="ModalEditarCategoria" id="ModalEditarCategoria">
