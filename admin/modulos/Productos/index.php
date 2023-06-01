@@ -387,54 +387,55 @@
 
 
 
-</div>
 
-<div id='tabla_productos_agrupados' view='0' class="[ flex gap-3 flex-col mt-3 hidden ] [ lg:flex-row ]">
-    <!-- Modulo -->
-    <div class="[ h-auto rounded-lg bg-white p-6 shadow-lg w-full ] [   lg:h-full  ]">
 
-        <div class="[ flex items-center gap-1 flex-nowrap mb-3 ]">
-            <span class="cursor-pointer text-[#FBAA35]" onclick="toggle_agrupados(),toggle('producto_modulo'),toggle('nuevo_producto_modulo')">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15m0 0l6.75 6.75M4.5 12l6.75-6.75" />
-                </svg>
-            </span>
-            <p id="titulo_tabla_agrupados" class="[ text-lg font-bold ]">Agrupados</p>
-            <span id="titulo_tabla_agrupadosLoader"></span>
+    <div id='tabla_productos_agrupados' view='0' class="[ flex gap-3 flex-col mt-3 hidden ] [ lg:flex-row ]">
+        <!-- Modulo -->
+        <div class="[ h-auto rounded-lg bg-white p-6 shadow-lg w-full ] [   lg:h-full  ]">
 
-        </div>
+            <div class="[ flex items-center gap-1 flex-nowrap mb-3 ]">
+                <span class="cursor-pointer text-[#FBAA35]" onclick="toggle_agrupados(),toggle('producto_modulo'),toggle('nuevo_producto_modulo')">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15m0 0l6.75 6.75M4.5 12l6.75-6.75" />
+                    </svg>
+                </span>
+                <p id="titulo_tabla_agrupados" class="[ text-lg font-bold ]">Agrupados</p>
+                <span id="titulo_tabla_agrupadosLoader"></span>
 
-        <div>
-            <div class="flex flex-col overflow-x-auto">
-                <div class="sm:-mx-6 lg:-mx-8">
-                    <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
-                        <div class="overflow-x-auto">
-                            <table id="tabla_agrupados_producto" class="min-w-full text-left text-sm font-light">
-                                <thead class="bg-neutral-800 text-white border-b font-medium dark:border-neutral-500">
-                                    <tr>
-                                        <th scope="col" class="px-6 py-4">ID</th>
-                                        <th scope="col" class="px-6 py-4">Nombre</th>
-                                        <th scope="col" class="px-6 py-4">Categoria</th>
-                                        <th scope="col" class="px-6 py-4">Descripcion1</th>
-                                        <th scope="col" class="px-6 py-4">Descripcion2</th>
-                                        <th scope="col" class="px-6 py-4">Descripcion3</th>
-                                        <th scope="col" class="px-6 py-4">Descripcion4</th>
-                                        <th scope="col" class="px-6 py-4">Descripcion5</th>
-                                        <th scope="col" class="px-6 py-4">Precio</th>
-                                        <th scope="col" class="px-6 py-4">Moneda</th>
-                                        <th scope="col" class="px-6 py-4">Acciones</th>
+            </div>
 
-                                    </tr>
-                                </thead>
-                                <tbody>
+            <div>
+                <div class="flex flex-col overflow-x-auto">
+                    <div class="sm:-mx-6 lg:-mx-8">
+                        <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+                            <div class="overflow-x-auto">
+                                <table id="tabla_agrupados_producto" class="min-w-full text-left text-sm font-light">
+                                    <thead class="bg-neutral-800 text-white border-b font-medium dark:border-neutral-500">
+                                        <tr>
+                                            <th scope="col" class="px-6 py-4">ID</th>
+                                            <th scope="col" class="px-6 py-4">Nombre</th>
+                                            <th scope="col" class="px-6 py-4">Categoria</th>
+                                            <th scope="col" class="px-6 py-4">Descripcion1</th>
+                                            <th scope="col" class="px-6 py-4">Descripcion2</th>
+                                            <th scope="col" class="px-6 py-4">Descripcion3</th>
+                                            <th scope="col" class="px-6 py-4">Descripcion4</th>
+                                            <th scope="col" class="px-6 py-4">Descripcion5</th>
+                                            <th scope="col" class="px-6 py-4">Precio</th>
+                                            <th scope="col" class="px-6 py-4">Moneda</th>
+                                            <th scope="col" class="px-6 py-4">Acciones</th>
 
-                                </tbody>
-                            </table>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
+            </div>
         </div>
     </div>
 </div>
