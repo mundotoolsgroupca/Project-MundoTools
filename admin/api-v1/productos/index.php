@@ -280,6 +280,19 @@ switch ($method) {
                         echo  json_encode($resultado);
                         break;
                     }
+                    if (isset($_POST['id_grupo']) != false && validar_string($_POST['id_grupo'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
+                        $id_grupo = $_POST['id_grupo'];
+                        $id_grupo = eliminar_palabras_sql($id_grupo);
+                    } else {
+                        http_response_code(409); //codigo de conflicto
+                        $resultado = new stdClass();
+                        $resultado->result = false;
+                        $resultado->icono = "";
+                        $resultado->titulo = "";
+                        $resultado->mensaje = "Id Grupo No Valido";
+                        echo  json_encode($resultado);
+                        break;
+                    }
 
                     if (isset($_POST['stock']) && validar_int($_POST['stock']) && $_POST['stock'] > 0) {
                         $stock = $_POST['stock'];
@@ -445,11 +458,10 @@ switch ($method) {
                                 $url_img_guardar = "/assets/uploads/$new_img_name"; //dirrecion donde estara almacenada la imagen
 
                                 $consulta = " 
-                            CALL adm_agregar_producto('$idproducto','$nombreproducto','$precio', '$stock','$categoria', '$descripcion','$url_img_guardar','$moneda','$caracteristica1','$caracteristica2','$caracteristica3','$caracteristica4','$caracteristica5','" . $_SESSION['Usuario']['id'] . "'); "; //[nombre][precio][stock][categoria][descripcion][imagen] 
+                            CALL adm_agregar_producto('$id_grupo','$idproducto','$nombreproducto','$precio', '$stock','$categoria', '$descripcion','$url_img_guardar','$moneda','$caracteristica1','$caracteristica2','$caracteristica3','$caracteristica4','$caracteristica5','" . $_SESSION['Usuario']['id'] . "'); "; //[nombre][precio][stock][categoria][descripcion][imagen] 
                                 //asi la ejecuta phpmyadmin
 
-                                echo $consulta;
-                                return;
+
                                 $resultado = mysqli_query($conexion, $consulta);
                                 $data = mysqli_fetch_assoc($resultado);
                                 if ($resultado) { //* si realizo la consulta 
