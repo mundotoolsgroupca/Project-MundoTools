@@ -659,11 +659,10 @@
 
                 response.data.map((item) => {
                     $('#moneda').append(`<option value="${item.cod_moneda}">${item.simbolo}</option>`);
-                    $('#ModalEditarMoneda').append(`<option value="${item.cod_moneda}">${item.simbolo}</option>`);
                     $('#ModalEditar_agrupadosMoneda').append(`<option value="${item.cod_moneda}">${item.simbolo}</option>`);
                 })
                 document.getElementById("moneda").disabled = false;
-                document.getElementById("ModalEditarMoneda").disabled = false;
+
 
             } else {
                 let Toast = Swal.mixin({
@@ -1377,7 +1376,6 @@
         event.preventDefault();
         ModalEditarID = $("#ModalEditarID").val();
         ModalEditarNombreProducto = $("#ModalEditarNombreProducto").val();
-        ModalEditarMoneda = $("#ModalEditarMoneda").val();
         ModalEditarStock = $("#ModalEditarStock").val();
         ModalEditarCategoria = $("#ModalEditarCategoria").val();
         ModalEditarDescripcion = $("#ModalEditarDescripcion").val();
@@ -1393,7 +1391,6 @@
             data: {
                 ModalEditarID: ModalEditarID,
                 ModalEditarNombreProducto: ModalEditarNombreProducto,
-                ModalEditarMoneda: ModalEditarMoneda,
                 ModalEditarStock: ModalEditarStock,
                 ModalEditarCategoria: ModalEditarCategoria,
                 ModalEditarDescripcion: ModalEditarDescripcion,
