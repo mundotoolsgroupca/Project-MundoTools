@@ -449,7 +449,7 @@
 
 
     $('#tabla_agrupados_producto tbody').on('click', 'tr', function() {
-
+        debugger;
 
         data = tabla_agrupados_data.row(this).data();
         $('#ModalEditar_agrupadosID').val(data.id_grupo);
