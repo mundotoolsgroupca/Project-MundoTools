@@ -346,7 +346,73 @@ switch ($method) {
                         break;
                     }
 
+                    if (isset($_POST['caracteristica1']) && validar_string($_POST['caracteristica1'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$&/: ')) {
+                        $caracteristica1 = $_POST['caracteristica1'];
+                        $caracteristica1 = eliminar_palabras_sql($caracteristica1);
+                    } else {
+                        http_response_code(409); //codigo de conflicto
+                        $resultado = new stdClass();
+                        $resultado->result = FALSE;
+                        $resultado->icono = "error";
+                        $resultado->titulo = "Error!";
+                        $resultado->mensaje = 'Caracteristica 1 Contiene Caracteres no Permitidos';
+                        echo json_encode($resultado);
+                        break;
+                    }
 
+                    if (isset($_POST['caracteristica2']) && validar_string($_POST['caracteristica2'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$&/: ')) {
+                        $caracteristica2 = $_POST['caracteristica2'];
+                        $caracteristica2 = eliminar_palabras_sql($caracteristica2);
+                    } else {
+                        http_response_code(409); //codigo de conflicto
+                        $resultado = new stdClass();
+                        $resultado->result = FALSE;
+                        $resultado->icono = "error";
+                        $resultado->titulo = "Error!";
+                        $resultado->mensaje = 'Caracteristica 2 Contiene Caracteres no Permitidos';
+                        echo json_encode($resultado);
+                        break;
+                    }
+
+                    if (isset($_POST['caracteristica3']) && validar_string($_POST['caracteristica3'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$&/: ')) {
+                        $caracteristica3 = $_POST['caracteristica3'];
+                        $caracteristica3 = eliminar_palabras_sql($caracteristica3);
+                    } else {
+                        http_response_code(409); //codigo de conflicto
+                        $resultado = new stdClass();
+                        $resultado->result = FALSE;
+                        $resultado->icono = "error";
+                        $resultado->titulo = "Error!";
+                        $resultado->mensaje = 'Caracteristica 3 Contiene Caracteres no Permitidos';
+                        echo json_encode($resultado);
+                        break;
+                    }
+                    if (isset($_POST['caracteristica4']) && validar_string($_POST['caracteristica4'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$&/: ')) {
+                        $caracteristica4 = $_POST['caracteristica4'];
+                        $caracteristica4 = eliminar_palabras_sql($caracteristica4);
+                    } else {
+                        http_response_code(409); //codigo de conflicto
+                        $resultado = new stdClass();
+                        $resultado->result = FALSE;
+                        $resultado->icono = "error";
+                        $resultado->titulo = "Error!";
+                        $resultado->mensaje = 'Caracteristica 4 Contiene Caracteres no Permitidos';
+                        echo json_encode($resultado);
+                        break;
+                    }
+                    if (isset($_POST['caracteristica5']) && validar_string($_POST['caracteristica5'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$&/: ')) {
+                        $caracteristica5 = $_POST['caracteristica5'];
+                        $caracteristica5 = eliminar_palabras_sql($caracteristica5);
+                    } else {
+                        http_response_code(409); //codigo de conflicto
+                        $resultado = new stdClass();
+                        $resultado->result = FALSE;
+                        $resultado->icono = "error";
+                        $resultado->titulo = "Error!";
+                        $resultado->mensaje = 'Caracteristica 5 Contiene Caracteres no Permitidos';
+                        echo json_encode($resultado);
+                        break;
+                    }
                     $img_nombre = $_FILES['imagen']['name'];
                     $img_size = $_FILES['imagen']['size'];
                     $img_tmp = $_FILES['imagen']['tmp_name'];
@@ -379,7 +445,7 @@ switch ($method) {
                                 $url_img_guardar = "/assets/uploads/$new_img_name"; //dirrecion donde estara almacenada la imagen
 
                                 $consulta = " 
-                            CALL adm_agregar_producto('$idproducto','$nombreproducto','$precio', '$stock','$categoria', '$descripcion','$url_img_guardar','$moneda','" . $_SESSION['Usuario']['id'] . "'); "; //[nombre][precio][stock][categoria][descripcion][imagen]
+                            CALL adm_agregar_producto('$idproducto','$nombreproducto','$precio', '$stock','$categoria', '$descripcion','$url_img_guardar','$moneda','$caracteristica1','$caracteristica2','$caracteristica3','$caracteristica4','$caracteristica5','" . $_SESSION['Usuario']['id'] . "'); "; //[nombre][precio][stock][categoria][descripcion][imagen] 
                                 //asi la ejecuta phpmyadmin
 
                                 $resultado = mysqli_query($conexion, $consulta);
