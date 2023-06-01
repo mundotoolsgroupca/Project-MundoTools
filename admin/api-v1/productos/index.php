@@ -448,6 +448,8 @@ switch ($method) {
                             CALL adm_agregar_producto('$idproducto','$nombreproducto','$precio', '$stock','$categoria', '$descripcion','$url_img_guardar','$moneda','$caracteristica1','$caracteristica2','$caracteristica3','$caracteristica4','$caracteristica5','" . $_SESSION['Usuario']['id'] . "'); "; //[nombre][precio][stock][categoria][descripcion][imagen] 
                                 //asi la ejecuta phpmyadmin
 
+                                echo $consulta;
+                                return;
                                 $resultado = mysqli_query($conexion, $consulta);
                                 $data = mysqli_fetch_assoc($resultado);
                                 if ($resultado) { //* si realizo la consulta 
