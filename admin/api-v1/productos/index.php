@@ -517,165 +517,118 @@ switch ($method) {
 
 
                 if ($_POST['_method'] == "PUT") {
-
+                    session_name("ecomercer_admin_data");
+                    session_start();
                     if (isset($_POST['validar']) &&  $_POST['validar'] == 1) {
 
 
 
-                        if (isset($_POST['newdata']['stock'])) {
-                            if (isset($_POST['newdata']['stock']) && validar_int($_POST['newdata']['stock']) && $_POST['newdata']['stock'] > 0) {
-                                $stock = $_POST['newdata']['stock'];
-                            } else {
-                                http_response_code(409); //codigo de conflicto
+                        $stock = isset($_POST['newdata']['stock']) ? $_POST['newdata']['stock'] : 0;
+                        if (validar_int($_POST['newdata']['stock'])) {
+                            $stock = $_POST['newdata']['stock'];
+                        } else {
+                            http_response_code(409); //codigo de conflicto
+                            $resultado = new stdClass();
+                            $resultado->result = false;
+                            $resultado->icono = "";
+                            $resultado->titulo = "";
+                            $resultado->mensaje = "Stock del Producto No Valido";
+                            echo  json_encode($resultado);
+                            break;
+                        }
+
+                        $precio = isset($_POST['newdata']['precio']) ? $_POST['newdata']['precio'] : 0;
+                        if (validar_Monto($_POST['newdata']['precio'])) {
+                            $precio = $_POST['newdata']['precio'];
+                        } else {
+                            http_response_code(409); //codigo de conflicto
+                            $resultado = new stdClass();
+                            $resultado->result = false;
+                            $resultado->icono = "";
+                            $resultado->titulo = "";
+                            $resultado->mensaje = "Precio No Valido";
+                            echo  json_encode($resultado);
+                            break;
+                        }
+
+
+                        include_once "../../php/conexion.php";
+
+                        if (isset($_POST['newdata']['id']) && validar_string($_POST['newdata']['id'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
+                            $id = $_POST['newdata']['id'];
+                        } else {
+                            http_response_code(409); //codigo de conflicto
+                            $resultado = new stdClass();
+                            $resultado->result = false;
+                            $resultado->icono = "";
+                            $resultado->titulo = "";
+                            $resultado->mensaje = "Id no Valido";
+                            echo  json_encode($resultado);
+                            break;
+                        }
+                        if (isset($_POST['newdata']['id_grupo']) && validar_string($_POST['newdata']['id'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
+                            $id_grupo = $_POST['newdata']['id_grupo'];
+                        } else {
+                            http_response_code(409); //codigo de conflicto
+                            $resultado = new stdClass();
+                            $resultado->result = false;
+                            $resultado->icono = "";
+                            $resultado->titulo = "";
+                            $resultado->mensaje = "Id Grupo no Valido";
+                            echo  json_encode($resultado);
+                            break;
+                        }
+
+                        if ($precio != 0) {
+                            $consulta = "CALL adm_editar_producto( '$id_grupo', '$id', '0', '0', '0','0','0','0','$precio','0','" . $_SESSION['Usuario']['id'] . "','1')"; //editar el stock
+                        } else if ($stock != 0) {
+                            $consulta = "CALL adm_editar_producto( '$id_grupo', '$id', '0', '0', '0','0','0','0','0','$stock','" . $_SESSION['Usuario']['id'] . "','2')"; //editar el stock
+                        }
+
+
+                        $resultado = mysqli_query($conexion, $consulta);
+                        // echo $consulta;
+                        $dataquery = mysqli_fetch_assoc($resultado);
+                        if ($resultado) { //* si realizo la consulta sin problemas
+
+                            if ($dataquery['status'] == 1) {
+                                http_response_code(200);
                                 $resultado = new stdClass();
-                                $resultado->result = false;
-                                $resultado->icono = "";
-                                $resultado->titulo = "";
-                                $resultado->mensaje = "Stock del Producto No Valido";
-                                echo  json_encode($resultado);
-                                break;
-                            }
-                            include_once "../../php/conexion.php";
-                            session_name("ecomercer_admin_data");
-                            session_start();
-                            if (isset($_POST['newdata']['id']) && validar_string($_POST['newdata']['id'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
-                                $id = $_POST['newdata']['id'];
-                            } else {
-                                http_response_code(409); //codigo de conflicto
-                                $resultado = new stdClass();
-                                $resultado->result = false;
-                                $resultado->icono = "";
-                                $resultado->titulo = "";
-                                $resultado->mensaje = "Id no Valido";
-                                echo  json_encode($resultado);
-                                break;
-                            }
-
-                            $consulta = "CALL adm_editar_producto( '$id', '0', '0', '0', '0','$stock','0','1','" . $_SESSION['Usuario']['id'] . "')"; //editar el stock
-
-
-
-
-
-
-
-
-                            $resultado = mysqli_query($conexion, $consulta);
-                            // echo $consulta;
-                            $dataquery = mysqli_fetch_assoc($resultado);
-                            if ($resultado) { //* si realizo la consulta sin problemas
-
-                                if ($dataquery['status'] == 1) {
-                                    http_response_code(200);
-                                    $resultado = new stdClass();
-                                    $resultado->result = TRUE;
-                                    $resultado->icono = "success";
-                                    $resultado->titulo = "";
-                                    $resultado->mensaje = $dataquery['msg'];
-                                    $resultado->data = array(
-                                        "status" => $dataquery['status'],
-                                        "msg" => $dataquery['msg']
-                                    );
-                                    echo  json_encode($resultado);
-                                    break;
-                                } elseif ($dataquery['status'] == 0) {
-                                    http_response_code(409); //codigo de conflicto
-                                    $resultado = new stdClass();
-                                    $resultado->result = TRUE;
-                                    $resultado->icono = "success";
-                                    $resultado->titulo = "";
-                                    $resultado->mensaje = $dataquery['msg'];
-                                    $resultado->data = array(
-                                        "status" => $dataquery['status'],
-                                        "msg" => $dataquery['msg']
-                                    );
-                                    echo  json_encode($resultado);
-                                    break;
-                                }
-                            } else { //! si hubo un fallo 
-                                http_response_code(409); //codigo de conflicto
-                                $resultado = new stdClass();
-                                $resultado->result = false;
+                                $resultado->result = TRUE;
                                 $resultado->icono = "success";
                                 $resultado->titulo = "";
-                                $resultado->mensaje = "Error Interno";
+                                $resultado->mensaje = $dataquery['msg'];
+                                $resultado->data = array(
+                                    "status" => $dataquery['status'],
+                                    "msg" => $dataquery['msg']
+                                );
                                 echo  json_encode($resultado);
                                 break;
-                            }
-                        } elseif ($_POST['newdata']['precio']) {
-                            if (isset($_POST['newdata']['precio']) && validar_Monto($_POST['newdata']['precio']) && $_POST['newdata']['precio'] > 0) {
-                                $precio = $_POST['newdata']['precio'];
-                            } else {
+                            } elseif ($dataquery['status'] == 0) {
                                 http_response_code(409); //codigo de conflicto
                                 $resultado = new stdClass();
-                                $resultado->result = false;
-                                $resultado->icono = "";
+                                $resultado->result = TRUE;
+                                $resultado->icono = "success";
                                 $resultado->titulo = "";
-                                $resultado->mensaje = "Precio No Valido";
+                                $resultado->mensaje = $dataquery['msg'];
+                                $resultado->data = array(
+                                    "status" => $dataquery['status'],
+                                    "msg" => $dataquery['msg']
+                                );
                                 echo  json_encode($resultado);
                                 break;
                             }
-                            if (isset($_POST['newdata']['id']) && validar_string($_POST['newdata']['id'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
-                                $id = $_POST['newdata']['id'];
-                            } else {
-                                http_response_code(409); //codigo de conflicto
-                                $resultado = new stdClass();
-                                $resultado->result = false;
-                                $resultado->icono = "";
-                                $resultado->titulo = "";
-                                $resultado->mensaje = "Id no Valido";
-                                echo  json_encode($resultado);
-                                break;
-                            }
-
-
-                            include_once "../../php/conexion.php";
-                            // session_name("ecomercer_admin_data");
-                            session_start();
-                            $consulta = "CALL adm_editar_producto( '$id', '0', '0', '0', '0','0',$precio,'2','" . $_SESSION['Usuario']['id'] . "')"; //editar precio    
-
-                            $resultado = mysqli_query($conexion, $consulta);
-                            $dataquery = mysqli_fetch_assoc($resultado);
-                            if ($resultado) { //* si realizo la consulta sin problemas
-
-                                if ($dataquery['status'] == 1) {
-                                    http_response_code(200);
-                                    $resultado = new stdClass();
-                                    $resultado->result = TRUE;
-                                    $resultado->icono = "success";
-                                    $resultado->titulo = "";
-                                    $resultado->mensaje = $dataquery['msg'];
-                                    $resultado->data =  array(
-                                        "status" => $dataquery['status'],
-                                        "msg" => $dataquery['msg']
-                                    );
-                                    echo  json_encode($resultado);
-                                    break;
-                                } elseif ($dataquery['status'] == 0) {
-                                    http_response_code(409); //codigo de conflicto
-                                    $resultado = new stdClass();
-                                    $resultado->result = TRUE;
-                                    $resultado->icono = "success";
-                                    $resultado->titulo = "";
-                                    $resultado->mensaje = $dataquery['msg'];
-                                    $resultado->data =  array(
-                                        "status" => $dataquery['status'],
-                                        "msg" => $dataquery['msg']
-                                    );
-                                    echo  json_encode($resultado);
-                                    break;
-                                }
-                            } else { //! si hubo un fallo 
-                                http_response_code(409); //codigo de conflicto
-                                $resultado = new stdClass();
-                                $resultado->result = false;
-                                $resultado->icono = "";
-                                $resultado->titulo = "";
-                                $resultado->mensaje = "Error Interno";
-                                echo  json_encode($resultado);
-                                break;
-                            }
+                        } else { //! si hubo un fallo 
+                            http_response_code(409); //codigo de conflicto
+                            $resultado = new stdClass();
+                            $resultado->result = false;
+                            $resultado->icono = "success";
+                            $resultado->titulo = "";
+                            $resultado->mensaje = "Error Interno";
+                            echo  json_encode($resultado);
+                            break;
                         }
+
                         break;
                     }
 
@@ -742,7 +695,7 @@ switch ($method) {
                         */
                     include_once "../../php/conexion.php";
                     //session_name("ecomercer_admin_data");
-                    session_start();
+                    // session_start();
                     $consulta = "CALL adm_editar_grupo( '$ModalEditarID_grupo',  '$ModalEditarNombreProducto', '$ModalEditarDescripcion', '$ModalEditarCategoria','" . $_SESSION['Usuario']['id'] . "')";
 
 

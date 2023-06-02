@@ -47,7 +47,7 @@ if (!isset($_SESSION['Usuario'])) { //si no existe una session sale del sistema
 
 
             ProductosData = await $.ajax({
-                url: "./api-v1/stock_y_precio/index.php",
+                url: "./api-v1/productos/stock_y_precio.php",
                 type: 'GET',
                 headers: {
                     'x-csrf-token': $('meta[name="csrf-token"]').attr('content')
