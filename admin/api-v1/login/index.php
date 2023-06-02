@@ -44,8 +44,6 @@ switch ($method) {
             agregarproducto,
             editarproducto,
             eliminarproducto,
-            editarstock,
-            editarprecio,
             agregarcategoria,
             editarcategoria,
             eliminarcategoria
