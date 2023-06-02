@@ -1,6 +1,6 @@
 <?php
 session_name("ecomercer_admin_data");
- session_start(); 
+session_start();
 if (!isset($_SESSION['Usuario'])) { //si no existe una session sale del sistema
     header("Location: ../../page/404.html"); //validar el estado de la session al momento de ingresar al modulo 
     exit;
@@ -27,7 +27,6 @@ if (!isset($_SESSION['Usuario'])) { //si no existe una session sale del sistema
                                     <th scope="col" class="px-6 py-4">stock</th>
                                     <th scope="col" class="px-6 py-4">Categoria</th>
                                     <th scope="col" class="px-6 py-4">precio</th>
-                                    <th scope="col" class="px-6 py-4">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -98,13 +97,6 @@ if (!isset($_SESSION['Usuario'])) { //si no existe una session sale del sistema
                                     {
                                         "data": "precio",
                                         "className": "editable"
-                                    },
-                                    {
-                                        "data": null,
-                                        "bSortable": false,
-                                        "mRender": function(data, type, value) {
-                                            return ` `;
-                                        }
                                     },
 
                                 ],
