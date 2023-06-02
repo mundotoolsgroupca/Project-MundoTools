@@ -745,8 +745,7 @@ switch ($method) {
                     session_start();
                     $consulta = "CALL adm_editar_grupo( '$ModalEditarID_grupo',  '$ModalEditarNombreProducto', '$ModalEditarDescripcion', '$ModalEditarCategoria','" . $_SESSION['Usuario']['id'] . "')";
 
-                    echo $consulta;
-                    return;
+
                     $resultado = mysqli_query($conexion, $consulta);
                     $dataquery = mysqli_fetch_assoc($resultado);
                     if ($resultado) { //* si realizo la consulta sin problemas
