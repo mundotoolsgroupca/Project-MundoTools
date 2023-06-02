@@ -554,7 +554,7 @@ switch ($method) {
                             $consulta = "CALL adm_editar_producto( '$id', '0', '0', '0', '0','$stock','0','1','" . $_SESSION['Usuario']['id'] . "')"; //editar el stock
 
 
- 
+
 
 
 
@@ -680,8 +680,9 @@ switch ($method) {
                     }
 
 
-                    if (isset($_POST['ModalEditarID']) != false && validar_string($_POST['ModalEditarID'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
-                        $ModalEditarID = $_POST['ModalEditarID'];
+
+                    if (isset($_POST['ModalEditarID_grupo_grupo']) != false && validar_string($_POST['ModalEditarID_grupo_grupo'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
+                        $ModalEditarID_grupo_grupo = $_POST['ModalEditarID_grupo_grupo'];
                     } else {
                         http_response_code(409); //codigo de conflicto
                         $resultado = new stdClass();
@@ -732,7 +733,7 @@ switch ($method) {
                         break;
                     }
                     /*
-                        $ModalEditarID = "";
+                        $ModalEditarID_grupo_grupo = "";
                         $ModalEditarNombreProducto = "";
                         $ModalEditarPrecio = "";
                         $ModalEditarMoneda = "";
@@ -743,7 +744,7 @@ switch ($method) {
                     include_once "../../php/conexion.php";
                     //session_name("ecomercer_admin_data");
                     session_start();
-                    $consulta = "CALL adm_editar_grupo( '$ModalEditarID',  '$ModalEditarNombreProducto', '$ModalEditarDescripcion', '$ModalEditarCategoria','" . $_SESSION['Usuario']['id'] . "')";
+                    $consulta = "CALL adm_editar_grupo( '$ModalEditarID_grupo_grupo',  '$ModalEditarNombreProducto', '$ModalEditarDescripcion', '$ModalEditarCategoria','" . $_SESSION['Usuario']['id'] . "')";
                     $resultado = mysqli_query($conexion, $consulta);
                     $dataquery = mysqli_fetch_assoc($resultado);
                     if ($resultado) { //* si realizo la consulta sin problemas

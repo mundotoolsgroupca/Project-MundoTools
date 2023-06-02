@@ -226,7 +226,7 @@
                     <!-------Modal body-->
                     <div data-te-modal-body-ref class="relative p-4">
                         <div class="[ flex gap-3 flex-col ]">
-                            <input class="[ hidden ]" type="text" name="ModalEditarID" id="ModalEditarID" />
+                            <input class="[ hidden ]" type="text" name="ModalEditarID_grupo" id="ModalEditarID_grupo" />
 
                             <div class="[ flex justify-center  ]">
                                 <img id="Modalimgpreview" class="[ max-h-32 mt-3 object-cover rounded-lg ]" src="">
@@ -1097,7 +1097,6 @@
 
         debugger;
         let data = tabla_grupos_producto.row(this).data();
-        $('#ModalEditarID').val(data.id);
         $('#ModalEditarNombreProducto').val(data.nombre);
         $('#ModalEditarCategoria').val(data.categoria_id);
         $('#ModalEditarDescripcion').val(data.descripcion);
@@ -1375,7 +1374,7 @@
     $("#ModalEditar").on("submit", async function(event) {
 
         event.preventDefault();
-        ModalEditarID = $("#ModalEditarID").val();
+        ModalEditarID_grupo = $("#ModalEditarID_grupo").val();
         ModalEditarNombreProducto = $("#ModalEditarNombreProducto").val();
         ModalEditarCategoria = $("#ModalEditarCategoria").val();
         ModalEditarDescripcion = $("#ModalEditarDescripcion").val();
@@ -1389,7 +1388,7 @@
             },
 
             data: {
-                ModalEditarID: ModalEditarID,
+                ModalEditarID_grupo: ModalEditarID_grupo,
                 ModalEditarNombreProducto: ModalEditarNombreProducto,
                 ModalEditarCategoria: ModalEditarCategoria,
                 ModalEditarDescripcion: ModalEditarDescripcion,
