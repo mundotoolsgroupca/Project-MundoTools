@@ -680,7 +680,6 @@ switch ($method) {
                     }
 
 
-
                     if (isset($_POST['ModalEditarID_grupo_grupo']) != false && validar_string($_POST['ModalEditarID_grupo_grupo'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
                         $ModalEditarID_grupo_grupo = $_POST['ModalEditarID_grupo_grupo'];
                     } else {
@@ -689,7 +688,7 @@ switch ($method) {
                         $resultado->result = false;
                         $resultado->icono = "";
                         $resultado->titulo = "";
-                        $resultado->mensaje = "ID No Valida";
+                        $resultado->mensaje = "ID Grupo No Valida";
                         echo  json_encode($resultado);
                         break;
                     }
