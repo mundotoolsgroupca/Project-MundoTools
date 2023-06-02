@@ -89,7 +89,7 @@ if (!isset($_SESSION['Usuario'])) { //si no existe una session sale del sistema
                         }
                         ?>
                         <?php
-                        if (isset($_SESSION['Permisos']['editarstock']) == true &&  isset($_SESSION['Permisos']['editarprecio']) == true && $_SESSION['Permisos']['editarstock'] == '1' || $_SESSION['Permisos']['editarprecio'] == '1') {
+                        if (isset($_SESSION['Permisos']['agregarproducto']) == true ) {
                             echo "
                                 <li class='relative' onclick='modulo_stock()'>
                                     <a  class='flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-700 outline-none transition duration-300 ease-linear hover:bg-blue-400/10 hover:text-[#E4A11B] hover:outline-none focus:bg-blue-400/10 focus:text-[#E4A11B] focus:outline-none active:bg-blue-400/10 active:text-[#E4A11B] active:outline-none data-[te-sidenav-state-active]:text-[#E4A11B] data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none' data-te-sidenav-link-ref>Modificar Stock | Precio</a>
