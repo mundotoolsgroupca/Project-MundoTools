@@ -517,8 +517,7 @@ switch ($method) {
 
 
                 if ($_POST['_method'] == "PUT") {
-                    session_name("ecomercer_admin_data");
-                    session_start();
+
                     if (isset($_POST['validar']) &&  $_POST['validar'] == 1) {
 
 
