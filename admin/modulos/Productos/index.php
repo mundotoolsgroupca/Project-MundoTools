@@ -1095,6 +1095,7 @@
 
     $('#tabla_grupos_producto tbody').on('click', 'tr', function() {
 
+        debugger;
         let data = tabla_grupos_producto.row(this).data();
         $('#ModalEditarID').val(data.id);
         $('#ModalEditarNombreProducto').val(data.nombre);
