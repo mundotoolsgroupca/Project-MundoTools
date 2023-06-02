@@ -10,6 +10,8 @@ switch ($method) {
         include_once '../../php/FuncionesGenerales.php';
         include_once '../../php/conexion.php';
         $http = getallheaders();
+        session_name("ecomercer_admin_data");
+        session_start();
         if (!empty($http['X-Csrf-Token'])) {
 
             if (!isset($_SESSION['token'])) {
