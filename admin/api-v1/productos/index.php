@@ -590,7 +590,8 @@ switch ($method) {
 
 
                         $resultado = mysqli_query($conexion, $consulta);
-                        // echo $consulta;
+                        echo $consulta;
+                        return;
                         $dataquery = mysqli_fetch_assoc($resultado);
                         if ($resultado) { //* si realizo la consulta sin problemas
 
