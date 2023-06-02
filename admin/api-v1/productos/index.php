@@ -522,33 +522,37 @@ switch ($method) {
 
 
 
-                        $stock = isset($_POST['newdata']['stock']) ? $_POST['newdata']['stock'] : 0;
-                        if (validar_int($_POST['newdata']['stock'])) {
-                            $stock = $_POST['newdata']['stock'];
-                        } else {
-                            http_response_code(409); //codigo de conflicto
-                            $resultado = new stdClass();
-                            $resultado->result = false;
-                            $resultado->icono = "";
-                            $resultado->titulo = "";
-                            $resultado->mensaje = "Stock del Producto No Valido";
-                            echo  json_encode($resultado);
-                            break;
+                        $stock = isset($_POST['newdata']['stock']) ? $_POST['newdata']['stock'] : false;
+                        if ($stock != false) {
+                            if (validar_int($_POST['newdata']['stock'])) {
+                                $stock = $_POST['newdata']['stock'];
+                            } else {
+                                http_response_code(409); //codigo de conflicto
+                                $resultado = new stdClass();
+                                $resultado->result = false;
+                                $resultado->icono = "";
+                                $resultado->titulo = "";
+                                $resultado->mensaje = "Stock del Producto No Valido";
+                                echo  json_encode($resultado);
+                                break;
+                            }
+                        }
+                        $precio = isset($_POST['newdata']['precio']) ? $_POST['newdata']['precio'] : false;
+                        if ($precio != false) {
+                            if (validar_Monto($_POST['newdata']['precio'])) {
+                                $precio = $_POST['newdata']['precio'];
+                            } else {
+                                http_response_code(409); //codigo de conflicto
+                                $resultado = new stdClass();
+                                $resultado->result = false;
+                                $resultado->icono = "";
+                                $resultado->titulo = "";
+                                $resultado->mensaje = "Precio No Valido";
+                                echo  json_encode($resultado);
+                                break;
+                            }
                         }
 
-                        $precio = isset($_POST['newdata']['precio']) ? $_POST['newdata']['precio'] : 0;
-                        if (validar_Monto($_POST['newdata']['precio'])) {
-                            $precio = $_POST['newdata']['precio'];
-                        } else {
-                            http_response_code(409); //codigo de conflicto
-                            $resultado = new stdClass();
-                            $resultado->result = false;
-                            $resultado->icono = "";
-                            $resultado->titulo = "";
-                            $resultado->mensaje = "Precio No Valido";
-                            echo  json_encode($resultado);
-                            break;
-                        }
 
 
                         include_once "../../php/conexion.php";
@@ -578,9 +582,9 @@ switch ($method) {
                             break;
                         }
 
-                        if ($precio != 0) {
+                        if ($precio == false) {
                             $consulta = "CALL adm_editar_producto( '$id_grupo', '$id', '0', '0', '0','0','0','0','$precio','0','" . $_SESSION['Usuario']['id'] . "','1')"; //editar el stock
-                        } else if ($stock != 0) {
+                        } else if ($stock == false) {
                             $consulta = "CALL adm_editar_producto( '$id_grupo', '$id', '0', '0', '0','0','0','0','0','$stock','" . $_SESSION['Usuario']['id'] . "','2')"; //editar el stock
                         }
 
