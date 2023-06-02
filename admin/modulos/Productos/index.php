@@ -1097,6 +1097,7 @@
 
         debugger;
         let data = tabla_grupos_producto.row(this).data();
+        $('#ModalEditarID_grupo').val(data.id_grupo);
         $('#ModalEditarNombreProducto').val(data.nombre);
         $('#ModalEditarCategoria').val(data.categoria_id);
         $('#ModalEditarDescripcion').val(data.descripcion);
