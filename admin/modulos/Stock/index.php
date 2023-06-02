@@ -166,6 +166,7 @@ if (!isset($_SESSION['Usuario'])) { //si no existe una session sale del sistema
                     var newdata = {}; //array que tendra el id y el valor a editar 
                     newdata[title_columna] = input.val();
                     newdata["id"] = data.id;
+                    newdata["id_grupo"] = data.id_grupo;
                     $.ajax({ //se manda los valores obtenido a php
                         url: "./api-v1/productos/index.php",
                         type: 'POST',
