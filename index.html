@@ -17,6 +17,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;400&family=Unbounded&display=swap"
         rel="stylesheet">
 
+    <script src="https://code.jquery.com/jquery-3.7.0.js"
+        integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+
 
     <script>
         tailwind.config = {
@@ -36,7 +39,7 @@
     <title>MundoTools</title>
 </head>
 
-<body class="bg-gray-200  " style="font-family: 'Oswald', sans-seri;">
+<body class="bg-gray-100  " style="font-family: 'Oswald', sans-seri;">
     <div class="fixed z-[999] w-full top-0 ">
         <!-- Header Navbar -->
         <div class="[ w-full p-3 bg-black flex gap-5 justify-end items-center text-white ]">
@@ -79,7 +82,7 @@
 
         </div>
         <!-- Main navigation container -->
-        <nav class="[   flex w-full flex-wrap items-center justify-between bg-[#FBAA35] py-5 text-neutral-200 shadow-lg lg:flex-wrap lg:justify-start lg:py-4 ]  "
+        <nav class="[   flex w-full flex-wrap items-center justify-between bg-[#FBAA35] py-5 text-neutral-200 shadow-2xl	 lg:flex-wrap lg:justify-start lg:py-4 ]  "
             data-te-navbar-ref>
             <div class="flex w-full flex-wrap items-center justify-between px-3">
                 <!-- Hamburger button for mobile view -->
@@ -109,6 +112,20 @@
                     <!-- Left navigation links -->
                     <ul class="[ list-style-none  w-full flex   flex-col justify-end  pl-0 lg:flex-row ] [ lg:gap-3 ]"
                         data-te-navbar-nav-ref>
+                        <li class="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
+                            <a class="text-black text-xl flex flex-nowrap gap-1 items-center w-full hover:text-white transition-all"
+                                href="#nosotros" data-te-nav-link-ref>
+                                <span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+                                    </svg>
+
+                                </span>
+                                Nosotros
+                            </a>
+                        </li>
                         <!-- Dashboard link -->
                         <li class="my-4 lg:my-0 lg:pr-2" data-te-nav-item-ref role="button" data-te-collapse-init
                             data-te-target="#navbarSupportedContent4" aria-controls="navbarSupportedContent4"
@@ -116,8 +133,8 @@
 
                             <!-- Team link -->
                         <li class="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
-                            <a class="text-black flex flex-nowrap gap-1 items-center w-full" href="./tienda.php"
-                                data-te-nav-link-ref>
+                            <a class="text-black text-xl flex flex-nowrap gap-1 items-center w-full hover:text-white transition-all"
+                                href="./tienda.php" data-te-nav-link-ref>
                                 <span>
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                         stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
@@ -133,8 +150,8 @@
                         </li>
                         <!-- Team link -->
                         <li class="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
-                            <a class="text-black flex flex-nowrap gap-1 items-center w-full" href="#preguntafrecuentes"
-                                data-te-nav-link-ref>
+                            <a class="text-black text-xl flex flex-nowrap gap-1 items-center w-full hover:text-white transition-all"
+                                href="#preguntafrecuentes" data-te-nav-link-ref>
                                 <span>
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                         stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
@@ -148,8 +165,8 @@
                         </li>
                         <!-- Projects link -->
                         <li class="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
-                            <a class="text-black flex flex-nowrap gap-1 items-center" href="#contactanos"
-                                data-te-nav-link-ref>
+                            <a class="text-black text-xl flex flex-nowrap gap-1 items-center w-full hover:text-white transition-all"
+                                href="#contactanos" data-te-nav-link-ref>
                                 <span>
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                         stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
@@ -158,9 +175,11 @@
                                     </svg>
 
                                 </span>
-                                Contactanos
+                                contactanos
                             </a>
                         </li>
+
+
 
                     </ul>
                 </div>
@@ -174,10 +193,9 @@
     <header
         class="mt-32 relative flex items-center justify-center mt-3 h-72 mb-12 overflow-hidden [ md:h-[400px] ] [ lg:h-[600px] ]">
         <div
-            class="relative z-30 p-5 text-2xl text-white bg-gray-800 bg-opacity-50 rounded-xl w-full  h-full  [ lg:text-center  ] ">
+            class="relative flex justify-center z-30 p-5 text-2xl text-white bg-gray-800 bg-opacity-50 rounded-xl w-full  h-full  [ lg:text-center  ] ">
 
-            <h1
-                class="capitalize text-5xl md:text-6xl xl:text-7xl font-bold tracking-tight  my-auto [ md:mt-44 ] [ lg:mt-44 ] ">
+            <h1 class="capitalize text-5xl md:text-6xl xl:text-7xl font-bold tracking-tight  my-auto ">
                 Las mejores ofertas del mercado
                 <br><span>para tu negocio </span>
             </h1>
@@ -195,14 +213,13 @@
 
 
 
-
     <div data-aos="zoom-in-up" class="container mx-auto xl:px-32 text-center lg:text-left mt-3">
         <div class="grid lg:grid-cols-2 flex items-center">
             <div class="mb-12 lg:mb-0">
                 <div class="block text-white rounded-lg shadow-lg px-6 py-12 md:px-12 lg:-mr-14"
                     style="background: hsla(0, 0%, 0%, 0.747); backdrop-filter: blur(30px)">
-                    <h2 class="text-3xl font-bold mb-6">MUNDO TOOLS GROUP C.A.</h2>
-                    <p class=" mb-6 pb-2 lg:pb-0">
+                    <h2 id="nosotros" class="text-3xl font-bold mb-6">MUNDO TOOLS GROUP C.A.</h2>
+                    <p class=" mb-6 pb-2 lg:pb-0 text-justify [ md:text-md: ] [ lg:text-lg ]">
                         Somos una Empresa Distribuidora Autorizada de la Marca TOOLSEN,
                         orientada a brindar soluciones a través de la venta de Herramientas Especializadas y suministros
                         para la reparación, construcción y mantenimiento en edificaciones, hogares, sector energético y
@@ -222,17 +239,17 @@
     </div>
 
     <section
-        class="bg-fixed mt-3 bg-center bg-cover bg-[url('https://orion91.com/blog/wp-content/uploads/2021/04/herramientas_bricolaje_orion91_1.jpg')] h-[100px] [ md:h-[300px] ]  [ lg:h-[200px] ]">
+        class="bg-fixed mt-10 mb-10 bg-center bg-cover bg-[url('https://orion91.com/blog/wp-content/uploads/2021/04/herramientas_bricolaje_orion91_1.jpg')] h-[100px] [ md:h-[300px] ]  [ lg:h-[200px] ]">
         <div class="h-full w-full bg-neutral-900/60">
             <span
-                class=" [ text-white     w-full h-full flex justify-center items-center p-5 text-2xl ] [ md:text-6xl ] [ xl:text-7xl ]  ">
-                El Mejor Servicio</span>
+                class=" [ text-white capitalize     w-full h-full flex justify-center items-center p-5 text-2xl ] [ md:text-6xl ] [ xl:text-7xl ]  ">
+                La Mejor Calidad a Precios Competitivos</span>
         </div>
     </section>
 
 
 
-    <div class="[   mt-3  mx-auto px-1 ]   [ md:px-6 ] [ lg:px-6 lg:container ]">
+    <div class="[   mt-5  mx-auto px-1 ]   [ md:px-6 ] [ lg:px-6 lg:container ]">
 
 
 
@@ -247,7 +264,7 @@
                 <div class="mb-6 md:mb-0 group ">
                     <div class="relative  overflow-hidden bg-no-repeat bg-cover relative overflow-hidden bg-no-repeat bg-cover ripple shadow-lg rounded-lg"
                         data-mdb-ripple="true" data-mdb-ripple-color="light">
-                        <img src="https://images.unsplash.com/photo-1645651964715-d200ce0939cc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+                        <img src="./assets/img/publicidad5.png"
                             class="[ mx-auto object-cover   ] [ lg:w-full lg:h-[400px] ]" alt="Louvre" />
                         <a href="#!">
                             <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed opacity-0 hover:opacity-100 transition duration-300 ease-in-out"
@@ -256,21 +273,23 @@
                     </div>
                 </div>
 
-                <div class="mb-6 md:mb-0">
-                    <h3 class="text-2xl font-bold mb-3 text-white">La herramienta perfecta para cada proyecto</h3>
+                <div class="mb-6 md:mb-0 static ">
+                    <h3 class="capitalize text-2xl font-bold mb-3 text-white">La herramienta perfecta para cada proyecto
+                    </h3>
+                    <div class="absolute bottom-0 right-3   text-white">
+                        <p>Mision</p>
+                    </div>
 
-
-                    <p class="text-white capitalize">
-                        Ser la principal empresa proveedora de soluciones y herramientas ferreteras especializadas de
-                        alta calidad para profesionales y consumidores, a través de un servicio excepcional y una amplia
-                        variedad de productos innovadores y funcionales.
+                    <p class="text-white capitalize text-justify p-3">
+                        Proporcionar herramientas especializadas y materiales de calidad a precios competitivos,
+                        ofreciendo un excelente servicio al cliente y ayudando a satisfacer las necesidades de
+                        construcción y mantenimiento en edificaciones, hogares, sector energético y la industria
+                        petrolera, en el ámbito Nacional e Internacional, comprometidos con los principios de calidad y
+                        la generación de confianza y tranquilidad a nuestros clientes.
                     </p>
                     <div
                         class="[ w-full flex items-center  justify-center  mt-3 ] [ md:justify-start ]  [ lg:justify-start ]">
-                        <button type="button" data-te-ripple-init data-te-ripple-color="light"
-                            class="rounded px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal transition duration-150 ease-in-out bg-[#FBAA35] text-white focus:text-primary-600 focus:outline-none focus:ring-0 active:text-primary-700 dark:hover:bg-neutral-700">
-                            Ir
-                        </button>
+
                     </div>
 
                 </div>
@@ -281,8 +300,8 @@
                 <div class="mb-6 md:mb-0 md:order-2">
                     <div class="relative overflow-hidden bg-no-repeat bg-cover relative overflow-hidden bg-no-repeat bg-cover ripple shadow-lg rounded-lg"
                         data-mdb-ripple="true" data-mdb-ripple-color="light">
-                        <img src="./assets/img/publicidad3.png"
-                            class="[ mx-auto object-cover ] [ lg:w-full lg:h-[400px] ]" alt="Louvre" />
+                        <img src="./assets/img/publicidad3.jpg"
+                            class="[ mx-auto  ] [ lg:w-full lg:h-[400px] ]" alt="Louvre" />
                         <a href="#!">
                             <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed opacity-0 hover:opacity-100 transition duration-300 ease-in-out"
                                 style="background-color: rgba(251, 251, 251, 0.2)"></div>
@@ -290,23 +309,24 @@
                     </div>
                 </div>
 
-                <div class="mb-6 md:mb-0 md:order-1">
-                    <h3 class="text-2xl font-bold mb-3 text-white [ md:ml-5 ] [ lg:ml-5 ]">Soluciones para todas tus
+                <div class="mb-6 md:mb-0 md:order-1 static">
+                    <h3 class="capitalize text-2xl font-bold mb-3 text-white [ md:ml-5 ] [ lg:ml-5 ]">Soluciones para
+                        todas tus
                         necesidades</h3>
 
+                    <div class="absolute bottom-0 left-3   text-white">
+                        <p>Vision</p>
+                    </div>
+
                     <p class="text-white capitalize [ md:ml-5 ] [ lg:ml-5 ]">
-                        Proporcionar herramientas especializadas y materiales de calidad a precios competitivos,
-                        ofreciendo un excelente servicio al cliente y ayudando a satisfacer las necesidades de
-                        construcción y mantenimiento en edificaciones, hogares, sector energético y la industria
-                        petrolera, en el ámbito Nacional e Internacional, comprometidos con los principios de calidad y
-                        la generación de confianza y tranquilidad a nuestros clientes.
+
+                        Ser la principal empresa proveedora de soluciones y herramientas ferreteras especializadas de
+                        alta calidad para profesionales y consumidores, a través de un servicio excepcional y una amplia
+                        variedad de productos innovadores y funcionales.
                     </p>
                     <div
                         class="[ w-full flex items-center  justify-center  mt-3 ] [ md:justify-start  md:ml-5 ]  [ lg:justify-start lg:ml-5 ]">
-                        <button type="button" data-te-ripple-init data-te-ripple-color="light"
-                            class=" rounded px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal transition duration-150 ease-in-out bg-[#FBAA35] text-white focus:text-primary-600 focus:outline-none focus:ring-0 active:text-primary-700 dark:hover:bg-neutral-700">
-                            Ir
-                        </button>
+
                     </div>
                 </div>
             </div>
@@ -316,7 +336,7 @@
                 <div class="mb-6 md:mb-0">
                     <div class="relative overflow-hidden bg-no-repeat bg-cover relative overflow-hidden bg-no-repeat bg-cover ripple shadow-lg rounded-lg"
                         data-mdb-ripple="true" data-mdb-ripple-color="light">
-                        <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+                        <img src="./assets/img/publicidad4.png"
                             class="[ mx-auto object-cover ] [ lg:w-full lg:h-[400px] ]" alt="Louvre" />
                         <a href="#!">
                             <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed opacity-0 hover:opacity-100 transition duration-300 ease-in-out"
@@ -326,7 +346,7 @@
                 </div>
 
                 <div class="mb-6 md:mb-0">
-                    <h3 class="text-2xl font-bold mb-3 text-white">Objetivos</h3>
+                    <h3 class="capitalize text-2xl font-bold mb-3 text-white">Objetivos</h3>
 
                     <div class="pt-8 pl-4 pr-4 flex rounded-lg items-center text-gray-300">
                         <ul class="px-3 list-disc">
@@ -338,13 +358,7 @@
 
                         </ul>
                     </div>
-                    <div
-                        class="[ w-full flex items-center  justify-center  mt-3 ] [ md:justify-start ]  [ lg:justify-start ]">
-                        <button type="button" data-te-ripple-init data-te-ripple-color="light"
-                            class=" rounded px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal transition duration-150 ease-in-out bg-[#FBAA35] text-white focus:text-primary-600 focus:outline-none focus:ring-0 active:text-primary-700 dark:hover:bg-neutral-700">
-                            Ir
-                        </button>
-                    </div>
+
                 </div>
             </div>
 
@@ -355,7 +369,7 @@
 
     <div class="[ py-10 px-10 bg-neutral-900  text-white   ]">
         <h2 class="text-center text-4xl text-white mt-4 ml-4 ">Nuestros Valores</h2>
-        <div class="flex flex-col md:flex-row md:justify-around lg:justify-between mt-10 ">
+        <div class="flex flex-col md:flex-row md:justify-around lg:justify-between mt-10 text-lg ">
             <p class="flex items-center mb-4 md:mb-2 lg:mb-0 mx-auto md:mx-0">
 
 
@@ -838,22 +852,15 @@
 
     <!-- Footer section with social media icons and newsletter sign-up -->
     <!-- Footer container -->
-    <footer id="Contactanos" class="bg-[#FBAA35] text-center text-neutral-900 dark:bg-neutral-600   lg:text-left">
+    <footer id="contactanos" class="bg-[#FBAA35] text-center text-neutral-900 dark:bg-neutral-600   lg:text-left">
         <!-- Main container div: holds the entire content of the footer, including four sections (Tailwind Elements, Products, Useful links, and Contact), with responsive styling and appropriate padding/margins. -->
         <div class="mx-6 py-10 text-center md:text-left">
             <div class="grid-1 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
                 <!-- Tailwind Elements section -->
                 <div class="">
-                    <h6 class="mb-4 flex items-center justify-center font-semibold uppercase md:justify-start">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                            class="mr-3 h-4 w-4">
-                            <path
-                                d="M12.378 1.602a.75.75 0 00-.756 0L3 6.632l9 5.25 9-5.25-8.622-5.03zM21.75 7.93l-9 5.25v9l8.628-5.032a.75.75 0 00.372-.648V7.93zM11.25 22.18v-9l-9-5.25v8.57a.75.75 0 00.372.648l8.628 5.033z" />
-                        </svg>
-                        MundoTools Group
-                    </h6>
-                    <p>
-                    </p>
+                    <a class="flex items-center [ w-14 h-10 ] [ md:w-32 md:h-32 ] [ lg:w-48 lg:h-20 ]" href="#">
+                        <img src="./assets/img/logo.png" alt="" srcset="">
+                    </a>
                 </div>
                 <!-- Products section -->
                 <div class="">
@@ -914,6 +921,24 @@
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
     <script>
         AOS.init();
+        $("[class='[ list-style-none  w-full flex   flex-col justify-end  pl-0 lg:flex-row ] [ lg:gap-3 ]'] > li > a").on('click', function (event) {
+
+            var target = $(this.getAttribute('href'));
+
+            if (target.length) {
+
+                event.preventDefault();
+
+                $('html, body').animate({
+
+                    scrollTop: target.offset().top - ($(window).height() - target.outerHeight()) / 2
+
+
+                }, 1000);
+
+            }
+
+        });
     </script>
 </body>
 
