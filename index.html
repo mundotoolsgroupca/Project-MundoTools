@@ -839,9 +839,10 @@
     </style>
     <script>
         AOS.init();
-        $(
-            "[class='[ list-style-none  w-full flex   flex-col justify-end  pl-0 lg:flex-row ] [ lg:gap-3 ]'] > li > a"
+        $("[class='[ capitalize list-style-none w-full flex flex-col justify-end pl-0 lg:flex-row ] [ lg:gap-3 ]'] > li > a"
         ).on("click", function (event) {
+
+            debugger;
             var target = $(this.getAttribute("href"));
 
             if (target.length) {
