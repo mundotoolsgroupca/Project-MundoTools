@@ -39,9 +39,9 @@
 </head>
 
 <body id="inicio" class="bg-gray-100" style="font-family: 'Oswald', sans-seri">
-    <div class="fixed z-[999] w-full top-0">
+    <div id="box_navbar" class="z-[999]  w-full ">
         <!-- Header Navbar -->
-        <div class="[ w-full p-3 bg-black flex gap-5 justify-end items-center text-white ]">
+        <div id="social_bar" class="[  w-full p-3 bg-black flex gap-5 justify-end items-center text-white ]">
             <!-- Behance -->
 
             <!-- Facebook -->
@@ -73,7 +73,7 @@
             </svg>
         </div>
         <!-- Main navigation container -->
-        <nav class="[ flex w-full flex-wrap items-center justify-between bg-[#FBAA35] py-5 text-neutral-200 shadow-2xl lg:flex-wrap lg:justify-start lg:py-4 ]"
+        <nav class="[    flex w-full flex-wrap items-center justify-between bg-[#FBAA35] py-5 text-neutral-200 shadow-2xl lg:flex-wrap lg:justify-start lg:py-4   ]"
             data-te-navbar-ref>
             <div class="flex w-full flex-wrap items-center justify-between px-3">
                 <!-- Hamburger button for mobile view -->
@@ -100,7 +100,7 @@
                     <!-- Navbar title -->
 
                     <!-- Left navigation links -->
-                    <ul class="[ list-style-none w-full flex flex-col justify-end pl-0 lg:flex-row ] [ lg:gap-3 ]"
+                    <ul class="[ capitalize list-style-none w-full flex flex-col justify-end pl-0 lg:flex-row ] [ lg:gap-3 ]"
                         data-te-navbar-nav-ref>
                         <li class="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
                             <a class="text-black text-xl flex flex-nowrap gap-1 items-center w-full hover:text-white transition-all"
@@ -122,18 +122,13 @@
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                         stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                                         <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+                                            d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
                                     </svg>
                                 </span>
                                 Nosotros
                             </a>
                         </li>
-                        <!-- Dashboard link -->
-                        <li class="my-4 lg:my-0 lg:pr-2" data-te-nav-item-ref role="button" data-te-collapse-init
-                            data-te-target="#navbarSupportedContent4" aria-controls="navbarSupportedContent4"
-                            aria-expanded="false">
-                            <!-- Team link -->
-                        </li>
+
 
                         <li class="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
                             <a class="text-black text-xl flex flex-nowrap gap-1 items-center w-full hover:text-white transition-all"
@@ -173,7 +168,7 @@
                                             d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
                                     </svg>
                                 </span>
-                                contactanos
+                                Contactanos
                             </a>
                         </li>
                     </ul>
@@ -182,8 +177,9 @@
         </nav>
     </div>
 
+
     <header
-        class="mt-32 relative flex items-center justify-center mt-3 h-72 mb-12 overflow-hidden [ md:h-[400px] ] [ lg:h-[600px] ]">
+        class=" relative flex items-center justify-center mt-3 h-72 mb-12 overflow-hidden [ md:h-[400px] ] [ lg:h-[600px] ]">
         <div
             class="relative flex justify-center z-30 p-5 text-2xl text-white bg-gray-800 bg-opacity-50 rounded-xl w-full h-full [ lg:text-center ]">
             <h1 class="capitalize text-5xl md:text-6xl xl:text-7xl font-bold tracking-tight my-auto">
@@ -200,8 +196,9 @@
     <div data-aos="zoom-in-up" class="container mx-auto xl:px-32 text-center lg:text-left mt-3">
         <div class="grid lg:grid-cols-2 flex items-center">
             <div class="mb-12 lg:mb-0">
-                <div class="block text-white rounded-lg shadow-lg px-6 py-12 md:px-12 lg:-mr-14" style="
-              background: hsla(0, 0%, 0%, 0.747);
+                <div class=" [ block text-white rounded-lg shadow-lg px-6 py-12 md:px-12 lg:-mr-14 grayscale bg-stone-900    "
+                    style="
+            
               backdrop-filter: blur(30px);
             ">
                     <h2 id="nosotros" class="text-3xl font-bold mb-6">
@@ -233,7 +230,7 @@
         class="bg-fixed mt-10 mb-10 bg-center bg-cover bg-[url('https://orion91.com/blog/wp-content/uploads/2021/04/herramientas_bricolaje_orion91_1.jpg')] h-[100px] [ md:h-[300px] ] [ lg:h-[200px] ]">
         <div class="h-full w-full bg-neutral-900/60">
             <span
-                class="[ text-white capitalize w-full h-full flex justify-center items-center p-5 text-2xl ] [ md:text-6xl ] [ xl:text-7xl ]">
+                class="[ text-white  text-center capitalize w-full h-full flex justify-center items-center p-5 text-2xl ] [ md:text-6xl ] [ xl:text-7xl ]">
                 La Mejor Calidad a Precios Competitivos</span>
         </div>
     </section>
@@ -265,7 +262,7 @@
                         <p>Mision</p>
                     </div>
 
-                    <p class="text-white capitalize text-justify p-3">
+                    <p class=" [ text-white capitalize text-justify p-5 ] [ md:pr-3 ] [ lg:pr-3 lg:p-0 ]">
                         Proporcionar herramientas especializadas y materiales de calidad a
                         precios competitivos, ofreciendo un excelente servicio al cliente
                         y ayudando a satisfacer las necesidades de construcción y
@@ -303,7 +300,7 @@
                         <p>Vision</p>
                     </div>
 
-                    <p class="text-white capitalize [ md:ml-5 ] [ lg:ml-5 ]">
+                    <p class="[ text-white capitalize text-justify p-5 ] ">
                         Ser la principal empresa proveedora de soluciones y herramientas
                         ferreteras especializadas de alta calidad para profesionales y
                         consumidores, a través de un servicio excepcional y una amplia
@@ -334,7 +331,7 @@
                         Objetivos
                     </h3>
 
-                    <div class="pt-8 pl-4 pr-4 flex rounded-lg items-center text-gray-300">
+                    <div class="pt-8 pl-4 pr-4 flex rounded-lg items-center text-justify text-gray-300">
                         <ul class="px-3 list-disc">
                             <li>
                                 Satisfacer las necesidades y expectativas de nuestros clientes
@@ -650,7 +647,7 @@
     </main>
 
     ----->
-    <div class="[ flex flex-col gap-4 lg:p-4 p-2 rounde-lg m-2 ] [ lg:px-0 ] [ lg:px-72 ]">
+    <div class="[ py-32 flex flex-col gap-4  p-2 rounde-lg m-2 ] [ lg:px-0 ] [ lg:px-72 lg:p-4 ]">
         <div class="lg:text-2xl md:text-xl text-lg lg:p-3 p-1 font-black text-gray-700" id="preguntafrecuentes">
             Preguntas Frecuentes
         </div>
@@ -668,16 +665,18 @@
                 </div>
 
                 <div class="flex flex-col gap-3">
-                    <div class="text-sm leading-3 text-gray-700 font-bold w-full">
-                        Quienes Somos?
+                    <div class="text-sm leading-3 text-gray-700 font-bold w-full capitalize">
+                        Como hacer un pedido ?
+
                     </div>
 
                     <div class="multi-collapse !visible hidden rounded-lg" data-te-collapse-item
                         id="multiCollapseExample1">
-                        <div class="block rounded-lg p-3">
-                            Some placeholder content for the first collapse component of
-                            this multi-collapse example. This panel is hidden by default but
-                            revealed when the user activates the relevant trigger.
+                        <div class="block rounded-lg p-3 capitalize">
+                            Contacta con un vendedor o un distribuidor de Mundotools Group para que este le emita un
+                            token
+                            y poder realizar pedidos por nuestro portal web, tambien puede solicitar una visita a para
+                            que el vendedor le ayude a realizar el pedido desde la comididad de su establecimiento.
                         </div>
                     </div>
                 </div>
@@ -703,16 +702,14 @@
                 </div>
 
                 <div class="flex flex-col gap-3">
-                    <div class="text-sm leading-3 text-gray-700 font-bold w-full">
-                        Nuestra Mision ?
+                    <div class="text-sm leading-3 text-gray-700 font-bold w-full capitalize">
+                        Tiempo de espera para entrega del pedido ?
                     </div>
 
                     <div class="multi-collapse !visible hidden rounded-lg" data-te-collapse-item
                         id="multiCollapseExample2">
-                        <div class="block rounded-lg p-3">
-                            Some placeholder content for the first collapse component of
-                            this multi-collapse example. This panel is hidden by default but
-                            revealed when the user activates the relevant trigger.
+                        <div class="block rounded-lg p-3 capitalize">
+                            El tiempo promedio es de 5 dias habiles luego de procesar el pedido administrativamente.
                         </div>
                     </div>
                 </div>
@@ -738,16 +735,14 @@
                 </div>
 
                 <div class="flex flex-col gap-3">
-                    <div class="text-sm leading-3 text-gray-700 font-bold w-full">
-                        Nuestra Vision ?
+                    <div class="text-sm leading-3 text-gray-700 font-bold w-full capitalize">
+                        Manejan descuentos por volumen de compra?
                     </div>
 
                     <div class="multi-collapse !visible hidden rounded-lg" data-te-collapse-item
                         id="multiCollapseExample3">
-                        <div class="block rounded-lg p-3">
-                            Some placeholder content for the first collapse component of
-                            this multi-collapse example. This panel is hidden by default but
-                            revealed when the user activates the relevant trigger.
+                        <div class="block rounded-lg p-3 capitalize">
+                            Si. Consultar los terminos con su vendedor de confianza.
                         </div>
                     </div>
                 </div>
@@ -760,41 +755,7 @@
                 </svg>
             </div>
         </div>
-        <div data-te-collapse-init data-te-ripple-init data-te-ripple-color="light" href="#multiCollapseExample4"
-            role="button" aria-expanded="false" aria-controls="multiCollapseExample4"
-            class="flex items-center justify-between w-full p-2 lg:rounded-full md:rounded-full hover:bg-gray-100 cursor-pointer border-2 rounded-lg bg-white">
-            <div class="flex items-center">
-                <div class="h-12 w-12 mb-2 lg:mb-0 flex justify-center items-center md:mb-0 rounded-full mr-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="w-9 h-9">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
-                    </svg>
-                </div>
 
-                <div class="flex flex-col gap-3">
-                    <div class="text-sm leading-3 text-gray-700 font-bold w-full">
-                        Donde Estamos Ubicados ?
-                    </div>
-
-                    <div class="multi-collapse !visible hidden rounded-lg" data-te-collapse-item
-                        id="multiCollapseExample4">
-                        <div class="block rounded-lg p-3">
-                            Some placeholder content for the first collapse component of
-                            this multi-collapse example. This panel is hidden by default but
-                            revealed when the user activates the relevant trigger.
-                        </div>
-                    </div>
-                </div>
-
-                <svg class="h-6 w-6 mr-1 invisible md:visible lg:visible xl:visible" xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd"
-                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                        clip-rule="evenodd"></path>
-                </svg>
-            </div>
-        </div>
     </div>
 
     <!-- Container for demo purpose -->
@@ -806,9 +767,10 @@
 
     <!-- Footer section with social media icons and newsletter sign-up -->
     <!-- Footer container -->
-    <footer id="contactanos" class="bg-[#FBAA35] text-center text-neutral-900 dark:bg-neutral-600 lg:text-left">
+    <footer id="contactanos"
+        class="bg-[#4a5568] text-center text-neutral-900 dark:bg-neutral-600 lg:text-left transition-all">
         <!-- Main container div: holds the entire content of the footer, including four sections (Tailwind Elements, Products, Useful links, and Contact), with responsive styling and appropriate padding/margins. -->
-        <div class="mx-6 py-10 text-center md:text-left">
+        <div class="mx-2 py-10 text-center md:text-left">
             <div class="grid-1 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
                 <!-- Tailwind Elements section -->
                 <div class="">
@@ -868,6 +830,13 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
+    <style>
+        footer.active {
+            background-color: #FBAA35;
+            box-shadow: 0 -4px 6px -2px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+        }
+    </style>
     <script>
         AOS.init();
         $(
@@ -888,6 +857,30 @@
                 );
             }
         });
+
+
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 0) {
+                $('#social_bar').addClass('hidden');
+                $('#box_navbar').addClass('fixed top-0');
+            } else {
+                $('#social_bar').removeClass('hidden');
+                $('#box_navbar').removeClass('fixed top-0');
+            }
+        });
+
+        $(window).scroll(function () {
+            if ($(this).scrollTop() + $(this).height() == $(document).height()) {
+                $('footer').addClass('active');
+            } else {
+                $('footer').removeClass('active');
+            }
+        });
+
+
+
+
+
     </script>
 </body>
 
