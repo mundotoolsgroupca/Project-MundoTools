@@ -38,7 +38,7 @@
     <title>MundoTools</title>
 </head>
 
-<body id="inicio" class="bg-gray-100" style="font-family: 'Oswald', sans-seri">
+<body class="bg-gray-100" style="font-family: 'Oswald', sans-seri">
     <div id="box_navbar" class="z-[999]  w-full ">
         <!-- Header Navbar -->
         <div id="social_bar" class="[  w-full p-3 bg-black flex gap-5 justify-end items-center text-white ]">
@@ -178,7 +178,7 @@
     </div>
 
 
-    <header
+    <header id="inicio"
         class=" relative flex items-center justify-center mt-3 h-72 mb-12 overflow-hidden [ md:h-[400px] ] [ lg:h-[600px] ]">
         <div
             class="relative flex justify-center z-30 p-5 text-2xl text-white bg-gray-800 bg-opacity-50 rounded-xl w-full h-full [ lg:text-center ]">
@@ -841,8 +841,6 @@
         AOS.init();
         $("[class='[ capitalize list-style-none w-full flex flex-col justify-end pl-0 lg:flex-row ] [ lg:gap-3 ]'] > li > a"
         ).on("click", function (event) {
-
-            debugger;
             var target = $(this.getAttribute("href"));
 
             if (target.length) {
