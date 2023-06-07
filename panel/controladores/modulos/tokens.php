@@ -33,7 +33,7 @@ if (!isset($_SESSION['usuario'])) {
 
 
 
-                <div class="[ w-full flex flex-nowrap justify-center ]">
+                <div class="[ w-full flex flex-nowrap justify-center mt-3 ]">
                     <button id="btn_token" onclick="tokens_generar()" type="button" data-te-ripple-init data-te-ripple-color="light" class="[  text-xs ] disabled:opacity-50 flex gap-1 items-center justify-center w-full rounded-r bg-[#e4a11b] px-6 py-2.5 font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-[#e4a11b] hover:shadow-lg focus:bg-[#e4a11b]focus:shadow-lg focus:outline-none focus:ring-0 active:bg-[#e4a11b] active:shadow-lg">
                         Generar Token
                     </button>
