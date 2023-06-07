@@ -1299,6 +1299,22 @@ session_start();
                     $('#btn_subir').fadeOut(); //ocultar con animación
                 }
             });
+
+            $("#btn_subir > a ").on("click", function(event) {
+
+                var target = $(this.getAttribute("href"));
+
+                if (target.length) {
+                    event.preventDefault();
+
+                    $("html, body").animate({
+                            scrollTop: target.offset().top -
+                                ($(window).height() - target.outerHeight()) / 2,
+                        },
+                        1000
+                    );
+                }
+            });
         </script>
 </body>
 
