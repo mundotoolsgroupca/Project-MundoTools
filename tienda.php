@@ -380,7 +380,7 @@ session_start();
 
     </div>
 
-    <div id="btn_subir" class="hidden  bottom-3 left-3">
+    <div id="btn_subir" class=" fixed  bottom-3 left-3">
         <a href="#social_bar">
             <div class="rounded-full bg-[#FBAA35] hover:bg-[#FBAA15] cursor-pointer transition-colors p-3 ">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" text-white h-5 w-5">
