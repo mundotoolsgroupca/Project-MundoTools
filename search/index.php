@@ -248,7 +248,7 @@ session_start();
 
 
                             $query = mysqli_real_escape_string($conexion, $query);
-                            $categoriaselected = isset($_GET['categoria']) ? mysqli_real_escape_string($conexion, $_GET['categoria'])  : "";
+                            $categoriaselected = isset($_GET['categoria']) ? htmlspecialchars($_GET['categoria'], ENT_QUOTES, 'UTF-8')  : "";
                             $consulta = "
                             SELECT
                                 c4.categoria, 
