@@ -55,7 +55,7 @@ if (isset($_SESSION['token'])) {
                         <div class="g-0 lg:flex lg:flex-wrap">
                             <!-- Left column container-->
                             <div class="p-4 md:px-0 lg:w-6/12 relative">
-                                <a href="./tienda.php" class=" absolute left-5 ">
+                                <a href="../tienda.php" class=" absolute left-5 ">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
                                     </svg>
