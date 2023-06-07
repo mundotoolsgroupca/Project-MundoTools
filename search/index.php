@@ -60,7 +60,7 @@ session_start();
 <body class="[ bg-gray-200 ]">
 
     <!-- Header Navbar -->
-    <div class="[ w-full p-3 bg-black flex gap-5 justify-betweend items-center text-white ]">
+    <div id="social_bar" class="[ w-full p-3 bg-black flex gap-5 justify-betweend items-center text-white ]">
         <!-- Behance -->
 
 
@@ -214,7 +214,7 @@ session_start();
 
 
     <div class="[ relative    ] [ md:mt-32 ] [ lg:mt-32 ]">
-        <div id="social_bar" class="[  lg:w-5/5   ] [ mx-auto ]">
+        <div  class="[  lg:w-5/5   ] [ mx-auto ]">
             <div class="[ mx-auto p-3  ] [ lg:flex lg:h-full lg:justify-center    lg:w-4/5 lg:gap-3  ]">
 
                 <div class="[ flex gap-5 justify-center pt-3 pb-3  ][ md:flex ][ lg:hidden ]">
