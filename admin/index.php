@@ -61,7 +61,6 @@ if (!isset($_SESSION['Usuario'])) { //si no existe una session sale del sistema
                 <a class="flex items-center [ w-full h-10 ] [ md:w-full md:h-32 ] [ lg:w-full lg:h-20 ]" href="#">
                     <img src="./assets/img/logo.png" alt="" srcset="" />
                 </a>
-                <span data-te-sidenav-slim="false">Administrador</span>
             </a>
 
             <ul class="relative m-0 list-none px-[0.2rem]" data-te-sidenav-menu-ref>
