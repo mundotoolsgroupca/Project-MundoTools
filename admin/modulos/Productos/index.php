@@ -380,11 +380,11 @@
                                         <th scope="col" class="px-6 py-4">ID</th>
                                         <th scope="col" class="px-6 py-4">Nombre</th>
                                         <th scope="col" class="px-6 py-4">Categoria</th>
-                                        <th scope="col" class="px-6 py-4">Descripcion1</th>
-                                        <th scope="col" class="px-6 py-4">Descripcion2</th>
-                                        <th scope="col" class="px-6 py-4">Descripcion3</th>
-                                        <th scope="col" class="px-6 py-4">Descripcion4</th>
-                                        <th scope="col" class="px-6 py-4">Descripcion5</th>
+                                        <th scope="col" class="px-6 py-4">Caracteristica1</th>
+                                        <th scope="col" class="px-6 py-4">Caracteristica2</th>
+                                        <th scope="col" class="px-6 py-4">Caracteristica3</th>
+                                        <th scope="col" class="px-6 py-4">Caracteristica4</th>
+                                        <th scope="col" class="px-6 py-4">Caracteristica5</th>
                                         <th scope="col" class="px-6 py-4">Precio</th>
                                         <th scope="col" class="px-6 py-4">Moneda</th>
                                         <th scope="col" class="px-6 py-4">Acciones</th>
