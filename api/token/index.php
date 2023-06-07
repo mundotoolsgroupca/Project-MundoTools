@@ -121,7 +121,7 @@ switch ($method) {
 
 
 
-                    if (isset($_POST['nombre_del_responsable']) && validar_string($_POST['nombre'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
+                    if (isset($_POST['nombre_del_responsable']) && validar_string($_POST['nombre_del_responsable'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
                         $nombre_del_responsable = htmlspecialchars($_POST['nombre_del_responsable'], ENT_QUOTES, 'UTF-8');
                         $nombre_del_responsable = eliminar_palabras_sql($nombre_del_responsable);
                     } else {
