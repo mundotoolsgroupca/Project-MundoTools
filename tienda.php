@@ -556,7 +556,7 @@ session_start();
                                                     <a href='./search/?categoria=${item.id}'  data-te-ripple-init="" class="relative flex items-end justify-center overflow-hidden rounded-xl">
                                                         <img loading="lazy" onerror="this.onerror=null;this.src='./assets/img/imgerror.png'" src=".${datajson.productos[0].imagen}" title="${item.nombre}" class="objecto-cover h-52">
                                                     </a>
-                                                    <h2 class="text-sm font-semibold text-slate-700">Descrubre</h2>
+                                                    <h2 class="text-sm font-semibold text-slate-700">Descubre</h2>
                                                     <h2 class="text-xl font-semibold text-slate-700">${ item.categoria }</h2>
 
 
