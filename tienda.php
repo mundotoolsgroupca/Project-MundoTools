@@ -635,8 +635,8 @@ session_start();
 
 
         }
-        $("#btn_subir").on("click", function(event) {
-            debugger
+        $("#btn_subir > a ").on("click", function(event) {
+
             var target = $(this.getAttribute("href"));
 
             if (target.length) {
