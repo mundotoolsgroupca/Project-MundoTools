@@ -48,6 +48,7 @@ if (!isset($_SESSION['usuario'])) {
                         <thead class="bg-neutral-800 text-white   border-b font-medium dark:border-neutral-500">
                             <tr>
                                 <th scope="col" class="px-6 py-4">Id</th>
+                                <th scope="col" class="px-6 py-4">Responsable</th>
                                 <th scope="col" class="px-6 py-4">Creacion</th>
                                 <th scope="col" class="px-6 py-4">Vencimiento</th>
                                 <th scope="col" class="px-6 py-4">Token</th>
@@ -134,6 +135,9 @@ if (!isset($_SESSION['usuario'])) {
                             "data": response.data,
                             "columns": [{
                                     "data": "id"
+                                },
+                                {
+                                    "data": "responsable"
                                 }, {
                                     "data": "fecha_creacion"
                                 },
