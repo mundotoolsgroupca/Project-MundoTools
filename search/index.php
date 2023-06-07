@@ -314,7 +314,7 @@ session_start();
                             ";
                         }
                     } elseif (isset($_GET['categoria']) && validar_int($_GET['categoria'])) {
-                        $categoria = mysqli_real_escape_string($conexion, $_GET['categoria']);
+                        $categoria = htmlspecialchars($_GET['categoria'], ENT_QUOTES, 'UTF-8');
                         $categoriaselected = isset($_GET['categoria']) ? $categoria : "";
                         $consulta = "
                         SELECT * FROM `categorias` WHERE  id = '$categoriaselected' ";
