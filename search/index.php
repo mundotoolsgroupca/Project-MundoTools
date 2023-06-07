@@ -1104,7 +1104,15 @@ session_start();
                 <a class="font-semibold text-white" href="./">Mundotools Group C.A Rif: J503585285</a>
             </div>
         </footer>
-
+        <div id="btn_subir" class=" fixed  bottom-3 left-3">
+            <a href="#social_bar">
+                <div class="rounded-full bg-[#FBAA35] hover:bg-[#FBAA15] cursor-pointer transition-colors p-3 ">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" text-white h-5 w-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75L12 3m0 0l3.75 3.75M12 3v18" />
+                    </svg>
+                </div>
+            </a>
+        </div>
         <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
         <script>
             $(document).ready(function() {
@@ -1278,6 +1286,17 @@ session_start();
             btncarritodetalle.addEventListener('click', function() {
                 if (Carrito.list.length > 0) {
                     window.location.href = '../carrito/'
+                }
+            });
+
+            $('#btn_subir').fadeOut(); //ocultar con animación
+            $(window).scroll(function() {
+
+                if ($(this).scrollTop() > 0) {
+                    $('#btn_subir').fadeIn(); //mostrar con animación
+                } else {
+
+                    $('#btn_subir').fadeOut(); //ocultar con animación
                 }
             });
         </script>
