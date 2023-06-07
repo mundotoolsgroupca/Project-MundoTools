@@ -7,7 +7,7 @@ switch ($method) {
         session_name("ecomercer_user_data");
         session_start();
         $http = getallheaders();
-        if (!empty($http['X-Csrf-Token'] )) {
+        if (!empty($http['X-Csrf-Token'])) {
 
             if (!isset($_SESSION['usuario'])) {
                 http_response_code(409); //codigo de conflicto
@@ -21,7 +21,7 @@ switch ($method) {
                 return;
             }
 
-            if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'] )) {
+            if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'])) {
                 $id_vendedor = $_SESSION['usuario']['id'];
                 include_once '../../php/conexion.php';
                 $consulta = "
@@ -96,7 +96,7 @@ switch ($method) {
             session_name("ecomercer_user_data");
             session_start();
             $http = getallheaders();
-            if (!empty($http['X-Csrf-Token'] )) {
+            if (!empty($http['X-Csrf-Token'])) {
 
                 if (!isset($_SESSION['usuario'])) {
                     http_response_code(409); //codigo de conflicto
@@ -110,17 +110,37 @@ switch ($method) {
                     return;
                 }
 
-                if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'] )) {
+                if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'])) {
 
 
 
 
                     include_once '../../php/conexion.php';
                     include_once '../../php/FuncionesGenerales.php';
+
+
+
+
+                    if (isset($_POST['nombre_del_responsable']) && validar_string($_POST['nombre'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
+                        $nombre_del_responsable = htmlspecialchars($_POST['nombre_del_responsable'], ENT_QUOTES, 'UTF-8');
+                        $nombre_del_responsable = eliminar_palabras_sql($nombre_del_responsable);
+                    } else {
+                        http_response_code(409); //error
+                        // Log this as a warning and keep an eye on these attempts
+                        $resultado = new stdClass();
+                        $resultado->result = FALSE;
+                        $resultado->icono = "error";
+                        $resultado->titulo = "Error!";
+                        $resultado->mensaje = 'Parametro No Valido';
+                        echo json_encode($resultado);
+                        break;
+                    }
+
+
                     $id_vendedor = $_SESSION['usuario']['id'];
 
                     // $token = generarToken();
-                    $consulta = "CALL usr_agregar_token('$id_vendedor');";
+                    $consulta = "CALL usr_agregar_token('$id_vendedor','$nombre_del_responsable');";
                     $resultado = mysqli_query($conexion, $consulta);
 
                     if ($resultado) {
@@ -175,7 +195,7 @@ switch ($method) {
             session_name("ecomercer_user_data");
             session_start();
             $http = getallheaders();
-            if (!empty($http['X-Csrf-Token'] )) {
+            if (!empty($http['X-Csrf-Token'])) {
 
                 if (!isset($_SESSION['usuario'])) {
                     http_response_code(409); //codigo de conflicto
@@ -189,7 +209,7 @@ switch ($method) {
                     return;
                 }
 
-                if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'] )) {
+                if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'])) {
                     include_once '../../php/FuncionesGenerales.php';
                     if (isset($_POST['token']) && validar_string($_POST['token'], 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789')) {
                         $token = $_POST['token'];
