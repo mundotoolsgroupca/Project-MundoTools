@@ -638,12 +638,11 @@ session_start();
 
         $(window).scroll(function() {
             if ($(this).scrollTop() > 0) {
-
-
                 $('#btn_subir').addClass('fixed');
+                $('#btn_subir').removeClass('hidden');
             } else {
-
                 $('#btn_subir').removeClass('fixed');
+                $('#btn_subir').addClass('hidden');
             }
         });
 
