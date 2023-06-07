@@ -297,7 +297,7 @@ if (!isset($_SESSION['usuario'])) {
                     $('#btn_token').html(`GENERAR TOKEN`);
 
                     if (response.result) {
-
+                        $('#nombre_del_responsable').val('');
                         tabla_tokens_consultar();
                         navigator.clipboard.writeText(response.data)
                             .then(() => {
