@@ -636,6 +636,7 @@ session_start();
 
         }
         $(window).scroll(function() {
+            debugger
             if ($(this).scrollTop() > 0) {
                 $('#btn_subir').fadeIn(); //mostrar con animación
             } else {
