@@ -58,7 +58,7 @@ if (!isset($_SESSION['Usuario'])) { //si no existe una session sale del sistema
         <!-- Sidenav -->
         <nav id="sidenav-1" class="fixed left-0 top-0 z-[1035] h-screen w-60 -translate-x-full overflow-hidden bg-white shadow-[0_4px_12px_0_rgba(0,0,0,0.07),_0_2px_4px_rgba(0,0,0,0.05)]  xl:data-[te-sidenav-hidden='false']:translate-x-0" data-te-sidenav-init data-te-sidenav-hidden="false" data-te-sidenav-mode-breakpoint-over="0" data-te-sidenav-mode-breakpoint-side="xl" data-te-sidenav-slim="true" data-te-sidenav-slim-collapsed="true" data-te-sidenav-content="#content" data-te-sidenav-accordion="true">
             <a class="mb-3 flex items-center justify-center py-6 outline-none" href="#!" data-te-ripple-init data-te-ripple-color="primary">
-                <a class="flex items-center [ w-24 h-10 ] [ md:w-full md:h-32 ] [ lg:w-full lg:h-20 ]" href="#">
+                <a class="flex items-center justify-center [ w-24 h-10 ] [ md:w-full md:h-32 ] [ lg:w-full lg:h-20 ]" href="#">
                     <img src="./assets/img/logo.png" alt="" srcset="" />
                 </a>
 
