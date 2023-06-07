@@ -48,7 +48,7 @@ session_start();
     <!-- component -->
     <!-- Create By Joker Banny -->
 
-    <div id="box_navbar">
+    <div id="box_navbar" class="z-[999]  w-full ">
         <div id="social_bar" class="[ w-full p-3 bg-black flex gap-5 justify-betweend items-center text-white ]">
             <!-- Behance -->
             <div class='w-1/2 flex gap-1'>
