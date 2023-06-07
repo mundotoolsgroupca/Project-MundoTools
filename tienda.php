@@ -636,7 +636,7 @@ session_start();
 
         }
         $(window).scroll(function() {
-            debugger
+
             if ($(this).scrollTop() > 0) {
                 $('#btn_subir').fadeOut(); //ocultar con animación
             } else {
