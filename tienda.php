@@ -235,7 +235,9 @@ session_start();
     </div>
 ----->
 
-    <div id="contenido" class="[ relative ]">
+    <div id="contenido" class="[ static  ]">
+
+
 
         <!-- Product List -->
 
@@ -378,7 +380,15 @@ session_start();
 
     </div>
 
-
+    <div id="btn_subir" class="fixed bottom-3 left-3">
+        <a href="#social_bar">
+            <div class="rounded-full bg-[#FBAA35] hover:bg-[#FBAA15] cursor-pointer transition-colors p-3 ">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" text-white h-5 w-5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75L12 3m0 0l3.75 3.75M12 3v18" />
+                </svg>
+            </div>
+        </a>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
     <script>
@@ -625,6 +635,20 @@ session_start();
 
 
         }
+        $("#btn_subir").on("click", function(event) {
+            var target = $(this.getAttribute("href"));
+
+            if (target.length) {
+                event.preventDefault();
+
+                $("html, body").animate({
+                        scrollTop: target.offset().top -
+                            ($(window).height() - target.outerHeight()) / 2,
+                    },
+                    1000
+                );
+            }
+        });
     </script>
 </body>
 
