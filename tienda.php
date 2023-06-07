@@ -192,7 +192,7 @@ session_start();
     </nav>
 
 
-<!----
+    <!----
     <div id="carouselExampleIndicators" class="relative mt-3" data-te-carousel-init data-te-carousel-slide>
         <div class="absolute right-0 bottom-0 left-0 z-[2] mx-[15%] mb-4 flex list-none justify-center p-0" data-te-carousel-indicators>
             <button type="button" data-te-target="#carouselExampleIndicators" data-te-slide-to="0" data-te-carousel-active class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none" aria-current="true" aria-label="Slide 1"></button>
@@ -327,31 +327,23 @@ session_start();
 
 
 
-        <footer id="Contactanos" class="bg-[#FBAA35] text-center text-neutral-900 dark:bg-neutral-600   lg:text-left">
+        <footer data-aos="fade-up" id="contactanos" class="bg-[#FBAA35] text-center text-neutral-900   lg:text-left transition-all">
             <!-- Main container div: holds the entire content of the footer, including four sections (Tailwind Elements, Products, Useful links, and Contact), with responsive styling and appropriate padding/margins. -->
-            <div class="mx-6 py-10 text-center md:text-left">
+            <div class="mx-2 py-10 text-center md:text-left">
                 <div class="grid-1 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
                     <!-- Tailwind Elements section -->
-                    <div class="">
-                        <h6 class="mb-4 flex items-center justify-center font-semibold uppercase md:justify-start">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="mr-3 h-4 w-4">
-                                <path d="M12.378 1.602a.75.75 0 00-.756 0L3 6.632l9 5.25 9-5.25-8.622-5.03zM21.75 7.93l-9 5.25v9l8.628-5.032a.75.75 0 00.372-.648V7.93zM11.25 22.18v-9l-9-5.25v8.57a.75.75 0 00.372.648l8.628 5.033z" />
-                            </svg>
-                            MundoTools Group
-                        </h6>
-                        <p>
-                        </p>
+                    <div class="[ flex items-center  justify-center ] [ md:justify-start ] [ lg:justify-start ]">
+                        <a class="flex items-center [ w-24 h-10 ] [ md:w-32 md:h-32 ] [ lg:w-48 lg:h-20 ]" href="#">
+                            <img src="./assets/img/logo-white.png" alt="" srcset="" />
+                        </a>
                     </div>
-                    <!-- Products section -->
-                    <div class="">
-
-                    </div>
-                    <!-- Useful links section -->
-                    <div class="">
-
-                    </div>
-                    <!-- Contact section -->
-                    <div class="">
+                    <!------
+                
+                <div class=""></div>
+         
+                <div class=""></div>
+            -------->
+                    <div>
                         <h6 class="mb-4 flex justify-center font-semibold uppercase md:justify-start">
                             Contacto
                         </h6>
@@ -360,15 +352,16 @@ session_start();
                                 <path d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z" />
                                 <path d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z" />
                             </svg>
-                            <span class="text-[12px]"> Galpo #8, del centro industrial Barcelona, ubicado en la av. Fuerzas
-                                armadas.</span>
+                            <span class="[ text-[13px] ] [ md:text-base ] [ lg:text-base ]">
+                                Galpo #8, del centro industrial Barcelona, ubicado en la av.
+                                Fuerzas armadas.</span>
                         </p>
                         <p class="mb-4 flex items-center justify-center md:justify-start">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="mr-3 h-5 w-5">
                                 <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />
                                 <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
                             </svg>
-                            <a href="mailto:contacto@mundotoolsgroup.com">contacto@mundotoolsgroup.com</a>
+                            <a class="[ text-[13px] ] [ md:text-base ] [ lg:text-base ]" href="mailto:contacto@mundotoolsgroup.com">contacto@mundotoolsgroup.com</a>
                         </p>
                         <p class="mb-4 flex items-center justify-center md:justify-start">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="mr-3 h-5 w-5">
@@ -381,13 +374,11 @@ session_start();
             </div>
 
             <!--Copyright section-->
-            <div class="bg-black p-6 text-center text-white/90 ">
+            <div class="bg-black p-6 text-center text-white/90">
                 <span>© 2023 Copyright:</span>
-                <a class="font-semibold text-white  " href="./">Mundotools Group C.A Rif:
-                    J503585285</a>
+                <a class="font-semibold text-white" href="./">Mundotools Group C.A Rif: J503585285</a>
             </div>
         </footer>
-
 
     </div>
 
