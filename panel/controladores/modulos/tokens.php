@@ -81,9 +81,9 @@ if (!isset($_SESSION['usuario'])) {
                 },
             });
             //   tabla_ordenes_cosultar();
-
+            tabla_tokens_consultar();
         });
-        tabla_tokens_consultar();
+
 
         function tabla_tokens_consultar() {
 
