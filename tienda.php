@@ -235,7 +235,7 @@ session_start();
     </div>
 ----->
 
-    <div class="[ relative ]">
+    <div id="contenido" class="[ relative ]">
 
         <!-- Product List -->
 
@@ -631,10 +631,12 @@ session_start();
                 //$('#social_bar').addClass('hidden');
                 $('#social_bar').slideUp("fast");
                 $('#box_navbar').addClass('fixed top-0');
+                $('#contenido').addClass('mt-32');
             } else {
                 // $('#social_bar').removeClass('hidden');
                 $('#social_bar').slideDown("fast");
                 $('#box_navbar').removeClass('fixed top-0');
+                $('#contenido').removeClass('mt-32');
             }
         });
     </script>
