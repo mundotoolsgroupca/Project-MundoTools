@@ -167,7 +167,7 @@ session_start();
                         isset($_SESSION['usuario']['nombre']) ?
                             " <span class='text-white'>" . $_SESSION['usuario']['nombre'] . "</span> <img src='https://unavatar.io/midudev' class='rounded-full' style='height: 25px; width: 25px' alt='' loading='lazy' />"
                             :
-                            " <a class='text-white text-[15px]  [ lg:text-lg ]' href='./login'>" . "Inicia Sesion" . "</a>";
+                            " <a class='text-white text-[15px]  [ lg:text-lg ]' href='../login'>" . "Inicia Sesion" . "</a>";
                         ?>
                     </a>
                     <!-- Second dropdown menu -->
