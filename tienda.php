@@ -337,12 +337,12 @@ session_start();
                             <img src="./assets/img/logo-white.png" alt="" srcset="" />
                         </a>
                     </div>
-                    <!------
-                
-                <div class=""></div>
-         
-                <div class=""></div>
-            -------->
+
+
+                    <div class="[ hidden ] [ md:block ] [ lg:block ] "></div>
+
+                    <div class="[ hidden ] [ md:block ] [ lg:block ] "></div>
+
                     <div>
                         <h6 class="mb-4 flex justify-center font-semibold uppercase md:justify-start">
                             Contacto
