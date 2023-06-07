@@ -107,7 +107,7 @@ if (!isset($_SESSION['usuario'])) {
             <nav class="  top-0 left-0 z-20 w-full    bg-[#FBAA35] shadow-lg py-2.5 px-6 sm:px-4">
                 <div class="max-w-screen-xl flex   items-center justify-center gap-3 mx-auto 4 ">
                     <div class="[ lg:w-2/4 ]">
-                        <a href="../" class="flex items-center [ w-14 h-10 ] [ md:w-32 md:h-32 ] [ lg:w-48 lg:h-20 ]">
+                        <a href="../" class="flex items-center [ w-24 h-10 ] [ md:w-32 md:h-32 ] [ lg:w-48 lg:h-20 ]">
                             <img src="../assets/img/logo.png" class="w-full h-full   " alt="">
                         </a>
                     </div>

@@ -112,7 +112,7 @@ session_start();
     <nav class="z-20 w-full    bg-[#FBAA35]  shadow-lg p-3 sm:px-4">
         <div class="max-w-screen-xl flex   items-center justify-between gap-3 mx-auto 4 ">
             <div class="[ lg:w-2/4 ]">
-                <a class="flex items-center [ w-14 h-10 ] [ md:w-32 md:h-32 ] [ lg:w-48 lg:h-20 ]" href="../tienda.php">
+                <a class="flex items-center [ w-24 h-10 ] [ md:w-32 md:h-32 ] [ lg:w-48 lg:h-20 ]" href="../tienda.php">
                     <img src="../assets/img/logo.png" alt="" srcset="">
                 </a>
             </div>
