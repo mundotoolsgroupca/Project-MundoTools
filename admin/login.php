@@ -124,9 +124,7 @@
                             }
                             ?>
                          <hr class="h-px my-3 bg-gray-200 border-0  ">
-                         <label class="[ lg:text-md ]">
-                             No Tienes Cuenta? <a class="text-warning" href="#">Registrate</a>
-                         </label>
+
 
                      </div>
                      <div>
