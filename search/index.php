@@ -1,3 +1,7 @@
+<?php
+session_name("ecomercer_user_data");
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="es">
 
