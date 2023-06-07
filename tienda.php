@@ -635,14 +635,11 @@ session_start();
 
 
         }
-
         $(window).scroll(function() {
             if ($(this).scrollTop() > 0) {
-                $('#btn_subir').addClass('fixed');
-                $('#btn_subir').removeClass('hidden');
+                $('#btn_subir').fadeIn(); //mostrar con animación
             } else {
-                $('#btn_subir').removeClass('fixed');
-                $('#btn_subir').addClass('hidden');
+                $('#btn_subir').fadeOut(); //ocultar con animación
             }
         });
 
