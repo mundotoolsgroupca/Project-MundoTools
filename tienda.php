@@ -635,6 +635,18 @@ session_start();
 
 
         }
+
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 0) {
+
+
+                $('#btn_subir').addClass('visible');
+            } else {
+
+                $('#btn_subir').removeClass('hidden');
+            }
+        });
+
         $("#btn_subir > a ").on("click", function(event) {
 
             var target = $(this.getAttribute("href"));
