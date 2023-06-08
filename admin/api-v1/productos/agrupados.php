@@ -331,11 +331,12 @@ switch ($method) {
                                 $img_upload_path = dirname(__FILE__, 4) . "/assets/uploads/" . $new_img_name; //ubicamos la carpeta donde se guardara
                                 move_uploaded_file($img_tmp, $img_upload_path); //guardamos el archivo
 
-                                
+
                                 include_once "../../php/conexion.php";
                                 $url_img_guardar = "/assets/uploads/$new_img_name"; //dirrecion donde estara almacenada la imagen
 
                                 $consulta = "CALL adm_agregar_agrupado('$id_grupo','$nombreGrupo','$categoria','$url_img_guardar','$descripcion');";
+                                $resultado = mysqli_query($conexion, $consulta);
                                 $data = mysqli_fetch_assoc($resultado);
                                 if ($resultado) { //* si realizo la consulta 
                                     if ($data['status'] == 1) {  //* si guardo el producto
