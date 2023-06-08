@@ -681,6 +681,7 @@
                 response.data.map((item) => {
                     $('#moneda').append(`<option value="${item.cod_moneda}">${item.simbolo}</option>`);
                     $('#ModalEditar_agrupadosMoneda').append(`<option value="${item.cod_moneda}">${item.simbolo}</option>`);
+                    $('#ModalAgregar_agrupadosMoneda').append(`<option value="${item.cod_moneda}">${item.simbolo}</option>`);
                 })
                 document.getElementById("moneda").disabled = false;
 
