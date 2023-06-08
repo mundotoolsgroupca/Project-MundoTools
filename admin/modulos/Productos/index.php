@@ -282,8 +282,8 @@
                 <div class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
                     <!--Modal title-->
                     <div class="[ flex items-center gap-1 flex-nowrap mb-3 ]">
-                        <p class="[ text-lg font-bold ]"> Editar Producto Agrupado</p>
-                        <span id="ModalEditar_agrupadosLoader"></span>
+                        <p class="[ text-lg font-bold ]">Agregar Producto</p>
+                        <span id="modal_editar_agrupadosLoader"></span>
                     </div>
 
                     <!--Close button-->
@@ -294,16 +294,10 @@
                     </button>
                 </div>
 
-                <form id="ModalEditar_agrupados" method="post">
+                <form id="modal_editar_agrupados_formulario" method="post">
                     <!-------Modal body-->
                     <div data-te-modal-body-ref class="relative p-4">
-                        <figure>
-                            <blockquote>
-                                <p class="text-xl" id="ModalEditar_agrupadosTitulo">
 
-                                </p>
-                            </blockquote>
-                        </figure>
                         <div class="[ flex gap-3 flex-col mt-3 ]">
                             <input class="[ hidden ]" type="text" name="ModalAgregar_agrupadosID" id="ModalAgregar_agrupadosID" />
                             <input class="[ hidden ]" type="text" name="ModalEditar_id_producto" id="ModalEditar_id_producto" />
@@ -376,7 +370,7 @@
             <span id="titulo_tabla_agrupadosLoader"></span>
             <!--Submit button-->
             <div class=" ">
-                <button onclick=" " id="btn_ingresar" class="[ lg:text-xs ] disabled:opacity-50 flex gap-1 items-center justify-center w-auto rounded-r bg-[#e4a11b] px-6 py-2.5 font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-[#e4a11b] hover:shadow-lg focus:bg-[#e4a11b]focus:shadow-lg focus:outline-none focus:ring-0 active:bg-[#e4a11b] active:shadow-lg" type="button" data-te-ripple-init data-te-ripple-color="light">
+                <button onclick="modal_editar_agrupados.show();" id="btn_ingresar" class="[ lg:text-xs ] disabled:opacity-50 flex gap-1 items-center justify-center w-auto rounded-r bg-[#e4a11b] px-6 py-2.5 font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-[#e4a11b] hover:shadow-lg focus:bg-[#e4a11b]focus:shadow-lg focus:outline-none focus:ring-0 active:bg-[#e4a11b] active:shadow-lg" type="button" data-te-ripple-init data-te-ripple-color="light">
                     <div>+</div>
 
                 </button>
