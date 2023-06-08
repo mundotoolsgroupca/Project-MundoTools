@@ -12,7 +12,7 @@
             </span>
         </div>
         <div id="nuevo_producto_modulo">
-            <form id="nuevoproductoform">
+            <form id="nuevogrupoform">
 
 
 
@@ -341,7 +341,7 @@
     modal_editar_agrupados = document.getElementById("modal_editar_agrupados");
     modal_editar_agrupados = new te.Modal(modal_editar_agrupados);
 
-    form = document.getElementById('nuevoproductoform');
+    form = document.getElementById('nuevogrupoform');
 
 
     Producto_grupo_consulta();
@@ -1181,14 +1181,14 @@
         editar_producto_agrupado();
 
     });
-    $("#nuevoproductoform").on("submit", async function(event) {
+    $("#nuevogrupoform").on("submit", async function(event) {
 
         event.preventDefault();
         let formdata = new FormData(event.currentTarget);
         let result
 
         result = await $.ajax({
-            url: "./api-v1/productos/index.php",
+            url: "./api-v1/productos/agrupados.php",
             type: 'POST',
             data: new FormData(this),
             headers: {

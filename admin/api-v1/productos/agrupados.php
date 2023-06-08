@@ -337,6 +337,47 @@ switch ($method) {
                                 $url_img_guardar = "/assets/uploads/$new_img_name"; //dirrecion donde estara almacenada la imagen
 
                                 $consulta = "CALL adm_agregar_agrupado('$id_grupo','$nombreGrupo','$categoria','$url_img_guardar','$descripcion');";
+                                $data = mysqli_fetch_assoc($resultado);
+                                if ($resultado) { //* si realizo la consulta 
+                                    if ($data['status'] == 1) {  //* si guardo el producto
+                                        move_uploaded_file($img_tmp, $img_upload_path); //guardamos el archivo
+                                        http_response_code(200);
+                                        $resultado = new stdClass();
+                                        $resultado->result = TRUE;
+                                        $resultado->icono = "success";
+                                        $resultado->titulo = "";
+                                        $resultado->mensaje = $data['msg'];
+                                        $resultado->data =  array(
+                                            "status" => $data['status'],
+                                            "msg" => $data['msg']
+                                        );
+                                        echo  json_encode($resultado);
+                                        break;
+                                    } elseif ($data['status'] == 0) { //! si no lo guardo 
+                                        http_response_code(409); //codigo de conflicto
+                                        $resultado = new stdClass();
+                                        $resultado->result = false;
+                                        $resultado->icono = "success";
+                                        $resultado->titulo = "";
+                                        $resultado->mensaje = $data['msg'];
+                                        $resultado->data =  array(
+                                            "status" => $data['status'],
+                                            "msg" => $data['msg']
+                                        );
+                                        echo  json_encode($resultado);
+                                        break;
+                                    }
+                                } else { //! si hubo un error
+                                    http_response_code(409); //codigo de conflicto
+                                    $resultado = new stdClass();
+                                    $resultado->result = false;
+                                    $resultado->icono = "success";
+                                    $resultado->titulo = "";
+                                    $resultado->mensaje = "Error Interno";
+                                    echo  json_encode($resultado);
+                                    break;
+                                }
+                                break;
                             } else {
                                 http_response_code(409); //codigo de conflicto
                                 $resultado = new stdClass();
