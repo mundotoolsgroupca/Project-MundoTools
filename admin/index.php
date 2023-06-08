@@ -52,7 +52,7 @@ if (!isset($_SESSION['Usuario'])) { //si no existe una session sale del sistema
     <title>Administrador</title>
 </head>
 
-<body onload="modulo_productos()" class="bg-gray-600">
+<body onload="" class="bg-gray-600">
     <!--Main Navigation-->
     <header>
         <!-- Sidenav -->
