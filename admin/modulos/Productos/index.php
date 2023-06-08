@@ -370,7 +370,7 @@
             <span id="titulo_tabla_agrupadosLoader"></span>
             <!--Submit button-->
             <div class=" ">
-                <button onclick="modal_editar_agrupados.show();" id="btn_ingresar" class="[ lg:text-xs ] disabled:opacity-50 flex gap-1 items-center justify-center w-auto rounded-r bg-[#e4a11b] px-6 py-2.5 font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-[#e4a11b] hover:shadow-lg focus:bg-[#e4a11b]focus:shadow-lg focus:outline-none focus:ring-0 active:bg-[#e4a11b] active:shadow-lg" type="button" data-te-ripple-init data-te-ripple-color="light">
+                <button onclick="modal_agregar_producto.show();" id="btn_ingresar" class="[ lg:text-xs ] disabled:opacity-50 flex gap-1 items-center justify-center w-auto rounded-r bg-[#e4a11b] px-6 py-2.5 font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-[#e4a11b] hover:shadow-lg focus:bg-[#e4a11b]focus:shadow-lg focus:outline-none focus:ring-0 active:bg-[#e4a11b] active:shadow-lg" type="button" data-te-ripple-init data-te-ripple-color="light">
                     <div>+</div>
 
                 </button>
