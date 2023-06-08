@@ -2,7 +2,7 @@
     <!-- Modulo -->
     <div class="[ h-auto  rounded-lg  bg-white p-6 shadow-lg w-full ] [   md:overflow-y-auto ] [ lg:w-1/5   lg:overflow-y-auto ]">
         <div class="[ flex items-center gap-1 flex-nowrap mb-3 ]">
-            <p class="[ text-lg font-bold ]">Nuevo Producto</p>
+            <p class="[ text-lg font-bold ]">Nuevo Grupo</p>
             <span id="NuevoProductoLoader"></span>
             <span onclick="toggle('nuevo_producto_modulo')" class='[ block ] [ md:hidden ] [ lg:hidden ]'>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
