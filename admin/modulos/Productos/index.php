@@ -1129,7 +1129,7 @@
     }
 
     $('#tabla_grupos_producto tbody').on('click', 'tr', function() {
- 
+
         let data = tabla_grupos_producto.row(this).data();
         $('#ModalEditarID_grupo').val(data.id_grupo);
         $("#ModalAgregar_agrupadosID").val(data.id_grupo);
@@ -1454,16 +1454,16 @@
             success: (response) => {
                 $('#modal_agregar_agrupadosLoader').html(``);
                 if (response.result == true) {
-                    debugger
+
                     if (response.data.status == 1) {
                         modal_agregar_producto.hide();
                         // Seleccionar el formulario
                         let form = $('#ModalAgregar_agrupados_formulario')[0];
-
-                        // Limpiar el formulario
-                        form.reset();
                         let id_grupo = $("#ModalAgregar_agrupadosID").val();
                         tabla_productos_agrupados_consultar(id_grupo);
+                        // Limpiar el formulario
+                        form.reset();
+
                     } else if (response.data.status == 0) {
                         let Toast = Swal.mixin({
                             toast: true,
