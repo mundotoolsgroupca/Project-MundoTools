@@ -249,10 +249,9 @@ switch ($method) {
                 break;
             }
             if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'])) {
-                if (!isset($_GET['_method'])) {
+                if (!isset($_POST['_method'])) {
 
-                    echo $_POST['id_grupo'];
-                    return;
+
                     if (isset($_POST['id_grupo']) != false && validar_string($_POST['id_grupo'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
                         $id_grupo = $_POST['id_grupo'];
                         $id_grupo = eliminar_palabras_sql($id_grupo);
