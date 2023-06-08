@@ -285,7 +285,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15m0 0l6.75 6.75M4.5 12l6.75-6.75" />
                 </svg>
             </span>
-            <p id="titulo_tabla_agrupados" class="[ text-lg font-bold ]">Agrupados</p>
+            <p id="titulo_tabla_agrupados" class="[ text-lg  ]">Agrupados</p>
             <span id="titulo_tabla_agrupadosLoader"></span>
 
         </div>
@@ -1024,7 +1024,7 @@
         $('#ModalEditarDescripcion').val(data.descripcion);
         $('#Modalimgpreview').attr("src", "../../../" + data.imagen);
         $('#Modalimgpreview').attr("title", data.nombre);
-        $('#titulo_tabla_agrupados').html(`Nombre: ${data.nombre} Categoria: ${data.categoria_id}`);
+        $('#titulo_tabla_agrupados').html(`Nombre: <label class='text-bold'>${data.nombre} </label> Categoria: <label class='text-bold'>${data.nombre_categoria}</label>`);
     });
 
 
