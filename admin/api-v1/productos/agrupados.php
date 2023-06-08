@@ -247,7 +247,100 @@ switch ($method) {
                 break;
             }
             if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'])) {
-                if ($_POST['_method'] == "PUT") {
+                if (!isset($_GET['_method'])) {
+
+                    if (isset($_POST['id_grupo']) != false && validar_string($_POST['id_grupo'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
+                        $id_grupo = $_POST['id_grupo'];
+                        $id_grupo = eliminar_palabras_sql($id_grupo);
+                    } else {
+                        http_response_code(409); //codigo de conflicto
+                        $resultado = new stdClass();
+                        $resultado->result = false;
+                        $resultado->icono = "";
+                        $resultado->titulo = "";
+                        $resultado->mensaje = "Id Grupo No Valido";
+                        echo  json_encode($resultado);
+                        break;
+                    }
+
+                    if (isset($_POST['nombreGrupo']) && validar_string($_POST['nombreGrupo'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
+                        $nombreGrupo = $_POST['nombreGrupo'];
+                        $nombreGrupo = eliminar_palabras_sql($nombreGrupo);
+                    } else {
+                        http_response_code(409); //codigo de conflicto
+                        $resultado = new stdClass();
+                        $resultado->result = false;
+                        $resultado->icono = "";
+                        $resultado->titulo = "";
+                        $resultado->mensaje = "Nombre del Grupo";
+                        echo  json_encode($resultado);
+                        break;
+                    }
+                    if (isset($_POST['descripcion']) && validar_string($_POST['descripcion'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
+                        $descripcion = $_POST['descripcion'];
+                        $descripcion = eliminar_palabras_sql($descripcion);
+                    } else {
+                        http_response_code(409); //codigo de conflicto
+                        $resultado = new stdClass();
+                        $resultado->result = false;
+                        $resultado->icono = "";
+                        $resultado->titulo = "";
+                        $resultado->mensaje = "Descripcion No Valida";
+                        echo  json_encode($resultado);
+                        break;
+                    }
+
+
+                    if (isset($_POST['categoria']) && validar_int($_POST['categoria'])) {
+                        $categoria = $_POST['categoria'];
+                    } else {
+                        http_response_code(409); //codigo de conflicto
+                        $resultado = new stdClass();
+                        $resultado->result = false;
+                        $resultado->icono = "";
+                        $resultado->titulo = "";
+                        $resultado->mensaje = "Categoria del Producto No Valida";
+                        echo  json_encode($resultado);
+                        break;
+                    }
+
+                    $img_nombre = $_FILES['imagen']['name'];
+                    $img_size = $_FILES['imagen']['size'];
+                    $img_tmp = $_FILES['imagen']['tmp_name'];
+                    $error = $_FILES['imagen']['error'];
+
+                    if ($error === 0) {
+                        if ($img_size > 5242880) { // tamaño máximo en bytes (5 MB)
+                            http_response_code(409); //codigo de conflicto
+                            $resultado = new stdClass();
+                            $resultado->result = false;
+                            $resultado->icono = "";
+                            $resultado->titulo = "";
+                            $resultado->mensaje = "La Imagen supera el Limite de Peso Permitido";
+                            echo  json_encode($resultado);
+                            break;
+                        } else {
+                            $img_ex = pathinfo($img_nombre, PATHINFO_EXTENSION); //obtenemos la extencion del archivo
+                            $img_ex_lc = strtolower($img_ex); //la colocamos en minuscula
+                            $allowed_exs = array("jpg", "jpeg", "png", "webp"); //formatos de archivos permitidos
+
+
+                            if (in_array($img_ex_lc, $allowed_exs)) { //validamos que el formato sea de los permitidos
+                                $new_img_name = $idproducto . '.' . $img_ex_lc; //creamos un nombre unico
+                                // $img_upload_path = 'assets/uploads/' . $new_img_name; //ubicamos la carpeta donde se guardara
+                                $img_upload_path = dirname(__FILE__, 4) . "/assets/uploads/" . $new_img_name; //ubicamos la carpeta donde se guardara
+                                move_uploaded_file($img_tmp, $img_upload_path); //guardamos el archivo
+
+                                session_name("ecomercer_admin_data");
+                                session_start();
+                                include_once "../../php/conexion.php";
+                                $url_img_guardar = "/assets/uploads/$new_img_name"; //dirrecion donde estara almacenada la imagen
+
+                                $consulta = "CALL adm_agregar_agrupado('$id_grupo','$nombreGrupo','$categoria','$url_img_guardar','$descripcion');";
+                            }
+                        }
+                    }
+                } elseif ($_POST['_method'] == "PUT") {
 
                     $formDataString = $_POST['data'];
                     $formDataArray = array();

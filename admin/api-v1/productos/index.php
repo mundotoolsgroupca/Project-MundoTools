@@ -241,19 +241,7 @@ switch ($method) {
 
                 if (!isset($_POST['_method'])) {
 
-                    if (isset($_POST['nombreproducto']) && validar_string($_POST['nombreproducto'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
-                        $nombreproducto = $_POST['nombreproducto'];
-                        $nombreproducto = eliminar_palabras_sql($nombreproducto);
-                    } else {
-                        http_response_code(409); //codigo de conflicto
-                        $resultado = new stdClass();
-                        $resultado->result = false;
-                        $resultado->icono = "";
-                        $resultado->titulo = "";
-                        $resultado->mensaje = "Nombre del Producto No Valido";
-                        echo  json_encode($resultado);
-                        break;
-                    }
+                
                     if (isset($_POST['idproducto']) != false && validar_string($_POST['idproducto'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
                         $idproducto = $_POST['idproducto'];
                         $idproducto = eliminar_palabras_sql($idproducto);
@@ -267,19 +255,7 @@ switch ($method) {
                         echo  json_encode($resultado);
                         break;
                     }
-                    if (isset($_POST['id_grupo']) != false && validar_string($_POST['id_grupo'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
-                        $id_grupo = $_POST['id_grupo'];
-                        $id_grupo = eliminar_palabras_sql($id_grupo);
-                    } else {
-                        http_response_code(409); //codigo de conflicto
-                        $resultado = new stdClass();
-                        $resultado->result = false;
-                        $resultado->icono = "";
-                        $resultado->titulo = "";
-                        $resultado->mensaje = "Id Grupo No Valido";
-                        echo  json_encode($resultado);
-                        break;
-                    }
+              
 
                     if (isset($_POST['stock']) && validar_int($_POST['stock']) && $_POST['stock'] > 0) {
                         $stock = $_POST['stock'];
@@ -294,18 +270,7 @@ switch ($method) {
                         break;
                     }
 
-                    if (isset($_POST['categoria']) && validar_int($_POST['categoria'])) {
-                        $categoria = $_POST['categoria'];
-                    } else {
-                        http_response_code(409); //codigo de conflicto
-                        $resultado = new stdClass();
-                        $resultado->result = false;
-                        $resultado->icono = "";
-                        $resultado->titulo = "";
-                        $resultado->mensaje = "Categoria del Producto No Valida";
-                        echo  json_encode($resultado);
-                        break;
-                    }
+            
 
                     if (isset($_POST['descripcion']) != false && validar_string($_POST['descripcion'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
                         $descripcion = $_POST['descripcion'];
