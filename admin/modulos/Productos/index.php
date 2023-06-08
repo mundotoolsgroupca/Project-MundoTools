@@ -1024,7 +1024,7 @@
         $('#ModalEditarDescripcion').val(data.descripcion);
         $('#Modalimgpreview').attr("src", "../../../" + data.imagen);
         $('#Modalimgpreview').attr("title", data.nombre);
-        $('#titulo_tabla_agrupados').html(`${data.nombre}`);
+        $('#titulo_tabla_agrupados').html(`Nombre: ${data.nombre} Categoria: ${data.categoria_id}`);
     });
 
 
