@@ -309,7 +309,7 @@
 
                             <div class="mb-3 w-full">
                                 <div class="relative  flex w-full  items-stretch">
-                                    <input min="0.00" max="10000.00" step="0.01" name="ModalAgregar_agrupadosprecio" type="number" class="relative m-0 -mr-px block w-full  flex-auto rounded-l border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-1.5 text-base font-normal text-neutral-700 outline-none transition duration-300 ease-in-out focus:border-primary-600 focus:text-neutral-700 focus:shadow-te-primary focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-neutral-200" placeholder="ModalAgregar_agrupadosprecio" aria-label="Search" aria-describedby="button-addon3" />
+                                    <input min="0.00" max="10000.00" step="0.01" name="ModalAgregar_agrupadosprecio" type="number" class="relative m-0 -mr-px block w-full  flex-auto rounded-l border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-1.5 text-base font-normal text-neutral-700 outline-none transition duration-300 ease-in-out focus:border-primary-600 focus:text-neutral-700 focus:shadow-te-primary focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-neutral-200" placeholder="Precio" aria-label="Search" aria-describedby="button-addon3" />
                                 </div>
                             </div>
 
