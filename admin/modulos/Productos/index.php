@@ -1188,22 +1188,23 @@
         let result
 
         result = await $.ajax({
-                url: "./api-v1/productos/agrupados.php",
-                type: 'POST',
-                data: new FormData(this),
-                headers: {
-                    'x-csrf-token': $('meta[name="csrf-token"]').attr('content')
-                },
+            url: "./api-v1/productos/agrupados.php",
+            type: 'POST',
+            data: new FormData(this),
+            headers: {
+                'x-csrf-token': $('meta[name="csrf-token"]').attr('content')
+            },
 
-                beforeSend: () => {
-                    $('#NuevoProductoLoader').html(`<div class="inline-block h-4 w-4 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]" role="status">
+            beforeSend: () => {
+                $('#NuevoProductoLoader').html(`<div class="inline-block h-4 w-4 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]" role="status">
                                     <span class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
                                     </div>`);
 
-                },
-                success: (response) => {
-                    $('#NuevoProductoLoader').html(``);
-                    if (response.result == true) {
+            },
+            success: (response) => {
+                $('#NuevoProductoLoader').html(``);
+                if (response.result == true) {
+                    if (response.data.status == 1) {
                         // Seleccionar el <select>
                         let select = $('#categoria');
 
@@ -1212,6 +1213,7 @@
 
                         // Obtener el texto de la opción seleccionada
                         let textoSeleccionado = select.children('option:selected').text();
+
 
 
                         let id_grupo = $("[name='id_grupo']").val();
