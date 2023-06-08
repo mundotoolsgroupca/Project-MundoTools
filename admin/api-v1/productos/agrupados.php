@@ -326,7 +326,7 @@ switch ($method) {
 
 
                             if (in_array($img_ex_lc, $allowed_exs)) { //validamos que el formato sea de los permitidos
-                                $new_img_name = $idproducto . '.' . $img_ex_lc; //creamos un nombre unico
+                                $new_img_name = $id_grupo . '.' . $img_ex_lc; //creamos un nombre unico
                                 // $img_upload_path = 'assets/uploads/' . $new_img_name; //ubicamos la carpeta donde se guardara
                                 $img_upload_path = dirname(__FILE__, 4) . "/assets/uploads/" . $new_img_name; //ubicamos la carpeta donde se guardara
                                 move_uploaded_file($img_tmp, $img_upload_path); //guardamos el archivo
