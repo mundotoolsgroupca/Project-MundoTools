@@ -81,7 +81,7 @@
     <!-- Modulo -->
     <div class="[  h-auto rounded-lg bg-white p-6 shadow-lg w-full ] [ lg:w-4/5    ]">
         <div class="[ flex items-center gap-1 flex-nowrap mb-3 ]">
-            <p class="[ text-lg font-bold ]">Productos</p>
+            <p class="[ text-lg font-bold ]">Grupos</p>
             <span id="ProductosLoader"></span>
             <span onclick="toggle('producto_modulo')" class='[ block ] [ md:hidden ] [ lg:hidden ]'>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
