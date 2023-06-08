@@ -241,7 +241,7 @@ switch ($method) {
 
                 if (!isset($_POST['_method'])) {
 
-                
+
                     if (isset($_POST['ModalAgregar_agrupadosidproducto']) != false && validar_string($_POST['ModalAgregar_agrupadosidproducto'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
                         $ModalAgregar_agrupadosidproducto = $_POST['ModalAgregar_agrupadosidproducto'];
                         $ModalAgregar_agrupadosidproducto = eliminar_palabras_sql($ModalAgregar_agrupadosidproducto);
@@ -255,8 +255,20 @@ switch ($method) {
                         echo  json_encode($resultado);
                         break;
                     }
-              
 
+
+                    if (isset($_POST['ModalAgregar_agrupadosprecio']) && validar_Monto($_POST['ModalAgregar_agrupadosprecio'])) {
+                        $ModalAgregar_agrupadosprecio = $_POST['ModalAgregar_agrupadosprecio'];
+                    } else {
+                        http_response_code(409); //codigo de conflicto
+                        $resultado = new stdClass();
+                        $resultado->result = false;
+                        $resultado->icono = "";
+                        $resultado->titulo = "";
+                        $resultado->mensaje = "Precio No Valido";
+                        echo  json_encode($resultado);
+                        break;
+                    }
                     if (isset($_POST['stock']) && validar_int($_POST['stock']) && $_POST['stock'] > 0) {
                         $stock = $_POST['stock'];
                     } else {
@@ -270,7 +282,7 @@ switch ($method) {
                         break;
                     }
 
-            
+
 
                     if (isset($_POST['descripcion']) != false && validar_string($_POST['descripcion'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
                         $descripcion = $_POST['descripcion'];
@@ -286,18 +298,6 @@ switch ($method) {
                         break;
                     }
 
-                    if (isset($_POST['moneda'])  && validar_int($_POST['moneda'])) {
-                        $moneda = $_POST['moneda'];
-                    } else {
-                        http_response_code(409); //codigo de conflicto
-                        $resultado = new stdClass();
-                        $resultado->result = false;
-                        $resultado->icono = "";
-                        $resultado->titulo = "";
-                        $resultado->mensaje = "moneda del Producto No Valida";
-                        echo  json_encode($resultado);
-                        break;
-                    }
                     if (isset($_POST['precio']) && validar_Monto($_POST['precio']) && $_POST['precio'] > 0) {
                         $precio = $_POST['precio'];
                     } else {
@@ -311,9 +311,9 @@ switch ($method) {
                         break;
                     }
 
-                    if (isset($_POST['caracteristica1']) && validar_string($_POST['caracteristica1'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$&/: ')) {
-                        $caracteristica1 = $_POST['caracteristica1'];
-                        $caracteristica1 = eliminar_palabras_sql($caracteristica1);
+                    if (isset($_POST['ModalAgregar_agrupadoscaracteristicaProducto']) && validar_string($_POST['ModalAgregar_agrupadoscaracteristicaProducto'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$&/: ')) {
+                        $ModalAgregar_agrupadoscaracteristicaProducto = $_POST['ModalAgregar_agrupadoscaracteristicaProducto'];
+                        $ModalAgregar_agrupadoscaracteristicaProducto = eliminar_palabras_sql($ModalAgregar_agrupadoscaracteristicaProducto);
                     } else {
                         http_response_code(409); //codigo de conflicto
                         $resultado = new stdClass();
@@ -325,9 +325,9 @@ switch ($method) {
                         break;
                     }
 
-                    if (isset($_POST['caracteristica2']) && validar_string($_POST['caracteristica2'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$&/: ')) {
-                        $caracteristica2 = $_POST['caracteristica2'];
-                        $caracteristica2 = eliminar_palabras_sql($caracteristica2);
+                    if (isset($_POST['ModalAgregar_agrupadoscaracteristicaProducto2']) && validar_string($_POST['ModalAgregar_agrupadoscaracteristicaProducto2'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$&/: ')) {
+                        $ModalAgregar_agrupadoscaracteristicaProducto2 = $_POST['ModalAgregar_agrupadoscaracteristicaProducto2'];
+                        $ModalAgregar_agrupadoscaracteristicaProducto2 = eliminar_palabras_sql($ModalAgregar_agrupadoscaracteristicaProducto2);
                     } else {
                         http_response_code(409); //codigo de conflicto
                         $resultado = new stdClass();
@@ -339,9 +339,9 @@ switch ($method) {
                         break;
                     }
 
-                    if (isset($_POST['caracteristica3']) && validar_string($_POST['caracteristica3'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$&/: ')) {
-                        $caracteristica3 = $_POST['caracteristica3'];
-                        $caracteristica3 = eliminar_palabras_sql($caracteristica3);
+                    if (isset($_POST['ModalAgregar_agrupadoscaracteristicaProducto3']) && validar_string($_POST['ModalAgregar_agrupadoscaracteristicaProducto3'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$&/: ')) {
+                        $ModalAgregar_agrupadoscaracteristicaProducto3 = $_POST['ModalAgregar_agrupadoscaracteristicaProducto3'];
+                        $ModalAgregar_agrupadoscaracteristicaProducto3 = eliminar_palabras_sql($ModalAgregar_agrupadoscaracteristicaProducto3);
                     } else {
                         http_response_code(409); //codigo de conflicto
                         $resultado = new stdClass();
@@ -352,9 +352,9 @@ switch ($method) {
                         echo json_encode($resultado);
                         break;
                     }
-                    if (isset($_POST['caracteristica4']) && validar_string($_POST['caracteristica4'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$&/: ')) {
-                        $caracteristica4 = $_POST['caracteristica4'];
-                        $caracteristica4 = eliminar_palabras_sql($caracteristica4);
+                    if (isset($_POST['ModalAgregar_agrupadoscaracteristicaProducto4']) && validar_string($_POST['ModalAgregar_agrupadoscaracteristicaProducto4'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$&/: ')) {
+                        $ModalAgregar_agrupadoscaracteristicaProducto4 = $_POST['ModalAgregar_agrupadoscaracteristicaProducto4'];
+                        $ModalAgregar_agrupadoscaracteristicaProducto4 = eliminar_palabras_sql($ModalAgregar_agrupadoscaracteristicaProducto4);
                     } else {
                         http_response_code(409); //codigo de conflicto
                         $resultado = new stdClass();
@@ -365,9 +365,9 @@ switch ($method) {
                         echo json_encode($resultado);
                         break;
                     }
-                    if (isset($_POST['caracteristica5']) && validar_string($_POST['caracteristica5'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$&/: ')) {
-                        $caracteristica5 = $_POST['caracteristica5'];
-                        $caracteristica5 = eliminar_palabras_sql($caracteristica5);
+                    if (isset($_POST['ModalAgregar_agrupadoscaracteristicaProducto5']) && validar_string($_POST['ModalAgregar_agrupadoscaracteristicaProducto5'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$&/: ')) {
+                        $ModalAgregar_agrupadoscaracteristicaProducto5 = $_POST['ModalAgregar_agrupadoscaracteristicaProducto5'];
+                        $ModalAgregar_agrupadoscaracteristicaProducto5 = eliminar_palabras_sql($ModalAgregar_agrupadoscaracteristicaProducto5);
                     } else {
                         http_response_code(409); //codigo de conflicto
                         $resultado = new stdClass();
@@ -376,6 +376,20 @@ switch ($method) {
                         $resultado->titulo = "Error!";
                         $resultado->mensaje = 'Caracteristica 5 Contiene Caracteres no Permitidos';
                         echo json_encode($resultado);
+                        break;
+                    }
+
+
+                    if (isset($_POST['ModalAgregar_agrupadosMoneda'])  && validar_int($_POST['ModalAgregar_agrupadosMoneda'])) {
+                        $ModalAgregar_agrupadosMoneda = $_POST['ModalAgregar_agrupadosMoneda'];
+                    } else {
+                        http_response_code(409); //codigo de conflicto
+                        $resultado = new stdClass();
+                        $resultado->result = false;
+                        $resultado->icono = "";
+                        $resultado->titulo = "";
+                        $resultado->mensaje = "moneda del Producto No Valida";
+                        echo  json_encode($resultado);
                         break;
                     }
                     $img_nombre = $_FILES['imagen']['name'];

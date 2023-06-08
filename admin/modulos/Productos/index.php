@@ -1456,6 +1456,11 @@
                 if (response.result == true) {
                     if (response.data.status == 1) {
                         modal_agregar_producto.hide();
+                        // Seleccionar el formulario
+                        let form = $('#ModalAgregar_agrupados_formulario')[0];
+
+                        // Limpiar el formulario
+                        form.reset();
                     } else if (response.data.status == 0) {
                         let Toast = Swal.mixin({
                             toast: true,
