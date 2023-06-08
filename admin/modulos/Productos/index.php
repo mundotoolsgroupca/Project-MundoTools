@@ -1462,6 +1462,8 @@
 
                         // Limpiar el formulario
                         form.reset();
+                        let id_grupo = $("#ModalAgregar_agrupadosID").val();
+                        tabla_productos_agrupados_consultar(id_grupo);
                     } else if (response.data.status == 0) {
                         let Toast = Swal.mixin({
                             toast: true,
