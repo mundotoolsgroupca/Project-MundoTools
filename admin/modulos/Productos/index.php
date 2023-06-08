@@ -283,7 +283,7 @@
                     <!--Modal title-->
                     <div class="[ flex items-center gap-1 flex-nowrap mb-3 ]">
                         <p class="[ text-lg font-bold ]">Agregar Producto</p>
-                        <span id="modal_editar_agrupadosLoader"></span>
+                        <span id="modal_agregar_agrupadosLoader"></span>
                     </div>
 
                     <!--Close button-->
@@ -294,7 +294,7 @@
                     </button>
                 </div>
 
-                <form id="modal_editar_agrupados_formulario" method="post">
+                <form id="ModalAgregar_agrupados_formulario" method="post">
                     <!-------Modal body-->
                     <div data-te-modal-body-ref class="relative p-4">
 
@@ -306,6 +306,21 @@
                                 <label for="ModalAgregar_agrupadosidproducto" class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-neutral-200">Id Producto
                                 </label>
                             </div>
+
+                            <div class="mb-3 w-full">
+                                <div class="relative  flex w-full  items-stretch">
+                                    <input min="0.00" max="10000.00" step="0.01" name="ModalAgregar_agrupadosprecio" type="number" class="relative m-0 -mr-px block w-full  flex-auto rounded-l border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-1.5 text-base font-normal text-neutral-700 outline-none transition duration-300 ease-in-out focus:border-primary-600 focus:text-neutral-700 focus:shadow-te-primary focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-neutral-200" placeholder="ModalAgregar_agrupadosprecio" aria-label="Search" aria-describedby="button-addon3" />
+
+                                    <label data-te-select-label-ref>Moneda</label>
+                                </div>
+                            </div>
+
+                            <div class="relative w-full" data-te-input-wrapper-init>
+                                <input maxlength="11" type="text" class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0" name="ModalAgregar_agrupadosidproducto" id="ModalAgregar_agrupadosidproducto" placeholder="Example label" />
+                                <label for="ModalAgregar_agrupadosidproducto" class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-neutral-200">Stock
+                                </label>
+                            </div>
+
 
                             <div class="relative w-full" data-te-input-wrapper-init>
                                 <input maxlength="40" type="text" class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0" name="ModalAgregar_agrupadoscaracteristicaProducto" id="ModalAgregar_agrupadoscaracteristicaProducto" placeholder="Example label" />
@@ -1415,6 +1430,104 @@
 
 
     });
+
+
+
+    $("#ModalAgregar_agrupados_formulario").on("submit", async function(event) {
+
+        event.preventDefault();
+        let formdata = new FormData(event.currentTarget);
+        let result
+
+        result = await $.ajax({
+            url: "./api-v1/productos/index.php",
+            type: 'POST',
+            data: new FormData(this),
+            headers: {
+                'x-csrf-token': $('meta[name="csrf-token"]').attr('content')
+            },
+
+            beforeSend: () => {
+                $('#modal_agregar_agrupadosLoader').html(`<div class="inline-block h-4 w-4 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]" role="status">
+                            <span class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
+                            </div>`);
+
+            },
+            success: (response) => {
+                $('#modal_agregar_agrupadosLoader').html(``);
+                if (response.result == true) {
+                    if (response.data.status == 1) {
+                        modal_agregar_producto.hide();
+                    } else if (response.data.status == 0) {
+                        let Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 5000,
+                            timerProgressBar: true,
+                            didOpen: (toast) => {
+                                toast.addEventListener('mouseenter', Swal.stopTimer)
+                                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            }
+                        })
+
+                        Toast.fire({
+                            icon: 'error',
+                            title: response.data.msg
+                        })
+                    }
+                } else {
+                    $('#modal_agregar_agrupadosLoader').html(``);
+                    let Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    });
+
+                    Toast.fire({
+                        icon: 'error',
+                        title: response.mensaje
+                    });
+
+                }
+            },
+            error: function(xhr, status) {
+                $('#modal_agregar_agrupadosLoader').html(``);
+                let Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                });
+
+                Toast.fire({
+                    icon: 'error',
+                    title: xhr.responseJSON.mensaje
+                });
+            },
+            dataType: 'json',
+            contentType: false,
+            cache: false,
+            processData: false,
+        });
+
+
+
+    });
+
+
+
     $("#ModalEditar").on("submit", async function(event) {
 
         event.preventDefault();

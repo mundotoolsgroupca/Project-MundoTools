@@ -242,16 +242,16 @@ switch ($method) {
                 if (!isset($_POST['_method'])) {
 
                 
-                    if (isset($_POST['idproducto']) != false && validar_string($_POST['idproducto'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
-                        $idproducto = $_POST['idproducto'];
-                        $idproducto = eliminar_palabras_sql($idproducto);
+                    if (isset($_POST['ModalAgregar_agrupadosidproducto']) != false && validar_string($_POST['ModalAgregar_agrupadosidproducto'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
+                        $ModalAgregar_agrupadosidproducto = $_POST['ModalAgregar_agrupadosidproducto'];
+                        $ModalAgregar_agrupadosidproducto = eliminar_palabras_sql($ModalAgregar_agrupadosidproducto);
                     } else {
                         http_response_code(409); //codigo de conflicto
                         $resultado = new stdClass();
                         $resultado->result = false;
                         $resultado->icono = "";
                         $resultado->titulo = "";
-                        $resultado->mensaje = "idproducto No Valido";
+                        $resultado->mensaje = "Id Producto No Valido";
                         echo  json_encode($resultado);
                         break;
                     }
