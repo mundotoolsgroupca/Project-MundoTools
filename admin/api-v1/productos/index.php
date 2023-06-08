@@ -255,6 +255,19 @@ switch ($method) {
                         echo  json_encode($resultado);
                         break;
                     }
+                    if (isset($_POST['ModalAgregar_agrupadosID']) != false && validar_string($_POST['ModalAgregar_agrupadosID'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
+                        $ModalAgregar_agrupadosID = $_POST['ModalAgregar_agrupadosID'];
+                        $ModalAgregar_agrupadosID = eliminar_palabras_sql($ModalAgregar_agrupadosID);
+                    } else {
+                        http_response_code(409); //codigo de conflicto
+                        $resultado = new stdClass();
+                        $resultado->result = false;
+                        $resultado->icono = "";
+                        $resultado->titulo = "";
+                        $resultado->mensaje = "Id Grupo no Valido No Valido";
+                        echo  json_encode($resultado);
+                        break;
+                    }
 
 
                     if (isset($_POST['ModalAgregar_agrupadosprecio']) && validar_Monto($_POST['ModalAgregar_agrupadosprecio'])) {
@@ -269,8 +282,10 @@ switch ($method) {
                         echo  json_encode($resultado);
                         break;
                     }
-                    if (isset($_POST['stock']) && validar_int($_POST['stock']) && $_POST['stock'] > 0) {
-                        $stock = $_POST['stock'];
+
+
+                    if (isset($_POST['ModalAgregar_agrupadosStock']) && validar_int($_POST['ModalAgregar_agrupadosStock']) && $_POST['ModalAgregar_agrupadosStock'] > 0) {
+                        $ModalAgregar_agrupadosStock = $_POST['ModalAgregar_agrupadosStock'];
                     } else {
                         http_response_code(409); //codigo de conflicto
                         $resultado = new stdClass();
@@ -284,32 +299,6 @@ switch ($method) {
 
 
 
-                    if (isset($_POST['descripcion']) != false && validar_string($_POST['descripcion'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
-                        $descripcion = $_POST['descripcion'];
-                        $descripcion = eliminar_palabras_sql($descripcion);
-                    } else {
-                        http_response_code(409); //codigo de conflicto
-                        $resultado = new stdClass();
-                        $resultado->result = false;
-                        $resultado->icono = "";
-                        $resultado->titulo = "";
-                        $resultado->mensaje = "descripcion del Producto No Valida";
-                        echo  json_encode($resultado);
-                        break;
-                    }
-
-                    if (isset($_POST['precio']) && validar_Monto($_POST['precio']) && $_POST['precio'] > 0) {
-                        $precio = $_POST['precio'];
-                    } else {
-                        http_response_code(409); //codigo de conflicto
-                        $resultado = new stdClass();
-                        $resultado->result = false;
-                        $resultado->icono = "";
-                        $resultado->titulo = "";
-                        $resultado->mensaje = "Precio No Valido";
-                        echo  json_encode($resultado);
-                        break;
-                    }
 
                     if (isset($_POST['ModalAgregar_agrupadoscaracteristicaProducto']) && validar_string($_POST['ModalAgregar_agrupadoscaracteristicaProducto'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$&/: ')) {
                         $ModalAgregar_agrupadoscaracteristicaProducto = $_POST['ModalAgregar_agrupadoscaracteristicaProducto'];
@@ -392,102 +381,53 @@ switch ($method) {
                         echo  json_encode($resultado);
                         break;
                     }
-                    $img_nombre = $_FILES['imagen']['name'];
-                    $img_size = $_FILES['imagen']['size'];
-                    $img_tmp = $_FILES['imagen']['tmp_name'];
-                    $error = $_FILES['imagen']['error'];
+                    $consulta = "CALL adm_agregar_producto('$ModalAgregar_agrupadosidproducto','$ModalAgregar_agrupadosID','$ModalAgregar_agrupadosprecio','$ModalAgregar_agrupadosStock','$ModalAgregar_agrupadoscaracteristicaProducto','$ModalAgregar_agrupadoscaracteristicaProducto2','$ModalAgregar_agrupadoscaracteristicaProducto3','$ModalAgregar_agrupadoscaracteristicaProducto4','$ModalAgregar_agrupadoscaracteristicaProducto5','$ModalAgregar_agrupadosMoneda','" . $_SESSION['Usuario']['id'] . "')";
 
-                    if ($error === 0) {
-                        if ($img_size > 5242880) { // tamaño máximo en bytes (5 MB)
+
+
+                    /* $consulta = " 
+                    CALL adm_agregar_producto('$idproducto','$id_grupo','$nombreproducto','$precio', '$stock','$categoria', '$descripcion','$url_img_guardar','$moneda','$caracteristica1','$caracteristica2','$caracteristica3','$caracteristica4','$caracteristica5','" . $_SESSION['Usuario']['id'] . "'); "; //[nombre][precio][stock][categoria][descripcion][imagen] 
+                    //asi la ejecuta phpmyadmin*/
+
+
+                    $resultado = mysqli_query($conexion, $consulta);
+                    $data = mysqli_fetch_assoc($resultado);
+                    if ($resultado) { //* si realizo la consulta 
+                        if ($data['status'] == 1) {  //* si guardo el producto
+
+                            http_response_code(200);
+                            $resultado = new stdClass();
+                            $resultado->result = TRUE;
+                            $resultado->icono = "success";
+                            $resultado->titulo = "";
+                            $resultado->mensaje = $data['msg'];
+                            $resultado->data =  array(
+                                "status" => $data['status'],
+                                "msg" => $data['msg']
+                            );
+                            echo  json_encode($resultado);
+                            break;
+                        } elseif ($data['status'] == 0) { //! si no lo guardo 
                             http_response_code(409); //codigo de conflicto
                             $resultado = new stdClass();
                             $resultado->result = false;
-                            $resultado->icono = "";
+                            $resultado->icono = "success";
                             $resultado->titulo = "";
-                            $resultado->mensaje = "La Imagen supera el Limite de Peso Permitido";
+                            $resultado->mensaje = $data['msg'];
+                            $resultado->data =  array(
+                                "status" => $data['status'],
+                                "msg" => $data['msg']
+                            );
                             echo  json_encode($resultado);
                             break;
-                        } else {
-                            $img_ex = pathinfo($img_nombre, PATHINFO_EXTENSION); //obtenemos la extencion del archivo
-                            $img_ex_lc = strtolower($img_ex); //la colocamos en minuscula
-                            $allowed_exs = array("jpg", "jpeg", "png", "webp"); //formatos de archivos permitidos
-
-
-                            if (in_array($img_ex_lc, $allowed_exs)) { //validamos que el formato sea de los permitidos
-                                $new_img_name = $idproducto . '.' . $img_ex_lc; //creamos un nombre unico
-                                // $img_upload_path = 'assets/uploads/' . $new_img_name; //ubicamos la carpeta donde se guardara
-                                $img_upload_path = dirname(__FILE__, 4) . "/assets/uploads/" . $new_img_name; //ubicamos la carpeta donde se guardara
-
-                                //session_name("ecomercer_admin_data");
-                                session_start();
-                                include_once "../../php/conexion.php";
-                                $url_img_guardar = "/assets/uploads/$new_img_name"; //dirrecion donde estara almacenada la imagen
-
-                                $consulta = " 
-                            CALL adm_agregar_producto('$idproducto','$id_grupo','$nombreproducto','$precio', '$stock','$categoria', '$descripcion','$url_img_guardar','$moneda','$caracteristica1','$caracteristica2','$caracteristica3','$caracteristica4','$caracteristica5','" . $_SESSION['Usuario']['id'] . "'); "; //[nombre][precio][stock][categoria][descripcion][imagen] 
-                                //asi la ejecuta phpmyadmin
-
-
-                                $resultado = mysqli_query($conexion, $consulta);
-                                $data = mysqli_fetch_assoc($resultado);
-                                if ($resultado) { //* si realizo la consulta 
-                                    if ($data['status'] == 1) {  //* si guardo el producto
-                                        move_uploaded_file($img_tmp, $img_upload_path); //guardamos el archivo
-                                        http_response_code(200);
-                                        $resultado = new stdClass();
-                                        $resultado->result = TRUE;
-                                        $resultado->icono = "success";
-                                        $resultado->titulo = "";
-                                        $resultado->mensaje = $data['msg'];
-                                        $resultado->data =  array(
-                                            "status" => $data['status'],
-                                            "msg" => $data['msg']
-                                        );
-                                        echo  json_encode($resultado);
-                                        break;
-                                    } elseif ($data['status'] == 0) { //! si no lo guardo 
-                                        http_response_code(409); //codigo de conflicto
-                                        $resultado = new stdClass();
-                                        $resultado->result = false;
-                                        $resultado->icono = "success";
-                                        $resultado->titulo = "";
-                                        $resultado->mensaje = $data['msg'];
-                                        $resultado->data =  array(
-                                            "status" => $data['status'],
-                                            "msg" => $data['msg']
-                                        );
-                                        echo  json_encode($resultado);
-                                        break;
-                                    }
-                                } else { //! si hubo un error
-                                    http_response_code(409); //codigo de conflicto
-                                    $resultado = new stdClass();
-                                    $resultado->result = false;
-                                    $resultado->icono = "success";
-                                    $resultado->titulo = "";
-                                    $resultado->mensaje = "Error Interno";
-                                    echo  json_encode($resultado);
-                                    break;
-                                }
-                                break;
-                            } else {
-                                http_response_code(409); //codigo de conflicto
-                                $resultado = new stdClass();
-                                $resultado->result = false;
-                                $resultado->icono = "success";
-                                $resultado->titulo = "";
-                                $resultado->mensaje = "Formato de la Imagen No Valido, Solo jpg, jpeg, png, webp";
-                                echo  json_encode($resultado);
-                                break;
-                            }
                         }
-                    } else {
+                    } else { //! si hubo un error
                         http_response_code(409); //codigo de conflicto
                         $resultado = new stdClass();
                         $resultado->result = false;
                         $resultado->icono = "success";
                         $resultado->titulo = "";
-                        $resultado->mensaje = "Error Desconocido";
+                        $resultado->mensaje = "Error Interno";
                         echo  json_encode($resultado);
                         break;
                     }
