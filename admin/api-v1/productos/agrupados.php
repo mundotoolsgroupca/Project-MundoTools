@@ -337,6 +337,14 @@ switch ($method) {
                                 $url_img_guardar = "/assets/uploads/$new_img_name"; //dirrecion donde estara almacenada la imagen
 
                                 $consulta = "CALL adm_agregar_agrupado('$id_grupo','$nombreGrupo','$categoria','$url_img_guardar','$descripcion');";
+                            } else {
+                                http_response_code(409); //codigo de conflicto
+                                $resultado = new stdClass();
+                                $resultado->result = false;
+                                $resultado->icono = "";
+                                $resultado->titulo = "";
+                                $resultado->mensaje = "Formato de la Imagen no Valida";
+                                echo  json_encode($resultado);
                             }
                         }
                     }
