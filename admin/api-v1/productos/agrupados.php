@@ -331,8 +331,7 @@ switch ($method) {
                                 $img_upload_path = dirname(__FILE__, 4) . "/assets/uploads/" . $new_img_name; //ubicamos la carpeta donde se guardara
                                 move_uploaded_file($img_tmp, $img_upload_path); //guardamos el archivo
 
-                                session_name("ecomercer_admin_data");
-                                session_start();
+                                
                                 include_once "../../php/conexion.php";
                                 $url_img_guardar = "/assets/uploads/$new_img_name"; //dirrecion donde estara almacenada la imagen
 
