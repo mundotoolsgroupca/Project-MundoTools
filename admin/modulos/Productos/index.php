@@ -1016,7 +1016,7 @@
 
     $('#tabla_grupos_producto tbody').on('click', 'tr', function() {
 
-        debugger;
+
         let data = tabla_grupos_producto.row(this).data();
         $('#ModalEditarID_grupo').val(data.id_grupo);
         $('#ModalEditarNombreProducto').val(data.nombre);
@@ -1205,6 +1205,8 @@
                 $('#NuevoProductoLoader').html(``);
                 if (response.result == true) {
                     if (response.data.status == 1) {
+                        let id_grupo = $("[name='id_grupo']").val();
+                        agrupados_view(`${id_grupo}`);
                         let Toast = Swal.mixin({
                             toast: true,
                             position: 'top-end',
@@ -1225,7 +1227,7 @@
                         form.reset(); //si se realizo se limpia el form
                         document.getElementById('imgpreview').src = "";
                         document.getElementById('formFile').value = ""; // se limpia la preview de la imagen
-                        modulo_productos();
+                        //modulo_productos();
                     } else if (response.data.status == 0) {
                         let Toast = Swal.mixin({
                             toast: true,
