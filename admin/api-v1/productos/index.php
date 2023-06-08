@@ -390,6 +390,7 @@ switch ($method) {
                     //asi la ejecuta phpmyadmin*/
 
 
+                    include_once '../../php/conexion.php';
                     $resultado = mysqli_query($conexion, $consulta);
                     $data = mysqli_fetch_assoc($resultado);
                     if ($resultado) { //* si realizo la consulta 
