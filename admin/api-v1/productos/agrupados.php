@@ -24,6 +24,9 @@ switch ($method) {
                 if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'])) {
 
                     include_once '../../php/FuncionesGenerales.php';
+
+                    echo $_GET['id_agrupado'];
+                    return;
                     if (isset($_GET['id_agrupado']) && validar_string($_GET['id_agrupado'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$&/: ')) {
                         $id_agrupado = $_GET['id_agrupado'];
                         $id_agrupado = eliminar_palabras_sql($id_agrupado);
