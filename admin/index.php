@@ -204,7 +204,13 @@ if (!isset($_SESSION['Usuario'])) { //si no existe una session sale del sistema
 ---->
 
 
-        <div id="principal"></div>
+        <div id="principal">
+            <div class="w-full h-screen flex justify-center items-center bg-gray-600">
+
+                <img src="./assets/img/logo.png" alt="" class="w-72 rounded-lg">
+
+            </div>
+        </div>
     </main>
     <!--Main layout-->
 
