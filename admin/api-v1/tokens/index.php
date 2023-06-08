@@ -48,7 +48,7 @@ switch ($method) {
                 vendedores_tokens.fecha_creacion,
                 vendedores_tokens.fecha_vencimiento,
                 vendedores_tokens.token,
-                vendedores_tokens.`status`
+                vendedores_tokens.`status`,
                 vendedores_tokens.`responsable`
                 FROM
                 vendedores_tokens
