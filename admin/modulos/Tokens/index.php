@@ -38,7 +38,7 @@ if (!isset($_SESSION['Usuario'])) { //si no existe una session sale del sistema
                             <thead class="bg-neutral-800 text-white border-b font-medium dark:border-neutral-500">
                                 <tr>
                                     <th data-name="name" class="name" data-type="text" scope="col" class="px-6 py-4">Id</th>
-                                    <th scope="col" class="px-6 py-4">Nombre</th>
+                                    <th scope="col" class="px-6 py-4">Responsable</th>
                                     <th scope="col" class="px-6 py-4">Fecha_Creacion</th>
                                     <th scope="col" class="px-6 py-4">Fecha_Vencimiento</th>
                                     <th scope="col" class="px-6 py-4">Token</th>

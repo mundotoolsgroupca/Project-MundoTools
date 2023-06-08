@@ -49,6 +49,7 @@ switch ($method) {
                 vendedores_tokens.fecha_vencimiento,
                 vendedores_tokens.token,
                 vendedores_tokens.`status`
+                vendedores_tokens.`responsable`
                 FROM
                 vendedores_tokens
                 INNER JOIN vendedores ON vendedores_tokens.id_vendedor = vendedores.id
