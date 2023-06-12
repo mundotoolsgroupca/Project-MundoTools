@@ -283,6 +283,19 @@ switch ($method) {
                         break;
                     }
 
+                    if (isset($_POST['ModalAgregar_agrupadosprecio2']) && validar_Monto($_POST['ModalAgregar_agrupadosprecio2'])) {
+                        $ModalAgregar_agrupadosprecio = $_POST['ModalAgregar_agrupadosprecio2'];
+                    } else {
+                        http_response_code(409); //codigo de conflicto
+                        $resultado = new stdClass();
+                        $resultado->result = false;
+                        $resultado->icono = "";
+                        $resultado->titulo = "";
+                        $resultado->mensaje = "Precio No Valido";
+                        echo  json_encode($resultado);
+                        break;
+                    }
+
 
                     if (isset($_POST['ModalAgregar_agrupadosStock']) && validar_int($_POST['ModalAgregar_agrupadosStock']) && $_POST['ModalAgregar_agrupadosStock'] > 0) {
                         $ModalAgregar_agrupadosStock = $_POST['ModalAgregar_agrupadosStock'];

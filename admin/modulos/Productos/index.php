@@ -313,6 +313,12 @@
                                 </div>
                             </div>
 
+                            <div class="mb-3 w-full">
+                                <div class="relative  flex w-full  items-stretch">
+                                    <input min="0.00" max="10000.00" step="0.01" name="ModalAgregar_agrupadosprecio2" type="number" class="relative m-0 -mr-px block w-full  flex-auto rounded-l border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-1.5 text-base font-normal text-neutral-700 outline-none transition duration-300 ease-in-out focus:border-primary-600 focus:text-neutral-700 focus:shadow-te-primary focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-neutral-200" placeholder="Precio2" aria-label="Search" aria-describedby="button-addon3" />
+                                </div>
+                            </div>
+
                             <div class="relative w-full" data-te-input-wrapper-init>
                                 <input maxlength="11" type="text" class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0" name="ModalAgregar_agrupadosStock" id="ModalAgregar_agrupadosStock" placeholder="Example label" />
                                 <label for="ModalAgregar_agrupadosStock" class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-neutral-200">Stock
