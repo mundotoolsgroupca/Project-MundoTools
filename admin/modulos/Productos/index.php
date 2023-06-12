@@ -422,6 +422,7 @@
                                         <th scope="col" class="px-6 py-4">Caracteristica4</th>
                                         <th scope="col" class="px-6 py-4">Caracteristica5</th>
                                         <th scope="col" class="px-6 py-4">Precio</th>
+                                        <th scope="col" class="px-6 py-4">Precio2</th>
                                         <th scope="col" class="px-6 py-4">Moneda</th>
                                         <th scope="col" class="px-6 py-4">Acciones</th>
 
@@ -962,6 +963,9 @@
                             },
                             {
                                 "data": "precio"
+                            },
+                            {
+                                "data": "precio2"
                             },
                             {
                                 "data": "simbolo"
