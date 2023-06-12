@@ -297,7 +297,7 @@ switch ($method) {
                     }
 
 
-                    if (isset($_POST['ModalAgregar_agrupadosStock']) && validar_int($_POST['ModalAgregar_agrupadosStock']) && $_POST['ModalAgregar_agrupadosStock'] > 0) {
+                    if (isset($_POST['ModalAgregar_agrupadosStock']) && validar_int($_POST['ModalAgregar_agrupadosStock'])) {
                         $ModalAgregar_agrupadosStock = $_POST['ModalAgregar_agrupadosStock'];
                     } else {
                         http_response_code(409); //codigo de conflicto
