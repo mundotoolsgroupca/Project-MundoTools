@@ -1214,51 +1214,12 @@ session_start();
                     `);
                     });
 
-                    debugger;
-                    // Obtener todas las filas de la tabla
-                    const rows = $('#modal_tabla > tbody > tr');
-
-                    // Obtener el número de columnas en la tabla
-                    const numCols = rows.first().children().length;
-
-                    // Verificar si hay una fila de encabezado
-                    const hasHeader = $('#modal_tabla > thead > tr').length > 0;
-                    if (hasHeader) {
-                        // Obtener todas las celdas de encabezado
-                        const headerCells = $('#modal_tabla > thead > tr').children();
-
-                        // Verificar si todas las celdas de encabezado están vacías
-                        const allHeaderCellsEmpty = headerCells.toArray().every((cell) => $(cell).text().trim().match(/^[\s]*$/));
-
-                        if (allHeaderCellsEmpty) {
-                            // Eliminar la fila de encabezado
-                            $('#modal_tabla > thead > tr').remove();
+                    $('#modal_tabla th').each(function(index) {
+                        if ($(this).text().trim() === '') {
+                            $('#modal_tabla td:nth-child(' + (index + 1) + ')').hide();
+                            $(this).hide();
                         }
-                    }
-
-                    // Iterar por cada columna
-                    for (let i = 0; i < numCols; i++) {
-                        // Obtener todas las celdas de la columna actual
-                        const cells = rows.map(function() {
-                            return $(this).children().eq(i);
-                        });
-
-                        // Verificar si todas las celdas están vacías o contienen solo espacios en blanco
-                        const allCellsEmpty = cells.toArray().every((cell) => {
-                            const cellText = $(cell).text().trim();
-                            return cellText === '' || cellText.match(/^[\s]*$/);
-                        });
-
-                        if (allCellsEmpty) {
-                            // Eliminar la columna actual
-                            rows.each(function() {
-                                $(this).children().eq(i).remove();
-                            });
-                            // También puedes eliminar el th correspondiente
-                            $('th').eq(i).remove();
-                        }
-                    }
-
+                    });
 
 
                     modal.show();
