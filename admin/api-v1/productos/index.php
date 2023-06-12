@@ -284,7 +284,7 @@ switch ($method) {
                     }
 
                     if (isset($_POST['ModalAgregar_agrupadosprecio2']) && validar_Monto($_POST['ModalAgregar_agrupadosprecio2'])) {
-                        $ModalAgregar_agrupadosprecio = $_POST['ModalAgregar_agrupadosprecio2'];
+                        $ModalAgregar_agrupadosprecio2 = $_POST['ModalAgregar_agrupadosprecio2'];
                     } else {
                         http_response_code(409); //codigo de conflicto
                         $resultado = new stdClass();
@@ -394,7 +394,7 @@ switch ($method) {
                         echo  json_encode($resultado);
                         break;
                     }
-                    $consulta = "CALL adm_agregar_producto('$ModalAgregar_agrupadosidproducto','$ModalAgregar_agrupadosID','$ModalAgregar_agrupadosprecio','$ModalAgregar_agrupadosStock','$ModalAgregar_agrupadoscaracteristicaProducto','$ModalAgregar_agrupadoscaracteristicaProducto2','$ModalAgregar_agrupadoscaracteristicaProducto3','$ModalAgregar_agrupadoscaracteristicaProducto4','$ModalAgregar_agrupadoscaracteristicaProducto5','$ModalAgregar_agrupadosMoneda','" . $_SESSION['Usuario']['id'] . "')";
+                    $consulta = "CALL adm_agregar_producto('$ModalAgregar_agrupadosidproducto','$ModalAgregar_agrupadosID','$ModalAgregar_agrupadosprecio','$ModalAgregar_agrupadosprecio2','$ModalAgregar_agrupadosStock','$ModalAgregar_agrupadoscaracteristicaProducto','$ModalAgregar_agrupadoscaracteristicaProducto2','$ModalAgregar_agrupadoscaracteristicaProducto3','$ModalAgregar_agrupadoscaracteristicaProducto4','$ModalAgregar_agrupadoscaracteristicaProducto5','$ModalAgregar_agrupadosMoneda','" . $_SESSION['Usuario']['id'] . "')";
 
 
 
