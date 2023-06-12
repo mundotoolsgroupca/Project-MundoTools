@@ -612,6 +612,14 @@ session_start();
                                             <div onclick='modalinfoview(`$id`)' class='group relative cursor-pointer transition-all mx-auto   w-full ' >
                                                 <div class='absolute  font-bold text-lg   w-full flex justify-end right-3 text-[#FBAA35]'>
                                                     $id
+                                                    <div class='absolute left-0 flex w-full justify-start rounded-lg p-3 text-lg font-bold'>
+                                                        <div class='rounded-full bg-[#FBAA35] hover:bg-[#FBAA05] transition-colors p-3'>
+                                                        <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='h-5 w-5'>
+                                                                                                                <path stroke-linecap='round' stroke-linejoin='round' d='M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15' />
+                                                        </svg>
+                                                        </div>
+                                                        </div>
+
                                                     </div>
                                                     <div class=' m-auto aspect-h-1 aspect-w-1 h-auto lg:aspect-none  overflow-hidden rounded-md    '>
                                                         <img data-te-animation-init
@@ -832,6 +840,14 @@ session_start();
                                                 <div onclick='modalinfoview(`$id`)' class='group relative cursor-pointer transition-all mx-auto   w-full ' >
                                                     <div class='absolute  font-bold text-lg   w-full flex justify-end right-3 text-[#FBAA35]'>
                                                         $id
+                                                        <div class='absolute left-0 flex w-full justify-start rounded-lg p-3 text-lg font-bold'>
+                                                        <div class='rounded-full bg-[#FBAA35] hover:bg-[#FBAA05] transition-colors p-3'>
+                                                        <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='h-5 w-5'>
+                                                                                                                <path stroke-linecap='round' stroke-linejoin='round' d='M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15' />
+                                                        </svg>
+                                                        </div>
+                                                        </div>
+
                                                         </div>
                                                         <div class=' m-auto aspect-h-1 aspect-w-1 h-auto lg:aspect-none  overflow-hidden rounded-md    '>
                                                             <img data-te-animation-init
