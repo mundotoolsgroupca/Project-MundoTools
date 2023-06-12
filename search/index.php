@@ -1214,10 +1214,23 @@ session_start();
                     `);
                     });
 
-                    $('#modal_tabla th').each(function(index) {
-                        if ($(this).text().trim() === '') {
-                            $('#modal_tabla td:nth-child(' + (index + 1) + ')').hide();
-                            $(this).hide();
+                    // Obtener todas las filas de la tabla
+                    const rows = $('#modal_tabla > tbody > tr');
+
+                    // Iterar por cada fila
+                    rows.each(function() {
+                        // Obtener todas las celdas de la fila actual
+                        const cells = $(this).children();
+
+                        // Verificar si todas las celdas de la fila actual están vacías
+                        const allCellsEmpty = cells.toArray().every((cell) => {
+                            const cellText = $(cell).text().trim();
+                            return cellText === '' || cellText.match(/^[\s]*$/);
+                        });
+
+                        if (allCellsEmpty) {
+                            // Eliminar la fila actual
+                            $(this).remove();
                         }
                     });
 
