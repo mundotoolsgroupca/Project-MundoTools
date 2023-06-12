@@ -426,7 +426,7 @@ session_start();
                                                             <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
                                                                 <div class="overflow-hidden">
                                                                     <table id="modal_tabla" class="min-w-full text-left text-sm font-light ">
-                                                                         
+
                                                                         <tbody class='font-bold'>
 
                                                                         </tbody>
@@ -1155,7 +1155,7 @@ session_start();
                 if (validar) {
                     // Select the table body by ID or class
                     var tableBody = $('#modal_tabla  tbody'); // Replace "table-id" with the actual ID of your table
-
+                    debugger;
                     // Remove all rows from the table body
                     tableBody.find('tr').remove();
                     $('#modal_tabla').html('');
