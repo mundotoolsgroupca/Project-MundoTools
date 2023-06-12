@@ -1210,6 +1210,21 @@ session_start();
                     // Obtener el número de columnas en la tabla
                     const numCols = rows.first().children().length;
 
+                    // Verificar si hay una fila de encabezado
+                    const hasHeader = $('#modal_tabla > thead > tr').length > 0;
+                    if (hasHeader) {
+                        // Obtener todas las celdas de encabezado
+                        const headerCells = $('#modal_tabla > thead > tr').children();
+
+                        // Verificar si todas las celdas de encabezado están vacías
+                        const allHeaderCellsEmpty = headerCells.toArray().every((cell) => $(cell).text().trim() === '');
+
+                        if (allHeaderCellsEmpty) {
+                            // Eliminar la fila de encabezado
+                            $('#modal_tabla > thead > tr').remove();
+                        }
+                    }
+
                     // Iterar por cada columna
                     for (let i = 0; i < numCols; i++) {
                         // Obtener todas las celdas de la columna actual
@@ -1225,15 +1240,10 @@ session_start();
                             rows.each(function() {
                                 $(this).children().eq(i).remove();
                             });
-
                             // También puedes eliminar el th correspondiente
                             $('th').eq(i).remove();
                         }
                     }
-
-
-                    // Display the filtered array in the console
-                    // console.log(filteredArray);
 
 
                     modal.show();
