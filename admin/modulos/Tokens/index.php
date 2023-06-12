@@ -7,6 +7,10 @@ if (!isset($_SESSION['Usuario'])) { //si no existe una session sale del sistema
 }
 ?>
 
+<script>
+    $('#principal').off();
+</script>
+
 <div class="[ flex gap-3 flex-col ] lg:flex-row">
 
     <div class="[  rounded-lg bg-white p-6 shadow-lg w-full ] [  ]">

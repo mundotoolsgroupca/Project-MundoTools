@@ -1,3 +1,6 @@
+<script>
+    $('#principal').off();
+</script>
 <div class="[ h-full flex gap-3 flex-col ] [ lg:flex-row ]">
     <!-- Modulo -->
     <div class="[ h-auto  rounded-lg  bg-white p-6 shadow-lg w-full ] [   md:overflow-y-auto ] [ lg:w-1/5   lg:overflow-y-auto ]">

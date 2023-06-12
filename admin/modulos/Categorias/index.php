@@ -1,5 +1,8 @@
-<div>
 
+<script>
+    $('#principal').off();
+</script>
+<div>
     <div class="[  rounded-lg bg-white p-6 shadow-lg   ]   [ lg:w-1/4 ]">
         <div class="[ flex items-center gap-1 flex-nowrap mb-3 ]">
             <p class="[ text-lg font-bold ]">Categorias</p>
