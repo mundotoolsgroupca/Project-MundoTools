@@ -532,7 +532,7 @@ switch ($method) {
                             break;
                         }
 
-                        if ($precio != false) {
+                        if ($precio != false || $precio2 != false) {
                             $consulta = "CALL adm_editar_producto( '$id_grupo', '$id', '0', '0', '0','0','0','0','$precio','$precio2','0','" . $_SESSION['Usuario']['id'] . "','1')"; //editar el stock
                         } else if ($stock != false) {
                             $consulta = "CALL adm_editar_producto( '$id_grupo', '$id', '0', '0', '0','0','0','0','0','0','$stock','" . $_SESSION['Usuario']['id'] . "','2')"; //editar el stock
