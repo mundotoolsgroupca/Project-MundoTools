@@ -1188,21 +1188,25 @@ session_start();
                         return obj.id_grupo === data.id_grupo;
                     });
 
-                    filteredArray.map((item) => {
-                        $('#modal_tabla > tbody').append(`
-                        <tr class="border-b dark:border-neutral-500 bg-[#FBAA35]">
-                            <td class="whitespace-nowrap px-6 py-4 font-medium">${item.id}</td>
-                            <td class="whitespace-nowrap px-6 py-4">${item.caracteristica}</td>
-                            <td class="whitespace-nowrap px-6 py-4">${item.caracteristica2}</td>
-                            <td class="whitespace-nowrap px-6 py-4">${item.caracteristica3}</td>
-                            <td class="whitespace-nowrap px-6 py-4">${item.caracteristica4}</td>
-                            <td class="whitespace-nowrap px-6 py-4">${item.caracteristica5}</td>
-                            <td class="whitespace-nowrap px-6 py-4">${item.precio+""+item.simbolo}</td>
-                            <td class="whitespace-nowrap px-6 py-4">${item.precio2+""+item.simbolo}</td>
-                        </tr>
-                    
+                    // Crear un array con las características que tienen valores
+                    const columnsToShow = Object.keys(filteredArray[0]).filter(key => filteredArray.some(item => item[key] !== null && item[key] !== ''));
+
+                    // Agregar las columnas al header de la tabla
+                    $('#modal_tabla > thead').append(`
+                            <tr class="border-b dark:border-neutral-500 bg-[#277481]">
+                                ${columnsToShow.map(columnName => `<th class="whitespace-nowrap px-6 py-4 font-medium">${columnName}</th>`).join('')}
+                            </tr>
                     `);
+
+                    // Agregar las filas a la tabla
+                    filteredArray.forEach((item) => {
+                        $('#modal_tabla > tbody').append(`
+                            <tr class="border-b dark:border-neutral-500 bg-[#FBAA35]">
+                                ${columnsToShow.map(columnName => `<td class="whitespace-nowrap px-6 py-4">${item[columnName]}</td>`).join('')}
+                            </tr>
+                        `);
                     });
+
 
 
 
