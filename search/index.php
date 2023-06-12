@@ -731,8 +731,10 @@ session_start();
                                         $resultado = mysqli_query($conexion, $consulta);
                                         $modaldata = [];
                                         while ($row = mysqli_fetch_assoc($resultado)) {
+                                            $precio2 = number_format($row['precio2'], 2);
                                             $precio = number_format($row['precio'], 2);
                                             $row['precio'] = $precio;
+                                            $row['precio2'] = $precio2;
                                             $row['descripcion'] = str_replace('•', '<br>', $row['descripcion']);
                                             array_push($modaldata, $row);
                                         }
@@ -947,8 +949,10 @@ session_start();
                                     $resultado = mysqli_query($conexion, $consulta);
                                     $modaldata = [];
                                     while ($row = mysqli_fetch_assoc($resultado)) {
+                                        $precio2 = number_format($row['precio2'], 2);
                                         $precio = number_format($row['precio'], 2);
                                         $row['precio'] = $precio;
+                                        $row['precio2'] = $precio2;
                                         $row['descripcion'] = str_replace('•', '<br>', $row['descripcion']);
                                         array_push($modaldata, $row);
                                     }
@@ -1194,6 +1198,7 @@ session_start();
                             <td class="whitespace-nowrap px-6 py-4">${item.caracteristica4}</td>
                             <td class="whitespace-nowrap px-6 py-4">${item.caracteristica5}</td>
                             <td class="whitespace-nowrap px-6 py-4">${item.precio+""+item.simbolo}</td>
+                            <td class="whitespace-nowrap px-6 py-4">${item.precio2+""+item.simbolo}</td>
                         </tr>
                     
                     `);
