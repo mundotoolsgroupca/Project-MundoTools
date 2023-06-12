@@ -226,7 +226,7 @@
                             <input class="[ hidden ]" type="text" name="ModalEditar_id_producto" id="ModalEditar_id_producto" />
 
                             <div class="relative w-full" data-te-input-wrapper-init>
-                                <input modal_editar="input" maxlength="40" type="text" class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0" name="ModalEditar_agrupadoscaracteristicaProducto" id="ModalEditar_agrupadoscaracteristicaProducto"  placeholder="Example label" />
+                                <input modal_editar="input" maxlength="40" type="text" class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0" name="ModalEditar_agrupadoscaracteristicaProducto" id="ModalEditar_agrupadoscaracteristicaProducto" placeholder="Example label" />
                                 <label for="ModalEditar_agrupadoscaracteristicaProducto" class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-neutral-200">Caracteristica
                                 </label>
                             </div>
@@ -1071,21 +1071,21 @@
 
             beforeSend: () => {
 
-                function test() {
-                    const inputFields = document.querySelectorAll('input[type="text"]');
-                    const inputValues = [
-                        inputFields[4].value,
-                        inputFields[3].value,
-                        inputFields[2].value,
-                        inputFields[1].value,
-                        inputFields[0].value,
-                    ];
-                    inputValues.sort();
-                    inputValues.forEach((value, index) => inputFields[inputFields.length - 1 - index].value = value);
-                    inputFields.forEach((input, index) => {
-                        if (index >= inputValues.length) input.value = '';
-                    });
-                }
+
+                let inputFields = document.querySelectorAll('[modal_editar="input"]');
+                let inputValues = [
+                    inputFields[4].value,
+                    inputFields[3].value,
+                    inputFields[2].value,
+                    inputFields[1].value,
+                    inputFields[0].value,
+                ];
+                inputValues.sort();
+                inputValues.forEach((value, index) => inputFields[inputFields.length - 1 - index].value = value);
+                inputFields.forEach((input, index) => {
+                    if (index >= inputValues.length) input.value = '';
+                });
+
 
                 $('#ModalEditar_agrupadosLoader').html(`<div class="inline-block h-4 w-4 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]" role="status">
                                     <span class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
