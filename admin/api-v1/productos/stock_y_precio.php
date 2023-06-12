@@ -62,6 +62,7 @@ switch ($method) {
                                 "id" => $row['id'],
                                 "categoria" =>  $row['categoria'],
                                 "precio" => number_format($row['precio'], 2),
+                                "precio2" => number_format($row['precio2'], 2),
                                 "stock" =>  $row['cantidad'],
                                 "nombre" =>  $row['nombre'],
                                 "id_grupo" =>  $row['id_grupo'],
