@@ -33,6 +33,7 @@ switch ($method) {
                 c1.id, 
                 categorias.nombre as categoria, 
                 c1.precio, 
+                c1.precio2, 
                 c3.cantidad, 
                 c2.nombre, 
                 c1.id_grupo
