@@ -486,6 +486,23 @@ switch ($method) {
                             }
                         }
 
+                        $precio2 = isset($_POST['newdata']['precio2']) ? $_POST['newdata']['precio2'] : false;
+                        if ($precio2 != false) {
+                            if (validar_Monto($_POST['newdata']['precio2'])) {
+                                $precio2 = $_POST['newdata']['precio2'];
+                            } else {
+                                http_response_code(409); //codigo de conflicto
+                                $resultado = new stdClass();
+                                $resultado->result = false;
+                                $resultado->icono = "";
+                                $resultado->titulo = "";
+                                $resultado->mensaje = "Precio2 No Valido";
+                                echo  json_encode($resultado);
+                                break;
+                            }
+                        }
+
+
 
 
                         include_once "../../php/conexion.php";
@@ -516,9 +533,9 @@ switch ($method) {
                         }
 
                         if ($precio != false) {
-                            $consulta = "CALL adm_editar_producto( '$id_grupo', '$id', '0', '0', '0','0','0','0','$precio','0','" . $_SESSION['Usuario']['id'] . "','1')"; //editar el stock
+                            $consulta = "CALL adm_editar_producto( '$id_grupo', '$id', '0', '0', '0','0','0','0','$precio','$precio2','0','" . $_SESSION['Usuario']['id'] . "','1')"; //editar el stock
                         } else if ($stock != false) {
-                            $consulta = "CALL adm_editar_producto( '$id_grupo', '$id', '0', '0', '0','0','0','0','0','$stock','" . $_SESSION['Usuario']['id'] . "','2')"; //editar el stock
+                            $consulta = "CALL adm_editar_producto( '$id_grupo', '$id', '0', '0', '0','0','0','0','0','0','$stock','" . $_SESSION['Usuario']['id'] . "','2')"; //editar el stock
                         }
 
 

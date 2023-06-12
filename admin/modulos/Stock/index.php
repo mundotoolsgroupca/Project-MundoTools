@@ -27,6 +27,7 @@ if (!isset($_SESSION['Usuario'])) { //si no existe una session sale del sistema
                                     <th scope="col" class="px-6 py-4">stock</th>
                                     <th scope="col" class="px-6 py-4">Categoria</th>
                                     <th scope="col" class="px-6 py-4">precio</th>
+                                    <th scope="col" class="px-6 py-4">precio2</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -96,6 +97,10 @@ if (!isset($_SESSION['Usuario'])) { //si no existe una session sale del sistema
 
                                     {
                                         "data": "precio",
+                                        "className": "editable"
+                                    },
+                                    {
+                                        "data": "precio2",
                                         "className": "editable"
                                     },
 
