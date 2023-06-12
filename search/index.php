@@ -1158,7 +1158,7 @@ session_start();
                     debugger;
                     // Remove all rows from the table body
                     tableBody.find('tr').remove();
-                    $('#modal_tabla').html('');
+                    //$('#modal_tabla').html('');
                     $('#modal_tabla thead').append(`
                         <tr class='bg-black'>
                             <th scope="col" class="px-6 py-4">ID</th>
