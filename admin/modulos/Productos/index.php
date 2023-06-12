@@ -1057,6 +1057,19 @@
 
 
     function editar_producto_agrupado() {
+        let inputFields = document.querySelectorAll('[modal_editar="input"]');
+        let inputValues = [
+            inputFields[4].value,
+            inputFields[3].value,
+            inputFields[2].value,
+            inputFields[1].value,
+            inputFields[0].value,
+        ];
+        inputValues.sort();
+        inputValues.forEach((value, index) => inputFields[inputFields.length - 1 - index].value = value);
+        inputFields.forEach((input, index) => {
+            if (index >= inputValues.length) input.value = '';
+        });
 
         $.ajax({
             url: "./api-v1/productos/agrupados.php",
@@ -1072,19 +1085,6 @@
             beforeSend: () => {
 
 
-                let inputFields = document.querySelectorAll('[modal_editar="input"]');
-                let inputValues = [
-                    inputFields[4].value,
-                    inputFields[3].value,
-                    inputFields[2].value,
-                    inputFields[1].value,
-                    inputFields[0].value,
-                ];
-                inputValues.sort();
-                inputValues.forEach((value, index) => inputFields[inputFields.length - 1 - index].value = value);
-                inputFields.forEach((input, index) => {
-                    if (index >= inputValues.length) input.value = '';
-                });
 
 
                 $('#ModalEditar_agrupadosLoader').html(`<div class="inline-block h-4 w-4 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]" role="status">
