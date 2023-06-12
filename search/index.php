@@ -1205,19 +1205,14 @@ session_start();
                     `);
                     });
 
-                    // Obtener una lista de índices de columna vacía
-                    const emptyCols = [];
-                    $('thead th,td', '#modal_tabla').each(function(index) {
-                        if ($(this).text().trim() === '') {
-                            emptyCols.push(index);
-                        }
-                    });
+                    $('#modal_tabla th').filter(function() {
+                        var index = $(this).index();
+                        return $('#modal_tabla td:nth-child(' + (index + 1) + '):not(:empty)').length === 0;
+                    }).remove();
 
-                    // Eliminar las columnas vacías
-                    emptyCols.reverse().forEach(function(index) {
-                        $('thead th:eq(' + index + '),tbody td:eq(' + index + ')', '#modal_tabla').remove();
-                    });
-
+                    $('#modal_tabla td').filter(function() {
+                        return $.trim($(this).text()) === '';
+                    }).remove();
 
 
                     // Display the filtered array in the console
