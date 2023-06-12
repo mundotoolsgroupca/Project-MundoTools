@@ -426,7 +426,9 @@ session_start();
                                                             <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
                                                                 <div class="overflow-hidden">
                                                                     <table id="modal_tabla" class="min-w-full text-left text-sm font-light ">
+                                                                        <thead>
 
+                                                                        </thead>
                                                                         <tbody class='font-bold'>
 
                                                                         </tbody>
@@ -1159,18 +1161,7 @@ session_start();
                     // Remove all rows from the table body
                     tableBody.find('tr').remove();
                     //$('#modal_tabla').html('');
-                    $('#modal_tabla thead').append(`
-                        <tr class='bg-black'>
-                            <th scope="col" class="px-6 py-4">ID</th>
-                            <th scope="col" class="px-6 py-4">caracteristica1</th>
-                            <th scope="col" class="px-6 py-4">caracteristica2</th>
-                            <th scope="col" class="px-6 py-4">caracteristica3</th>
-                            <th scope="col" class="px-6 py-4">caracteristica4</th>
-                            <th scope="col" class="px-6 py-4">caracteristica5</th>
-                            <th scope="col" class="px-6 py-4">Precio</th>
-                            <th scope="col" class="px-6 py-4">Precio2</th>
-                        </tr>
-                    `);
+
                     let imgmodal = document.getElementById("imgmodal");
                     let nombreproductomodal = document.getElementById("nombreproductomodal");
                     let preciomodal = document.getElementById("preciomodal");
@@ -1190,6 +1181,18 @@ session_start();
                         return obj.id_grupo === data.id_grupo;
                     });
 
+                    $('#modal_tabla > thead').append(`
+                        <tr class='bg-black'>
+                            <th scope="col" class="px-6 py-4">ID</th>
+                            <th scope="col" class="px-6 py-4">caracteristica1</th>
+                            <th scope="col" class="px-6 py-4">caracteristica2</th>
+                            <th scope="col" class="px-6 py-4">caracteristica3</th>
+                            <th scope="col" class="px-6 py-4">caracteristica4</th>
+                            <th scope="col" class="px-6 py-4">caracteristica5</th>
+                            <th scope="col" class="px-6 py-4">Precio</th>
+                            <th scope="col" class="px-6 py-4">Precio2</th>
+                        </tr>
+                    `);
 
                     filteredArray.map((item) => {
                         $('#modal_tabla > tbody').append(`
