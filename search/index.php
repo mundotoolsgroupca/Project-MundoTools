@@ -1187,26 +1187,9 @@ session_start();
                     let filteredArray = arrresult.filter(function(obj) {
                         return obj.id_grupo === data.id_grupo;
                     });
-                    // Obtener un array con todas las columnas que tienen datos
-                    const columnasConDatos = [filteredArray[0].caracteristica1, filteredArray[0].caracteristica2, filteredArray[0].caracteristica3, filteredArray[0].caracteristica4, filteredArray[0].caracteristica5].filter(columna => columna);
 
-                    // Generar una nueva matriz solo con las columnas que tienen datos
-                    const nuevaMatriz = filteredArray.map((item) => {
-                        return {
-                            id: item.id,
-                            caracteristica1: item.caracteristica1 && columnasConDatos.includes(item.caracteristica1) ? item.caracteristica1 : '',
-                            caracteristica2: item.caracteristica2 && columnasConDatos.includes(item.caracteristica2) ? item.caracteristica2 : '',
-                            caracteristica3: item.caracteristica3 && columnasConDatos.includes(item.caracteristica3) ? item.caracteristica3 : '',
-                            caracteristica4: item.caracteristica4 && columnasConDatos.includes(item.caracteristica4) ? item.caracteristica4 : '',
-                            caracteristica5: item.caracteristica5 && columnasConDatos.includes(item.caracteristica5) ? item.caracteristica5 : '',
-                            precio: item.precio,
-                            precio2: item.precio2,
-                            simbolo: item.simbolo
-                        };
-                    });
 
-                    // Usar la nueva matriz para generar la tabla
-                    nuevaMatriz.forEach((item) => {
+                    filteredArray.map((item) => {
                         $('#modal_tabla > tbody').append(`
                         <tr class="border-b dark:border-neutral-500 bg-[#FBAA35]">
                             <td class="whitespace-nowrap px-6 py-4 font-medium">${item.id}</td>
@@ -1222,6 +1205,20 @@ session_start();
                     `);
                     });
 
+                    // Obtener las columnas de la tabla
+                    const $table = $('#modal_tabla');
+                    const $columns = $table.find('tr:first-child td');
+
+                    // Iterar sobre las columnas y verificar si todas las filas contienen un valor vacío
+                    $columns.each(function(index) {
+                        const $cells = $table.find(`td:nth-child(${index + 1})`);
+                        const isEmpty = $cells.toArray().every(cell => !$(cell).text().trim());
+
+                        // Si todas las celdas están vacías, eliminar la columna
+                        if (isEmpty) {
+                            $cells.remove();
+                        }
+                    });
 
 
 
