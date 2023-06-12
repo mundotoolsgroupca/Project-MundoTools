@@ -1216,54 +1216,26 @@ session_start();
 
 
 
-                    // Obtener todas las filas de la tabla
-                    const rows = $('#modal_tabla > tbody > tr');
+                    let table = document.getElementById('modal_tabla');
+                    let headers = table.querySelectorAll('thead th');
+                    let rows = table.querySelectorAll('tbody tr');
 
-                    // Obtener el número de columnas en la tabla
-                    const numCols = rows.first().children().length;
-
-                    // Verificar si hay una fila de encabezado
-                    const hasHeader = $('#modal_tabla > thead > tr').length > 0;
-                    if (hasHeader) {
-                        // Obtener todas las celdas de encabezado
-                        const headerCells = $('#modal_tabla > thead > tr').children();
-
-                        // Verificar si todas las celdas de encabezado están vacías
-                        const allHeaderCellsEmpty = headerCells.toArray().every((cell) => $(cell).text().trim().match(/^[\s]*$/));
-
-                        if (allHeaderCellsEmpty) {
-                            // Eliminar la fila de encabezado
-                            $('#modal_tabla > thead > tr').remove();
+                    for (let i = headers.length - 1; i >= 0; i--) {
+                        let isEmpty = true;
+                        for (let j = 0; j < rows.length; j++) {
+                            let cell = rows[j].querySelectorAll('td')[i];
+                            if (cell.textContent.trim() !== '') {
+                                isEmpty = false;
+                                break;
+                            }
+                        }
+                        if (isEmpty) {
+                            headers[i].remove();
+                            for (let j = 0; j < rows.length; j++) {
+                                rows[j].querySelectorAll('td')[i].remove();
+                            }
                         }
                     }
-
-                    // Iterar por cada columna
-                    for (let i = 0; i < numCols; i++) {
-                        // Obtener todas las celdas de la columna actual
-                        const cells = rows.map(function() {
-                            return $(this).children().eq(i);
-                        });
-
-                        // Verificar si todas las celdas están vacías o contienen solo espacios en blanco
-                        const allCellsEmpty = cells.toArray().every((cell) => {
-                            const cellText = $(cell).text().trim();
-                            return cellText === '' || cellText.match(/^[\s]*$/);
-                        });
-
-                        // Verificar si todas las celdas de encabezado de la columna actual están vacías
-                        const headerCells = $('#modal_tabla > thead > tr').children().eq(i);
-                        const allHeaderCellsEmpty = headerCells.toArray().every((cell) => $(cell).text().trim().match(/^[\s]*$/));
-
-                        if (allCellsEmpty && !allHeaderCellsEmpty) {
-                            // Eliminar la columna actual
-                            rows.each(function() {
-                                $(this).children().eq(i).remove();
-                            });
-                            // También puedes eliminar el th correspondiente
-                            $('th').eq(i).remove();
-                        }
-                    }
-
 
 
                     modal.show();
