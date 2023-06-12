@@ -426,7 +426,7 @@ session_start();
                                                             <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
                                                                 <div class="overflow-hidden">
                                                                     <table id="modal_tabla" class="min-w-full text-left text-sm font-light ">
-                                                                        <thead>
+                                                                        <thead class="text-white">
 
                                                                         </thead>
                                                                         <tbody class='font-bold'>
@@ -1226,7 +1226,7 @@ session_start();
                         const headerCells = $('#modal_tabla > thead > tr').children();
 
                         // Verificar si todas las celdas de encabezado están vacías
-                        const allHeaderCellsEmpty = headerCells.toArray().every((cell) => $(cell).text().trim() === '');
+                        const allHeaderCellsEmpty = headerCells.toArray().every((cell) => $(cell).text().trim().match(/^[\s]*$/));
 
                         if (allHeaderCellsEmpty) {
                             // Eliminar la fila de encabezado
@@ -1241,10 +1241,10 @@ session_start();
                             return $(this).children().eq(i);
                         });
 
-                        // Verificar si todas las celdas están vacías
+                        // Verificar si todas las celdas están vacías o contienen solo espacios en blanco
                         const allCellsEmpty = cells.toArray().every((cell) => {
                             const cellText = $(cell).text().trim();
-                            return cellText === '' || cellText === ' ';
+                            return cellText === '' || cellText.match(/^[\s]*$/);
                         });
 
                         if (allCellsEmpty) {
@@ -1256,6 +1256,7 @@ session_start();
                             $('th').eq(i).remove();
                         }
                     }
+
 
 
                     modal.show();
