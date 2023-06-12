@@ -1226,7 +1226,7 @@ session_start();
                         const headerCells = $('#modal_tabla > thead > tr').children();
 
                         // Verificar si todas las celdas de encabezado están vacías
-                        const allHeaderCellsEmpty = headerCells.toArray().every((cell) => $(cell).text().trim() === ' ');
+                        const allHeaderCellsEmpty = headerCells.toArray().every((cell) => $(cell).text().trim() === '');
 
                         if (allHeaderCellsEmpty) {
                             // Eliminar la fila de encabezado
@@ -1242,7 +1242,10 @@ session_start();
                         });
 
                         // Verificar si todas las celdas están vacías
-                        const allCellsEmpty = cells.toArray().every((cell) => $(cell).text().trim() === ' ');
+                        const allCellsEmpty = cells.toArray().every((cell) => {
+                            const cellText = $(cell).text().trim();
+                            return cellText === '' || cellText === ' ';
+                        });
 
                         if (allCellsEmpty) {
                             // Eliminar la columna actual
