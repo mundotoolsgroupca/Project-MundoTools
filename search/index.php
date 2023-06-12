@@ -1207,7 +1207,7 @@ session_start();
 
                     // Obtener una lista de índices de columna vacía
                     const emptyCols = [];
-                    $('th,td', '#modal_tabla').each(function(index) {
+                    $('thead th,td', '#modal_tabla').each(function(index) {
                         if ($(this).text().trim() === '') {
                             emptyCols.push(index);
                         }
@@ -1215,13 +1215,13 @@ session_start();
 
                     // Eliminar las columnas vacías
                     emptyCols.reverse().forEach(function(index) {
-                        $('th:eq(' + index + '),td:eq(' + index + ')', '#modal_tabla').remove();
+                        $('thead th:eq(' + index + '),tbody td:eq(' + index + ')', '#modal_tabla').remove();
                     });
 
 
 
                     // Display the filtered array in the console
-                   // console.log(filteredArray);
+                    // console.log(filteredArray);
 
 
                     modal.show();
