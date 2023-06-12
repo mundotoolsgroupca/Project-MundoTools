@@ -1204,15 +1204,32 @@ session_start();
                     
                     `);
                     });
+                    // Obtener todas las filas de la tabla
+                    const rows = $('#modal_tabla > tbody > tr');
 
-                    $('#modal_tabla th').filter(function() {
-                        var index = $(this).index();
-                        return $('#modal_tabla td:nth-child(' + (index + 1) + '):not(:empty)').length === 0;
-                    }).remove();
+                    // Obtener el número de columnas en la tabla
+                    const numCols = rows.first().children().length;
 
-                    $('#modal_tabla td').filter(function() {
-                        return $.trim($(this).text()) === '';
-                    }).remove();
+                    // Iterar por cada columna
+                    for (let i = 0; i < numCols; i++) {
+                        // Obtener todas las celdas de la columna actual
+                        const cells = rows.map(function() {
+                            return $(this).children().eq(i);
+                        });
+
+                        // Verificar si todas las celdas están vacías
+                        const allCellsEmpty = cells.toArray().every((cell) => $(cell).text().trim() === '');
+
+                        if (allCellsEmpty) {
+                            // Eliminar la columna actual
+                            rows.each(function() {
+                                $(this).children().eq(i).remove();
+                            });
+
+                            // También puedes eliminar el th correspondiente
+                            $('th').eq(i).remove();
+                        }
+                    }
 
 
                     // Display the filtered array in the console
