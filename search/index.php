@@ -1158,9 +1158,8 @@ session_start();
 
                     // Remove all rows from the table body
                     tableBody.find('tr').remove();
-
-                    $('#modal_tabla').append(`
-                    <thead class="border-b font-bold dark:border-neutral-500 text-white">
+                    $('#modal_tabla').html('');
+                    $('#modal_tabla thead').append(`
                         <tr class='bg-black'>
                             <th scope="col" class="px-6 py-4">ID</th>
                             <th scope="col" class="px-6 py-4">caracteristica1</th>
@@ -1171,7 +1170,6 @@ session_start();
                             <th scope="col" class="px-6 py-4">Precio</th>
                             <th scope="col" class="px-6 py-4">Precio2</th>
                         </tr>
-                    </thead>
                     `);
                     let imgmodal = document.getElementById("imgmodal");
                     let nombreproductomodal = document.getElementById("nombreproductomodal");
