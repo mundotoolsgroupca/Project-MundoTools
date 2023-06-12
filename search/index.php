@@ -1215,8 +1215,7 @@ session_start();
                     });
 
 
-                    javascript
-                    Copy code
+
                     // Obtener todas las filas de la tabla
                     const rows = $('#modal_tabla > tbody > tr');
 
