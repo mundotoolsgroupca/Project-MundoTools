@@ -1181,6 +1181,10 @@ session_start();
                         return obj.id_grupo === data.id_grupo;
                     });
 
+                    $('#modal_tabla > thead').html(`
+                        
+                    `);
+
                     $('#modal_tabla > thead').append(`
                         <tr class='bg-black'>
                             <th scope="col" class="px-6 py-4">ID</th>
