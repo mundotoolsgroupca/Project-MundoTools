@@ -176,7 +176,7 @@ session_start();
                         <li>
                             <a class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30" href="../panel/" data-te-dropdown-item-ref>Panel</a>
                         </li>
-                        
+
                         <li>
                             <a class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30" href="../php/logout.php" data-te-dropdown-item-ref>Cerrar Sesion</a>
                         </li>
@@ -212,7 +212,7 @@ session_start();
 
 
     <div class="[ relative    ] [ md:mt-32 ] [ lg:mt-32 ]">
-        <div  class="[  lg:w-5/5   ] [ mx-auto ]">
+        <div class="[  lg:w-5/5   ] [ mx-auto ]">
             <div class="[ mx-auto p-3  ] [ lg:flex lg:h-full lg:justify-center    lg:w-4/5 lg:gap-3  ]">
 
                 <div class="[ flex gap-5 justify-center pt-3 pb-3  ][ md:flex ][ lg:hidden ]">
@@ -451,10 +451,11 @@ session_start();
                                             <div class="lg:col-span-2 lg:row-span-2 lg:row-end-2">
                                                 <h1 id="nombreproductomodal" class="sm: text-2xl font-bold text-gray-900 sm:text-3xl capitalize"> </h1>
                                                 <div class="mt-10 flex flex-col items-center justify-between space-y-4 border-t border-b py-4   sm:space-y-0">
-                                                    <div class="flex items-end">
+                                                    <!-- Required font awesome   
+                                                <div class="flex items-end">
                                                         <h1 id="preciomodal" class="text-3xl m-0 font-bold">0 $</h1>
                                                     </div>
-                                                    <!-- Required font awesome -->
+                                                    -->
                                                 </div>
 
                                                 <div class="lg:col-span-3">
