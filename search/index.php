@@ -1205,25 +1205,23 @@ session_start();
                     `);
                     });
 
-                    // Obtener las columnas de la tabla
-                    const $table = $('#modal_tabla');
-                    const $columns = $table.find('tr:first-child td');
-
-                    // Iterar sobre las columnas y verificar si todas las filas contienen un valor vacío
-                    $columns.each(function(index) {
-                        const $cells = $table.find(`td:nth-child(${index + 1})`);
-                        const isEmpty = $cells.toArray().every(cell => !$(cell).text().trim());
-
-                        // Si todas las celdas están vacías, eliminar la columna
-                        if (isEmpty) {
-                            $cells.remove();
+                    // Obtener una lista de índices de columna vacía
+                    const emptyCols = [];
+                    $('th,td', '#modal_tabla').each(function(index) {
+                        if ($(this).text().trim() === '') {
+                            emptyCols.push(index);
                         }
+                    });
+
+                    // Eliminar las columnas vacías
+                    emptyCols.reverse().forEach(function(index) {
+                        $('th:eq(' + index + '),td:eq(' + index + ')', '#modal_tabla').remove();
                     });
 
 
 
                     // Display the filtered array in the console
-                    console.log(filteredArray);
+                   // console.log(filteredArray);
 
 
                     modal.show();
