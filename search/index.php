@@ -1157,7 +1157,7 @@ session_start();
                 if (validar) {
                     // Select the table body by ID or class
                     var tableBody = $('#modal_tabla  tbody'); // Replace "table-id" with the actual ID of your table
-                    debugger;
+
                     // Remove all rows from the table body
                     tableBody.find('tr').remove();
                     //$('#modal_tabla').html('');
@@ -1213,6 +1213,8 @@ session_start();
                     
                     `);
                     });
+
+                    debugger;
                     // Obtener todas las filas de la tabla
                     const rows = $('#modal_tabla > tbody > tr');
 
