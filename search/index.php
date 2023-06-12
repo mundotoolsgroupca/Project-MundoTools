@@ -610,8 +610,9 @@ session_start();
                                             echo "
                                             <div class='border border-2 hover:border-gray-400 rounded-lg p-3 '>
                                             <div onclick='modalinfoview(`$id`)' class='group relative cursor-pointer transition-all mx-auto   w-full ' >
-                                                <div class='absolute  font-bold text-lg   w-full flex justify-end right-3 text-[#FBAA35]'>
+                                                <div class='absolute  font-bold text-lg   w-full flex justify-between right-3 text-[#FBAA35]'>
                                                     $id
+                                                    <div>test<div>
                                                     </div>
                                                     <div class=' m-auto aspect-h-1 aspect-w-1 h-auto lg:aspect-none  overflow-hidden rounded-md    '>
                                                         <img data-te-animation-init
@@ -830,8 +831,9 @@ session_start();
                                         echo "
                                                 <div class='border border-2 hover:border-gray-400 rounded-lg p-3 '>
                                                 <div onclick='modalinfoview(`$id`)' class='group relative cursor-pointer transition-all mx-auto   w-full ' >
-                                                    <div class='absolute  font-bold text-lg   w-full flex justify-end right-3 text-[#FBAA35]'>
+                                                    <div class='absolute  font-bold text-lg   w-full flex justify-between right-3 text-[#FBAA35]'>
                                                         $id
+                                                        <div>test<div>
                                                         </div>
                                                         <div class=' m-auto aspect-h-1 aspect-w-1 h-auto lg:aspect-none  overflow-hidden rounded-md    '>
                                                             <img data-te-animation-init
