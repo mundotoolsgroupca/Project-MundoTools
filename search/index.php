@@ -1174,7 +1174,7 @@ session_start();
                     data = data[0];
                     imgmodal.src = ".." + data.imagen;
                     nombreproductomodal.innerHTML = data.nombre;
-                    preciomodal.innerHTML = data.precio + "" + data.simbolo;
+                    //preciomodal.innerHTML = data.precio + "" + data.simbolo;
                     modaldescripcion.innerHTML = data.descripcion;
 
 
