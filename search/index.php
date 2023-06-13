@@ -1236,7 +1236,8 @@ session_start();
                     for (let i = headers.length - 1; i >= 0; i--) {
                         let isEmpty = true;
                         for (let j = 0; j < rows.length; j++) {
-                            let cell = rows[j].querySelectorAll('td')[i];
+                            let cells = rows[j].querySelectorAll('td');
+                            let cell = cells[i];
                             let textContent = cell?.textContent ?? '';
                             if (textContent.trim() !== '' || (cell?.children.length === 1 && cell.children[0].tagName === 'DIV' && cell.children[0].textContent.trim() !== '')) {
                                 isEmpty = false;
@@ -1244,9 +1245,10 @@ session_start();
                             }
                         }
                         if (isEmpty) {
-                            headers[i].remove();
+                            headers[i]?.remove?.();
                             for (let j = 0; j < rows.length; j++) {
-                                rows[j].querySelectorAll('td')[i].remove();
+                                let cells = rows[j].querySelectorAll('td');
+                                cells[i]?.remove?.();
                             }
                         }
                     }
