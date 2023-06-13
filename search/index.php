@@ -1265,7 +1265,7 @@ session_start();
             function Modal_Agregar_Carrito(id_producto, id_input) {
 
 
-                debugger
+
                 if (!validarString(id_producto, 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$&')) {
                     Swal.fire({
                         icon: 'Info',
@@ -1296,7 +1296,7 @@ session_start();
                 }
 
                 Carrito.add(id_producto, cantidad, arr_producto);
-
+                $(`#${id_input}`).val(1);
             }
 
 
