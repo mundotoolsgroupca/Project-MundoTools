@@ -1197,7 +1197,7 @@ session_start();
                             <th scope="col" class="px-6 py-4">caracteristica5</th>
                             <th scope="col" class="px-6 py-4">Precio</th>
                             <th scope="col" class="px-6 py-4">Precio2</th>
-                            <th scope="col" class="px-6 py-4"></th>
+                            <th scope="col" class="px-6 py-4">Accion</th>
                         </tr>
                     `);
 
