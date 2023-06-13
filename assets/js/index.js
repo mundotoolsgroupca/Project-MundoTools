@@ -35,10 +35,16 @@ const Carrito = {
       let cantidadtotal = Number(productoExistente.cantidad) + Number(Count);
       productoExistente.cantidad = cantidadtotal;
     } else {
+      if (Count > 0 && Count < 9) {
+        precio = Productosarr.precio;
+      } else if (Count >= 10) {
+        precio = Productosarr.precio2;
+      }
+
       Carrito.list.push({
         nombre: Productosarr.nombre,
         descripcion: Productosarr.descripcion,
-        precio: Productosarr.precio,
+        precio: precio,
         precio2: Productosarr.precio2,
         simbolo: Productosarr.simbolo,
         imagen: Productosarr.imagen,
@@ -137,20 +143,11 @@ const Carrito = {
   totalsum: () => {
     let total = 0;
 
-    if (Productosarr.precio > 0 && Productosarr.precio < 9) {
-      for (let i = 0; i < Carrito.list.length; i++) {
-        let producto = Carrito.list[i];
-        let subtotal = Carrito.list[i].precio * Carrito.list[i].cantidad;
-        total += subtotal;
-      }
-    } else if(Productosarr.precio >= 10) {
-      for (let i = 0; i < Carrito.list.length; i++) {
-        let producto = Carrito.list[i];
-        let subtotal = Carrito.list[i].precio2 * Carrito.list[i].cantidad;
-        total += subtotal;
-      }
+    for (let i = 0; i < Carrito.list.length; i++) {
+      let producto = Carrito.list[i];
+      let subtotal = Carrito.list[i].precio * Carrito.list[i].cantidad;
+      total += subtotal;
     }
-
     return total.toFixed(2);
     //return Carrito.list.reduce((sum, value) => (typeof value.precio == "number" ? sum + (value.precio * value.cantidad) : sum), 0);
   },
