@@ -1287,7 +1287,7 @@ session_start();
                     return item.id == id_producto
                 });
 
-                if (typeof myVariable == 'undefined') {
+                if (typeof arr_producto == 'undefined') {
                     Swal.fire({
                         icon: 'Info',
                         title: 'Producto No Encontrado'
