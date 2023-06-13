@@ -1296,7 +1296,7 @@ session_start();
             var forms = document.querySelectorAll("#result form") // seleccionar todos los formularios
             for (var i = 0; i < forms.length; i++) {
                 forms[i].addEventListener('submit', e => {
-
+                    debugger
                     e.preventDefault();
 
                     let data = arrresult.filter(item => item.id === e.target[0].id);
