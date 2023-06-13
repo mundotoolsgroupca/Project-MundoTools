@@ -521,103 +521,174 @@ session_start();
 
 
 
-                            if (isset($_GET['query'])) {
+                            if (isset($_GET['query']) || isset($_GET['categoria'])) {
 
-                                if (strlen(trim($_GET['query'])) != 0) {
-                                    // obtenemos la pagina por GET, en caso que esta variable no este declarada  por default seria 1
-                                    $current_page =  1;
-                                    if (isset($_GET['page'])) {
-                                        if (is_int($_GET['page'])) {
-                                            $current_page = $_GET['page'];
+
+                                // obtenemos la pagina por GET, en caso que esta variable no este declarada  por default seria 1
+                                $current_page =  1;
+                                if (isset($_GET['page'])) {
+                                    if (is_int($_GET['page'])) {
+                                        $current_page = $_GET['page'];
+                                    }
+                                }
+
+                                // contidad de Resultados por pagina
+                                $results_per_page = 50;
+                                //formula para calcular los resultados de la tabla segun la pagina en que se esta
+                                $offset = ($current_page - 1) * $results_per_page;
+
+                                $query = isset($_GET['query']) ? mysqli_real_escape_string($conexion, $_GET['query']) : (isset($_GET['categoria']) ? mysqli_real_escape_string($conexion, $_GET['categoria']) : 0);
+                                $categoria =  isset($_GET['categoria']) ?   "and c4.categoria = " . htmlspecialchars($_GET['categoria'], ENT_QUOTES, 'UTF-8') : "";
+
+
+
+                                include_once '../php/conexion.php';
+
+                                //consulta pra obtener l;a data para cuando muestre el modal 
+                                $consulta2 = "   
+                                        SELECT
+                                        t1.*,
+                                        t3.nombre,
+                                        t3.descripcion ,
+                                        t2.simbolo,
+                                        t2.imagen
+                                    FROM
+                                        productos t1
+                                        INNER JOIN (
+                                        SELECT
+                                            c4.id_grupo,
+                                            c2.simbolo,
+                                            c4.imagen
+                                        FROM
+                                            productos AS c1
+                                            INNER JOIN productos_agrupados c4 ON c4.id_grupo = c1.id_grupo 
+                                            INNER JOIN moneda_ref AS c2 ON c2.cod_moneda = c1.moneda   $categoria
+                                            INNER JOIN stock AS c3 ON c1.id = c3.idProducto
+                                            
+                                        WHERE
+                                            nombre LIKE '%$query%' 
+                                            OR id LIKE '%$query%' 
+                                            $categoria
+                                        GROUP BY
+                                            c4.nombre 
+                                        ORDER BY
+                                            c1.precio $order  
+                                            LIMIT $results_per_page OFFSET $offset
+                                        ) t2 ON t2.id_grupo = t1.id_grupo
+                                        INNER JOIN productos_agrupados t3 ON t3.id_grupo = t1.id_grupo 
+                                    ORDER BY
+                                        t1.id ASC
+                                
+                                    ";
+
+
+
+                                $resultado2 = mysqli_query($conexion, $consulta2);
+                                $modaldata = [];
+                                while ($row2 = mysqli_fetch_assoc($resultado2)) {
+                                    $precio2 = number_format($row2['precio2'], 2);
+                                    $precio = number_format($row2['precio'], 2);
+                                    $row2['precio'] = $precio;
+                                    $row2['precio2'] = $precio2;
+                                    $row2['descripcion'] = str_replace('•', '<br>', $row2['descripcion']);
+                                    array_push($modaldata, $row2);
+                                }
+
+                                ///////////////////////////////////////////////////////
+
+
+
+
+                                $consulta = "
+                                            SELECT
+                                            c1.id,
+                                            c4.nombre,
+                                            c4.categoria,
+                                            c4.imagen,
+                                            c1.precio,
+                                            c2.simbolo,
+                                            c2.cod_moneda,
+                                            c4.id_grupo,
+                                            c5.cantidad 
+                                        FROM
+                                            productos AS c1
+                                            INNER JOIN productos_agrupados c4 ON c4.id_grupo = c1.id_grupo
+                                            INNER JOIN moneda_ref AS c2 ON c2.cod_moneda = c1.moneda $categoria
+                                            INNER JOIN stock AS c3 ON c1.id = c3.idProducto
+                                            INNER JOIN stock AS c5 ON c5.idProducto = c1.id 
+                                        WHERE
+                                            nombre LIKE '%$query%' 
+                                            OR id LIKE '%$query%'
+                                            $categoria
+                                        group by c4.nombre
+                                        ORDER BY
+                                            c1.precio $order  
+                                            LIMIT $results_per_page OFFSET $offset"; //consulta para obtener los resultados segun la pagina 
+
+                             
+                                $data = []; //variable que almacenara los resultados de la consulta
+                                $data['result'] = []; //cantida de paginas que tiene la consulta
+                                $data['num_pages'] = 0; //cantida de paginas que tiene la consulta
+                                $resultado = mysqli_query($conexion, $consulta);
+                                while ($row = mysqli_fetch_assoc($resultado)) {
+
+
+                                    array_push($data['result'], [
+                                        "id" => $row['id'],
+                                        "id_grupo" => $row['id_grupo'],
+                                        "nombre" => $row['nombre'],
+                                        "categoria" => $row['categoria'],
+                                        "imagen" => $row['imagen'],
+                                        "precio" =>  floatval($row['precio']),
+                                        "simbolo" => $row['simbolo'],
+                                        "cod_moneda" => intval($row['cod_moneda']),
+                                        "stock" => intval($row['cantidad']),
+                                    ]);
+                                }
+
+                                $sql_count = "SELECT COUNT(*) as count FROM productos_agrupados WHERE nombre LIKE '%$query%'"; //consutla para obtener la cantida de paginas que tiene la consulta
+                                $count = mysqli_fetch_assoc(mysqli_query($conexion, $sql_count))['count'];
+                                $data['num_pages'] = ceil($count / $results_per_page); //agregarmos la cantidad de paginas que tiene al array principal 
+
+                                // http_response_code(200); //Success
+                                // echo json_encode($data); //retornamos los datos
+
+
+
+                                if (count($data['result']) != 0) {
+
+                                    for ($i = 0; $i < count($data['result']); $i++) {
+
+                                        $imagen = $data['result'][$i]['imagen'];
+                                        $id = $data['result'][$i]['id'];
+                                        $id_grupo = $data['result'][$i]['id_grupo'];
+                                        $nombre = (strlen($data['result'][$i]['nombre']) > 30) ? substr($data['result'][$i]['nombre'], 0, 30) . '...' : $data['result'][$i]['nombre'];
+                                        $precio = $data['result'][$i]['precio'];
+                                        $simbolo = $data['result'][$i]['simbolo'];
+                                        $stock = $data['result'][$i]['stock'];
+
+                                        $count = 0;
+                                        foreach ($modaldata as $object) {
+                                            if ($object["id_grupo"] == $id_grupo) {
+                                                // Object found, increment count
+                                                $count++;
+                                            }
                                         }
-                                    }
 
-                                    // contidad de Resultados por pagina
-                                    $results_per_page = 50;
-                                    //formula para calcular los resultados de la tabla segun la pagina en que se esta
-                                    $offset = ($current_page - 1) * $results_per_page;
-
-                                    $categoria =  isset($_GET['categoria']) ?   "and c4.categoria = " . htmlspecialchars($_GET['categoria'], ENT_QUOTES, 'UTF-8') : "";
-
-
-
-                                    include_once '../php/conexion.php';
-                                    $query = $_GET['query'];
-                                    $query = mysqli_real_escape_string($conexion, $query);
-                                    $consulta = "
-                                    SELECT
-                                    c1.id,
-                                    c4.nombre,
-                                    c4.categoria,
-                                    c4.imagen,
-                                    c1.precio,
-                                    c2.simbolo,
-                                    c2.cod_moneda,
-                                    c4.id_grupo,
-                                    c5.cantidad 
-                                FROM
-                                    productos AS c1
-                                    INNER JOIN productos_agrupados c4 ON c4.id_grupo = c1.id_grupo
-                                    INNER JOIN moneda_ref AS c2 ON c2.cod_moneda = c1.moneda $categoria
-                                    INNER JOIN stock AS c3 ON c1.id = c3.idProducto
-                                    INNER JOIN stock AS c5 ON c5.idProducto = c1.id 
-                                WHERE
-                                    nombre LIKE '%$query%' 
-                                    OR id LIKE '%$query%' 
-                                    $categoria
-                                group by c4.nombre
-                                ORDER BY
-                                    c1.precio $order  
-                                    LIMIT $results_per_page OFFSET $offset"; //consulta para obtener los resultados segun la pagina 
-
-
-                                    $data = []; //variable que almacenara los resultados de la consulta
-                                    $data['result'] = []; //cantida de paginas que tiene la consulta
-                                    $data['num_pages'] = 0; //cantida de paginas que tiene la consulta
-                                    $resultado = mysqli_query($conexion, $consulta);
-                                    while ($row = mysqli_fetch_assoc($resultado)) {
-
-
-                                        array_push($data['result'], [
-                                            "id" => $row['id'],
-                                            "nombre" => $row['nombre'],
-                                            "categoria" => $row['categoria'],
-                                            "imagen" => $row['imagen'],
-                                            "precio" =>  floatval($row['precio']),
-                                            "simbolo" => $row['simbolo'],
-                                            "cod_moneda" => intval($row['cod_moneda']),
-                                            "stock" => intval($row['cantidad']),
-                                        ]);
-                                    }
-
-                                    $sql_count = "SELECT COUNT(*) as count FROM productos_agrupados WHERE nombre LIKE '%$query%'"; //consutla para obtener la cantida de paginas que tiene la consulta
-                                    $count = mysqli_fetch_assoc(mysqli_query($conexion, $sql_count))['count'];
-                                    $data['num_pages'] = ceil($count / $results_per_page); //agregarmos la cantidad de paginas que tiene al array principal 
-
-                                    // http_response_code(200); //Success
-                                    // echo json_encode($data); //retornamos los datos
-
-
-
-                                    if (count($data['result']) != 0) {
-
-                                        for ($i = 0; $i < count($data['result']); $i++) {
-
-                                            $imagen = $data['result'][$i]['imagen'];
-                                            $id = $data['result'][$i]['id'];
-                                            $nombre = (strlen($data['result'][$i]['nombre']) > 30) ? substr($data['result'][$i]['nombre'], 0, 30) . '...' : $data['result'][$i]['nombre'];
-                                            $precio = $data['result'][$i]['precio'];
-                                            $simbolo = $data['result'][$i]['simbolo'];
-                                            $stock = $data['result'][$i]['stock'];
-
-
-
-                                            echo "
+                                        echo "
                                             <div class='border border-2 hover:border-gray-400 rounded-lg p-3 '>
                                             <div onclick='modalinfoview(`$id`)' class='group relative cursor-pointer transition-all mx-auto   w-full ' >
                                                 <div class='absolute  font-bold text-lg   w-full flex justify-end right-3 text-[#FBAA35]'>
                                                     $id
+                                                </div>
+
+                                                <div class='absolute w-full  flex justify-start z-[999] '>
+                                                    <div class='bg-gray-300 hover:bg-[#FBAA35] rounded-lg group/eyes transition-colors px-1 rounded-full'>
+                                                        $count+
                                                     </div>
+                                                    
+                                                </div>
+
                                                     <div class=' m-auto aspect-h-1 aspect-w-1 h-auto lg:aspect-none  overflow-hidden rounded-md    '>
                                                         <img data-te-animation-init
                                                         data-te-animation-start='onLoad'
@@ -658,38 +729,38 @@ session_start();
                                                     </form>
                                                 
                                             </div> ";
-                                        }
-                                        echo " </div>
+                                    }
+                                    echo " </div>
                                     <hr class='h-px my-8 bg-gray-200 border-0 dark:bg-gray-700'>
                                             <nav aria-label='Page navigation example'>
                                                 <ul class='list-style-none flex flex-wrap w-full justify-center [ md:justify-end ] [ lg:justify-end ]'>";
-                                        for ($j = 1; $j <= $data['num_pages']; $j++) {
+                                    for ($j = 1; $j <= $data['num_pages']; $j++) {
 
-                                            if ($j != $current_page) {
-                                                echo "
+                                        if ($j != $current_page) {
+                                            echo "
                                                     <li>
                                                         <a class='relative block rounded bg-transparent px-3 py-1.5 text-sm text-neutral-600 transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white' href='?query=$query&page=$j&order=$order'>$j
                                                         <span class='absolute -m-px h-px w-px overflow-hidden whitespace-nowrap border-0 p-0 [clip:rect(0,0,0,0)]'>(current)</span>
                                                         </a> 
                                                     </li>
                                                 ";
-                                            } else {
-                                                echo "
+                                        } else {
+                                            echo "
                                                     <li>
                                                 <a class='relative block rounded bg-warning-100 px-3 py-1.5 text-sm font-medium text-warning-700 transition-all duration-300' href='#'>$current_page</a>
                                                     
                                                 </li>
                                                     ";
-                                            }
                                         }
-                                        echo "
+                                    }
+                                    echo "
                                             </ul>
                                         </nav>
                                     </div>";
 
 
-                                        //consulta pra obtener l;a data para cuando muestre el modal 
-                                        $consulta = "   
+                                    //consulta pra obtener l;a data para cuando muestre el modal 
+                                    $consulta = "   
                                         SELECT
                                         t1.*,
                                         t3.nombre,
@@ -724,224 +795,6 @@ session_start();
                                         t1.id ASC
                                     
                                         ";
-                                        $resultado = mysqli_query($conexion, $consulta);
-                                        $modaldata = [];
-                                        while ($row = mysqli_fetch_assoc($resultado)) {
-                                            $precio2 = number_format($row['precio2'], 2);
-                                            $precio = number_format($row['precio'], 2);
-                                            $row['precio'] = $precio;
-                                            $row['precio2'] = $precio2;
-                                            $row['descripcion'] = str_replace('•', '<br>', $row['descripcion']);
-                                            array_push($modaldata, $row);
-                                        }
-                                    } else {
-                                        http_response_code(409); //error
-                                        echo "
-                            
-                                    <div id='search-empty' class='search-alert flex items-center justify-center space-x-4 mt-4  '>
-                                        <svg class='w-6 h-6 text-gray-500' fill='currentColor' viewBox='0 0 20 20'>
-                                            <path fill-rule='evenodd'
-                                                d='M10 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16zM12 7h-4a1 1 0 0 1 0-2h4a1 1 0 0 1 0 2zm-3 4a1 1 0 1 1 2 0a1 1 0 0 1-2 0z'
-                                                clip-rule='evenodd' />
-                                        </svg>
-                                        <p class='text-gray-500'>Vaya.. no se Encontro Ningun Producto</p>
-                                    </div>
-                            
-                                "; //retornamos los datos
-                                    }
-                                }
-                            } elseif (isset($_GET['categoria']) && validar_int($_GET['categoria'])) {
-
-                                if (strlen(trim($_GET['categoria'])) != 0 &&  is_numeric($_GET['categoria'])) {
-                                    $categoria = $_GET['categoria'];
-                                } else {
-                                    $categoria = "";
-                                }
-
-                                // obtenemos la pagina por GET, en caso que esta variable no este declarada  por default seria 1
-                                $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
-                                // contidad de Resultados por pagina
-                                $results_per_page = 50;
-                                //formula para calcular los resultados de la tabla segun la pagina en que se esta
-                                $offset = ($current_page - 1) * $results_per_page;
-
-
-
-                                include '../php/conexion.php';
-
-                                $consulta = "
-                                SELECT
-                                    c1.id,
-                                    c4.nombre,
-                                    c4.categoria,
-                                    c4.imagen,
-                                    c1.precio,
-                                    c2.simbolo,
-                                    c2.cod_moneda,
-                                    c4.id_grupo,
-                                    c5.cantidad 
-                                FROM
-                                    productos AS c1
-                                    INNER JOIN productos_agrupados c4 ON c4.id_grupo = c1.id_grupo
-                                    INNER JOIN moneda_ref AS c2 ON c2.cod_moneda = c1.moneda
-                                    INNER JOIN stock AS c3 ON c1.id = c3.idProducto
-                                    INNER JOIN stock AS c5 ON c5.idProducto = c1.id 
-                                WHERE
-                                    c4.categoria = '$categoria'
-                                ORDER BY
-                                    c1.precio $order  
-                                LIMIT $results_per_page OFFSET $offset
-                                "; //consulta para obtener los resultados segun la pagina 
-
-                                $data = []; //variable que almacenara los resultados de la consulta
-                                $data['result'] = []; //cantida de paginas que tiene la consulta
-                                $data['num_pages'] = 0; //cantida de paginas que tiene la consulta
-                                $resultado = mysqli_query($conexion, $consulta);
-                                while ($row = mysqli_fetch_assoc($resultado)) {
-
-
-                                    array_push($data['result'], [
-                                        "id" => $row['id'],
-                                        "nombre" => $row['nombre'],
-                                        "categoria" => $row['categoria'],
-                                        "imagen" => $row['imagen'],
-                                        "precio" =>  floatval($row['precio']),
-                                        "simbolo" => $row['simbolo'],
-                                        "cod_moneda" => intval($row['cod_moneda']),
-                                        "stock" => intval($row['cantidad']),
-                                    ]);
-                                }
-
-                                $sql_count = "SELECT COUNT(*) as count FROM productos_agrupados WHERE categoria = $categoria"; //consutla para obtener la cantida de paginas que tiene la consulta
-                                $count = mysqli_fetch_assoc(mysqli_query($conexion, $sql_count))['count'];
-                                $data['num_pages'] = ceil($count / $results_per_page); //agregarmos la cantidad de paginas que tiene al array principal 
-
-                                // http_response_code(200); //Success
-                                // echo json_encode($data); //retornamos los datos
-
-                                if (count($data['result']) != 0) {
-
-                                    for ($i = 0; $i < count($data['result']); $i++) {
-
-                                        $imagen = $data['result'][$i]['imagen'];
-                                        $id = $data['result'][$i]['id'];
-                                        $nombre = (strlen($data['result'][$i]['nombre']) > 30) ? substr($data['result'][$i]['nombre'], 0, 30) . '...' : $data['result'][$i]['nombre'];
-
-                                        $precio = number_format($data['result'][$i]['precio'], 2);
-                                        $simbolo = $data['result'][$i]['simbolo'];
-                                        $stock = $data['result'][$i]['stock'];
-
-
-                                        echo "
-                                                <div class='border border-2 hover:border-gray-400 rounded-lg p-3 '>
-                                                <div onclick='modalinfoview(`$id`)' class='group relative cursor-pointer transition-all mx-auto   w-full ' >
-                                                    <div class='absolute  font-bold text-lg   w-full flex justify-end right-3 text-[#FBAA35]'>
-                                                        $id
-                                                        </div>
-                                                        <div class=' m-auto aspect-h-1 aspect-w-1 h-auto lg:aspect-none  overflow-hidden rounded-md    '>
-                                                            <img data-te-animation-init
-                                                            data-te-animation-start='onLoad'
-                                                            data-te-animation='[fade-in_1s_ease-in-out]'
-                                                
-                                                            src='../$imagen' onerror=\"this.onerror=null;this.src='../assets/img/imgerror.png'\"\"  title='$nombre' loading='lazy' alt='$nombre' class='mx-auto  hover:scale-150 transition-all   w-full object-cover object-center [ lg:w-44 lg:h-44 ]  ' />
-                                                        </div>
-                                                        <div class='[ cursor-pointer  ]' >
-                                                            <div class='mt-4 flex justify-between'>
-                                                                <div class='w-full'>
-                                                                <h3 class='text-sm text-gray-700'>
-                                                                    
-                                                                    <p class=' [ text-[15px] w-full text-center text-black bg-[#FBAA35] uppercase font-bold ] [ md:text-md ] [ lg:text-lg ]' style='font-family: `Montserrat`, cursive;' >$nombre</p>
-                                                                </h3>
-                                                                <hr class='h-px my-3 bg-gray-200 border-0 dark:bg-gray-700'>
-                                                                <label class='font-bold'>Ref: $precio$simbolo</label>
-                                                                <p class='mt-1 text-[12px] font-bold text-gray-500 break-words'>Disponibles: $stock</p>
-                                                                </div>
-                                                                <p class='text-sm font-medium text-gray-900'></p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <form>
-                                                    <div class='relative    flex w-full flex-wrap items-stretch flex-nowrap'>
-                                                            <input min='0' id='$id' type='number'
-                                                            class='relative m-0 block z-20 w-14 text-center  min-w-0 flex-auto rounded-l border border-r-0 border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition ease-in-out   focus:border-warning-600 focus:text-neutral-700 focus:shadow-te-warning focus:outline-none '
-                                                            aria-label='Recipient' username value='1' aria-describedby='button-addon2' />
-                                                            <button   data-te-ripple-init data-te-ripple-color='light' type='submit' data-te-ripple-init data-te-ripple-color='warning'
-                                                            class='relative   rounded-r bg-[#FBAA35] opa px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-warning-700 hover:shadow-lg   focus:bg-warning-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-warning-800 active:shadow-lg'
-                                                            type='button' id='button-addon2'>
-                                                            <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor'
-                                                                class='h-4 w-4'>
-                                                                <path stroke-linecap='round' stroke-linejoin='round'
-                                                                d='M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z' />
-                                                            </svg>
-                                                            </button>
-                                                        </div>
-                                                        </form>
-                                                    
-                                                </div> ";
-                                    }
-
-                                    echo " </div>
-                                    <hr class='h-px my-8 bg-gray-200 border-0 dark:bg-gray-700'>
-                                            <nav aria-label='Page navigation example'>
-                                                <ul class='list-style-none flex flex-wrap w-full justify-center [ md:justify-end ] [ lg:justify-end ]'>";
-                                    for ($j = 1; $j <= $data['num_pages']; $j++) {
-
-                                        if ($j != $current_page) {
-                                            echo "
-                                                    <li>
-                                                    <a class='relative block rounded bg-transparent px-3 py-1.5 text-sm text-neutral-600 transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white' href='?categoria=$categoria&page=$j&order=$order'>$j
-                                                        <span class='absolute -m-px h-px w-px overflow-hidden whitespace-nowrap border-0 p-0 [clip:rect(0,0,0,0)]'>(current)</span>
-                                                    </a> 
-                                                </li>
-                                                ";
-                                        } else {
-                                            echo "
-                                                    <li>
-                                                <a class='relative block rounded bg-warning-100 px-3 py-1.5 text-sm font-medium text-warning-700 transition-all duration-300' href='#'>$current_page</a>
-                                                    
-                                                </li>
-                                                    ";
-                                        }
-                                    }
-                                    echo "
-                                            </ul>
-                                        </nav>
-                                    </div>";
-
-                                    //consulta pra obtener l;a data para cuando muestre el modal 
-                                    $consulta = "   
-                                          SELECT
-                                          t1.*,
-                                          t3.nombre,
-                                          t3.descripcion ,
-                                          t2.simbolo,
-                                          t2.imagen
-                                      FROM
-                                          productos t1
-                                          INNER JOIN (
-                                          SELECT
-                                              c4.id_grupo,
-                                              c2.simbolo,
-                                              c4.imagen
-                                          FROM
-                                              productos AS c1
-                                              INNER JOIN moneda_ref AS c2 ON c2.cod_moneda = c1.moneda
-                                              INNER JOIN stock AS c3 ON c1.id = c3.idProducto
-                                              INNER JOIN productos_agrupados c4 ON c4.id_grupo = c1.id_grupo 
-                                          WHERE
-                                              nombre LIKE '%$categoria%' 
-                                              OR id LIKE '%$categoria%' 
-                                          GROUP BY
-                                              c4.nombre 
-                                          ORDER BY
-                                              c1.precio $order  
-                                              LIMIT $results_per_page OFFSET $offset
-                                          ) t2 ON t2.id_grupo = t1.id_grupo
-                                          INNER JOIN productos_agrupados t3 ON t3.id_grupo = t1.id_grupo 
-                                      ORDER BY
-                                          t1.id ASC
-                                      
-                                          ";
                                     $resultado = mysqli_query($conexion, $consulta);
                                     $modaldata = [];
                                     while ($row = mysqli_fetch_assoc($resultado)) {
@@ -955,17 +808,17 @@ session_start();
                                 } else {
                                     http_response_code(409); //error
                                     echo "
-                         
-                                        <div id='search-empty' class='search-alert flex items-center justify-center space-x-4 mt-4  '>
-                                            <svg class='w-6 h-6 text-gray-500' fill='currentColor' viewBox='0 0 20 20'>
-                                                <path fill-rule='evenodd'
-                                                    d='M10 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16zM12 7h-4a1 1 0 0 1 0-2h4a1 1 0 0 1 0 2zm-3 4a1 1 0 1 1 2 0a1 1 0 0 1-2 0z'
-                                                    clip-rule='evenodd' />
-                                            </svg>
-                                            <p class='text-gray-500'>Vaya.. no se Encontro Ningun Producto</p>
-                                        </div>
+                            
+                                    <div id='search-empty' class='search-alert flex items-center justify-center space-x-4 mt-4  '>
+                                        <svg class='w-6 h-6 text-gray-500' fill='currentColor' viewBox='0 0 20 20'>
+                                            <path fill-rule='evenodd'
+                                                d='M10 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16zM12 7h-4a1 1 0 0 1 0-2h4a1 1 0 0 1 0 2zm-3 4a1 1 0 1 1 2 0a1 1 0 0 1-2 0z'
+                                                clip-rule='evenodd' />
+                                        </svg>
+                                        <p class='text-gray-500'>Vaya.. no se Encontro Ningun Producto</p>
                                     </div>
-                             "; //retornamos los datos
+                            
+                                "; //retornamos los datos
                                 }
                             }
 
