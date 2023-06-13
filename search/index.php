@@ -1226,36 +1226,32 @@ session_start();
                     
                     `);
                     });
-                    debugger
-                    modal.show();
+
+
 
                     let table = document.getElementById('modal_tabla');
                     let headers = table.querySelectorAll('thead th');
                     let rows = table.querySelectorAll('tbody tr');
 
-                    for (let i = headers.length - 1; i >= 0; i--) {
+                    for (let i = headers.length - 2; i >= 0; i--) { // cambiamos el límite del bucle
                         let isEmpty = true;
                         for (let j = 0; j < rows.length; j++) {
-                            let cells = rows[j].querySelectorAll('td');
-                            let cell = cells[i];
-                            let textContent = cell?.textContent ?? '';
-                            if (textContent.trim() !== '' || (cell?.children.length === 1 && cell.children[0].tagName === 'DIV' && cell.children[0].textContent.trim() !== '')) {
+                            let cell = rows[j].querySelectorAll('td')[i];
+                            if (cell.textContent.trim() !== '') {
                                 isEmpty = false;
                                 break;
                             }
                         }
                         if (isEmpty) {
-                            headers[i]?.remove?.();
+                            headers[i].remove();
                             for (let j = 0; j < rows.length; j++) {
-                                let cells = rows[j].querySelectorAll('td');
-                                cells[i]?.remove?.();
+                                rows[j].querySelectorAll('td')[i].remove();
                             }
                         }
                     }
 
 
-
-
+                    modal.show();
 
                 }
 
