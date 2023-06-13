@@ -1215,7 +1215,7 @@ session_start();
                             <td class="whitespace-nowrap px-6 py-4">${item.caracteristica4}</td>
                             <td class="whitespace-nowrap px-6 py-4">${item.caracteristica5}</td>
                             <td class="whitespace-nowrap px-6 py-4">${item.precio+""+item.simbolo}</td>
-                            <td class="whitespace-nowrap px-6 py-4">${item.precio2+""+item.simbolo}</td>
+                            <td class="whitespace-nowrap px-6 py-4 text-gray-400">${item.precio2+""+item.simbolo}</td>
                             <td class="whitespace-nowrap px-6 py-4">
                             <div class="relative flex w-full flex-wrap flex-nowrap items-stretch">
                                 <input min="0" id='modal_input_${item.id}'  type="number" class="focus:border-warning-600 focus:shadow-te-warning relative z-20 m-0 block w-14 min-w-0 flex-auto rounded-l border border-r-0 border-solid border-neutral-300 bg-transparent bg-white bg-clip-padding px-3 py-[0.25rem] text-center text-base font-normal leading-[1.6] text-neutral-700 outline-none transition ease-in-out focus:text-neutral-700 focus:outline-none" aria-label="Recipient" username="" value="1" aria-describedby="button-addon2" />

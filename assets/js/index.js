@@ -35,16 +35,10 @@ const Carrito = {
       let cantidadtotal = Number(productoExistente.cantidad) + Number(Count);
       productoExistente.cantidad = cantidadtotal;
     } else {
-      if (Count > 0 && Count < 9) {
-        precio = Productosarr.precio;
-      } else if (Count >= 10) {
-        precio = Productosarr.precio2;
-      }
-
       Carrito.list.push({
         nombre: Productosarr.nombre,
         descripcion: Productosarr.descripcion,
-        precio: precio,
+        precio: Productosarr.precio,
         precio2: Productosarr.precio2,
         simbolo: Productosarr.simbolo,
         imagen: Productosarr.imagen,
