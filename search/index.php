@@ -1218,8 +1218,8 @@ session_start();
                             <td class="whitespace-nowrap px-6 py-4">${item.precio2+""+item.simbolo}</td>
                             <td class="whitespace-nowrap px-6 py-4">
                             <div class="relative flex w-full flex-wrap flex-nowrap items-stretch">
-                                <input min="0" id="16010" type="number" class="focus:border-warning-600 focus:shadow-te-warning relative z-20 m-0 block w-14 min-w-0 flex-auto rounded-l border border-r-0 border-solid border-neutral-300 bg-transparent bg-white bg-clip-padding px-3 py-[0.25rem] text-center text-base font-normal leading-[1.6] text-neutral-700 outline-none transition ease-in-out focus:text-neutral-700 focus:outline-none" aria-label="Recipient" username="" value="1" aria-describedby="button-addon2" />
-                                <button data-te-ripple-init="" data-te-ripple-color="light" type="submit" class="opa hover:bg-warning-700 focus:bg-warning-700 active:bg-warning-800 relative rounded-r bg-black hover:bg-gray-800 transition-colors px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg" id="button-addon2">
+                                <input min="0" id='modal_input_${item.id}'  type="number" class="focus:border-warning-600 focus:shadow-te-warning relative z-20 m-0 block w-14 min-w-0 flex-auto rounded-l border border-r-0 border-solid border-neutral-300 bg-transparent bg-white bg-clip-padding px-3 py-[0.25rem] text-center text-base font-normal leading-[1.6] text-neutral-700 outline-none transition ease-in-out focus:text-neutral-700 focus:outline-none" aria-label="Recipient" username="" value="1" aria-describedby="button-addon2" />
+                                <button onclick='Modal_Agregar_Carrito('${item.id}','modal_input_${item.id}')' data-te-ripple-init="" data-te-ripple-color="light" type="submit" class="opa hover:bg-warning-700 focus:bg-warning-700 active:bg-warning-800 relative rounded-r bg-black hover:bg-gray-800 transition-colors px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg" id="button-addon2">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"></path>
                                     </svg>
@@ -1262,10 +1262,10 @@ session_start();
 
             }
 
-            function Modal_Agregar_Carrito(id_producto, cantidad, arr) {
+            function Modal_Agregar_Carrito(id_producto, id_input) {
 
 
-
+                debugger
                 if (!validarString(id_producto, 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$&')) {
                     Swal.fire({
                         icon: 'Info',
@@ -1274,7 +1274,7 @@ session_start();
                     return;
                 }
 
-
+                let cantidad = $('#id_input').val();
                 if (!validarMonto(cantidad)) {
                     Swal.fire({
                         icon: 'Info',
@@ -1283,7 +1283,19 @@ session_start();
                     return;
                 }
 
-                Carrito.add(e.target[0].id, e.target[0].value, data);
+                let arr_producto = filteredArray.find((item) => {
+                    return item.id == id_producto
+                });
+
+                if (typeof myVariable == 'undefined') {
+                    Swal.fire({
+                        icon: 'Info',
+                        title: 'Producto No Encontrado'
+                    })
+                    return;
+                }
+
+                Carrito.add(id_producto, cantidad, arr_producto);
 
             }
 
