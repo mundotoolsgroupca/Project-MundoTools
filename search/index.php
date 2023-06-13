@@ -1227,7 +1227,7 @@ session_start();
                     `);
                     });
 
-
+                    modal.show();
 
                     let table = document.getElementById('modal_tabla');
                     let headers = table.querySelectorAll('thead th');
@@ -1255,7 +1255,7 @@ session_start();
 
 
 
-                    modal.show();
+
 
                 }
 
