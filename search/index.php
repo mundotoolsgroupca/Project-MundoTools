@@ -1274,7 +1274,7 @@ session_start();
                     return;
                 }
 
-                let cantidad = $('#id_input').val();
+                let cantidad = $(`#${id_input}`).val();
                 if (!validarMonto(cantidad)) {
                     Swal.fire({
                         icon: 'Info',
