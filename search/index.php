@@ -420,24 +420,7 @@ session_start();
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div>
-                                                    <div class="flex flex-col">
-                                                        <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-                                                            <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
-                                                                <div class="overflow-hidden">
-                                                                    <table id="modal_tabla" class="min-w-full text-left text-sm font-light capitalize ">
-                                                                        <thead class="text-white">
 
-                                                                        </thead>
-                                                                        <tbody>
-
-                                                                        </tbody>
-                                                                    </table>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
                                             </div>
 
                                             <div class="lg:col-span-2 lg:row-span-2 lg:row-end-2">
@@ -463,6 +446,25 @@ session_start();
                                             </div>
 
 
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <div class="flex flex-col">
+                                            <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                                                <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+                                                    <div class="overflow-hidden">
+                                                        <table id="modal_tabla" class="min-w-full text-left text-sm font-light capitalize ">
+                                                            <thead class="text-white">
+
+                                                            </thead>
+                                                            <tbody>
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
 
