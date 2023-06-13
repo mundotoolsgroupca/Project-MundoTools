@@ -11,6 +11,8 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!------google font ----->
     <link href="../assets/fuentes/VisbyRoundCF-DemiBold.ttf">
+    <!------SweetAlert ----->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!------google font ----->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -43,6 +45,7 @@ session_start();
     <!---------Color Thief Obtener color predominante de una imagen-------->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
     <script src="../assets/js/index.js?v=<?php echo rand(); ?>"></script>
+    <script src="../assets/js/FuncionesGenerales.js?v=<?php echo rand(); ?>"></script>
     <title><?php if (isset($_GET['query'])) {
                 echo $_GET['query'];
             } else {
@@ -1151,6 +1154,7 @@ session_start();
 
             let productos = [];
             let carritostorage = typeof localStorage.CARRITO == "undefined" ? [] : JSON.parse(localStorage.CARRITO);
+            let filteredArray = [];
 
             function modalinfoview(id) {
 
@@ -1179,7 +1183,7 @@ session_start();
 
 
                     // Filter the array to get only the objects with id=2
-                    let filteredArray = arrresult.filter(function(obj) {
+                    filteredArray = arrresult.filter(function(obj) {
                         return obj.id_grupo === data.id_grupo;
                     });
 
@@ -1258,6 +1262,33 @@ session_start();
 
             }
 
+            function Modal_Agregar_Carrito(id_producto, cantidad, arr) {
+
+
+
+                if (!validarString(id_producto, 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$&')) {
+                    Swal.fire({
+                        icon: 'Info',
+                        title: 'Id del Producto No Valido'
+                    })
+                    return;
+                }
+
+
+                if (!validarMonto(cantidad)) {
+                    Swal.fire({
+                        icon: 'Info',
+                        title: 'Monto No Valido'
+                    })
+                    return;
+                }
+
+                Carrito.add(e.target[0].id, e.target[0].value, data);
+
+            }
+
+
+
             function handlePriceFilter(selectEl) {
 
                 // get the selected value
@@ -1282,11 +1313,7 @@ session_start();
                 window.location.href = newUrl;
             }
 
-            function Modal_Agregar_Carrito(id_producto, cantidad, arr) {
 
-                Carrito.add(e.target[0].id, e.target[0].value, data);
-
-            }
 
             function CategoriaFilter(id) {
                 // get the selected value
