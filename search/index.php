@@ -1226,7 +1226,7 @@ session_start();
                     
                     `);
                     });
-
+debugger
                     modal.show();
 
                     let table = document.getElementById('modal_tabla');
