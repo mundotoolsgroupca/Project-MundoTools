@@ -19,7 +19,7 @@ if (!isset($_SESSION['Usuario'])) { //si no existe una session sale del sistema
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./assets/css/tw-elements.min.css" />
     <script src="./assets/js/tailwind.js"></script>
-    <link rel="icon" href="./assets/img/logo-white.png" />
+    <link rel="icon" href="./assets/img/logo.png" />
 
     <!---------Datatable-------->
     <link rel="stylesheet" href="./assets/css/datatable.css" />
