@@ -133,11 +133,9 @@ switch ($method) {
 
 
                     include_once '../../php/conexion.php';
-
-                    echo json_encode($_SESSION);
-                    return;
+ 
                     $id_vendedor = $_SESSION['usuario']['id'];
-                    $consulta = "CALL  adm_cancelar_orden('$id_vendedor','$id_orden','El Admin " . $_SESSION['usuario']['nombre'] . " Cancelo la Orden Nro $id_orden');";
+                    $consulta = "CALL  adm_cancelar_orden('$id_vendedor','$id_orden','El Admin " . $_SESSION['Usuario']['nombre'] . " Cancelo la Orden Nro $id_orden');";
 
                     $resultado = mysqli_query($conexion, $consulta);
                     $newid = "";
