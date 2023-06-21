@@ -248,6 +248,19 @@
                                 },
                                 {
                                     "data": "hora"
+                                },
+                                {
+                                    "data": null,
+                                    "bSortable": false,
+                                    "mRender": function(data, type, value) {
+
+                                        if (data.status == 0) {
+                                            return `<span class="inline-block whitespace-nowrap rounded-[0.27rem] bg-danger-100 px-[0.65em] pb-[0.25em] pt-[0.35em] text-center align-baseline text-sm font-bold leading-none text-danger-700">Cancelado</span>`;
+                                        } else {
+                                            return `<span class="inline-block whitespace-nowrap rounded-[0.27rem] bg-success-100 px-[0.65em] pb-[0.25em] pt-[0.35em] text-center align-baseline text-sm font-bold leading-none text-success-700">Enviado</span>`;
+                                        }
+
+                                    }
                                 }, {
                                     "data": null,
                                     "bSortable": false,
