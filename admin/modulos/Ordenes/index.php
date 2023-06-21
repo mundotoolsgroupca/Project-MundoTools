@@ -281,7 +281,7 @@
                                         }
 
                                     }
-                                }, {
+                                }, /*{
                                     "data": null,
                                     "bSortable": false,
                                     "mRender": function(data, type, value) {
@@ -295,7 +295,7 @@
                                Descargar
                            </button> `;
                                     }
-                                },
+                                },*/
 
 
                             ],
