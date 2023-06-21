@@ -12,9 +12,9 @@ switch ($method) {
     case 'GET':
         include_once '../../php/FuncionesGenerales.php';
         session_name("ecomercer_admin_data");
- session_start(); 
+        session_start();
         $http = getallheaders();
-        if (!empty($http['X-Csrf-Token'] )) {
+        if (!empty($http['X-Csrf-Token'])) {
 
             if (!isset($_SESSION['token'])) {
                 // Log this as a warning and keep an eye on these attempts
@@ -28,7 +28,7 @@ switch ($method) {
             }
 
 
-            if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'] )) {
+            if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'])) {
 
                 if (isset($_GET['fecha']) && validar_fecha($_GET['fecha'], 'Y-m-d')) {
                     $fecha = $_GET['fecha'];
@@ -93,5 +93,103 @@ switch ($method) {
             $resultado->mensaje = 'El token no fue enviado en el formulario';
             echo json_encode($resultado);
             break;
+        }
+    case "POST":
+        if (isset($_POST['_method']) && $_POST['_method'] == "PUT") {
+
+            $http = getallheaders();
+            session_name("ecomercer_admin_data");
+            session_start();
+            if (!empty($http['X-Csrf-Token'])) {
+
+                if (!isset($_SESSION['token'])) {
+                    // Log this as a warning and keep an eye on these attempts
+                    $resultado = new stdClass();
+                    $resultado->result = FALSE;
+                    $resultado->icono = "error";
+                    $resultado->titulo = "Error!";
+                    $resultado->mensaje = 'Parametro No Valido';
+                    echo json_encode($resultado);
+                    break;
+                }
+
+                if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'])) {
+
+                    include_once '../../php/FuncionesGenerales.php';
+
+                    if (isset($_POST['id_orden']) && validar_int($_POST['id_orden'])) {
+                        $id_orden = $_POST['id_orden'];
+                        $id_orden = eliminar_palabras_sql($id_orden);
+                    } else {
+                        http_response_code(409); //codigo de conflicto
+                        $resultado = new stdClass();
+                        $resultado->result = FALSE;
+                        $resultado->icono = "error";
+                        $resultado->titulo = "Error!";
+                        $resultado->mensaje = 'Id De La Orden,No Valido';
+                        echo json_encode($resultado);
+                        return  $resultado;
+                    }
+
+
+                    include_once '../../php/conexion.php';
+
+                    $id_vendedor = $_SESSION['usuario']['id'];
+                    $consulta = "CALL  adm_cancelar_orden('$id_vendedor','$id_orden','El Admin " . $_SESSION['usuario']['nombre'] . " Cancelo la Orden Nro $id_orden');";
+                    $resultado = mysqli_query($conexion, $consulta);
+                    $newid = "";
+                    if ($resultado) {
+                        $data = mysqli_fetch_assoc($resultado);
+                        if ($data['status'] == 0) {
+                            http_response_code(409); //codigo de conflicto
+                            $resultado = new stdClass();
+                            $resultado->result = FALSE;
+                            $resultado->icono = "error";
+                            $resultado->titulo = "Error!";
+                            $resultado->mensaje = $data['msg'];
+                            echo json_encode($resultado);
+                            return;
+                        } else {
+                            http_response_code(200); //codigo de conflicto
+                            $resultado = new stdClass();
+                            $resultado->result = true;
+                            $resultado->icono = "";
+                            $resultado->titulo = "";
+                            $resultado->mensaje = $data['msg'];
+                            echo json_encode($resultado);
+                            return;
+                        }
+                    } else {
+                        // Log this as a warning and keep an eye on these attempts
+                        http_response_code(409); //codigo de conflicto
+                        $resultado = new stdClass();
+                        $resultado->result = FALSE;
+                        $resultado->icono = "error";
+                        $resultado->titulo = "Error!";
+                        $resultado->mensaje = 'Error Interno';
+                        echo json_encode($resultado);
+                        return;
+                    }
+                } else {
+                    // Log this as a warning and keep an eye on these attempts
+                    http_response_code(409); //codigo de conflicto
+                    $resultado = new stdClass();
+                    $resultado->result = FALSE;
+                    $resultado->icono = "error";
+                    $resultado->titulo = "Error!";
+                    $resultado->mensaje = 'El token enviado no es valido';
+                    echo json_encode($resultado);
+                    return;
+                }
+            } else {
+                http_response_code(409); //codigo de conflicto
+                $resultado = new stdClass();
+                $resultado->result = FALSE;
+                $resultado->icono = "error";
+                $resultado->titulo = "Error!";
+                $resultado->mensaje = 'El token no fue enviado en el formulario';
+                echo json_encode($resultado);
+                return;
+            }
         }
 }

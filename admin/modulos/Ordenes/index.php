@@ -262,6 +262,22 @@
                                         }
 
                                     }
+                                },
+                                {
+                                    "data": null,
+                                    "bSortable": false,
+                                    "mRender": function(data, type, value) {
+
+                                        if (data.status == 1) {
+                                            return `<div onclick="cancelar_orden(${data.id},this)" class="flex item-center group justify-start">
+                                                <div class="w-6 mr-2 transition-all transform hover:text-bold hover:scale-110"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="group-hover:text-red-600 cursor-pointer transition-all w-6 h-6"> <path stroke-linecap="round" stroke-linejoin="round" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>  </svg>
+
+                                                </div>
+                                              
+                                            </div>`;
+                                        }
+
+                                    }
                                 }, {
                                     "data": null,
                                     "bSortable": false,
@@ -324,6 +340,91 @@
                 },
 
             });
+        }
+
+
+
+        function cancelar_orden(id, button) {
+            debugger
+            let html_original = button.innerHTML;
+            $.ajax({
+                url: "./api-v1/ordenes/index.php",
+                type: 'POST',
+                headers: {
+                    'x-csrf-token': $('meta[name="csrf-token"]').attr('content')
+                },
+                data: {
+                    _method: 'PUT',
+                    id_orden: id
+                },
+                beforeSend: () => {
+
+                    button.innerHTML = `<div class="inline-block h-4 w-4 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]" role="status"><span class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span> </div>`;
+                    button.removeAttribute('onclick');
+                },
+                success: (response) => {
+
+                    if (response.result == true) {
+                        ordenes();
+                        let Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 3000,
+                            timerProgressBar: true,
+                            didOpen: (toast) => {
+                                toast.addEventListener('mouseenter', Swal.stopTimer)
+                                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            }
+                        });
+
+                        Toast.fire({
+                            icon: 'success',
+                            title: response.mensaje
+                        });
+                    } else {
+                        button.innerHTML = html_original;
+                        let Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 3000,
+                            timerProgressBar: true,
+                            didOpen: (toast) => {
+                                toast.addEventListener('mouseenter', Swal.stopTimer)
+                                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            }
+                        });
+
+                        Toast.fire({
+                            icon: 'error',
+                            title: response.mensaje
+                        });
+                    }
+
+                },
+                error: function(xhr, status) {
+                    button.innerHTML = html_original;
+                    // $('#NuevoProductoLoader').html(``);
+                    let Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    });
+
+                    Toast.fire({
+                        icon: 'error',
+                        title: xhr.responseJSON.mensaje
+                    });
+                },
+            });
+
         }
     </script>
 </div>
