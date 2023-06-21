@@ -7,6 +7,7 @@ Tenga en cuenta que la $dateFormatvariable debe coincidir con el formato de la c
 
 
 */
+header('Content-Type: application/json');
 $method = $_SERVER['REQUEST_METHOD'];
 switch ($method) {
     case 'GET':
