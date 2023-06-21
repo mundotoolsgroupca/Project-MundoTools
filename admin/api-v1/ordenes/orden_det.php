@@ -54,13 +54,15 @@ switch ($method) {
                 ordenes.responsable,
                 moneda_ref.simbolo,
                 DATE_FORMAT( ordenes.fecha, '%Y-%m-%d' ) AS fecha,
-                DATE_FORMAT( ordenes.fecha, '%h:%i %p' ) AS hora 
+                DATE_FORMAT( ordenes.fecha, '%h:%i %p' ) AS hora,
+                productos_agrupados.nombre 
             FROM
                 ordenes
                 INNER JOIN ordenes_det ON ordenes.id = ordenes_det.orden_id
                 INNER JOIN productos ON ordenes_det.producto_id = productos.id
-                INNER JOIN moneda_ref ON ordenes.moneda = moneda_ref.cod_moneda 
-            WHERE 
+                INNER JOIN moneda_ref ON ordenes.moneda = moneda_ref.cod_moneda
+                INNER JOIN productos_agrupados ON productos.id_grupo = productos_agrupados.id_grupo 
+            WHERE
             ordenes.id = $id; ";
 
                 $resultado = mysqli_query($conexion, $consulta);
