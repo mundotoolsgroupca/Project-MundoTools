@@ -44,26 +44,24 @@ switch ($method) {
                 // Configurar los encabezados de la respuesta
                 header('Content-Type: application/json');
                 $consulta = "
-        SELECT
-            ordenes.nombreempresa,
-            ordenes.responsable,
-            ordenes.numerotelefono,
-            ordenes.moneda,
-            DATE_FORMAT(fecha, '%Y-%m-%d') AS fecha,
-            DATE_FORMAT(fecha, '%h:%i %p') AS hora,
-            ordenes_det.producto_id,
-            ordenes_det.cantidad,
-            ordenes_det.precio,
-            moneda_ref.simbolo,
-            productos.nombre
-         FROM
-            ordenes
-            JOIN ordenes_det ON ordenes.id = ordenes_det.orden_id
-            JOIN moneda_ref ON cod_moneda = ordenes.moneda
-            JOIN productos ON productos.id  = ordenes_det.producto_id
-        WHERE
-            ordenes.id = $id;
-        ";
+                SELECT
+                productos.precio,
+                ordenes_det.cantidad,
+                ordenes.nombreempresa,
+                ordenes.numerotelefono,
+                ordenes_det.precio,
+                ordenes_det.producto_id,
+                ordenes.responsable,
+                moneda_ref.simbolo,
+                DATE_FORMAT( ordenes.fecha, '%Y-%m-%d' ) AS fecha,
+                DATE_FORMAT( ordenes.fecha, '%h:%i %p' ) AS hora 
+            FROM
+                ordenes
+                INNER JOIN ordenes_det ON ordenes.id = ordenes_det.orden_id
+                INNER JOIN productos ON ordenes_det.producto_id = productos.id
+                INNER JOIN moneda_ref ON ordenes.moneda = moneda_ref.cod_moneda 
+            WHERE 
+            ordenes.id = $id; ";
 
                 $resultado = mysqli_query($conexion, $consulta);
                 $data = [];
