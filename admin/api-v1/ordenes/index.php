@@ -133,7 +133,10 @@ switch ($method) {
 
 
                     include_once '../../php/conexion.php';
- 
+
+                    echo $_SESSION['Usuario']['nombre'];
+                    return;
+
                     $id_vendedor = $_SESSION['usuario']['id'];
                     $consulta = "CALL  adm_cancelar_orden('$id_vendedor','$id_orden','El Admin " . $_SESSION['Usuario']['nombre'] . " Cancelo la Orden Nro $id_orden');";
 
