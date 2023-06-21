@@ -53,6 +53,7 @@ switch ($method) {
                         id,
                         nombreempresa,
                         responsable,
+                        status,
                         numerotelefono,
                         DATE_FORMAT(fecha, '%Y-%m-%d') AS fecha,
                         DATE_FORMAT(fecha, '%h:%i %p') AS hora
