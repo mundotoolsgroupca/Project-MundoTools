@@ -39,6 +39,7 @@
                                     <th scope="col" class="px-6 py-4">Hora</th>
                                     <th scope="col" class="px-6 py-4">Status</th>
                                     <th scope="col" class="px-6 py-4">Acciones</th>
+                                    <th scope="col" class="px-6 py-4">Guardar</th>
                                 </tr>
                             </thead>
 
