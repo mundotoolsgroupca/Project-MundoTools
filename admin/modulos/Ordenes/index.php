@@ -270,12 +270,14 @@
                                     "mRender": function(data, type, value) {
 
                                         if (data.status == 1) {
-                                            return `<div onclick="cancelar_orden(${data.id},this)" class="flex item-center group justify-start">
+                                            return `<div onclick="cancelar_orden('${data.id}',this)" class="flex item-center group justify-start">
                                                 <div class="w-6 mr-2 transition-all transform hover:text-bold hover:scale-110"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="group-hover:text-red-600 cursor-pointer transition-all w-6 h-6"> <path stroke-linecap="round" stroke-linejoin="round" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>  </svg>
 
                                                 </div>
                                               
                                             </div>`;
+                                        }else{
+                                            return ``;
                                         }
 
                                     }
