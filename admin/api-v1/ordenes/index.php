@@ -137,7 +137,7 @@ switch ($method) {
                     $nombre_admin =  $_SESSION['Usuario']['nombre'];
 
 
-                    $id_vendedor = $_SESSION['usuario']['id'];
+                    $id_vendedor = $_SESSION['Usuario']['id'];
                     $consulta = "CALL  adm_cancelar_orden($id_vendedor,$id_orden,'El Admin $nombre_admin Cancelo la Orden Nro $id_orden');";
 
                     $resultado = mysqli_query($conexion, $consulta);
