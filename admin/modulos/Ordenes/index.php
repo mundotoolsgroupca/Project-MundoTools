@@ -235,7 +235,7 @@
                                     "bSortable": false,
                                     "mRender": function(data, type, value) {
 
-                                       return `<a href='' class='tex-blue-400 cursor-pointer' >${data.id}</a>`;
+                                       return `<a href='' class='text-blue-400 cursor-pointer' >${data.id}</a>`;
 
                                     }
                                 }, {
