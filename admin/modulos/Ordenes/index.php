@@ -231,7 +231,6 @@
 
         $("#modal_form_temp").on("submit", async function(event) {
             event.preventDefault();
-            editar_producto_agrupado();
 
         });
 
