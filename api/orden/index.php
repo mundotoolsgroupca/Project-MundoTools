@@ -439,7 +439,7 @@ function obtenerid($formDataArray, $carritostorage) //se inserta el registro en 
         $resultado->titulo = "";
         $resultado->mensaje = "";
         $resultado->data = $newid;
-        echo  json_encode($resultado);
+        //echo  json_encode($resultado);
         return  $resultado;
     } else {
         http_response_code(409);
