@@ -320,7 +320,7 @@ function validar_int($valor)
 function buscarPorId($json, $idBuscado)
 {
     foreach ($json as $elemento) {
-        if ($elemento->producto_id == $idBuscado) {
+        if ($elemento['producto_id'] == $idBuscado) {
             return $elemento;
         }
     }
