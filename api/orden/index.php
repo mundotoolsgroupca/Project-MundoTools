@@ -772,12 +772,14 @@ function agregar_orden($_DataPOST, $carritostorage, $check_correo, $correo)
     }
 
     $newid = "";
+
+    echo json_encode($datavalided);
+    return;
     if ($datavalided->result == true) {
         $newid = $datavalided->data;
 
-        //$datavalided2 = agregardetalle($newid, $_DataPOST, $carritostorage, $check_correo, $correo);
-        echo $newid;
-        return;
+        $datavalided2 = agregardetalle($newid, $_DataPOST, $carritostorage, $check_correo, $correo);
+
         http_response_code(200); //listo
         return;
     }
