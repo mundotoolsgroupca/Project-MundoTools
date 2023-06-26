@@ -174,7 +174,7 @@
                             searchPlaceholder: "Filtrar"
 
                         },
-                        "data": response.data,
+                        "data": data_srv.data,
                         "columns": [{
                                 "data": null,
                                 "bSortable": false,
