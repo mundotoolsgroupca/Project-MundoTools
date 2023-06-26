@@ -317,6 +317,16 @@ function validar_int($valor)
     }
 }
 
+function buscarPorId($json, $idBuscado)
+{
+    foreach ($json as $elemento) {
+        if ($elemento->id == $idBuscado) {
+            return $elemento;
+        }
+    }
+    return null;
+}
+
 function validar_correo($correo)
 {
     if (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
