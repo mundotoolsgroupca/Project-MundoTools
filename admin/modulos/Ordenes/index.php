@@ -251,9 +251,9 @@
 
                 for (let j = 0; j < data['arr'].length; j++) {
 
-                    if (data['arr'][j].id == data_srv[i].id) {
+                    if (data['arr'][j].id == data_srv.data[i].id) {
 
-                        if (data['arr'][j].cantidad != data_srv[i].cantidad) {
+                        if (data['arr'][j].cantidad != data_srv.data[i].cantidad) {
                             diferentes.push(data['arr'][j]);
                         }
 
