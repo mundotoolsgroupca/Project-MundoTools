@@ -188,7 +188,7 @@
                             "bSortable": false,
                             "mRender": function(data, type, value) {
 
-                                return `<input class="border border-black px-3 rounded-lg" value='${data.cantidad}' onkeypress="return validarNumero(event)>`;
+                                return `<input class="border border-black px-3 rounded-lg" value='${data.cantidad}' onkeypress='return validarNumero(event)'>`;
 
                             }
                         },
