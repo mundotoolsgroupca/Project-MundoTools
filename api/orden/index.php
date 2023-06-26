@@ -553,6 +553,7 @@ function agregardetalle($id, $data, $carritostorage, $check_correo, $correo)
         //$consulta2 = "CALL usr_agregar_orden_det($id,'$id_producto', $cantidad, $precio)";
 
         echo "$id <br> $id_producto <br> $cantidad <br> $precio";
+        return;
         $resultado2 = mysqli_query($conexion, $consulta2);
 
         if ($resultado2) {
