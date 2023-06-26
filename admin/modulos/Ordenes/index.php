@@ -54,11 +54,10 @@
         tablaordenes = new DataTable('#Ordenestabla');
         ordenes();
 
-        function pedido_det(id) {
+        async function pedido_det(id) {
 
             debugger
-            let data_srv = [];
-            $.ajax({ //se manda los valores obtenido a php
+            let data_srv = $.ajax({ //se manda los valores obtenido a php
                 url: "./api-v1/ordenes/orden_det.php",
                 type: 'POST',
                 headers: {
