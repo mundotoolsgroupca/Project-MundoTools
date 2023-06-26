@@ -151,12 +151,11 @@
 
 
             if (typeof data_srv.data != 'undefined') {
-                tabla_det_temp.fnClearTable();
-                tabla_det_temp.fnDraw();
+                tabla_det_temp.clear().draw();
             }
 
             if (data_srv.result) {
-                tablaordenes = $('#modal_table_temp').DataTable({
+                tabla_det_temp = $('#modal_table_temp').DataTable({
 
                     "bDestroy": true,
                     order: [
