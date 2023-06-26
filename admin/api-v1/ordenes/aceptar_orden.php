@@ -28,6 +28,48 @@ switch ($method) {
             if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'])) {
 
 
+                if (isset($_POST['data'])) {
+                    $data = json_decode($_POST['data']);
+                } else {
+                    http_response_code(409); //error 
+                    $resultado = new stdClass();
+                    $resultado->result = FALSE;
+                    $resultado->icono = "error";
+                    $resultado->titulo = "Error!";
+                    $resultado->mensaje = 'Parametro No Valido';
+                    echo json_encode($resultado);
+                    break;
+                }
+
+
+
+
+                for ($i = 0; $i < count($data); $i++) {
+                    if (!validar_int($data[$i]['id'])) {
+                        http_response_code(409); //error 
+                        $resultado = new stdClass();
+                        $resultado->result = FALSE;
+                        $resultado->icono = "error";
+                        $resultado->titulo = "Error!";
+                        $resultado->mensaje = 'Id No Valido';
+                        echo json_encode($resultado);
+                        return;
+                    }
+
+                    if (!validar_int($data[$i]['cantidad'])) {
+                        http_response_code(409); //error 
+                        $resultado = new stdClass();
+                        $resultado->result = FALSE;
+                        $resultado->icono = "error";
+                        $resultado->titulo = "Error!";
+                        $resultado->mensaje = 'Cantida No Valida';
+                        echo json_encode($resultado);
+                        return;
+                    }
+                }
+
+                echo json_encode($data);
+                return;
 
                 $consulta = "#";
 
@@ -44,6 +86,7 @@ switch ($method) {
                 break;
             } else {
                 // Log this as a warning and keep an eye on these attempts
+                http_response_code(409); //error 
                 $resultado = new stdClass();
                 $resultado->result = FALSE;
                 $resultado->icono = "error";
@@ -53,6 +96,7 @@ switch ($method) {
                 break;
             }
         } else {
+            http_response_code(409); //error 
             $resultado = new stdClass();
             $resultado->result = FALSE;
             $resultado->icono = "error";

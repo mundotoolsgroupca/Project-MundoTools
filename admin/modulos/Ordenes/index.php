@@ -247,6 +247,7 @@
             });
 
             let diferentes = [];
+            //obtenemos cual de los valores fue editado
             for (let i = 0; i < data_srv.data.length; i++) {
 
                 for (let j = 0; j < data['arr'].length; j++) {
@@ -263,11 +264,10 @@
 
             }
 
-            return;
 
 
             $.ajax({ //se manda los valores obtenido a php
-                url: "./api-v1/ordenes/orden_det.php",
+                url: "./api-v1/ordenes/aceptar_orden.php",
                 type: 'POST',
                 headers: {
                     'x-csrf-token': $('meta[name="csrf-token"]').attr('content')
@@ -280,7 +280,7 @@
             </div>`);
 
                 },
-                data: data,
+                data: diferentes,
                 success: (response) => {
                     $('#ordenesLoader').html(` `);
                     if (response.result) {
