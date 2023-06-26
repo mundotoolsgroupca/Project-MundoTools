@@ -163,16 +163,10 @@ switch ($method) {
 
                     $resultado2 = mysqli_multi_query($conexion, $consulta2);
 
-                    if (!$resultado2) {
-                        // Log this as a warning and keep an eye on these attempts
-                        http_response_code(409); //error 
-                        $resultado = new stdClass();
-                        $resultado->result = FALSE;
-                        $resultado->icono = "error";
-                        $resultado->titulo = "Error!";
-                        $resultado->mensaje = 'Error Interno';
-                        echo json_encode($resultado);
-                        break;
+                    while (mysqli_next_result($conexion)) {
+                        if ($result = mysqli_store_result($conexion)) {
+                            mysqli_free_result($result);
+                        }
                     }
 
                     http_response_code(200); //Success 
