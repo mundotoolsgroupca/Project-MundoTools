@@ -124,7 +124,7 @@
 
             Swal.fire({
                 width: 900,
-                html: `<form id='modal_form_temp' method="post">
+                html: `<form id='modal_form_temp1' method="post">
                 <div class="flex flex-col overflow-x-auto">
                         <div class="sm:-mx-6 lg:-mx-8">
                             <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
@@ -229,12 +229,12 @@
 
         });
 
-        $("#modal_form_temp").on("submit", async function(event) {
+
+
+        $("#modal_form_temp1").on("submit", async function(event) {
             event.preventDefault();
 
         });
-
-
 
         function validarNumero(event) {
             var charCode = event.which ? event.which : event.keyCode;
