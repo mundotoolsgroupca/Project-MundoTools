@@ -747,7 +747,7 @@ function agregar_orden($_DataPOST, $carritostorage, $check_correo, $correo)
                 $resultado->result = FALSE;
                 $resultado->icono = "error";
                 $resultado->titulo = "Error!";
-                $resultado->mensaje = 'No hay Suficiente Stock';
+                $resultado->mensaje = 'El Producto ' . $nombre . ' No Posee Suficiente Stock';
                 echo json_encode($resultado);
                 return  $resultado;
             }
