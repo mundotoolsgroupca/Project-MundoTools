@@ -55,6 +55,8 @@
         ordenes();
 
         function pedido_det(id) {
+
+            debugger
             let data_srv = [];
             $.ajax({ //se manda los valores obtenido a php
                 url: "./api-v1/ordenes/orden_det.php",
@@ -146,7 +148,7 @@
             });
             if (data_srv.result) {
 
-                debugger
+
                 let total = 0;
                 for (let i = 0; i < data_srv.data.length; i++) {
                     let subtotal = data_srv.data[i].precio * data_srv.data[i].cantidad;
