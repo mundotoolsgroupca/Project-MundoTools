@@ -247,7 +247,7 @@
             });
 
             let diferentes = [];
-            for (let i = 0; i < data_srv.length; i++) {
+            for (let i = 0; i < data_srv.data.length; i++) {
 
                 for (let j = 0; j < data['arr'].length; j++) {
 
