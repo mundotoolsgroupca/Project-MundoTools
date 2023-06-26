@@ -55,31 +55,7 @@
         ordenes();
 
         function pedido_det(id) {
-
-            Swal.fire({
-                width: 600,
-                html: `<div class="flex flex-col overflow-x-auto">
-                        <div class="sm:-mx-6 lg:-mx-8">
-                            <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
-                            <div class="overflow-x-auto">
-                                <table class="min-w-full text-left text-sm font-light">
-                                <thead class="border-b font-medium dark:border-neutral-500">
-                                    <tr>
-                                    <th scope="col" class="px-6 py-4 whitespace-nowrap">Id</th>
-                                    <th scope="col" class="px-6 py-4 whitespace-nowrap">Producto</th>
-                                    <th scope="col" class="px-6 py-4 whitespace-nowrap">Cantidad</th>
-                                    <th scope="col" class="px-6 py-4 whitespace-nowrap">Precio Unitario</th>
-                                    <th scope="col" class="px-6 py-4 whitespace-nowrap">Total</th> 
-                                    </tr>
-                                </thead>
-                                <tbody>           
-                                </tbody>
-                                </table>
-                            </div>
-                            </div>
-                        </div>
-                        </div>`
-            });
+            let data_srv = [];
             $.ajax({ //se manda los valores obtenido a php
                 url: "./api-v1/ordenes/orden_det.php",
                 type: 'POST',
@@ -101,8 +77,7 @@
                     $('#ordenesLoader').html(` `);
 
                     if (response.result) {
-
-                        console.log(response.data);
+                        data_srv = response;
 
                     } else {
                         const Toast = Swal.mixin({
@@ -143,6 +118,57 @@
                     });
                 },
             });
+
+            $('#modal_table_temp > tbody').html(` `);
+            Swal.fire({
+                width: 600,
+                html: `<div class="flex flex-col overflow-x-auto">
+                        <div class="sm:-mx-6 lg:-mx-8">
+                            <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+                            <div class="overflow-x-auto">
+                                <table id='modal_table_temp' class="min-w-full text-left text-sm font-light">
+                                <thead class="border-b font-medium dark:border-neutral-500">
+                                    <tr>
+                                        <th scope="col" class="px-6 py-4 whitespace-nowrap">Id</th>
+                                        <th scope="col" class="px-6 py-4 whitespace-nowrap">Producto</th>
+                                        <th scope="col" class="px-6 py-4 whitespace-nowrap">Cantidad</th>
+                                        <th scope="col" class="px-6 py-4 whitespace-nowrap">Precio Unitario</th>
+                                        <th scope="col" class="px-6 py-4 whitespace-nowrap">Total</th> 
+                                    </tr>
+                                </thead>
+                                <tbody>           
+                                </tbody>
+                                </table>
+                            </div>
+                            </div>
+                        </div>
+                        </div>`
+            });
+            if (data_srv.result) {
+
+                let total = 0;
+                for (let i = 0; i < data_srv.data.length; i++) {
+                    let subtotal = data_srv.data[i].precio * data_srv.data[i].cantidad;
+                    total += subtotal;
+                }
+
+
+                data_srv.map((item) => {
+                    $('#modal_table_temp > tbody').append(`
+                    <tr class="border-b dark:border-neutral-500">
+                        <td class="whitespace-nowrap px-6 py-4 font-medium">${$item.id}</td>
+                        <td class="whitespace-nowrap px-6 py-4">${$item.nombre}</td>
+                        <td class="whitespace-nowrap px-6 py-4">${$item.cantidad}</td>
+                        <td class="whitespace-nowrap px-6 py-4">${$item.precio}</td>
+                        <td class="whitespace-nowrap px-6 py-4">Cell</td> 
+                    </tr>
+                    `);
+                });
+
+            }
+
+
+
 
 
 
