@@ -162,7 +162,7 @@
                         <td class="whitespace-nowrap px-6 py-4">${item.nombre}</td>
                         <td class="whitespace-nowrap px-6 py-4">${item.cantidad}</td>
                         <td class="whitespace-nowrap px-6 py-4">${item.precio}</td>
-                        <td class="whitespace-nowrap px-6 py-4">${total}</td> 
+                        <td class="whitespace-nowrap px-6 py-4">${(item.cantidad * item.precio) +" "+ item.simbolo }</td> 
                     </tr>
                     `);
                 });
