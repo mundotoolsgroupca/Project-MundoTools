@@ -28,6 +28,8 @@ switch ($method) {
             if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'])) {
 
 
+                echo json_encode($_POST);
+                return;
                 if (isset($_POST['data'])) {
                     $data = json_decode($_POST['data']);
                 } else {
