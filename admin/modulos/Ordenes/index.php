@@ -170,13 +170,13 @@
                     `);
                 });
 
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: data_srv.mensaje,
+                });
             }
-
-
-
-
-
-
         }
 
 
