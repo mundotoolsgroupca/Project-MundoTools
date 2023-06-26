@@ -421,6 +421,9 @@ function obtenerid($formDataArray, $carritostorage) //se inserta el registro en 
         $newid = isset($data['data']) ? $data['data'] : "";
         $status = $data['status'];
         $msg = isset($data['msg']) ? $data['msg'] : "";
+
+        echo $newid;
+        return;
         if ($status == 0) {
             http_response_code(409);
             $resultado = new stdClass();
@@ -438,7 +441,7 @@ function obtenerid($formDataArray, $carritostorage) //se inserta el registro en 
         $resultado->titulo = "";
         $resultado->mensaje = "";
         $resultado->data = $newid;
-        // echo  json_encode($resultado);
+        echo  json_encode($resultado);
         return  $resultado;
     } else {
         http_response_code(409);
