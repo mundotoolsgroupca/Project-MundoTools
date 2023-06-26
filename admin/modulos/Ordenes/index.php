@@ -188,7 +188,7 @@
                             "bSortable": false,
                             "mRender": function(data, type, value) {
 
-                                return data.cantidad;
+                                return `<input class="border border-black px-3 rounded-lg" value='${data.cantidad}'>`;
 
                             }
                         },
