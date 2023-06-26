@@ -52,7 +52,7 @@
 
     <script>
         tablaordenes = new DataTable('#Ordenestabla');
-
+        tabla_det_temp = new DataTable('#modal_table_temp');
         ordenes();
 
         async function pedido_det(id) {
@@ -121,7 +121,8 @@
                 },
             });
 
-            $('#modal_table_temp > tbody').html(` `);
+            tabla_det_temp.fnClearTable();
+            tabla_det_temp.fnDraw();
             Swal.fire({
                 width: 900,
                 html: `<div class="flex flex-col overflow-x-auto">
@@ -148,7 +149,7 @@
                         </div>`
             });
 
-            tabla_det_temp = new DataTable('#modal_table_temp');
+
             if (data_srv.result) {
 
 
@@ -172,6 +173,7 @@
                     </tr>
                     `);
                 });
+
 
             } else {
                 Swal.fire({
