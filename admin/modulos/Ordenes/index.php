@@ -122,7 +122,7 @@
 
             $('#modal_table_temp > tbody').html(` `);
             Swal.fire({
-                width: 600,
+                width: 900,
                 html: `<div class="flex flex-col overflow-x-auto">
                         <div class="sm:-mx-6 lg:-mx-8">
                             <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
