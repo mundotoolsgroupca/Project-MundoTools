@@ -57,7 +57,7 @@
 
         async function pedido_det(id) {
 
-            debugger
+
             let data_srv = await $.ajax({ //se manda los valores obtenido a php
                 url: "./api-v1/ordenes/orden_det.php",
                 type: 'POST',
@@ -126,6 +126,7 @@
                 width: 900,
                 html: ` 
                 <div class="flex flex-col overflow-x-auto">
+                <input class='hidden' id='modal_idorden_temp' value='' >
                         <div class="sm:-mx-6 lg:-mx-8">
                             <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
                             <div class="overflow-x-auto">
@@ -156,9 +157,10 @@
                    `
             });
             tabla_det_temp = new DataTable('#modal_table_temp');
-
+            $('#modal_idorden_temp').val(id);
 
             if (typeof data_srv.data != 'undefined') {
+                $('#modal_idorden_temp').val('');
                 tabla_det_temp.clear().draw();
             }
 
@@ -236,12 +238,76 @@
             document.querySelectorAll('[data-modal-input]');
 
             let data = [];
+            data['arr'] = [];
+            data['id_orden'] = 0;
             document.querySelectorAll('[data-modal-input]').forEach((item, index) => {
-                data.push({
+                data['arr'].push({
                     id: item.id,
                     cantidad: item.value
                 });
             });
+
+
+            $.ajax({ //se manda los valores obtenido a php
+                url: "./api-v1/ordenes/orden_det.php",
+                type: 'POST',
+                headers: {
+                    'x-csrf-token': $('meta[name="csrf-token"]').attr('content')
+                },
+
+                beforeSend: () => {
+
+                    $('#ordenesLoader').html(`<div class="inline-block h-4 w-4 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]" role="status">
+           <span class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
+            </div>`);
+
+                },
+                data: data,
+                success: (response) => {
+                    $('#ordenesLoader').html(` `);
+                    if (response.result) {
+
+                    } else {
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 3000,
+                            timerProgressBar: true,
+                            didOpen: (toast) => {
+                                toast.addEventListener('mouseenter', Swal.stopTimer)
+                                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            }
+                        });
+
+                        Toast.fire({
+                            icon: 'error',
+                            title: response.mensaje
+                        });
+
+                    }
+                },
+                error: function(xhr, status) {
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    });
+
+                    Toast.fire({
+                        icon: 'error',
+                        title: xhr.responseJSON.mensaje
+                    });
+                },
+            });
+
+
         }
 
 
