@@ -775,7 +775,9 @@ function agregar_orden($_DataPOST, $carritostorage, $check_correo, $correo)
     if ($datavalided->result == true) {
         $newid = $datavalided->data;
 
-        $datavalided2 = agregardetalle($newid, $_DataPOST, $carritostorage, $check_correo, $correo);
+        //$datavalided2 = agregardetalle($newid, $_DataPOST, $carritostorage, $check_correo, $correo);
+        echo $newid;
+        return;
         http_response_code(200); //listo
         return;
     }
