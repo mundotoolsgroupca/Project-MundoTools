@@ -239,7 +239,7 @@
 
             let data = [];
             data['arr'] = [];
-            data['id_orden'] = 0;
+            data['id_orden'] = $('#modal_idorden_temp').val();
             document.querySelectorAll('[data-modal-input]').forEach((item, index) => {
                 data['arr'].push({
                     id: item.id,
