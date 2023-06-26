@@ -126,7 +126,7 @@
                 width: 900,
                 html: ` 
                 <div class="flex flex-col overflow-x-auto">
-                <input class='hidden' id='modal_idorden_temp' value='' >
+                <input class='hidden' id='modal_idorden_temp' value='${id}' >
                         <div class="sm:-mx-6 lg:-mx-8">
                             <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
                             <div class="overflow-x-auto">
@@ -157,10 +157,9 @@
                    `
             });
             tabla_det_temp = new DataTable('#modal_table_temp');
-            $('#modal_idorden_temp').val(id);
+            
 
             if (typeof data_srv.data != 'undefined') {
-                $('#modal_idorden_temp').val('');
                 tabla_det_temp.clear().draw();
             }
 
