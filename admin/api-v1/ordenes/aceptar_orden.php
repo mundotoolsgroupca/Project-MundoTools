@@ -53,7 +53,7 @@ switch ($method) {
                     break;
                 }
 
-
+                //validamos el id de la orden
                 if (!validar_int($id_orden)) {
                     http_response_code(409); //error 
                     $resultado = new stdClass();
@@ -65,6 +65,7 @@ switch ($method) {
                     return;
                 }
 
+                //validamos los datos del array
                 for ($i = 0; $i < count($data); $i++) {
                     if (!validar_int($data[$i]['producto_id'])) {
                         http_response_code(409); //error 
