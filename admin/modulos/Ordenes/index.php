@@ -229,10 +229,13 @@
 
         });
 
-        $('#modal_form_temp').submit((event) => {
+        $("#modal_form_temp").on("submit", async function(event) {
             event.preventDefault();
-            debugger
+            editar_producto_agrupado();
+
         });
+
+
 
         function validarNumero(event) {
             var charCode = event.which ? event.which : event.keyCode;
