@@ -176,14 +176,6 @@
                     },
                     "data": data_srv.data,
                     "columns": [{
-                            "data": null,
-                            "bSortable": false,
-                            "mRender": function(data, type, value) {
-
-                                return `<a href='javascript:pedido_det(${data.id})' class='text-blue-500 cursor-pointer' >${data.id}</a>`;
-
-                            }
-                        }, {
                             "data": "producto_id"
                         },
 
