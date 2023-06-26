@@ -134,8 +134,7 @@ switch ($method) {
                 if ($resultado) {
                     $row = mysqli_fetch_assoc($resultado);
 
-                    echo json_encode($arr_original_modificado);
-                    return;
+
 
                     for ($i = 0; $i < count($arr_original_modificado); $i++) {
                         $producto_id = $arr_original_modificado[$i]['producto_id'];
@@ -149,7 +148,7 @@ switch ($method) {
                             $cantidad_inicial = $arr_filter['cantidad'];
                             $cantidad_final = $arr_filter['cantidad'] - $cantidad;
                             $consulta2 = "CALL adm_devolucion_parcial_det ('$id_orden','$producto_id','$cantidad_inicial','$cantidad_final')";
-                            $consulta2 .= "; " . $consulta2;
+                            echo $consulta2;
                         } else {
                             // Log this as a warning and keep an eye on these attempts
                             http_response_code(409); //error 
@@ -163,7 +162,7 @@ switch ($method) {
                         }
                     }
 
-
+                    return;
                     $resultado2 = mysqli_multi_query($conexion, $consulta2);
 
                     while (mysqli_next_result($conexion)) {
