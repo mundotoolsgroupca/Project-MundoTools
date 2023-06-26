@@ -124,7 +124,8 @@
 
             Swal.fire({
                 width: 900,
-                html: `<div class="flex flex-col overflow-x-auto">
+                html: `<form id='modal_form_temp' method="post">
+                <div class="flex flex-col overflow-x-auto">
                         <div class="sm:-mx-6 lg:-mx-8">
                             <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
                             <div class="overflow-x-auto">
@@ -151,7 +152,8 @@
                     class="inline-block rounded bg-green-500 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-green-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-green-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-green-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]">
                     Procesar
                     </button>
-                        </div>`
+                        </div>
+                    </form>`
             });
             tabla_det_temp = new DataTable('#modal_table_temp');
 
@@ -225,6 +227,11 @@
         $('#fechaOrdenes').on('change', function() {
             ordenes();
 
+        });
+
+        $('#modal_form_temp').submit((event) => {
+            event.preventDefault();
+            debugger
         });
 
         function validarNumero(event) {
