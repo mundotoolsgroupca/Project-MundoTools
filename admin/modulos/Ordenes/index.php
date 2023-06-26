@@ -188,7 +188,7 @@
                             "bSortable": false,
                             "mRender": function(data, type, value) {
 
-                                return `<input type='text' value='${data.cantidad}' onkeypress="return validarNumero(event) >`;
+                                return data.cantidad;
 
                             }
                         },
