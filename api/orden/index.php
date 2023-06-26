@@ -717,7 +717,7 @@ function agregar_orden($_DataPOST, $carritostorage, $check_correo, $correo)
         }
     }
 
-    /*
+
     for ($i = 0; $i < count($carritostorage); $i++) { //validamos el stock en cada producto para validar que este disponible 
         $cantidad = $carritostorage[$i]['cantidad'];
         $id_producto = $carritostorage[$i]['id'];
@@ -763,7 +763,7 @@ function agregar_orden($_DataPOST, $carritostorage, $check_correo, $correo)
         }
     }
 
-    */
+
     if (!isset($_SESSION['usuario'])) {
         $datavalided =  obtenerid_token($_DataPOST, $carritostorage);
     } else {
