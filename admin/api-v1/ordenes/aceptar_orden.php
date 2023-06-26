@@ -102,8 +102,8 @@ switch ($method) {
                     $resultado->result = TRUE;
                     $resultado->icono = "success";
                     $resultado->titulo = "";
-                    $resultado->mensaje = "";
-                    $resultado->data = $data;
+                    $resultado->mensaje = $row['msg'];
+                    $resultado->data = $row;
                     echo  json_encode($resultado);
                     break;
                 } else {
