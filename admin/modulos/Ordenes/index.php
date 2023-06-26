@@ -148,94 +148,82 @@
                         </div>`
             });
             tabla_det_temp = new DataTable('#modal_table_temp');
-            tabla_det_temp.fnClearTable();
-            tabla_det_temp.fnDraw();
-
-            if (typeof data_srv.data == 'object') {
 
 
-                if (data_srv.result) {
-                    tablaordenes = $('#modal_table_temp').DataTable({
+            if (typeof data_srv.data != 'undefined') {
+                tabla_det_temp.fnClearTable();
+                tabla_det_temp.fnDraw();
+            }
 
-                        "bDestroy": true,
-                        order: [
-                            [0, 'desc']
-                        ],
-                        paging: true,
-                        targets: 20,
+            if (data_srv.result) {
+                tablaordenes = $('#modal_table_temp').DataTable({
 
-                        scrollY: '40vh',
-                        "processing": true,
-                        "autoWidth": false,
-                        language: {
-                            //?dataTable en Español
-                            url: '//cdn.datatables.net/plug-ins/1.12.0/i18n/es-ES.json',
-                            //? input de buscar tengo un texto
-                            searchPlaceholder: "Filtrar"
+                    "bDestroy": true,
+                    order: [
+                        [0, 'desc']
+                    ],
+                    paging: true,
+                    targets: 20,
 
+                    scrollY: '40vh',
+                    "processing": true,
+                    "autoWidth": false,
+                    language: {
+                        //?dataTable en Español
+                        url: '//cdn.datatables.net/plug-ins/1.12.0/i18n/es-ES.json',
+                        //? input de buscar tengo un texto
+                        searchPlaceholder: "Filtrar"
+
+                    },
+                    "data": data_srv.data,
+                    "columns": [{
+                            "data": null,
+                            "bSortable": false,
+                            "mRender": function(data, type, value) {
+
+                                return `<a href='javascript:pedido_det(${data.id})' class='text-blue-500 cursor-pointer' >${data.id}</a>`;
+
+                            }
+                        }, {
+                            "data": "producto_id"
                         },
-                        "data": data_srv.data,
-                        "columns": [{
-                                "data": null,
-                                "bSortable": false,
-                                "mRender": function(data, type, value) {
 
-                                    return `<a href='javascript:pedido_det(${data.id})' class='text-blue-500 cursor-pointer' >${data.id}</a>`;
+                        {
+                            "data": "nombre"
+                        },
 
-                                }
-                            }, {
-                                "data": "producto_id"
-                            },
+                        {
+                            "data": null,
+                            "bSortable": false,
+                            "mRender": function(data, type, value) {
 
-                            {
-                                "data": "nombre"
-                            },
+                                return `<input type='text' value='${data.cantidad}' onkeypress="return validarNumero(event) >`;
 
-                            {
-                                "data": null,
-                                "bSortable": false,
-                                "mRender": function(data, type, value) {
+                            }
+                        },
 
-                                    return `<input type='text' value='${data.cantidad}' onkeypress="return validarNumero(event) >`;
-
-                                }
-                            },
-
-                            {
-                                "data": "precio"
-                            },
+                        {
+                            "data": "precio"
+                        },
 
 
-                        ],
-                        responsive: true,
-                    });
+                    ],
+                    responsive: true,
+                });
 
 
 
-                    data_srv.data.map((item) => {
-                        $('#modal_table_temp > tbody').append(`
-                    <tr class="border-b dark:border-neutral-500">
-                        <td class="whitespace-nowrap px-6 py-4 font-medium">${item.producto_id}</td>
-                        <td class="whitespace-nowrap px-6 py-4">${item.nombre}</td>
-                        <td class="whitespace-nowrap px-6 py-4">
-                        <div class="relative mb-3" data-te-input-wrapper-init>
-                        <input class="border rounded-lg px-3 border-black" type="text"  value='${item.cantidad}'>
-                        </div></td>
-                        <td class="whitespace-nowrap px-6 py-4">${item.precio}</td> 
-                    </tr>
-                    `);
-                    });
 
 
-                } else {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: data_srv.mensaje,
-                    });
-                }
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: data_srv.mensaje,
+                });
             }
         }
+
 
         $('#fechaOrdenes').on('change', function() {
             ordenes();
