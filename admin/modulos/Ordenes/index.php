@@ -128,7 +128,7 @@
                             <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
                             <div class="overflow-x-auto">
                                 <table id='modal_table_temp' class="min-w-full text-left text-sm font-light">
-                                <thead class="border-b font-medium dark:border-neutral-500">
+                                <thead class="bg-neutral-800 border-b font-medium dark:border-neutral-500">
                                     <tr>
                                         <th scope="col" class="px-6 py-4 whitespace-nowrap">Id</th>
                                         <th scope="col" class="px-6 py-4 whitespace-nowrap">Producto</th>
