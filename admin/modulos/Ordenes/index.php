@@ -100,6 +100,8 @@
 
         function pedido_det(id) {
 
+            modal_ordenes.show();
+
             $.ajax({ //se manda los valores obtenido a php
                 url: "./api-v1/ordenes/orden_det.php",
                 type: 'POST',
