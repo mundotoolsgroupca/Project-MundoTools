@@ -147,6 +147,9 @@ switch ($method) {
 
                             $cantidad_inicial = $arr_filter['cantidad'];
                             $cantidad_final = $arr_filter['cantidad'] - $cantidad;
+                            if ($cantidad_final < 0) {
+                                $cantidad_final = 0;
+                            }
                             $consulta2 = "CALL adm_devolucion_parcial_det ('$id_orden','$producto_id','$cantidad_inicial','$cantidad_final')";
                             echo $consulta2;
                         } else {
@@ -162,8 +165,6 @@ switch ($method) {
                         }
                     }
 
-                    return;
-                    $resultado2 = mysqli_multi_query($conexion, $consulta2);
 
                     while (mysqli_next_result($conexion)) {
                         if ($result = mysqli_store_result($conexion)) {
