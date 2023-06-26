@@ -67,9 +67,9 @@
 
                 <!--Modal body-->
                 <div class="relative p-4">
-                    <table class="min-w-full text-center text-sm font-light">
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio sunt necessitatibus veritatis accusamus quasi soluta rerum, dolorem ad reprehenderit aperiam voluptates voluptatibus voluptatem omnis dicta facere, nesciunt repellat? Animi, natus!
-                    </table>
+                    <div>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui libero quasi autem culpa corporis, unde ipsum. At consectetur, error voluptatibus ex reprehenderit molestiae quam commodi minus ipsa, nesciunt deserunt enim.
+                    </div>
 
                 </div>
 
