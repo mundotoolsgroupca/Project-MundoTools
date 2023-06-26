@@ -130,6 +130,7 @@ switch ($method) {
                 $consulta = "CALL adm_devolucion_parcial('$id_admin','$id_orden')";
 
                 $resultado = mysqli_query($conexion, $consulta);
+
                 if ($resultado) {
                     $row = mysqli_fetch_assoc($resultado);
 
@@ -145,19 +146,8 @@ switch ($method) {
                             $cantidad_inicial = $arr_filter['cantidad'];
                             $cantidad_final = $arr_filter['cantidad'] - $cantidad;
                             $consulta2 = "CALL adm_devolucion_parcial_det ('$id_orden','$producto_id','$cantidad_inicial','$cantidad_final')";
+                            $consulta2 .= "; " . $consulta2;
                             $resultado = mysqli_query($conexion, $consulta);
-                            mysqli_free_result($resultado);
-                            if (!$resultado) {
-                                // Log this as a warning and keep an eye on these attempts
-                                http_response_code(409); //error 
-                                $resultado = new stdClass();
-                                $resultado->result = FALSE;
-                                $resultado->icono = "error";
-                                $resultado->titulo = "Error!";
-                                $resultado->mensaje = 'Error Interno';
-                                echo json_encode($resultado);
-                                break;
-                            }
                         } else {
                             // Log this as a warning and keep an eye on these attempts
                             http_response_code(409); //error 
@@ -172,6 +162,19 @@ switch ($method) {
                     }
 
 
+                    $resultado = mysqli_multi_query($conexion, $consulta2);
+
+                    if (!$resultado) {
+                        // Log this as a warning and keep an eye on these attempts
+                        http_response_code(409); //error 
+                        $resultado = new stdClass();
+                        $resultado->result = FALSE;
+                        $resultado->icono = "error";
+                        $resultado->titulo = "Error!";
+                        $resultado->mensaje = 'Error Interno';
+                        echo json_encode($resultado);
+                        break;
+                    }
 
                     http_response_code(200); //Success 
                     $resultado = new stdClass();
