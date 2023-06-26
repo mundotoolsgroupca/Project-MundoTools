@@ -231,7 +231,13 @@
                             },
                             "data": response.data,
                             "columns": [{
-                                    "data": "id"
+                                    "data": null,
+                                    "bSortable": false,
+                                    "mRender": function(data, type, value) {
+
+                                       return `<a href='' class='tex-blue-400 cursor-pointer' >${data.id}</a>`;
+
+                                    }
                                 }, {
                                     "data": "nombreempresa"
                                 },
