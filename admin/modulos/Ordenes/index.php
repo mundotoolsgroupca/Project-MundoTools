@@ -155,14 +155,14 @@
                 }
 
 
-                data_srv.map((item) => {
+                data_srv.data.map((item) => {
                     $('#modal_table_temp > tbody').append(`
                     <tr class="border-b dark:border-neutral-500">
                         <td class="whitespace-nowrap px-6 py-4 font-medium">${$item.id}</td>
                         <td class="whitespace-nowrap px-6 py-4">${$item.nombre}</td>
                         <td class="whitespace-nowrap px-6 py-4">${$item.cantidad}</td>
                         <td class="whitespace-nowrap px-6 py-4">${$item.precio}</td>
-                        <td class="whitespace-nowrap px-6 py-4">Cell</td> 
+                        <td class="whitespace-nowrap px-6 py-4">${total}</td> 
                     </tr>
                     `);
                 });
