@@ -138,7 +138,7 @@ switch ($method) {
                         $cantidad = $arr_original_modificado[$i]['cantidad'];
                         $arr_filter = buscarPorId($arr_original, $producto_id);
 
-                    
+
 
                         if ($arr_filter != null) {
 
@@ -146,7 +146,7 @@ switch ($method) {
                             $cantidad_final = $arr_filter['cantidad'] - $cantidad;
                             $consulta2 = "CALL adm_devolucion_parcial_det ('$id_orden','$producto_id','$cantidad_inicial','$cantidad_final')";
                             $resultado = mysqli_query($conexion, $consulta);
-
+                            mysqli_free_result($resultado);
                             if (!$resultado) {
                                 // Log this as a warning and keep an eye on these attempts
                                 http_response_code(409); //error 
@@ -171,7 +171,7 @@ switch ($method) {
                         }
                     }
 
-                   
+
 
                     http_response_code(200); //Success 
                     $resultado = new stdClass();
