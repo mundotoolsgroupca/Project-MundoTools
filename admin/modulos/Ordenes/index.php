@@ -124,7 +124,7 @@
 
             Swal.fire({
                 width: 900,
-                html: `<form id='modal_form_temp1' method="post">
+                html: ` 
                 <div class="flex flex-col overflow-x-auto">
                         <div class="sm:-mx-6 lg:-mx-8">
                             <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
@@ -153,7 +153,7 @@
                     Procesar
                     </button>
                         </div>
-                    </form>`
+                   `
             });
             tabla_det_temp = new DataTable('#modal_table_temp');
 
@@ -196,7 +196,7 @@
                             "bSortable": false,
                             "mRender": function(data, type, value) {
 
-                                return `<input id='${data.producto_id}' class="border border-black px-3 rounded-lg" value='${data.cantidad}' onkeypress='return validarNumero(event)'>`;
+                                return `<input data-modal-input id='${data.producto_id}' class="border border-black px-3 rounded-lg" value='${data.cantidad}' onkeypress='return validarNumero(event)'>`;
 
                             }
                         },
@@ -231,10 +231,10 @@
 
 
 
-        $("#modal_form_temp1").on("submit", async function(event) {
-            event.preventDefault();
-
-        });
+        function procesar_pedido() {
+            
+        }
+ 
 
         function validarNumero(event) {
             var charCode = event.which ? event.which : event.keyCode;
