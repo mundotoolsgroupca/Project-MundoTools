@@ -49,12 +49,12 @@
 
     </div>
 
-    <div data-te-modal-init class="fixed left-0 top-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none" id="exampleModalCenteredScrollable" tabindex="-1" aria-labelledby="exampleModalCenteredScrollable" aria-modal="true" role="dialog">
+    <div data-te-modal-init class="fixed left-0 top-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none" id="modalordenes" tabindex="-1" aria-labelledby="modalordenes" aria-modal="true" role="dialog">
         <div data-te-modal-dialog-ref class="pointer-events-none relative flex min-h-[calc(100%-1rem)] w-auto translate-y-[-50px] items-center opacity-0 transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:mt-7 min-[576px]:min-h-[calc(100%-3.5rem)] min-[576px]:max-w-[500px]">
             <div class="pointer-events-auto relative flex w-full flex-col rounded-md border-none bg-white bg-clip-padding text-current shadow-lg outline-none dark:bg-neutral-600">
                 <div class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
                     <!--Modal title-->
-                    <h5 class="text-xl font-medium leading-normal text-neutral-800 dark:text-neutral-200" id="exampleModalCenteredScrollableLabel">
+                    <h5 class="text-xl font-medium leading-normal text-neutral-800 dark:text-neutral-200" id="modalordenesLabel">
                         Modal title
                     </h5>
                     <!--Close button-->
@@ -94,8 +94,79 @@
     </div>
 
     <script>
+        modal_ordenes = new te.Modal(document.getElementById("modalordenes"));
         tablaordenes = new DataTable('#Ordenestabla');
         ordenes();
+
+        function pedido_det(id) {
+
+            $.ajax({ //se manda los valores obtenido a php
+                url: "./api-v1/ordenes/orden_det.php",
+                type: 'POST',
+                headers: {
+                    'x-csrf-token': $('meta[name="csrf-token"]').attr('content')
+                },
+
+                beforeSend: () => {
+
+                    $('#ordenesLoader').html(`<div class="inline-block h-4 w-4 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]" role="status">
+           <span class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
+            </div>`);
+
+                },
+                data: {
+                    id: id
+                },
+                success: (response) => {
+                    $('#ordenesLoader').html(` `);
+
+                    if (response.result) {
+
+                        console.log(response.data);
+
+                    } else {
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 3000,
+                            timerProgressBar: true,
+                            didOpen: (toast) => {
+                                toast.addEventListener('mouseenter', Swal.stopTimer)
+                                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            }
+                        });
+
+                        Toast.fire({
+                            icon: 'error',
+                            title: response.mensaje
+                        });
+
+                    }
+                },
+                error: function(xhr, status) {
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    });
+
+                    Toast.fire({
+                        icon: 'error',
+                        title: xhr.responseJSON.mensaje
+                    });
+                },
+            });
+
+
+
+        }
 
 
         $('#fechaOrdenes').on('change', function() {
@@ -279,7 +350,7 @@
                                     "bSortable": false,
                                     "mRender": function(data, type, value) {
 
-                                        return `<a href='' class='text-blue-500 cursor-pointer' >${data.id}</a>`;
+                                        return `<a href='javascript:pedido_det(${data.id})' class='text-blue-500 cursor-pointer' >${data.id}</a>`;
 
                                     }
                                 }, {
