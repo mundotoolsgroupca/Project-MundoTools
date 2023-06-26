@@ -283,7 +283,7 @@ function obtenerid_token($formDataArray, $carritostorage) //se inserta el regist
     $newid = "";
     if ($resultado) {
         $data = mysqli_fetch_assoc($resultado);
-        $newid = isset($data['data']) ? $data['data'] : "";
+        $newid = isset($data['DATA']) ? $data['DATA'] : "";
         $status = $data['status'];
         $msg = isset($data['msg']) ? $data['msg'] : "";
         if ($status == 0) {
@@ -422,8 +422,6 @@ function obtenerid($formDataArray, $carritostorage) //se inserta el registro en 
         $status = $data['status'];
         $msg = isset($data['msg']) ? $data['msg'] : "";
 
-        echo $newid;
-        return;
         if ($status == 0) {
             http_response_code(409);
             $resultado = new stdClass();
@@ -555,9 +553,7 @@ function agregardetalle($id, $data, $carritostorage, $check_correo, $correo)
         $simbolo = $carritostorage[$i]['simbolo'];
         $consulta2 = "CALL usr_agregar_orden_det($id,'$id_producto', $cantidad, $precio)";
 
-        echo $consulta2;
 
-        return;
         $resultado2 = mysqli_query($conexion, $consulta2);
 
         if ($resultado2) {
@@ -776,8 +772,7 @@ function agregar_orden($_DataPOST, $carritostorage, $check_correo, $correo)
 
     $newid = "";
 
-    echo json_encode($datavalided);
-    return;
+
     if ($datavalided->result == true) {
         $newid = $datavalided->data;
 
