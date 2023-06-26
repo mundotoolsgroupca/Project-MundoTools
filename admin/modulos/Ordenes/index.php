@@ -241,7 +241,7 @@
             data['id_orden'] = $('#modal_idorden_temp').val();
             document.querySelectorAll('[data-modal-input]').forEach((item, index) => {
                 data['arr'].push({
-                    id: item.id,
+                    producto_id: item.id,
                     cantidad: item.value
                 });
             });
@@ -251,7 +251,7 @@
 
                 for (let j = 0; j < data['arr'].length; j++) {
 
-                    if (data['arr'][j].id == data_srv.data[i].id) {
+                    if (data['arr'][j].producto_id == data_srv.data[i].producto_id) {
 
                         if (data['arr'][j].cantidad != data_srv.data[i].cantidad) {
                             diferentes.push(data['arr'][j]);
