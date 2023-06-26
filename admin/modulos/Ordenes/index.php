@@ -54,11 +54,11 @@
         tablaordenes = new DataTable('#Ordenestabla');
 
         ordenes();
-
+        let data_srv = [];
         async function pedido_det(id) {
 
 
-            let data_srv = await $.ajax({ //se manda los valores obtenido a php
+            data_srv = await $.ajax({ //se manda los valores obtenido a php
                 url: "./api-v1/ordenes/orden_det.php",
                 type: 'POST',
                 headers: {
@@ -157,7 +157,7 @@
                    `
             });
             tabla_det_temp = new DataTable('#modal_table_temp');
-            
+
 
             if (typeof data_srv.data != 'undefined') {
                 tabla_det_temp.clear().draw();
@@ -245,6 +245,25 @@
                     cantidad: item.value
                 });
             });
+
+            let diferentes = [];
+            for (let i = 0; i < data_srv.length; i++) {
+
+                for (let j = 0; j < data['arr'].length; j++) {
+
+                    if (data['arr'][j].id == data_srv[i].id) {
+
+                        if (data['arr'][j].cantidad != data_srv[i].cantidad) {
+                            diferentes.push(data['arr'][j]);
+                        }
+
+                    }
+
+                }
+
+            }
+
+            return;
 
 
             $.ajax({ //se manda los valores obtenido a php
