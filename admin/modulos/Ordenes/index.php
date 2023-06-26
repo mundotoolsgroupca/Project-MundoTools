@@ -353,7 +353,6 @@
             Swal.fire({
                 title: 'Estas Seguro de Cancelar la Orden?',
                 showDenyButton: true,
-                showCancelButton: true,
                 confirmButtonText: 'Aceptar',
                 denyButtonText: `Cerrar`,
             }).then((result) => {
