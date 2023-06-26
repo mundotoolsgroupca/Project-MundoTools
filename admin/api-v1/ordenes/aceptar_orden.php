@@ -138,9 +138,7 @@ switch ($method) {
                         $cantidad = $arr_original_modificado[$i]['cantidad'];
                         $arr_filter = buscarPorId($arr_original, $producto_id);
 
-                        echo json_encode($arr_original);
-                        break;
-                       
+                    
 
                         if ($arr_filter != null) {
 
@@ -173,7 +171,7 @@ switch ($method) {
                         }
                     }
 
-                    return;
+                   
 
                     http_response_code(200); //Success 
                     $resultado = new stdClass();
