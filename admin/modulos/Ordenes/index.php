@@ -282,7 +282,7 @@
                 },
                 data: {
                     data: diferentes,
-                    procesar_pedido: $('#modal_idorden_temp').val(),
+                    modal_idorden_temp: $('#modal_idorden_temp').val(),
                 },
                 success: (response) => {
                     $('#ordenesLoader').html(` `);
