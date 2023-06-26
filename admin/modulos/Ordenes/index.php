@@ -233,7 +233,7 @@
 
 
         function procesar_pedido() {
-            debugger
+             
             document.querySelectorAll('[data-modal-input]');
 
             let data = [];
@@ -281,7 +281,8 @@
 
                 },
                 data: {
-                    data: diferentes
+                    data: diferentes,
+                    procesar_pedido: $('#modal_idorden_temp').val(),
                 },
                 success: (response) => {
                     $('#ordenesLoader').html(` `);

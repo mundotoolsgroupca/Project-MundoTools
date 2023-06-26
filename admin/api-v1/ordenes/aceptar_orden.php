@@ -13,7 +13,7 @@ switch ($method) {
         $http = getallheaders();
         if (!empty($http['X-Csrf-Token'])) {
 
-            if (!isset($_SESSION['token'])) {
+            if (!isset($_SESSION['Usuario'])) {
                 // Log this as a warning and keep an eye on these attempts
                 $resultado = new stdClass();
                 $resultado->result = FALSE;
@@ -21,9 +21,8 @@ switch ($method) {
                 $resultado->titulo = "Error!";
                 $resultado->mensaje = 'Parametro No Valido';
                 echo json_encode($resultado);
-                break;
+                return;
             }
-
 
             if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'])) {
 
@@ -41,9 +40,30 @@ switch ($method) {
                     echo json_encode($resultado);
                     break;
                 }
+                if (isset($_POST['modal_idorden_temp'])) {
+                    $id_orden = $_POST['modal_idorden_temp'];
+                } else {
+                    http_response_code(409); //error 
+                    $resultado = new stdClass();
+                    $resultado->result = FALSE;
+                    $resultado->icono = "error";
+                    $resultado->titulo = "Error!";
+                    $resultado->mensaje = 'Parametro No Valido';
+                    echo json_encode($resultado);
+                    break;
+                }
 
 
-
+                if (!validar_int($id_orden)) {
+                    http_response_code(409); //error 
+                    $resultado = new stdClass();
+                    $resultado->result = FALSE;
+                    $resultado->icono = "error";
+                    $resultado->titulo = "Error!";
+                    $resultado->mensaje = 'Id Orden no Valida No Valida';
+                    echo json_encode($resultado);
+                    return;
+                }
 
                 for ($i = 0; $i < count($data); $i++) {
                     if (!validar_int($data[$i]['producto_id'])) {
@@ -69,22 +89,33 @@ switch ($method) {
                     }
                 }
 
-                echo json_encode($data);
-                return;
 
-                $consulta = "#";
+                $id_admin = $_SESSION['Usuario']['id'];
+                $consulta = "CALL adm_devolucion_parcial('$id_admin','$id_orden')";
 
                 $resultado = mysqli_query($conexion, $consulta);
-                $row = mysqli_fetch_assoc($resultado);
-                http_response_code(200); //Success 
-                $resultado = new stdClass();
-                $resultado->result = TRUE;
-                $resultado->icono = "success";
-                $resultado->titulo = "";
-                $resultado->mensaje = "";
-                $resultado->data = $data;
-                echo  json_encode($resultado);
-                break;
+                if ($resultado) {
+                    $row = mysqli_fetch_assoc($resultado);
+                    http_response_code(200); //Success 
+                    $resultado = new stdClass();
+                    $resultado->result = TRUE;
+                    $resultado->icono = "success";
+                    $resultado->titulo = "";
+                    $resultado->mensaje = "";
+                    $resultado->data = $data;
+                    echo  json_encode($resultado);
+                    break;
+                } else {
+                    // Log this as a warning and keep an eye on these attempts
+                    http_response_code(409); //error 
+                    $resultado = new stdClass();
+                    $resultado->result = FALSE;
+                    $resultado->icono = "error";
+                    $resultado->titulo = "Error!";
+                    $resultado->mensaje = 'Error Interno';
+                    echo json_encode($resultado);
+                    break;
+                }
             } else {
                 // Log this as a warning and keep an eye on these attempts
                 http_response_code(409); //error 
