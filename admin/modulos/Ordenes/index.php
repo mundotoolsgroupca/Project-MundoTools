@@ -171,7 +171,7 @@
                     ],
                     paging: true,
                     targets: 20,
-
+                    "pageLength": 1000,
                     scrollY: '40vh',
                     "processing": true,
                     "autoWidth": false,
@@ -232,9 +232,18 @@
 
 
         function procesar_pedido() {
-            
+            debugger
+            document.querySelectorAll('[data-modal-input]');
+
+            let data = [];
+            document.querySelectorAll('[data-modal-input]').forEach((item, index) => {
+                data.push({
+                    id: item.id,
+                    cantidad: item.value
+                });
+            });
         }
- 
+
 
         function validarNumero(event) {
             var charCode = event.which ? event.which : event.keyCode;
