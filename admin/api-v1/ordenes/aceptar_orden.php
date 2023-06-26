@@ -151,6 +151,7 @@ switch ($method) {
                                 $cantidad_final = 0;
                             }
                             $consulta2 = "CALL adm_devolucion_parcial_det('$id_orden','$producto_id','$cantidad_inicial','$cantidad_final')";
+                            echo  $consulta2;
                             $resultado2 = mysqli_query($conexion, $consulta2);
                         } else {
                             // Log this as a warning and keep an eye on these attempts
