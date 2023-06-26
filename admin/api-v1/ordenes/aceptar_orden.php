@@ -162,9 +162,9 @@ switch ($method) {
                     }
 
 
-                    $resultado = mysqli_multi_query($conexion, $consulta2);
+                    $resultado2 = mysqli_multi_query($conexion, $consulta2);
 
-                    if (!$resultado) {
+                    if (!$resultado2) {
                         // Log this as a warning and keep an eye on these attempts
                         http_response_code(409); //error 
                         $resultado = new stdClass();
