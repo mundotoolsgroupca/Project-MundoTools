@@ -28,8 +28,20 @@ switch ($method) {
 
 
 
-                if (isset($_POST['data'])) {
-                    $data = $_POST['data'];
+                if (isset($_POST['arr_original'])) {
+                    $arr_original = $_POST['arr_original'];
+                } else {
+                    http_response_code(409); //error 
+                    $resultado = new stdClass();
+                    $resultado->result = FALSE;
+                    $resultado->icono = "error";
+                    $resultado->titulo = "Error!";
+                    $resultado->mensaje = 'Parametro No Valido';
+                    echo json_encode($resultado);
+                    break;
+                }
+                if (isset($_POST['arr_original_modificado'])) {
+                    $arr_original_modificado = $_POST['arr_original_modificado'];
                 } else {
                     http_response_code(409); //error 
                     $resultado = new stdClass();
@@ -66,8 +78,8 @@ switch ($method) {
                 }
 
                 //validamos los datos del array
-                for ($i = 0; $i < count($data); $i++) {
-                    if (!validar_int($data[$i]['producto_id'])) {
+                for ($i = 0; $i < count($arr_original); $i++) {
+                    if (!validar_int($arr_original[$i]['producto_id'])) {
                         http_response_code(409); //error 
                         $resultado = new stdClass();
                         $resultado->result = FALSE;
@@ -78,7 +90,30 @@ switch ($method) {
                         return;
                     }
 
-                    if (!validar_int($data[$i]['cantidad'])) {
+                    if (!validar_int($arr_original[$i]['cantidad'])) {
+                        http_response_code(409); //error 
+                        $resultado = new stdClass();
+                        $resultado->result = FALSE;
+                        $resultado->icono = "error";
+                        $resultado->titulo = "Error!";
+                        $resultado->mensaje = 'Cantida No Valida';
+                        echo json_encode($resultado);
+                        return;
+                    }
+                }
+                for ($i = 0; $i < count($arr_original_modificado); $i++) {
+                    if (!validar_int($arr_original_modificado[$i]['producto_id'])) {
+                        http_response_code(409); //error 
+                        $resultado = new stdClass();
+                        $resultado->result = FALSE;
+                        $resultado->icono = "error";
+                        $resultado->titulo = "Error!";
+                        $resultado->mensaje = 'Id No Valido';
+                        echo json_encode($resultado);
+                        return;
+                    }
+
+                    if (!validar_int($arr_original_modificado[$i]['cantidad'])) {
                         http_response_code(409); //error 
                         $resultado = new stdClass();
                         $resultado->result = FALSE;

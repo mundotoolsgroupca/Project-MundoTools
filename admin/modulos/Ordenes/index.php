@@ -233,7 +233,7 @@
 
 
         function procesar_pedido() {
-             
+
             document.querySelectorAll('[data-modal-input]');
 
             let data = [];
@@ -281,7 +281,8 @@
 
                 },
                 data: {
-                    data: diferentes,
+                    arr_original_modificado: diferentes,
+                    arr_original: data_srv.data,
                     modal_idorden_temp: $('#modal_idorden_temp').val(),
                 },
                 success: (response) => {
