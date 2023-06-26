@@ -67,17 +67,64 @@
 
                 <!--Modal body-->
                 <div class="relative p-4">
-                    <p>
-                        This is some placeholder content to show a vertically centered
-                        modal. We've added some extra copy here to show how vertically
-                        centering the modal works when combined with scrollable modals.
-                        We also use some repeated line breaks to quickly extend the
-                        height of the content, thereby triggering the scrolling. When
-                        content becomes longer than the predefined max-height of modal,
-                        content will be cropped and scrollable within the modal.
-                    </p>
-                    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-                    <p>Just like that.</p>
+                    <div class="flex flex-col overflow-x-auto">
+                        <div class="sm:-mx-6 lg:-mx-8">
+                            <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+                                <div class="overflow-x-auto">
+                                    <table class="min-w-full text-left text-sm font-light">
+                                        <thead class="border-b font-medium dark:border-neutral-500">
+                                            <tr>
+                                                <th scope="col" class="px-6 py-4">#</th>
+                                                <th scope="col" class="px-6 py-4">Heading</th>
+                                                <th scope="col" class="px-6 py-4">Heading</th>
+                                                <th scope="col" class="px-6 py-4">Heading</th>
+                                                <th scope="col" class="px-6 py-4">Heading</th>
+                                                <th scope="col" class="px-6 py-4">Heading</th>
+                                                <th scope="col" class="px-6 py-4">Heading</th>
+                                                <th scope="col" class="px-6 py-4">Heading</th>
+                                                <th scope="col" class="px-6 py-4">Heading</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="border-b dark:border-neutral-500">
+                                                <td class="whitespace-nowrap px-6 py-4 font-medium">1</td>
+                                                <td class="whitespace-nowrap px-6 py-4">Cell</td>
+                                                <td class="whitespace-nowrap px-6 py-4">Cell</td>
+                                                <td class="whitespace-nowrap px-6 py-4">Cell</td>
+                                                <td class="whitespace-nowrap px-6 py-4">Cell</td>
+                                                <td class="whitespace-nowrap px-6 py-4">Cell</td>
+                                                <td class="whitespace-nowrap px-6 py-4">Cell</td>
+                                                <td class="whitespace-nowrap px-6 py-4">Cell</td>
+                                                <td class="whitespace-nowrap px-6 py-4">Cell</td>
+                                            </tr>
+                                            <tr class="border-b dark:border-neutral-500">
+                                                <td class="whitespace-nowrap px-6 py-4 font-medium ">2</td>
+                                                <td class="whitespace-nowrap px-6 py-4">Cell</td>
+                                                <td class="whitespace-nowrap px-6 py-4">Cell</td>
+                                                <td class="whitespace-nowrap px-6 py-4">Cell</td>
+                                                <td class="whitespace-nowrap px-6 py-4">Cell</td>
+                                                <td class="whitespace-nowrap px-6 py-4">Cell</td>
+                                                <td class="whitespace-nowrap px-6 py-4">Cell</td>
+                                                <td class="whitespace-nowrap px-6 py-4 ">Cell</td>
+                                                <td class="whitespace-nowrap px-6 py-4 ">Cell</td>
+                                            </tr>
+                                            <tr class="border-b ">
+                                                <td class="whitespace-nowrap px-6 py-4 font-medium ">3</td>
+                                                <td class="whitespace-nowrap px-6 py-4">Cell</td>
+                                                <td class="whitespace-nowrap px-6 py-4">Cell</td>
+                                                <td class="whitespace-nowrap px-6 py-4">Cell</td>
+                                                <td class="whitespace-nowrap px-6 py-4">Cell</td>
+                                                <td class="whitespace-nowrap px-6 py-4">Cell</td>
+                                                <td class="whitespace-nowrap px-6 py-4">Cell</td>
+                                                <td class="whitespace-nowrap px-6 py-4">Cell</td>
+                                                <td class="whitespace-nowrap px-6 py-4">Cell</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!--Modal footer-->
