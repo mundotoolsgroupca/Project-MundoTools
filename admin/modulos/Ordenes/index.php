@@ -68,7 +68,9 @@
                 <!--Modal body-->
                 <div class="relative p-4">
                     <div>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui libero quasi autem culpa corporis, unde ipsum. At consectetur, error voluptatibus ex reprehenderit molestiae quam commodi minus ipsa, nesciunt deserunt enim.
+                        <table>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam quis quisquam nam adipisci? Iusto, tempore qui dolor quo alias officiis, architecto est autem et culpa perferendis sed at explicabo provident.
+                        </table>
                     </div>
 
                 </div>
