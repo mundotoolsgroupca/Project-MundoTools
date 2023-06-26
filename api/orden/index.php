@@ -418,7 +418,7 @@ function obtenerid($formDataArray, $carritostorage) //se inserta el registro en 
     $newid = "";
     if ($resultado) {
         $data = mysqli_fetch_assoc($resultado);
-        $newid = isset($data['data']) ? $data['data'] : "";
+        $newid = isset($data['DATA']) ? $data['DATA'] : "";
         $status = $data['status'];
         $msg = isset($data['msg']) ? $data['msg'] : "";
 
