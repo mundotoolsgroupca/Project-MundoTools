@@ -280,7 +280,9 @@
             </div>`);
 
                 },
-                data: diferentes,
+                data: {
+                    diferentes
+                },
                 success: (response) => {
                     $('#ordenesLoader').html(` `);
                     if (response.result) {
