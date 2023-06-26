@@ -46,7 +46,7 @@ switch ($method) {
 
 
                 for ($i = 0; $i < count($data); $i++) {
-                    if (!validar_int($data[$i]['id_producto'])) {
+                    if (!validar_int($data[$i]['producto_id'])) {
                         http_response_code(409); //error 
                         $resultado = new stdClass();
                         $resultado->result = FALSE;
