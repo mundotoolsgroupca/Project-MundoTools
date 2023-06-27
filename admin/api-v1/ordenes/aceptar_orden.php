@@ -164,15 +164,6 @@ switch ($method) {
                 if ($resultado) {
 
                     adm_devolucion_parcial_det($arr_original_modificado, $arr_original, $id_orden, $conexion);
-                    $data_result = mysqli_fetch_assoc($resultado);
-                    // Log this as a warning and keep an eye on these attempts
-                    http_response_code(200); //sucess
-                    $resultado = new stdClass();
-                    $resultado->result = true;
-                    $resultado->icono = "";
-                    $resultado->titulo = "";
-                    echo json_encode($resultado);
-                    break;
                 } else {
                     // Log this as a warning and keep an eye on these attempts
                     http_response_code(409); //error 
