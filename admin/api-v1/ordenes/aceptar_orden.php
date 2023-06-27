@@ -55,13 +55,13 @@ switch ($method) {
                         $cantidad = $arr_original_modificado[$i]['cantidad'];
 
                         $consulta = "
-                        SELECT
-                            stock.idProducto, 
-                            stock.cantidad
-                        FROM
-                            stock
-                        where
-                            IdProducto ='$producto_id' ";
+                            SELECT
+                                stock.idProducto, 
+                                stock.cantidad
+                            FROM
+                                stock
+                            where
+                                IdProducto ='$producto_id' ";
 
 
                         //consulta para obtener los resultados segun la pagina 
