@@ -48,57 +48,6 @@ switch ($method) {
 
                 if (isset($_POST['arr_original_modificado'])) {
                     $arr_original_modificado = $_POST['arr_original_modificado'];
-
-
-                    for ($i = 0; $i < count($arr_original_modificado); $i++) { //validamos el stock en cada producto para validar que este disponible 
-                        $producto_id = $arr_original_modificado[$i]['producto_id'];
-                        $cantidad = $arr_original_modificado[$i]['cantidad'];
-
-                        $consulta = "
-                            SELECT
-                                stock.idProducto, 
-                                stock.cantidad
-                            FROM
-                                stock
-                            where
-                                IdProducto ='$producto_id' ";
-
-
-                        //consulta para obtener los resultados segun la pagina 
-                        $resultado = mysqli_query($conexion, $consulta);
-                        $newid = "";
-                        if ($resultado) {
-                            $data = mysqli_fetch_assoc($resultado);
-
-
-                            // Check if there is enough stock for the requested quantity
-                            if ($cantidad <= $data['cantidad']) {
-
-
-
-                                echo $cantidad <= $data['cantidad'];
-                                return;
-
-                                http_response_code(409); //codigo de conflicto
-                                $resultado = new stdClass();
-                                $resultado->result = FALSE;
-                                $resultado->icono = "error";
-                                $resultado->titulo = "Error!";
-                                $resultado->mensaje = 'Un Producto  No Posee Suficiente Stock';
-                                echo json_encode($resultado);
-                                return  $resultado;
-                            }
-                        } else {
-                            http_response_code(409); //codigo de conflicto
-                            $resultado = new stdClass();
-                            $resultado->result = FALSE;
-                            $resultado->icono = "error";
-                            $resultado->titulo = "Error!";
-                            $resultado->mensaje = 'Error Interno';
-                            echo json_encode($resultado);
-                            return  $resultado;
-                        }
-                    }
                 } else {
                     $consulta = "CALL adm_procesar_orden('$id_orden','$id_admin')";
                     $resultado = mysqli_query($conexion, $consulta);
@@ -126,6 +75,51 @@ switch ($method) {
                         break;
                     }
                     return;
+                }
+
+
+                for ($i = 0; $i < count($arr_original_modificado); $i++) { //validamos el stock en cada producto para validar que este disponible 
+                    $producto_id = $arr_original_modificado[$i]['producto_id'];
+                    $cantidad = $arr_original_modificado[$i]['cantidad'];
+
+                    $consulta = "
+                        SELECT
+                            stock.idProducto, 
+                            stock.cantidad
+                        FROM
+                            stock
+                        where
+                            IdProducto ='$producto_id' ";
+
+
+                    //consulta para obtener los resultados segun la pagina 
+                    $resultado = mysqli_query($conexion, $consulta);
+                    $newid = "";
+                    if ($resultado) {
+                        $data = mysqli_fetch_assoc($resultado);
+
+
+                        // Check if there is enough stock for the requested quantity
+                        if ($cantidad <= $data['cantidad']) {
+                            http_response_code(409); //codigo de conflicto
+                            $resultado = new stdClass();
+                            $resultado->result = FALSE;
+                            $resultado->icono = "error";
+                            $resultado->titulo = "Error!";
+                            $resultado->mensaje = 'Un Producto  No Posee Suficiente Stock';
+                            echo json_encode($resultado);
+                            return  $resultado;
+                        }
+                    } else {
+                        http_response_code(409); //codigo de conflicto
+                        $resultado = new stdClass();
+                        $resultado->result = FALSE;
+                        $resultado->icono = "error";
+                        $resultado->titulo = "Error!";
+                        $resultado->mensaje = 'Error Interno';
+                        echo json_encode($resultado);
+                        return  $resultado;
+                    }
                 }
 
                 /******************************************************************************* */
