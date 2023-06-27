@@ -162,7 +162,9 @@ switch ($method) {
                 $resultado = mysqli_query($conexion, $consulta);
 
                 if ($resultado) {
-
+                    while (mysqli_more_results($conexion)) { // Clean up all old results and prepare to display the new ones
+                        mysqli_next_result($conexion);
+                    }
                     adm_devolucion_parcial_det($arr_original_modificado, $arr_original, $id_orden, $conexion);
                 } else {
                     // Log this as a warning and keep an eye on these attempts
