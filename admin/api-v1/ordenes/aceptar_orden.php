@@ -255,61 +255,48 @@ switch ($method) {
 
 function adm_devolucion_parcial_det($arr_original_modificado, $arr_original, $id_orden, $conexion)
 {
+    include_once '../../php/FuncionesGenerales.php';
 
     while (mysqli_more_results($conexion)) { // Clean up all old results and prepare to display the new ones
         mysqli_next_result($conexion);
     }
-    include_once '../../php/FuncionesGenerales.php';
 
+ 
 
-    $length = count($arr_original_modificado);
-    for ($j = 0; $j < $length; $j++) {
+    for ($j = 0; $j < count($arr_original_modificado); $j++) {
         $producto_id = $arr_original_modificado[$j]['producto_id'];
         $cantidad = $arr_original_modificado[$j]['cantidad'];
         $arr_filter = buscarPorId($arr_original, $producto_id);
 
-        if ($arr_filter) {
+        if ($arr_filter != null) {
             $cantidad_inicial = $arr_filter['cantidad'];
-            $cantidad_final = $cantidad_inicial - $cantidad;
+            $cantidad_final = $arr_filter['cantidad'] - $cantidad;
             if ($cantidad_final < 0) {
                 $cantidad_final = 0;
             }
+            $consulta = "CALL adm_devolucion_parcial_det('$id_orden','$producto_id','$cantidad_inicial','$cantidad_final');";
+            $consulta_resultado = mysqli_query($conexion, $consulta);
+
+
+
+            http_response_code(200); //success
+            $resultado = new stdClass();
+            $resultado->result = true;
+            $resultado->icono = "";
+            $resultado->titulo = "";
+            $resultado->mensaje = 'Realizado';
+            echo json_encode($resultado);
+            break;
         } else {
             // Log this as a warning and keep an eye on these attempts
             http_response_code(409); //error 
             $resultado = new stdClass();
-            if ($arr_filter) {
-                $cantidad_inicial = $arr_filter['cantidad'];
-                $cantidad_final = $cantidad_inicial - $cantidad;
-                if ($cantidad_final < 0) {
-                    $cantidad_final = 0;
-                }
-                $consulta .= "CALL adm_devolucion_parcial_det('$id_orden','$producto_id','$cantidad_inicial','$cantidad_final');";
-            } else {
-                // Log this as a warning and keep an eye on these attempts
-                http_response_code(409); //error 
-                $resultado->result = FALSE;
-                $resultado->icono = "error";
-                $resultado->titulo = "Error!";
-                $resultado->mensaje = 'Error Interno';
-            }
-
-            $consulta_resultado = mysqli_multi_query($conexion, $consulta);
-
-            if ($consulta_resultado) {
-                http_response_code(200); //success
-                $resultado->result = true;
-                $resultado->icono = "";
-                $resultado->titulo = "";
-                $resultado->mensaje = 'Realizado';
-            } else {
-                http_response_code(409); //error
-                $resultado->result = FALSE;
-                $resultado->icono = "error";
-                $resultado->titulo = "Error!";
-                $resultado->mensaje = 'Error Interno';
-            }
+            $resultado->result = FALSE;
+            $resultado->icono = "error";
+            $resultado->titulo = "Error!";
+            $resultado->mensaje = 'Error Interno';
             echo json_encode($resultado);
+            break;
         }
     }
 }
