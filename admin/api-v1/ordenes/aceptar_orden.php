@@ -132,10 +132,6 @@ switch ($method) {
                 $resultado = mysqli_query($conexion, $consulta);
 
                 if ($resultado) {
-                    mysqli_free_result($resultado);
-                    $row = mysqli_fetch_assoc($resultado);
-
-                    mysqli_free_result($resultado);
 
                     for ($i = 0; $i < count($arr_original_modificado); $i++) {
                         $producto_id = $arr_original_modificado[$i]['producto_id'];
@@ -168,7 +164,7 @@ switch ($method) {
                     }
 
 
-
+                    mysqli_free_result($resultado);
 
                     http_response_code(200); //Success 
                     $resultado = new stdClass();
