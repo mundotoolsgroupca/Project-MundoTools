@@ -57,10 +57,15 @@ switch ($method) {
                         $consulta = "
                         SELECT
                             stock.idProducto, 
-                            stock.cantidad
+                            stock.cantidad, 
+                            productos_agrupados.nombre
                         FROM
                             stock
-                        where
+                            INNER JOIN
+                            productos_agrupados
+                            ON 
+                                stock.idProducto = productos_agrupados.id_grupo
+                        WHERE
                             IdProducto ='$producto_id' ";
 
 
@@ -79,7 +84,7 @@ switch ($method) {
                                 $resultado->result = FALSE;
                                 $resultado->icono = "error";
                                 $resultado->titulo = "Error!";
-                                $resultado->mensaje = 'El Producto ' . $nombre . ' No Posee Suficiente Stock';
+                                $resultado->mensaje = 'El Producto ' . $data['nombre'] . ' No Posee Suficiente Stock';
                                 echo json_encode($resultado);
                                 return  $resultado;
                             }
