@@ -72,7 +72,7 @@ switch ($method) {
 
 
                             echo "Cantidad consulta: " . $data['cantidad'];
-                            echo "Cantidad array: " . $data['cantidad'];
+                            echo "Cantidad array: " . $cantidad;
 
                             // Check if there is enough stock for the requested quantity
                             if ($data['cantidad'] <= $cantidad) {
