@@ -198,7 +198,13 @@
                             "bSortable": false,
                             "mRender": function(data, type, value) {
 
-                                return `<input data-modal-input id='${data.producto_id}' class="border border-black px-3 rounded-lg" value='${data.cantidad}' onkeypress='return validarNumero(event)'>`;
+                                if (data.status == 1) {
+                                    return `<input data-modal-input id='${data.producto_id}' class="border border-black px-3 rounded-lg" value='${data.cantidad}' onkeypress='return validarNumero(event)'>`;
+                                } else {
+                                    return `${data.producto_id}`;
+                                }
+
+
 
                             }
                         },
