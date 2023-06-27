@@ -11,6 +11,52 @@ switch ($method) {
         session_name("ecomercer_admin_data");
         session_start();
         $http = getallheaders();
+
+        function adm_devolucion_parcial_det($arr_original_modificado, $arr_original, $id_orden)
+        {
+
+            include_once '../../php/FuncionesGenerales.php';
+            include_once '../../php/conexion.php';
+
+            for ($i = 0; $i < count($arr_original_modificado); $i++) {
+                $producto_id = $arr_original_modificado[$i]['producto_id'];
+                $cantidad = $arr_original_modificado[$i]['cantidad'];
+                $arr_filter = buscarPorId($arr_original, $producto_id);
+
+
+
+                if ($arr_filter != null) {
+
+                    $cantidad_inicial = $arr_filter['cantidad'];
+                    $cantidad_final = $arr_filter['cantidad'] - $cantidad;
+                    if ($cantidad_final < 0) {
+                        $cantidad_final = 0;
+                    }
+                    $consulta = "CALL adm_devolucion_parcial_det('$id_orden','$producto_id','$cantidad_inicial','$cantidad_final')";
+
+                    $resultado = mysqli_query($conexion, $consulta);
+
+                    http_response_code(200); //sucess
+                    $resultado = new stdClass();
+                    $resultado->result = true;
+                    $resultado->icono = "";
+                    $resultado->titulo = "";
+                    $resultado->mensaje = 'Realizado';
+                    echo json_encode($resultado);
+                    break;
+                } else {
+                    // Log this as a warning and keep an eye on these attempts
+                    http_response_code(409); //error 
+                    $resultado = new stdClass();
+                    $resultado->result = FALSE;
+                    $resultado->icono = "error";
+                    $resultado->titulo = "Error!";
+                    $resultado->mensaje = 'Error Interno';
+                    echo json_encode($resultado);
+                    break;
+                }
+            }
+        }
         if (!empty($http['X-Csrf-Token'])) {
 
             if (!isset($_SESSION['Usuario'])) {
@@ -168,51 +214,7 @@ switch ($method) {
         }
 
 
-        function adm_devolucion_parcial_det($arr_original_modificado, $arr_original, $id_orden)
-        {
 
-            include_once '../../php/FuncionesGenerales.php';
-            include_once '../../php/conexion.php';
-
-            for ($i = 0; $i < count($arr_original_modificado); $i++) {
-                $producto_id = $arr_original_modificado[$i]['producto_id'];
-                $cantidad = $arr_original_modificado[$i]['cantidad'];
-                $arr_filter = buscarPorId($arr_original, $producto_id);
-
-
-
-                if ($arr_filter != null) {
-
-                    $cantidad_inicial = $arr_filter['cantidad'];
-                    $cantidad_final = $arr_filter['cantidad'] - $cantidad;
-                    if ($cantidad_final < 0) {
-                        $cantidad_final = 0;
-                    }
-                    $consulta = "CALL adm_devolucion_parcial_det('$id_orden','$producto_id','$cantidad_inicial','$cantidad_final')";
-
-                    $resultado = mysqli_query($conexion, $consulta);
-
-                    http_response_code(200); //sucess
-                    $resultado = new stdClass();
-                    $resultado->result = true;
-                    $resultado->icono = "";
-                    $resultado->titulo = "";
-                    $resultado->mensaje = 'Realizado';
-                    echo json_encode($resultado);
-                    break;
-                } else {
-                    // Log this as a warning and keep an eye on these attempts
-                    http_response_code(409); //error 
-                    $resultado = new stdClass();
-                    $resultado->result = FALSE;
-                    $resultado->icono = "error";
-                    $resultado->titulo = "Error!";
-                    $resultado->mensaje = 'Error Interno';
-                    echo json_encode($resultado);
-                    break;
-                }
-            }
-        }
 
 
         break;
