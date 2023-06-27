@@ -273,17 +273,8 @@ function adm_devolucion_parcial_det($arr_original_modificado, $arr_original, $id
         $arr_filter = buscarPorId($arr_original, $producto_id);
 
         if ($arr_filter != null) {
-            $cantidad_inicial = $arr_filter['cantidad'];
-            $cantidad_final = $arr_filter['cantidad'] - $cantidad;
-            if ($cantidad_final < 0) {
-                $cantidad_final = 0;
-            }
 
-            echo "arr_original_filtrado" . json_encode($arr_filter) . "\n";
-            echo "arr_modificaado" . json_encode($arr_original_modificado) . "\n";
-
-            return;
-            $consulta = "CALL adm_devolucion_parcial_det('$id_orden','$producto_id','$cantidad_inicial','$cantidad_final');";
+            $consulta = "CALL adm_devolucion_parcial_det('$id_orden','$producto_id','$cantidad');";
             $resultado = mysqli_query($conexion, $consulta);
 
             if (!$resultado) {
