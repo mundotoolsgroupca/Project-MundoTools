@@ -70,9 +70,6 @@ switch ($method) {
                         if ($resultado) {
                             $data = mysqli_fetch_assoc($resultado);
 
-                            echo json_encode($data);
-                            return;
-
                             // Check if there is enough stock for the requested quantity
                             if ($data['cantidad'] <= $cantidad) {
                                 http_response_code(409); //codigo de conflicto
@@ -80,7 +77,7 @@ switch ($method) {
                                 $resultado->result = FALSE;
                                 $resultado->icono = "error";
                                 $resultado->titulo = "Error!";
-                                $resultado->mensaje = 'El Producto ' . $nombre . ' No Posee Suficiente Stock';
+                                $resultado->mensaje = 'Un Producto  No Posee Suficiente Stock';
                                 echo json_encode($resultado);
                                 return  $resultado;
                             }
