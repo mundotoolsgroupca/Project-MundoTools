@@ -261,7 +261,7 @@ function adm_devolucion_parcial_det($arr_original_modificado, $arr_original, $id
         mysqli_next_result($conexion);
     }
 
- 
+
 
     for ($j = 0; $j < count($arr_original_modificado); $j++) {
         $producto_id = $arr_original_modificado[$j]['producto_id'];
@@ -276,20 +276,9 @@ function adm_devolucion_parcial_det($arr_original_modificado, $arr_original, $id
             }
             $consulta = "CALL adm_devolucion_parcial_det('$id_orden','$producto_id','$cantidad_inicial','$cantidad_final');";
             $consulta_resultado = mysqli_query($conexion, $consulta);
-
-
-
-            http_response_code(200); //success
-            $resultado = new stdClass();
-            $resultado->result = true;
-            $resultado->icono = "";
-            $resultado->titulo = "";
-            $resultado->mensaje = 'Realizado';
-            echo json_encode($resultado);
-            break;
         } else {
             // Log this as a warning and keep an eye on these attempts
-            http_response_code(409); //error 
+            //http_response_code(409); //error 
             $resultado = new stdClass();
             $resultado->result = FALSE;
             $resultado->icono = "error";
@@ -299,4 +288,13 @@ function adm_devolucion_parcial_det($arr_original_modificado, $arr_original, $id
             break;
         }
     }
+
+    //http_response_code(200); //success
+    $resultado = new stdClass();
+    $resultado->result = true;
+    $resultado->icono = "";
+    $resultado->titulo = "";
+    $resultado->mensaje = 'Realizado';
+    echo json_encode($resultado);
+    break;
 }
