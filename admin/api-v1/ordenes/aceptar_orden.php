@@ -175,10 +175,10 @@ switch ($method) {
 function adm_devolucion_parcial_det($arr_original_modificado, $arr_original, $id_orden)
 {
 
-    include_once '../../php/FuncionesGenerales.php';
-    include_once '../../php/conexion.php';
+    include_once './admin/php/FuncionesGenerales.php';
+    include_once './admin/php/conexion.php';
 
-    
+
     for ($i = 0; $i < count($arr_original_modificado); $i++) {
         $producto_id = $arr_original_modificado[$i]['producto_id'];
         $cantidad = $arr_original_modificado[$i]['cantidad'];
