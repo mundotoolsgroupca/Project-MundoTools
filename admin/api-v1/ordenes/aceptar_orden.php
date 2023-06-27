@@ -162,10 +162,17 @@ switch ($method) {
                 $resultado = mysqli_query($conexion, $consulta);
 
                 if ($resultado) {
-                    while (mysqli_more_results($conexion)) { // Clean up all old results and prepare to display the new ones
-                        mysqli_next_result($conexion);
-                    }
+
                     adm_devolucion_parcial_det($arr_original_modificado, $arr_original, $id_orden, $conexion);
+                    $data_result = mysqli_fetch_assoc($resultado);
+                    // Log this as a warning and keep an eye on these attempts
+                    http_response_code(200); //sucess
+                    $resultado = new stdClass();
+                    $resultado->result = true;
+                    $resultado->icono = "";
+                    $resultado->titulo = "";
+                    echo json_encode($resultado);
+                    break;
                 } else {
                     // Log this as a warning and keep an eye on these attempts
                     http_response_code(409); //error 
@@ -211,6 +218,9 @@ switch ($method) {
 function adm_devolucion_parcial_det($arr_original_modificado, $arr_original, $id_orden, $conexion)
 {
 
+    while (mysqli_more_results($conexion)) { // Clean up all old results and prepare to display the new ones
+        mysqli_next_result($conexion);
+    }
     include_once '../../php/FuncionesGenerales.php';
 
     for ($i = 0; $i < count($arr_original_modificado); $i++) {
@@ -227,9 +237,7 @@ function adm_devolucion_parcial_det($arr_original_modificado, $arr_original, $id
             $consulta = "CALL adm_devolucion_parcial_det('$id_orden','$producto_id','$cantidad_inicial','$cantidad_final');";
             $consulta_resultado = mysqli_multi_query($conexion, $consulta);
 
-            while (mysqli_more_results($conexion)) { // Clean up all old results and prepare to display the new ones
-                mysqli_next_result($conexion);
-            }
+
 
             http_response_code(200); //success
             $resultado = new stdClass();
