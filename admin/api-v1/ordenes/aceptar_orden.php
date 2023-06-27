@@ -165,7 +165,7 @@ switch ($method) {
                             break;
                         }
                     }
-
+                    mysqli_free_result($resultado);
 
 
 
