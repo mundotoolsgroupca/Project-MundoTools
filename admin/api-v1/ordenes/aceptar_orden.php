@@ -54,39 +54,33 @@ switch ($method) {
                         $producto_id = $arr_original_modificado[$i]['producto_id'];
                         $cantidad = $arr_original_modificado[$i]['cantidad'];
 
-                        $consulta2 = "
+                        $consulta = "
                         SELECT
                             stock.idProducto, 
-                            stock.cantidad, 
-                            productos_agrupados.nombre
+                            stock.cantidad
                         FROM
                             stock
-                            INNER JOIN
-                            productos_agrupados
-                            ON 
-                                stock.idProducto = productos_agrupados.id_grupo
-                        WHERE
+                        where
                             IdProducto ='$producto_id' ";
 
 
                         //consulta para obtener los resultados segun la pagina 
-                        $resultado2 = mysqli_query($conexion, $consulta2);
+                        $resultado = mysqli_query($conexion, $consulta);
                         $newid = "";
-                        if ($resultado2) {
-                            $data2 = mysqli_fetch_assoc($resultado2);
+                        if ($resultado) {
+                            $data = mysqli_fetch_assoc($resultado);
 
-                            echo json_encode($data2);
-
+                            echo json_encode($data);
                             return;
 
                             // Check if there is enough stock for the requested quantity
-                            if ($data2['cantidad'] <= $cantidad) {
+                            if ($data['cantidad'] <= $cantidad) {
                                 http_response_code(409); //codigo de conflicto
                                 $resultado = new stdClass();
                                 $resultado->result = FALSE;
                                 $resultado->icono = "error";
                                 $resultado->titulo = "Error!";
-                                $resultado->mensaje = 'El Producto ' . $data2['nombre'] . ' No Posee Suficiente Stock';
+                                $resultado->mensaje = 'El Producto ' . $nombre . ' No Posee Suficiente Stock';
                                 echo json_encode($resultado);
                                 return  $resultado;
                             }
