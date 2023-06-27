@@ -546,8 +546,10 @@
 
                                         if (data.status == 0) {
                                             return `<span class="inline-block whitespace-nowrap rounded-[0.27rem] bg-danger-100 px-[0.65em] pb-[0.25em] pt-[0.35em] text-center align-baseline text-sm font-bold leading-none text-danger-700">Cancelado</span>`;
-                                        } else {
+                                        } else if(data.status == 1) {
                                             return `<span class="inline-block whitespace-nowrap rounded-[0.27rem] bg-success-100 px-[0.65em] pb-[0.25em] pt-[0.35em] text-center align-baseline text-sm font-bold leading-none text-success-700">Activo</span>`;
+                                        } else if(data.status == 2) {
+                                            return `<span class="inline-block whitespace-nowrap rounded-[0.27rem] bg-success-200 px-[0.65em] pb-[0.25em] pt-[0.35em] text-center align-baseline text-sm font-bold leading-none text-success-700">Procesado</span>`;
                                         }
 
                                     }
