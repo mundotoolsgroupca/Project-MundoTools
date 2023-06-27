@@ -28,6 +28,39 @@ switch ($method) {
 
             if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'])) {
 
+                /************************************* Si el Array no con tiene modificacion, se procesa de una *************************************/
+                $id_admin = $_SESSION['Usuario']['id'];
+                if (count($arr_original_modificado) == 0) {
+
+
+                    $consulta = "CALL adm_procesar_orden('$id_orden','$id_admin')";
+                    $resultado = mysqli_query($conexion, $consulta);
+
+                    if ($resultado) {
+                        $data_result = mysqli_fetch_assoc($resultado);
+                        // Log this as a warning and keep an eye on these attempts
+                        http_response_code(200); //sucess
+                        $resultado = new stdClass();
+                        $resultado->result = true;
+                        $resultado->icono = "";
+                        $resultado->titulo = "";
+                        $resultado->mensaje = $data_result['msg'];
+                        echo json_encode($resultado);
+                        break;
+                    } else {
+                        // Log this as a warning and keep an eye on these attempts
+                        http_response_code(409); //error 
+                        $resultado = new stdClass();
+                        $resultado->result = FALSE;
+                        $resultado->icono = "error";
+                        $resultado->titulo = "Error!";
+                        $resultado->mensaje = 'Error Interno';
+                        echo json_encode($resultado);
+                        break;
+                    }
+                    return;
+                }
+                /******************************************************************************* */
 
 
                 if (isset($_POST['arr_original'])) {
@@ -128,7 +161,8 @@ switch ($method) {
                 }
 
 
-                $id_admin = $_SESSION['Usuario']['id'];
+
+
                 $consulta = "CALL adm_devolucion_parcial('$id_admin','$id_orden')";
 
                 $resultado = mysqli_query($conexion, $consulta);
