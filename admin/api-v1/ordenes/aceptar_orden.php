@@ -261,6 +261,10 @@ function adm_devolucion_parcial_det($arr_original_modificado, $arr_original, $id
     }
     include_once '../../php/FuncionesGenerales.php';
 
+
+    echo json_encode($arr_original_modificado);
+    return;
+
     for ($i = 0; $i < count($arr_original_modificado); $i++) {
         $producto_id = $arr_original_modificado[$i]['producto_id'];
         $cantidad = $arr_original_modificado[$i]['cantidad'];
