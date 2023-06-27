@@ -70,6 +70,10 @@ switch ($method) {
                         if ($resultado) {
                             $data = mysqli_fetch_assoc($resultado);
 
+
+                            echo "Cantidad consulta: " . $data['cantidad'];
+                            echo "Cantidad array: " . $data['cantidad'];
+
                             // Check if there is enough stock for the requested quantity
                             if ($data['cantidad'] <= $cantidad) {
                                 http_response_code(409); //codigo de conflicto
