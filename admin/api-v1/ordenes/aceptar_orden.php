@@ -275,10 +275,21 @@ function adm_devolucion_parcial_det($arr_original_modificado, $arr_original, $id
                 $cantidad_final = 0;
             }
             $consulta = "CALL adm_devolucion_parcial_det('$id_orden','$producto_id','$cantidad_inicial','$cantidad_final');";
-            $consulta_resultado = mysqli_query($conexion, $consulta);
+            $resultado = mysqli_query($conexion, $consulta);
+
+            if (!$resultado) {
+                http_response_code(409); //error 
+                $resultado = new stdClass();
+                $resultado->result = FALSE;
+                $resultado->icono = "error";
+                $resultado->titulo = "Error!";
+                $resultado->mensaje = 'Error Interno';
+                echo json_encode($resultado);
+                break;
+            }
         } else {
             // Log this as a warning and keep an eye on these attempts
-            //http_response_code(409); //error 
+            http_response_code(409); //error 
             $resultado = new stdClass();
             $resultado->result = FALSE;
             $resultado->icono = "error";
