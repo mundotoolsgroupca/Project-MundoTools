@@ -307,5 +307,5 @@ function adm_devolucion_parcial_det($arr_original_modificado, $arr_original, $id
     $resultado->titulo = "";
     $resultado->mensaje = 'Realizado';
     echo json_encode($resultado);
-    break;
+    return;
 }
