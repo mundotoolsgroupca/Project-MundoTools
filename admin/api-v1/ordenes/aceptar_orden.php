@@ -175,8 +175,7 @@ switch ($method) {
 function adm_devolucion_parcial_det($arr_original_modificado, $arr_original, $id_orden)
 {
 
-    include '../../php/FuncionesGenerales.php';
-    include '../../php/conexion.php';
+
 
     for ($i = 0; $i < count($arr_original_modificado); $i++) {
         $producto_id = $arr_original_modificado[$i]['producto_id'];
