@@ -72,10 +72,8 @@ switch ($method) {
 
                            
                             // Check if there is enough stock for the requested quantity
-                            if ($data['cantidad'] <= $cantidad) {
-                                echo "Cantidad arr_modificado:" . $cantidad;
-                                echo "<br>Cantidad cosulta:" . $data['cantidad'];
-                                return;
+                            if ( $data['cantidad'] >= $cantidad ) {
+                               
                                 http_response_code(409); //codigo de conflicto
                                 $resultado = new stdClass();
                                 $resultado->result = FALSE;
