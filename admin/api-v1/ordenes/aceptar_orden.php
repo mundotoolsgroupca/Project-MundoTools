@@ -51,7 +51,7 @@ switch ($method) {
 
 
                     for ($i = 0; $i < count($arr_original_modificado); $i++) { //validamos el stock en cada producto para validar que este disponible 
-                        $id_producto = $arr_original_modificado[$i]['id_producto'];
+                        $producto_id = $arr_original_modificado[$i]['producto_id'];
                         $cantidad = $arr_original_modificado[$i]['cantidad'];
 
                         $consulta = "
@@ -61,7 +61,7 @@ switch ($method) {
                         FROM
                             stock
                         where
-                            IdProducto ='$id_producto' ";
+                            IdProducto ='$producto_id' ";
 
 
                         //consulta para obtener los resultados segun la pagina 
