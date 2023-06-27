@@ -198,13 +198,7 @@
                             "bSortable": false,
                             "mRender": function(data, type, value) {
 
-                                if (data.status == 1) {
-                                    return `<input data-modal-input id='${data.producto_id}' class="border border-black px-3 rounded-lg" value='${data.cantidad}' onkeypress='return validarNumero(event)'>`;
-                                } else {
-                                    return `${data.producto_id}`;
-                                }
-
-
+                                return `<input data-modal-input id='${data.producto_id}' class="border border-black px-3 rounded-lg" value='${data.cantidad}' onkeypress='return validarNumero(event)'>`;
 
                             }
                         },
@@ -526,7 +520,13 @@
                                     "bSortable": false,
                                     "mRender": function(data, type, value) {
 
-                                        return `<a href='javascript:pedido_det(${data.id})' class='text-blue-500 cursor-pointer' >${data.id}</a>`;
+                                        if (data.status == 1) {
+                                            return `<a href='javascript:pedido_det(${data.id})' class='text-blue-500 cursor-pointer' >${data.id}</a>`;
+                                        } else {
+                                            return `${data.id}`;
+                                        }
+
+
 
                                     }
                                 }, {
