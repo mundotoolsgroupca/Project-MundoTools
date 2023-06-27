@@ -68,7 +68,8 @@ switch ($method) {
                         WHERE
                             IdProducto ='$producto_id' ";
 
-
+                        echo $consulta;
+                        return;
                         //consulta para obtener los resultados segun la pagina 
                         $resultado = mysqli_query($conexion, $consulta);
                         $newid = "";
@@ -76,8 +77,7 @@ switch ($method) {
                             $data = mysqli_fetch_assoc($resultado);
 
 
-                            echo json_encode($data);
-                            return;
+
                             // Check if there is enough stock for the requested quantity
                             if ($data['cantidad'] <= $cantidad) {
                                 http_response_code(409); //codigo de conflicto
