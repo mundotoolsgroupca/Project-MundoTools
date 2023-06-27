@@ -1,4 +1,8 @@
 <?php
+include_once '../../php/FuncionesGenerales.php';
+include_once '../../php/conexion.php';
+session_name("ecomercer_admin_data");
+session_start();
 
 header('Content-Type: application/json');
 $method = $_SERVER['REQUEST_METHOD'];
@@ -6,10 +10,7 @@ switch ($method) {
     case 'GET':
         break;
     case 'POST':
-        include_once '../../php/FuncionesGenerales.php';
-        include_once '../../php/conexion.php';
-        session_name("ecomercer_admin_data");
-        session_start();
+
         $http = getallheaders();
 
 
@@ -208,8 +209,7 @@ switch ($method) {
 function adm_devolucion_parcial_det($arr_original_modificado, $arr_original, $id_orden)
 {
 
-    include_once '../../php/FuncionesGenerales.php';
-    include_once '../../php/conexion.php';
+
 
     for ($i = 0; $i < count($arr_original_modificado); $i++) {
         $producto_id = $arr_original_modificado[$i]['producto_id'];
