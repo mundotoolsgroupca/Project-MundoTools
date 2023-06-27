@@ -28,6 +28,19 @@ switch ($method) {
 
             if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'])) {
 
+                if (isset($_POST['modal_idorden_temp'])) {
+                    $id_orden = $_POST['modal_idorden_temp'];
+                } else {
+                    http_response_code(409); //error 
+                    $resultado = new stdClass();
+                    $resultado->result = FALSE;
+                    $resultado->icono = "error";
+                    $resultado->titulo = "Error!";
+                    $resultado->mensaje = 'Parametro No Valido';
+                    echo json_encode($resultado);
+                    break;
+                }
+
                 /************************************* Si el Array no con tiene modificacion, se procesa de una *************************************/
                 $id_admin = $_SESSION['Usuario']['id'];
 
@@ -78,18 +91,7 @@ switch ($method) {
                     break;
                 }
 
-                if (isset($_POST['modal_idorden_temp'])) {
-                    $id_orden = $_POST['modal_idorden_temp'];
-                } else {
-                    http_response_code(409); //error 
-                    $resultado = new stdClass();
-                    $resultado->result = FALSE;
-                    $resultado->icono = "error";
-                    $resultado->titulo = "Error!";
-                    $resultado->mensaje = 'Parametro No Valido';
-                    echo json_encode($resultado);
-                    break;
-                }
+
 
                 //validamos el id de la orden
                 if (!validar_int($id_orden)) {
