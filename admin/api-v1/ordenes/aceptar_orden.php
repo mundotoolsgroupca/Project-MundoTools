@@ -30,9 +30,10 @@ switch ($method) {
 
                 /************************************* Si el Array no con tiene modificacion, se procesa de una *************************************/
                 $id_admin = $_SESSION['Usuario']['id'];
-                if (count($arr_original_modificado) == 0) {
 
-
+                if (isset($_POST['arr_original_modificado'])) {
+                    $arr_original_modificado = $_POST['arr_original_modificado'];
+                } else {
                     $consulta = "CALL adm_procesar_orden('$id_orden','$id_admin')";
                     $resultado = mysqli_query($conexion, $consulta);
 
@@ -60,6 +61,7 @@ switch ($method) {
                     }
                     return;
                 }
+
                 /******************************************************************************* */
 
 
@@ -75,18 +77,7 @@ switch ($method) {
                     echo json_encode($resultado);
                     break;
                 }
-                if (isset($_POST['arr_original_modificado'])) {
-                    $arr_original_modificado = $_POST['arr_original_modificado'];
-                } else {
-                    http_response_code(409); //error 
-                    $resultado = new stdClass();
-                    $resultado->result = FALSE;
-                    $resultado->icono = "error";
-                    $resultado->titulo = "Error!";
-                    $resultado->mensaje = 'Parametro No Valido';
-                    echo json_encode($resultado);
-                    break;
-                }
+
                 if (isset($_POST['modal_idorden_temp'])) {
                     $id_orden = $_POST['modal_idorden_temp'];
                 } else {
