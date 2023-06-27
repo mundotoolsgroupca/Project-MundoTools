@@ -133,7 +133,7 @@ switch ($method) {
 
                 if ($resultado) {
 
-                    adm_devolucion_parcial_det($arr_original_modificado, $arr_original);
+                    adm_devolucion_parcial_det($arr_original_modificado, $arr_original, $id_orden, $producto_id);
                 } else {
                     // Log this as a warning and keep an eye on these attempts
                     http_response_code(409); //error 
@@ -172,7 +172,7 @@ switch ($method) {
 }
 
 
-function adm_devolucion_parcial_det($arr_original_modificado, $arr_original)
+function adm_devolucion_parcial_det($arr_original_modificado, $arr_original, $id_orden, $producto_id)
 {
 
     include_once '../../php/FuncionesGenerales.php';
