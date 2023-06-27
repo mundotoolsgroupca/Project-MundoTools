@@ -132,7 +132,6 @@ switch ($method) {
                 $resultado = mysqli_query($conexion, $consulta);
 
                 if ($resultado) {
-
                     for ($i = 0; $i < count($arr_original_modificado); $i++) {
                         $producto_id = $arr_original_modificado[$i]['producto_id'];
                         $cantidad = $arr_original_modificado[$i]['cantidad'];
@@ -147,9 +146,9 @@ switch ($method) {
                             if ($cantidad_final < 0) {
                                 $cantidad_final = 0;
                             }
-                            $consulta2 = "CALL adm_devolucion_parcial_det('$id_orden','$producto_id','$cantidad_inicial','$cantidad_final')";
+                            $consulta = "CALL adm_devolucion_parcial_det('$id_orden','$producto_id','$cantidad_inicial','$cantidad_final')";
 
-                            $resultado2 = mysqli_query($conexion, $consulta2);
+                            $resultado = mysqli_query($conexion, $consulta);
                         } else {
                             // Log this as a warning and keep an eye on these attempts
                             http_response_code(409); //error 
