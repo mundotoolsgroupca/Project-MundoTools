@@ -209,8 +209,8 @@ switch ($method) {
 function adm_devolucion_parcial_det($arr_original_modificado, $arr_original, $id_orden)
 {
 
-    include_once '../../php/FuncionesGenerales.php';
-    include_once '../../php/conexion.php';
+    include('../../php/FuncionesGenerales.php');
+    include('../../php/conexion.php');
 
     for ($i = 0; $i < count($arr_original_modificado); $i++) {
         $producto_id = $arr_original_modificado[$i]['producto_id'];
@@ -228,7 +228,7 @@ function adm_devolucion_parcial_det($arr_original_modificado, $arr_original, $id
             }
             $consulta = "CALL adm_devolucion_parcial_det('$id_orden','$producto_id','$cantidad_inicial','$cantidad_final')";
 
-            echo $consulta;
+
 
             $resultado = mysqli_query($conexion, $consulta);
 
