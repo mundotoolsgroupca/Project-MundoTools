@@ -163,7 +163,7 @@ switch ($method) {
 
                 if ($resultado) {
 
-                    adm_devolucion_parcial_det($arr_original_modificado, $arr_original, $id_orden);
+                    adm_devolucion_parcial_det($arr_original_modificado, $arr_original, $id_orden, $conexion);
                 } else {
                     // Log this as a warning and keep an eye on these attempts
                     http_response_code(409); //error 
@@ -206,11 +206,10 @@ switch ($method) {
 
 
 
-function adm_devolucion_parcial_det($arr_original_modificado, $arr_original, $id_orden)
+function adm_devolucion_parcial_det($arr_original_modificado, $arr_original, $id_orden, $conexion)
 {
 
-    include_once('../../php/FuncionesGenerales.php');
-    include_once('../../php/conexion.php');
+    include_once '../../php/FuncionesGenerales.php';
 
     for ($i = 0; $i < count($arr_original_modificado); $i++) {
         $producto_id = $arr_original_modificado[$i]['producto_id'];
