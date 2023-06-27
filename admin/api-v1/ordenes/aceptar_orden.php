@@ -77,7 +77,7 @@ switch ($method) {
                     return;
                 }
 
-
+                /*
                 for ($i = 0; $i < count($arr_original_modificado); $i++) { //validamos el stock en cada producto para validar que este disponible 
                     $producto_id = $arr_original_modificado[$i]['producto_id'];
                     $cantidad = $arr_original_modificado[$i]['cantidad'];
@@ -122,7 +122,7 @@ switch ($method) {
                         return  $resultado;
                     }
                 }
-
+*/
                 /******************************************************************************* */
 
 
