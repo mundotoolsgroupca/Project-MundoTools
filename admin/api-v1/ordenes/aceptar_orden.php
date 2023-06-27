@@ -264,6 +264,10 @@ function adm_devolucion_parcial_det($arr_original_modificado, $arr_original, $id
 
 
     for ($j = 0; $j < count($arr_original_modificado); $j++) {
+
+        while (mysqli_more_results($conexion)) { // Clean up all old results and prepare to display the new ones
+            mysqli_next_result($conexion);
+        }
         $producto_id = $arr_original_modificado[$j]['producto_id'];
         $cantidad = $arr_original_modificado[$j]['cantidad'];
         $arr_filter = buscarPorId($arr_original, $producto_id);
