@@ -366,8 +366,6 @@ session_start();
                         
                             ";
 
-                        echo $consulta2;
-                        return;
 
                         $resultado2 = mysqli_query($conexion, $consulta2);
                         $totales = [];
@@ -644,6 +642,8 @@ session_start();
                                     c1.precio $order  
                                     LIMIT $results_per_page OFFSET $offset"; //consulta para obtener los resultados segun la pagina 
                                 }
+                                echo $consulta;
+                                return;
 
 
                                 $data = []; //variable que almacenara los resultados de la consulta
