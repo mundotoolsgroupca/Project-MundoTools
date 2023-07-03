@@ -420,7 +420,8 @@ session_start();
 
 
                         echo $query;
-                        
+
+                        return;
                         $resultado2 = mysqli_query($conexion, $consulta2);
                         $totales = [];
                         while ($row2 = mysqli_fetch_assoc($resultado2)) {
