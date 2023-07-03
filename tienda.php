@@ -329,7 +329,7 @@ session_start();
                     <!-- Tailwind Elements section -->
                     <div class="[ flex items-center  justify-center ] [ md:justify-start ] [ lg:justify-start ]">
                         <a class="flex items-center [ w-24 h-10 ] [ md:w-32 md:h-32 ] [ lg:w-48 lg:h-20 ]" href="#">
-                            <img src="./assets/img/logo-white.png" alt="" srcset="" />
+                            <img src="./assets/img/logo-color.png" alt="" srcset="" />
                         </a>
                     </div>
 
