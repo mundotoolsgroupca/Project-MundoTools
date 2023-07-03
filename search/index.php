@@ -380,7 +380,7 @@ session_start();
                             
                                 ";
                         } elseif ($categoriaselected != "") {
-                            $categoria =  isset($_GET['categoria']) ?   " c4.categoria = " . htmlspecialchars($_GET['categoria'], ENT_QUOTES, 'UTF-8') : "";
+                            $categoria =  isset($_GET['categoria']) ?   " And c4.categoria = " . htmlspecialchars($_GET['categoria'], ENT_QUOTES, 'UTF-8') : "";
                             $consulta2 = "   
                                     SELECT
                                     t1.*,
@@ -402,7 +402,7 @@ session_start();
                                                   INNER JOIN stock AS c3 ON c1.id = c3.idProducto
                                                   
                                               WHERE
-                                                  $categoria
+                                                  c4.categoria = '" . htmlspecialchars($_GET['categoria'], ENT_QUOTES, 'UTF-8') . "'
                                               GROUP BY
                                                   c4.nombre 
                                               ORDER BY
