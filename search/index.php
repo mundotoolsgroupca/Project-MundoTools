@@ -585,7 +585,7 @@ session_start();
                                 }
 
                                 // contidad de Resultados por pagina
-                                $results_per_page = 5s0;
+                                $results_per_page = 50;
                                 //formula para calcular los resultados de la tabla segun la pagina en que se esta
                                 $offset = ($current_page - 1) * $results_per_page;
 
