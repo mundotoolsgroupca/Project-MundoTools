@@ -419,7 +419,7 @@ session_start();
                         }
 
 
-                        echo $consulta;
+                        echo $consulta2;
                         
                         $resultado2 = mysqli_query($conexion, $consulta2);
                         $totales = [];
