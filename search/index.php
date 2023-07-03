@@ -922,52 +922,8 @@ session_start();
                                     </div>";
 
 
-                                    //consulta pra obtener l;a data para cuando muestre el modal 
-                                    $consulta = "   
-                                        SELECT
-                                        t1.*,
-                                        t3.nombre,
-                                        t3.descripcion ,
-                                        t2.simbolo,
-                                        t2.imagen,
-                                        t2.cod_moneda
-                                    FROM
-                                        productos t1
-                                        INNER JOIN (
-                                        SELECT
-                                            c4.id_grupo,
-                                            c2.simbolo,
-                                            c4.imagen,
-                                            c1.moneda as cod_moneda
-                                        FROM
-                                            productos AS c1
-                                            INNER JOIN moneda_ref AS c2 ON c2.cod_moneda = c1.moneda
-                                            INNER JOIN stock AS c3 ON c1.id = c3.idProducto
-                                            INNER JOIN productos_agrupados c4 ON c4.id_grupo = c1.id_grupo 
-                                        WHERE
-                                            nombre LIKE '%$query%' 
-                                            OR id LIKE '%$query%' 
-                                        GROUP BY
-                                            c4.nombre 
-                                        ORDER BY
-                                            c1.precio $order  
-                                            LIMIT $results_per_page OFFSET $offset
-                                        ) t2 ON t2.id_grupo = t1.id_grupo
-                                        INNER JOIN productos_agrupados t3 ON t3.id_grupo = t1.id_grupo 
-                                    ORDER BY
-                                        t1.id ASC
+                               
                                     
-                                        ";
-                                    $resultado = mysqli_query($conexion, $consulta);
-                                    $modaldata = [];
-                                    while ($row = mysqli_fetch_assoc($resultado)) {
-                                        $precio2 = number_format($row['precio2'], 2);
-                                        $precio = number_format($row['precio'], 2);
-                                        $row['precio'] = $precio;
-                                        $row['precio2'] = $precio2;
-                                        $row['descripcion'] = str_replace('•', '<br>', $row['descripcion']);
-                                        array_push($modaldata, $row);
-                                    }
                                 } else {
                                     http_response_code(409); //error
                                     echo "
