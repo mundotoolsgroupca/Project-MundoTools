@@ -322,6 +322,11 @@ session_start();
                         $categoria = htmlspecialchars($_GET['categoria'], ENT_QUOTES, 'UTF-8');
                         $categoriaselected = isset($_GET['categoria']) ? $categoria : "";
 
+                        // contidad de Resultados por pagina
+                        $results_per_page = 50;
+                        //formula para calcular los resultados de la tabla segun la pagina en que se esta
+                        $offset = ($current_page - 1) * $results_per_page;
+
                         $consulta = "
                         SELECT * FROM `categorias` WHERE  id = '$categoriaselected' ";
                         $resultado = mysqli_query($conexion, $consulta);
