@@ -1080,6 +1080,8 @@ session_start();
 
             function modalinfoview(id) {
 
+                debugger
+
                 let validar = arrresult.some(item => item.id === id);
 
                 if (validar) {
