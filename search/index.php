@@ -426,7 +426,7 @@ session_start();
                             $row2['precio'] = $precio;
                             $row2['precio2'] = $precio2;
                             $row2['descripcion'] = str_replace('•', '<br>', $row2['descripcion']);
-                            array_push($modaldata, $row2);
+                            array_push($totales, $row2);
                         }
 
                         //**************************************************************************** */
