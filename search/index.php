@@ -324,12 +324,12 @@ session_start();
                         $row = mysqli_fetch_assoc($resultado);
 
 
-                        $consulta_cantidad_productos = "SELECT count(*) as cantidad FROM `productos_agrupados` WHERE categoria = '$categoriaselected' ";
+                        $consulta_cantidad_productos = "SELECT count(*) as cantidad FROM `productos_agrupados` WHERE categoria = '$categoriaselected' "; %
                         $resultado_cantidad_productos = mysqli_query($conexion, $consulta_cantidad_productos);
                         $cantidad_productos = mysqli_fetch_assoc($resultado_cantidad_productos);
                         $cantidad_productos =  $cantidad_productos['cantidad'];
 
-                        echo "<p class='[ text-lg font-bold ]'>Categoria <label class='text-[#FBAA35]'>'" . $row['nombre'] . " ($cantidad_productos)' 222</label></p>";
+                        echo "<p class='[ text-lg font-bold ]'>Categoria <label class='text-[#FBAA35]'>'" . $row['nombre'] . " ('".count(count($modaldata))."')'</label></p>";
                         $categoria = "<p class='text-[#FBAA35] font-bold transition duration-150 ease-in-out hover:text-[#FBAA35] focus:text-[#FBAA35] active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-[#FBAA35]'>" . $row['nombre'] . " ($cantidad_productos)</p>";
                     }
                     ?>
