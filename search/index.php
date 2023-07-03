@@ -708,7 +708,7 @@ session_start();
 
                                 //**************************************************************************** */
 
-
+                               
                                 if ($query != "") {
                                     $sql_count = "SELECT COUNT(*) as count FROM productos_agrupados WHERE nombre LIKE '%$query%'";
                                 } elseif ($categoria != "") {
