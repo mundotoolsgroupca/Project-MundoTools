@@ -322,6 +322,13 @@ session_start();
                         $categoria = htmlspecialchars($_GET['categoria'], ENT_QUOTES, 'UTF-8');
                         $categoriaselected = isset($_GET['categoria']) ? $categoria : "";
 
+                        $current_page =  1;
+                        if (isset($_GET['page'])) {
+                            if (is_int($_GET['page'])) {
+                                $current_page = $_GET['page'];
+                            }
+                        }
+
                         // contidad de Resultados por pagina
                         $results_per_page = 50;
                         //formula para calcular los resultados de la tabla segun la pagina en que se esta
