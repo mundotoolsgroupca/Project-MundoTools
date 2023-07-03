@@ -598,28 +598,27 @@ session_start();
 
                                 if ($query != "") {
                                     $consulta = "
+
                                     SELECT
-                                    c1.id,
-                                    c4.nombre,
-                                    c4.categoria,
-                                    c4.imagen,
-                                    c1.precio,
-                                    c2.simbolo,
-                                    c2.cod_moneda,
-                                    c4.id_grupo,
-                                    c5.cantidad 
-                                FROM
-                                    productos AS c1
-                                    INNER JOIN productos_agrupados c4 ON c4.id_grupo = c1.id_grupo
-                                    INNER JOIN moneda_ref AS c2 ON c2.cod_moneda = c1.moneda 
-                                    left JOIN stock AS c5 ON c5.idProducto = c1.id 
-                                WHERE
-                                    c4.nombre LIKE '%$query%' 
-                                    OR c1.id LIKE '%$query%'
-                                group by c4.nombre
-                                ORDER BY
-                                    c1.precio $order  
-                                    LIMIT $results_per_page OFFSET $offset"; //consulta para obtener los resultados segun la pagina 
+                                        c4.id_grupo AS id,
+                                        c4.nombre,
+                                        c4.categoria,
+                                        c4.imagen,
+                                        c1.precio,
+                                        c2.simbolo,
+                                        c2.cod_moneda,
+                                        c4.id_grupo,
+                                        c5.cantidad 
+                                    FROM
+                                        productos_agrupados c4
+                                        INNER JOIN productos AS c1 ON c1.id = c4.id_grupo
+                                        INNER JOIN moneda_ref AS c2 ON c2.cod_moneda = c1.moneda
+                                        LEFT JOIN stock AS c5 ON c5.idProducto = c4.id_grupo 
+                                    WHERE
+                                        c4.nombre LIKE '%$query%' OR c1.id LIKE '%$query%' 
+                                    ORDER BY
+                                        c1.precio ASC 
+                                        LIMIT $results_per_page OFFSET $offset "; //consulta para obtener los resultados segun la pagina 
                                 } elseif ($categoria != "") {
                                     $consulta = "
 
