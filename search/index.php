@@ -625,7 +625,9 @@ session_start();
                                             c1.precio $order  
                                             LIMIT $results_per_page OFFSET $offset"; //consulta para obtener los resultados segun la pagina 
 
-                             
+
+                                echo $consulta;
+
                                 $data = []; //variable que almacenara los resultados de la consulta
                                 $data['result'] = []; //cantida de paginas que tiene la consulta
                                 $data['num_pages'] = 0; //cantida de paginas que tiene la consulta
