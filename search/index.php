@@ -594,7 +594,7 @@ session_start();
                                 }
 
 
-                        
+                                echo $consulta;
                                 $data = []; //variable que almacenara los resultados de la consulta
                                 $data['result'] = []; //cantida de paginas que tiene la consulta
                                 $data['num_pages'] = 0; //cantida de paginas que tiene la consulta
