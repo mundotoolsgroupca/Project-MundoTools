@@ -773,13 +773,8 @@ session_start();
                                               FROM
                                                   productos AS c1
                                                   INNER JOIN productos_agrupados c4 ON c4.id_grupo = c1.id_grupo 
-                                                  INNER JOIN moneda_ref AS c2 ON c2.cod_moneda = c1.moneda   $categoria
+                                                  INNER JOIN moneda_ref AS c2 ON c2.cod_moneda = c1.moneda $categoria
                                                   INNER JOIN stock AS c3 ON c1.id = c3.idProducto
-                                                  
-                                              WHERE
-                                                  nombre LIKE '%$query%' 
-                                                  OR id LIKE '%$query%' 
-                                                  $categoria
                                               GROUP BY
                                                   c4.nombre 
                                               ORDER BY
