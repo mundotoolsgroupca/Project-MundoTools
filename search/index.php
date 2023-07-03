@@ -274,9 +274,7 @@ session_start();
                                 c4.categoria
                             ORDER BY
                                 c1.precio ASC; ";
-
                             echo $consulta;
-
                             $resultado = mysqli_query($conexion, $consulta);
 
                             echo "
