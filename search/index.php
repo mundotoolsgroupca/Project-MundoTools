@@ -598,7 +598,7 @@ session_start();
 
 
 
-
+                                //consulta para obtener los resultados segun la pagina 
                                 $consulta = "
                                             SELECT
                                             c1.id,
@@ -623,10 +623,10 @@ session_start();
                                         group by c4.nombre
                                         ORDER BY
                                             c1.precio $order  
-                                            LIMIT $results_per_page OFFSET $offset"; //consulta para obtener los resultados segun la pagina 
+                                            LIMIT $results_per_page OFFSET $offset";
 
 
-
+                                echo $consulta;
 
                                 $data = []; //variable que almacenara los resultados de la consulta
                                 $data['result'] = []; //cantida de paginas que tiene la consulta
