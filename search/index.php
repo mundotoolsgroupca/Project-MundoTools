@@ -293,14 +293,14 @@ session_start();
                                 if ($id == $categoriaselected) {
                                     $categoria .= " 
                                         <a href='javascript:CategoriaFilter($id)' class='text-[#FBAA35] font-bold transition duration-150 ease-in-out hover:text-[#FBAA35] focus:text-[#FBAA35] active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-[#FBAA35]'>
-                                            $nombre
+                                            $nombre ($total_count)
                                         </a> 
                                         <br>
                                         ";
                                 } else {
                                     $categoria .= "
                                          <a href='javascript:CategoriaFilter($id)' class='group text-black text-sm transition duration-150 ease-in-out hover:text-[#FBAA35] focus:text-[#FBAA35] active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-[#FBAA35]'>
-                                           <label class='text-gray-400 group-hover:text-[#FBAA35]'> $nombre</label>
+                                           <label class='text-gray-400 group-hover:text-[#FBAA35]'> $nombre</label> ($total_count)
                                         </a> 
                                         <br>
                                         ";
