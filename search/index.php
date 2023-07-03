@@ -243,6 +243,7 @@ session_start();
 
                     <?php
                     $categoria = "";
+                    $order = isset($_GET['order']) ? $_GET['order'] : "ASC";
                     if (isset($_GET['query'])) {
 
                         if (strlen(trim($_GET['query'])) != 0) {
@@ -320,7 +321,7 @@ session_start();
 
                         $categoria = htmlspecialchars($_GET['categoria'], ENT_QUOTES, 'UTF-8');
                         $categoriaselected = isset($_GET['categoria']) ? $categoria : "";
-                        
+
                         $consulta = "
                         SELECT * FROM `categorias` WHERE  id = '$categoriaselected' ";
                         $resultado = mysqli_query($conexion, $consulta);
@@ -444,7 +445,7 @@ session_start();
 
                         <select class="w-full" onchange="handlePriceFilter(this)" data-te-select-init>
                             <?php
-                            $order = isset($_GET['order']) ? $_GET['order'] : "ASC";
+
                             $optionsorder = "";
                             if ($order == "DESC") {
                                 $optionsorder = "
