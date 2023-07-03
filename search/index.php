@@ -640,8 +640,8 @@ session_start();
                                                   INNER JOIN stock AS c3 ON c1.id = c3.idProducto
                                                   
                                               WHERE
-                                                  nombre LIKE '%$query%' 
-                                                  OR id LIKE '%$query%' 
+                                                  c4.nombre LIKE '%$query%' 
+                                                  OR c1.id LIKE '%$query%' 
                                                 
                                               GROUP BY
                                                   c4.nombre 
