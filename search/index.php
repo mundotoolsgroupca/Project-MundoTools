@@ -342,81 +342,40 @@ session_start();
 
 
                         //*********** consulta pra obtener la data para cuando muestre el modal ****************************************
-
-                        if ($query != "") {
-                            $consulta2 = "   
-                                    SELECT
-                                    t1.*,
-                                    t3.nombre,
-                                    t3.descripcion ,
-                                    t2.simbolo,
-                                    t2.imagen
+                        $categoria =  isset($_GET['categoria']) ?   " And c4.categoria = " . htmlspecialchars($_GET['categoria'], ENT_QUOTES, 'UTF-8') : "";
+                        $consulta2 = "   
+                                SELECT
+                                t1.*,
+                                t3.nombre,
+                                t3.descripcion ,
+                                t2.simbolo,
+                                t2.imagen
+                                      FROM
+                                          productos t1
+                                          INNER JOIN (
+                                          SELECT
+                                              c4.id_grupo,
+                                              c2.simbolo,
+                                              c4.imagen
                                           FROM
-                                              productos t1
-                                              INNER JOIN (
-                                              SELECT
-                                                  c4.id_grupo,
-                                                  c2.simbolo,
-                                                  c4.imagen
-                                              FROM
-                                                  productos AS c1
-                                                  INNER JOIN productos_agrupados c4 ON c4.id_grupo = c1.id_grupo 
-                                                  INNER JOIN moneda_ref AS c2 ON c2.cod_moneda = c1.moneda
-                                                  INNER JOIN stock AS c3 ON c1.id = c3.idProducto
-                                                  
-                                              WHERE
-                                                  c4.nombre LIKE '%$query%' 
-                                                  OR c1.id LIKE '%$query%' 
-                                                
-                                              GROUP BY
-                                                  c4.nombre 
-                                              ORDER BY
-                                                  c1.precio $order  
-                                                  LIMIT $results_per_page OFFSET $offset
-                                              ) t2 ON t2.id_grupo = t1.id_grupo
-                                              INNER JOIN productos_agrupados t3 ON t3.id_grupo = t1.id_grupo 
+                                              productos AS c1
+                                              INNER JOIN productos_agrupados c4 ON c4.id_grupo = c1.id_grupo 
+                                              INNER JOIN moneda_ref AS c2 ON c2.cod_moneda = c1.moneda   $categoria
+                                              INNER JOIN stock AS c3 ON c1.id = c3.idProducto
+                                              
+                                          WHERE
+                                              c4.categoria = '" . htmlspecialchars($_GET['categoria'], ENT_QUOTES, 'UTF-8') . "'
+                                          GROUP BY
+                                              c4.nombre 
                                           ORDER BY
-                                              t1.id ASC
-                            
-                                ";
-                        } elseif ($categoriaselected != "") {
-                            $categoria =  isset($_GET['categoria']) ?   " And c4.categoria = " . htmlspecialchars($_GET['categoria'], ENT_QUOTES, 'UTF-8') : "";
-                            $consulta2 = "   
-                                    SELECT
-                                    t1.*,
-                                    t3.nombre,
-                                    t3.descripcion ,
-                                    t2.simbolo,
-                                    t2.imagen
-                                          FROM
-                                              productos t1
-                                              INNER JOIN (
-                                              SELECT
-                                                  c4.id_grupo,
-                                                  c2.simbolo,
-                                                  c4.imagen
-                                              FROM
-                                                  productos AS c1
-                                                  INNER JOIN productos_agrupados c4 ON c4.id_grupo = c1.id_grupo 
-                                                  INNER JOIN moneda_ref AS c2 ON c2.cod_moneda = c1.moneda   $categoria
-                                                  INNER JOIN stock AS c3 ON c1.id = c3.idProducto
-                                                  
-                                              WHERE
-                                                  c4.categoria = '" . htmlspecialchars($_GET['categoria'], ENT_QUOTES, 'UTF-8') . "'
-                                              GROUP BY
-                                                  c4.nombre 
-                                              ORDER BY
-                                                  c1.precio $order  
-                                                  LIMIT $results_per_page OFFSET $offset
-                                              ) t2 ON t2.id_grupo = t1.id_grupo
-                                              INNER JOIN productos_agrupados t3 ON t3.id_grupo = t1.id_grupo 
-                                          ORDER BY
-                                              t1.id ASC
-                            
-                                ";
-                        }
-
-
+                                              c1.precio $order  
+                                              LIMIT $results_per_page OFFSET $offset
+                                          ) t2 ON t2.id_grupo = t1.id_grupo
+                                          INNER JOIN productos_agrupados t3 ON t3.id_grupo = t1.id_grupo 
+                                      ORDER BY
+                                          t1.id ASC
+                        
+                            ";
 
                         $resultado2 = mysqli_query($conexion, $consulta2);
                         $totales = [];
@@ -787,7 +746,7 @@ session_start();
                             
                                 ";
                                 }
- 
+
 
                                 $resultado2 = mysqli_query($conexion, $consulta2);
                                 $modaldata = [];
@@ -920,10 +879,6 @@ session_start();
                                             </ul>
                                         </nav>
                                     </div>";
-
-
-                               
-                                    
                                 } else {
                                     http_response_code(409); //error
                                     echo "
