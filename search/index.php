@@ -537,96 +537,64 @@ session_start();
                                 //formula para calcular los resultados de la tabla segun la pagina en que se esta
                                 $offset = ($current_page - 1) * $results_per_page;
 
-                                $query = isset($_GET['query']) ? mysqli_real_escape_string($conexion, $_GET['query']) : (isset($_GET['categoria']) ? mysqli_real_escape_string($conexion, $_GET['categoria']) : 0);
+                                $query = isset($_GET['query']) ? mysqli_real_escape_string($conexion, $_GET['query']) : "";
                                 $categoria =  isset($_GET['categoria']) ?   "and c4.categoria = " . htmlspecialchars($_GET['categoria'], ENT_QUOTES, 'UTF-8') : "";
 
 
 
                                 include_once '../php/conexion.php';
 
-                                //consulta pra obtener l;a data para cuando muestre el modal 
-                                $consulta2 = "   
-                                        SELECT
-                                        t1.*,
-                                        t3.nombre,
-                                        t3.descripcion ,
-                                        t2.simbolo,
-                                        t2.imagen
-                                    FROM
-                                        productos t1
-                                        INNER JOIN (
-                                        SELECT
-                                            c4.id_grupo,
-                                            c2.simbolo,
-                                            c4.imagen
-                                        FROM
-                                            productos AS c1
-                                            INNER JOIN productos_agrupados c4 ON c4.id_grupo = c1.id_grupo 
-                                            INNER JOIN moneda_ref AS c2 ON c2.cod_moneda = c1.moneda   $categoria
-                                            INNER JOIN stock AS c3 ON c1.id = c3.idProducto
-                                            
-                                        WHERE
-                                            nombre LIKE '%$query%' 
-                                            OR id LIKE '%$query%' 
-                                            $categoria
-                                        GROUP BY
-                                            c4.nombre 
-                                        ORDER BY
-                                            c1.precio $order  
-                                            LIMIT $results_per_page OFFSET $offset
-                                        ) t2 ON t2.id_grupo = t1.id_grupo
-                                        INNER JOIN productos_agrupados t3 ON t3.id_grupo = t1.id_grupo 
-                                    ORDER BY
-                                        t1.id ASC
-                                
-                                    ";
-
-
-
-                                $resultado2 = mysqli_query($conexion, $consulta2);
-                                $modaldata = [];
-                                while ($row2 = mysqli_fetch_assoc($resultado2)) {
-                                    $precio2 = number_format($row2['precio2'], 2);
-                                    $precio = number_format($row2['precio'], 2);
-                                    $row2['precio'] = $precio;
-                                    $row2['precio2'] = $precio2;
-                                    $row2['descripcion'] = str_replace('•', '<br>', $row2['descripcion']);
-                                    array_push($modaldata, $row2);
+                                if ($query != "") {
+                                    $consulta = "
+                                    SELECT
+                                    c1.id,
+                                    c4.nombre,
+                                    c4.categoria,
+                                    c4.imagen,
+                                    c1.precio,
+                                    c2.simbolo,
+                                    c2.cod_moneda,
+                                    c4.id_grupo,
+                                    c5.cantidad 
+                                FROM
+                                    productos AS c1
+                                    INNER JOIN productos_agrupados c4 ON c4.id_grupo = c1.id_grupo
+                                    INNER JOIN moneda_ref AS c2 ON c2.cod_moneda = c1.moneda
+                                    INNER JOIN stock AS c3 ON c1.id = c3.idProducto
+                                    INNER JOIN stock AS c5 ON c5.idProducto = c1.id 
+                                WHERE
+                                    nombre LIKE '%$query%' 
+                                    OR id LIKE '%$query%'
+                                group by c4.nombre
+                                ORDER BY
+                                    c1.precio $order  
+                                    LIMIT $results_per_page OFFSET $offset"; //consulta para obtener los resultados segun la pagina 
+                                } elseif ($categoria != "") {
+                                    $consulta = "
+                                    SELECT
+                                    c1.id,
+                                    c4.nombre,
+                                    c4.categoria,
+                                    c4.imagen,
+                                    c1.precio,
+                                    c2.simbolo,
+                                    c2.cod_moneda,
+                                    c4.id_grupo,
+                                    c5.cantidad 
+                                FROM
+                                    productos AS c1
+                                    INNER JOIN productos_agrupados c4 ON c4.id_grupo = c1.id_grupo
+                                    INNER JOIN moneda_ref AS c2 ON c2.cod_moneda = c1.moneda $categoria
+                                    INNER JOIN stock AS c3 ON c1.id = c3.idProducto
+                                    INNER JOIN stock AS c5 ON c5.idProducto = c1.id 
+                                group by c4.nombre
+                                ORDER BY
+                                    c1.precio $order  
+                                    LIMIT $results_per_page OFFSET $offset"; //consulta para obtener los resultados segun la pagina 
                                 }
 
-                                ///////////////////////////////////////////////////////
 
 
-
-
-                                $consulta = "
-                                            SELECT
-                                            c1.id,
-                                            c4.nombre,
-                                            c4.categoria,
-                                            c4.imagen,
-                                            c1.precio,
-                                            c2.simbolo,
-                                            c2.cod_moneda,
-                                            c4.id_grupo,
-                                            c5.cantidad 
-                                        FROM
-                                            productos AS c1
-                                            INNER JOIN productos_agrupados c4 ON c4.id_grupo = c1.id_grupo
-                                            INNER JOIN moneda_ref AS c2 ON c2.cod_moneda = c1.moneda $categoria
-                                            INNER JOIN stock AS c3 ON c1.id = c3.idProducto
-                                            INNER JOIN stock AS c5 ON c5.idProducto = c1.id 
-                                        WHERE
-                                            nombre LIKE '%$query%' 
-                                            OR id LIKE '%$query%'
-                                            $categoria
-                                        group by c4.nombre
-                                        ORDER BY
-                                            c1.precio $order  
-                                            LIMIT $results_per_page OFFSET $offset"; //consulta para obtener los resultados segun la pagina 
-
-                                            echo $consulta;
-                             
                                 $data = []; //variable que almacenara los resultados de la consulta
                                 $data['result'] = []; //cantida de paginas que tiene la consulta
                                 $data['num_pages'] = 0; //cantida de paginas que tiene la consulta
@@ -646,6 +614,62 @@ session_start();
                                         "stock" => intval($row['cantidad']),
                                     ]);
                                 }
+
+
+                                //*********** consulta pra obtener la data para cuando muestre el modal ****************************************
+                                $consulta2 = "   
+                                  SELECT
+                                  t1.*,
+                                  t3.nombre,
+                                  t3.descripcion ,
+                                  t2.simbolo,
+                                  t2.imagen
+                              FROM
+                                  productos t1
+                                  INNER JOIN (
+                                  SELECT
+                                      c4.id_grupo,
+                                      c2.simbolo,
+                                      c4.imagen
+                                  FROM
+                                      productos AS c1
+                                      INNER JOIN productos_agrupados c4 ON c4.id_grupo = c1.id_grupo 
+                                      INNER JOIN moneda_ref AS c2 ON c2.cod_moneda = c1.moneda   $categoria
+                                      INNER JOIN stock AS c3 ON c1.id = c3.idProducto
+                                      
+                                  WHERE
+                                      nombre LIKE '%$query%' 
+                                      OR id LIKE '%$query%' 
+                                      $categoria
+                                  GROUP BY
+                                      c4.nombre 
+                                  ORDER BY
+                                      c1.precio $order  
+                                      LIMIT $results_per_page OFFSET $offset
+                                  ) t2 ON t2.id_grupo = t1.id_grupo
+                                  INNER JOIN productos_agrupados t3 ON t3.id_grupo = t1.id_grupo 
+                              ORDER BY
+                                  t1.id ASC
+                          
+                              ";
+
+
+
+                                $resultado2 = mysqli_query($conexion, $consulta2);
+                                $modaldata = [];
+                                while ($row2 = mysqli_fetch_assoc($resultado2)) {
+                                    $precio2 = number_format($row2['precio2'], 2);
+                                    $precio = number_format($row2['precio'], 2);
+                                    $row2['precio'] = $precio;
+                                    $row2['precio2'] = $precio2;
+                                    $row2['descripcion'] = str_replace('•', '<br>', $row2['descripcion']);
+                                    array_push($modaldata, $row2);
+                                }
+
+                                //**************************************************************************** */
+
+
+
 
                                 $sql_count = "SELECT COUNT(*) as count FROM productos_agrupados WHERE nombre LIKE '%$query%'"; //consutla para obtener la cantida de paginas que tiene la consulta
                                 $count = mysqli_fetch_assoc(mysqli_query($conexion, $sql_count))['count'];
