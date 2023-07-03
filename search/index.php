@@ -366,8 +366,7 @@ session_start();
                         
                             ";
 
-                        echo $consulta2;
-                        return;
+                
 
                         $resultado2 = mysqli_query($conexion, $consulta2);
                         $totales = [];
