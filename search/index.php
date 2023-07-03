@@ -380,7 +380,7 @@ session_start();
                             
                                 ";
                         } elseif ($categoriaselected != "") {
-                            $categoria =  isset($_GET['categoria']) ?   "and c4.categoria = " . htmlspecialchars($_GET['categoria'], ENT_QUOTES, 'UTF-8') : "";
+                            $categoria =  isset($_GET['categoria']) ?   " c4.categoria = " . htmlspecialchars($_GET['categoria'], ENT_QUOTES, 'UTF-8') : "";
                             $consulta2 = "   
                                     SELECT
                                     t1.*,
