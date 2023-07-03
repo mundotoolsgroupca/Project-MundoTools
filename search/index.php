@@ -563,8 +563,8 @@ session_start();
                                     INNER JOIN stock AS c3 ON c1.id = c3.idProducto
                                     INNER JOIN stock AS c5 ON c5.idProducto = c1.id 
                                 WHERE
-                                    nombre LIKE '%$query%' 
-                                    OR id LIKE '%$query%'
+                                    c4.nombre LIKE '%$query%' 
+                                    OR c1.id LIKE '%$query%'
                                 group by c4.nombre
                                 ORDER BY
                                     c1.precio $order  
