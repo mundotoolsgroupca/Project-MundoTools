@@ -740,6 +740,9 @@ session_start();
                                 }
 
 
+                                echo $consulta2;
+                                return;
+
                                 $resultado2 = mysqli_query($conexion, $consulta2);
                                 $modaldata = [];
                                 while ($row2 = mysqli_fetch_assoc($resultado2)) {
