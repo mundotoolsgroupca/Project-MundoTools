@@ -253,28 +253,17 @@ session_start();
                             $categoriaselected = isset($_GET['categoria']) ? htmlspecialchars($_GET['categoria'], ENT_QUOTES, 'UTF-8')  : "";
                             $consulta = "
                             SELECT
-                                c4.categoria, 
-                                c3.nombre, 
-                                COUNT(*) as total_count
+                                c2.categoria,
+                                c1.nombre,
+                                COUNT( * ) AS total_count 
                             FROM
-                                productos AS c1
-                                INNER JOIN
-                                moneda_ref AS c2
-                                ON 
-                                    c2.cod_moneda = c1.moneda
-                                INNER JOIN
-                                categorias AS c3
-                                INNER JOIN
-                                productos_agrupados AS c4
-                                ON 
-                                    c3.id = c4.categoria AND
-                                    c1.id_grupo = c4.id_grupo
+                                categorias AS c1
+                                INNER JOIN productos_agrupados AS c2 ON c1.id = c2.categoria
+                                INNER JOIN productos AS c3 ON c3.id_grupo = c2.id_grupo 
                             WHERE
-                                c4.nombre LIKE '%$query%'
+                                c2.nombre LIKE '%$query%' 
                             GROUP BY
-                                c4.categoria
-                            ORDER BY
-                                c1.precio ASC; ";
+                                c2.categoria";
 
                             $resultado = mysqli_query($conexion, $consulta);
 
