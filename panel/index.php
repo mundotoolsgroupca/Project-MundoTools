@@ -46,7 +46,7 @@ if (!isset($_SESSION['usuario'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="<?php echo $_SESSION['token']; ?>">
-    <link rel="icon" href="../assets/img/logo-color.png" />
+    <link rel="icon" href="../assets/img/logo-white.png" />
     <title>Perfil</title>
 </head>
 
@@ -263,7 +263,7 @@ if (!isset($_SESSION['usuario'])) {
                     <!-- Tailwind Elements section -->
                     <div class="[ flex items-center  justify-center ] [ md:justify-start ] [ lg:justify-start ]">
                         <a class="flex items-center [ w-24 h-10 ] [ md:w-32 md:h-32 ] [ lg:w-48 lg:h-20 ]" href="#">
-                            <img src="./assets/img/logo-color.png" alt="" srcset="" />
+                            <img src="./assets/img/logo-white.png" alt="" srcset="" />
                         </a>
                     </div>
 

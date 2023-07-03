@@ -27,7 +27,7 @@ if (isset($_SESSION['token'])) {
     <meta name="csrf-token" content="<?php echo $_SESSION['token']; ?>">
     <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link rel="icon" href="../assets/img/logo-color.png" />
+    <link rel="icon" href="../assets/img/logo-white.png" />
     <script>
         tailwind.config = {
             darkMode: "class",
