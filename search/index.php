@@ -559,9 +559,8 @@ session_start();
                                 FROM
                                     productos AS c1
                                     INNER JOIN productos_agrupados c4 ON c4.id_grupo = c1.id_grupo
-                                    INNER JOIN moneda_ref AS c2 ON c2.cod_moneda = c1.moneda
-                                    INNER JOIN stock AS c3 ON c1.id = c3.idProducto
-                                    INNER JOIN stock AS c5 ON c5.idProducto = c1.id 
+                                    INNER JOIN moneda_ref AS c2 ON c2.cod_moneda = c1.moneda 
+                                    left JOIN stock AS c5 ON c5.idProducto = c1.id 
                                 WHERE
                                     c4.nombre LIKE '%$query%' 
                                     OR c1.id LIKE '%$query%'
@@ -585,8 +584,7 @@ session_start();
                                     productos AS c1
                                     INNER JOIN productos_agrupados c4 ON c4.id_grupo = c1.id_grupo
                                     INNER JOIN moneda_ref AS c2 ON c2.cod_moneda = c1.moneda $categoria
-                                    INNER JOIN stock AS c3 ON c1.id = c3.idProducto
-                                    INNER JOIN stock AS c5 ON c5.idProducto = c1.id 
+                                    left JOIN stock AS c5 ON c5.idProducto = c1.id 
                                 group by c4.nombre
                                 ORDER BY
                                     c1.precio $order  
