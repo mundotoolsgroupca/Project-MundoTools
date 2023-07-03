@@ -708,14 +708,13 @@ session_start();
 
                                 //**************************************************************************** */
 
-                               
+
                                 if ($query != "") {
                                     $sql_count = "SELECT COUNT(*) as count FROM productos_agrupados WHERE nombre LIKE '%$query%'";
                                 } elseif ($categoria != "") {
-                                    $sql_count = "SELECT COUNT(*) as count FROM productos_agrupados WHERE  categoria = $categoria";
+                                    $sql_count = "SELECT COUNT(*) as count FROM productos_agrupados WHERE  categoria ='" . htmlspecialchars($_GET['categoria'], ENT_QUOTES, 'UTF-8') . "' ";
                                 }
-                                echo $sql_count;
-                                
+                            
                                 //consutla para obtener la cantida de paginas que tiene la consulta
                                 $count = mysqli_fetch_assoc(mysqli_query($conexion, $sql_count))['count'];
                                 $data['num_pages'] = ceil($count / $results_per_page); //agregarmos la cantidad de paginas que tiene al array principal 
