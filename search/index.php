@@ -65,87 +65,48 @@ session_start();
     <!-------Loader--------->
     <style>
         .loader {
-            transform: rotateZ(45deg);
-            perspective: 1000px;
-            border-radius: 50%;
             width: 48px;
             height: 48px;
-            color: #FBAA35;
-        }
-
-        .loader:before,
-        .loader:after {
-            content: '';
             display: block;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: inherit;
-            height: inherit;
+            margin: 20px auto;
+            position: relative;
+            border: 3px solid #FFF;
             border-radius: 50%;
-            transform: rotateX(70deg);
-            animation: 1s spin linear infinite;
+            box-sizing: border-box;
+            animation: animloader 2s linear infinite;
         }
 
-        .loader:after {
-            color: #FF3D00;
-            transform: rotateY(70deg);
-            animation-delay: .4s;
+        .loader::after {
+            content: '';
+            box-sizing: border-box;
+            width: 6px;
+            height: 24px;
+            background: #FBAA35;
+            transform: rotate(-45deg);
+            position: absolute;
+            bottom: -20px;
+            left: 46px;
         }
 
-        @keyframes rotate {
+        @keyframes animloader {
             0% {
-                transform: translate(-50%, -50%) rotateZ(0deg);
-            }
-
-            100% {
-                transform: translate(-50%, -50%) rotateZ(360deg);
-            }
-        }
-
-        @keyframes rotateccw {
-            0% {
-                transform: translate(-50%, -50%) rotate(0deg);
-            }
-
-            100% {
-                transform: translate(-50%, -50%) rotate(-360deg);
-            }
-        }
-
-        @keyframes spin {
-
-            0%,
-            100% {
-                box-shadow: .2em 0px 0 0px currentcolor;
-            }
-
-            12% {
-                box-shadow: .2em .2em 0 0 currentcolor;
+                transform: translate(-10px, -10px);
             }
 
             25% {
-                box-shadow: 0 .2em 0 0px currentcolor;
-            }
-
-            37% {
-                box-shadow: -.2em .2em 0 0 currentcolor;
+                transform: translate(-10px, 10px);
             }
 
             50% {
-                box-shadow: -.2em 0 0 0 currentcolor;
-            }
-
-            62% {
-                box-shadow: -.2em -.2em 0 0 currentcolor;
+                transform: translate(10px, 10px);
             }
 
             75% {
-                box-shadow: 0px -.2em 0 0 currentcolor;
+                transform: translate(10px, -10px);
             }
 
-            87% {
-                box-shadow: .2em -.2em 0 0 currentcolor;
+            100% {
+                transform: translate(-10px, -10px);
             }
         }
     </style>
