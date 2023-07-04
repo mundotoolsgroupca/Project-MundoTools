@@ -26,6 +26,8 @@ session_start();
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
     <link rel="icon" href="../assets/img/logo-white.png" />
+
+    <meta name="csrf-token" content="<?php echo $_SESSION['token']; ?>">
     <script src="https://cdn.tailwindcss.com/3.3.0"></script>
     <script>
         tailwind.config = {
@@ -448,7 +450,7 @@ session_start();
                             t1.id ASC  ";
                         }
 
-                     
+
 
                         $resultado2 = mysqli_query($conexion, $consulta2);
 
