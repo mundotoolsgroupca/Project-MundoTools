@@ -448,6 +448,9 @@ session_start();
                             t1.id ASC  ";
                         }
 
+                        echo $consulta2;
+                        return;
+
                         $resultado2 = mysqli_query($conexion, $consulta2);
 
                         while ($row2 = mysqli_fetch_assoc($resultado2)) {
@@ -464,8 +467,6 @@ session_start();
 
                         echo "<p class='[ text-lg font-bold ]'>Categoria <label class='text-[#FBAA35]'>'" . $row['nombre'] . " ('" . count($totales_array) . "')'</label></p>";
                         $categoria = "<p class='text-[#FBAA35] font-bold transition duration-150 ease-in-out hover:text-[#FBAA35] focus:text-[#FBAA35] active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-[#FBAA35]'>" . $row['nombre'] . " ('" . count($totales_array) . "')</p>";
-                        echo "<script>console.log(" . json_encode($totales_array) . ");            </script>";
-                        return;
                     }
 
 
