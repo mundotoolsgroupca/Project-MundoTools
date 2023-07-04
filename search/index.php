@@ -1257,7 +1257,7 @@ if (isset($_SESSION['token'])) {
                 forms[i].addEventListener('submit', e => {
                     e.preventDefault();
 
-                    let data = arrresult.filter(item => item.id === e.target[0].id);
+                    let data = search_data.filter(item => item.id === e.target[0].id);
                     data = data[0];
                     let validar = Carrito.add(e.target[0].id, e.target[0].value, data);
 
