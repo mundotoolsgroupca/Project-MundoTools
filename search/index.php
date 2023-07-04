@@ -1185,6 +1185,7 @@ if (isset($_SESSION['token'])) {
                     })
                     return;
                 }
+                debugger
                 let arr_producto = filteredArray.find((item) => {
                     return item.id == id_producto
                 });
