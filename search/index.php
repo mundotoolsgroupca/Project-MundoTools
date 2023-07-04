@@ -36,7 +36,7 @@ if (isset($_SESSION['token'])) {
     <!---------Tailwind-------->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
-    <link rel="icon" href="../assets/img/logo-white.png" />
+    <link rel="icon" href="../assets/img/logo-color.png" />
 
     <meta name="csrf-token" content="<?php echo $_SESSION['token']; ?>">
     <script src="https://cdn.tailwindcss.com/3.3.0"></script>

@@ -46,7 +46,7 @@ if (!isset($_SESSION['usuario'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="<?php echo $_SESSION['token']; ?>">
-    <link rel="icon" href="../assets/img/logo-white.png" />
+    <link rel="icon" href="../assets/img/logo-color.png" />
     <title>Perfil</title>
 </head>
 
