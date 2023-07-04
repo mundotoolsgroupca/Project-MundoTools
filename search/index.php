@@ -70,7 +70,7 @@ session_start();
             border-radius: 50%;
             width: 48px;
             height: 48px;
-            color: #fff;
+            color: #FBAA35;
         }
 
         .loader:before,
@@ -151,7 +151,7 @@ session_start();
     </style>
 
 
-    <div class="absolute z-[200] w-full h-screen flex justify-center items-center bg-white">
+    <div class="fixed z-[200] w-full h-screen flex justify-center items-center bg-white">
         <span class="loader"></span>
     </div>
     <!-------Loader--------->
@@ -1087,7 +1087,7 @@ session_start();
         <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
         <script>
             $(document).ready(function() {
-
+                $("[class='fixed z-[200] w-full h-screen flex justify-center items-center bg-white']").fadeOut("slow"); //quitar el loader
                 localreaddata();
                 toggleView('1x1'); //stilo de vista de los resultados
                 categorias();
@@ -1102,14 +1102,14 @@ session_start();
 
                 data.map((item) => {
                     $('#navcategoria').append(`
-                        <li>
-                            <a href='../search/?categoria=${item.id}' class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600" href="#" data-te-dropdown-item-ref>${item.nombre}</a>
-                        </li>`);
+        <li>
+            <a href='../search/?categoria=${item.id}' class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600" href="#" data-te-dropdown-item-ref>${item.nombre}</a>
+        </li>`);
 
                     $('#navcategoria_mobile').append(`
-                        <li>
-                            <a href='../search/?categoria=${item.id}' class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600" href="#" data-te-dropdown-item-ref>${item.nombre}</a>
-                        </li>  `);
+        <li>
+            <a href='../search/?categoria=${item.id}' class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600" href="#" data-te-dropdown-item-ref>${item.nombre}</a>
+        </li> `);
                 });
 
             }
@@ -1135,7 +1135,7 @@ session_start();
 
                 if (validar) {
                     // Select the table body by ID or class
-                    var tableBody = $('#modal_tabla  tbody'); // Replace "table-id" with the actual ID of your table
+                    var tableBody = $('#modal_tabla tbody'); // Replace "table-id" with the actual ID of your table
 
                     // Remove all rows from the table body
                     tableBody.find('tr').remove();
@@ -1161,48 +1161,48 @@ session_start();
                     });
 
                     $('#modal_tabla > thead').html(`
-                        
-                    `);
+
+        `);
 
                     $('#modal_tabla > thead').append(`
-                        <tr class='bg-black'>
-                            <th scope="col" class="px-6 py-4">ID</th>
-                            <th scope="col" class="px-6 py-4">caracteristica1</th>
-                            <th scope="col" class="px-6 py-4">caracteristica2</th>
-                            <th scope="col" class="px-6 py-4">caracteristica3</th>
-                            <th scope="col" class="px-6 py-4">caracteristica4</th>
-                            <th scope="col" class="px-6 py-4">caracteristica5</th>
-                            <th scope="col" class="px-6 py-4">Precio</th>
-                            <th scope="col" class="px-6 py-4">Precio2</th>
-                            <th scope="col" class="px-6 py-4"></th>
-                        </tr>
-                    `);
+        <tr class='bg-black'>
+            <th scope="col" class="px-6 py-4">ID</th>
+            <th scope="col" class="px-6 py-4">caracteristica1</th>
+            <th scope="col" class="px-6 py-4">caracteristica2</th>
+            <th scope="col" class="px-6 py-4">caracteristica3</th>
+            <th scope="col" class="px-6 py-4">caracteristica4</th>
+            <th scope="col" class="px-6 py-4">caracteristica5</th>
+            <th scope="col" class="px-6 py-4">Precio</th>
+            <th scope="col" class="px-6 py-4">Precio2</th>
+            <th scope="col" class="px-6 py-4"></th>
+        </tr>
+        `);
 
                     filteredArray.map((item) => {
                         $('#modal_tabla > tbody').append(`
-                        <tr class="border-b dark:border-neutral-500 bg-[#FBAA35]">
-                            <td class="whitespace-nowrap px-6 py-4 font-medium">${item.id}</td>
-                            <td class="whitespace-nowrap px-6 py-4">${item.caracteristica}</td>
-                            <td class="whitespace-nowrap px-6 py-4">${item.caracteristica2}</td>
-                            <td class="whitespace-nowrap px-6 py-4">${item.caracteristica3}</td>
-                            <td class="whitespace-nowrap px-6 py-4">${item.caracteristica4}</td>
-                            <td class="whitespace-nowrap px-6 py-4">${item.caracteristica5}</td>
-                            <td class="whitespace-nowrap px-6 py-4">${item.precio+""+item.simbolo}</td>
-                            <td class="whitespace-nowrap px-6 py-4 text-gray-600">${item.precio2+""+item.simbolo}</td>
-                            <td class="whitespace-nowrap px-6 py-4">
-                            <div class="relative flex w-full flex-wrap flex-nowrap items-stretch">
-                                <input min="0" id='modal_input_${item.id}'  type="number" class="focus:border-warning-600 focus:shadow-te-warning relative z-20 m-0 block w-14 min-w-0 flex-auto rounded-l border border-r-0 border-solid border-neutral-300 bg-transparent bg-white bg-clip-padding px-3 py-[0.25rem] text-center text-base font-normal leading-[1.6] text-neutral-700 outline-none transition ease-in-out focus:text-neutral-700 focus:outline-none" aria-label="Recipient" username="" value="1" aria-describedby="button-addon2" />
-                                <button onclick='Modal_Agregar_Carrito("${item.id}","modal_input_${item.id}")' data-te-ripple-init="" data-te-ripple-color="light" type="submit" class="opa hover:bg-warning-700 focus:bg-warning-700 active:bg-warning-800 relative rounded-r bg-black hover:bg-gray-800 transition-colors px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg" id="button-addon2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"></path>
-                                    </svg>
-                                </button>
-                            </div>
-                            
-                            </td>
-                        </tr>
-                    
-                    `);
+        <tr class="border-b dark:border-neutral-500 bg-[#FBAA35]">
+            <td class="whitespace-nowrap px-6 py-4 font-medium">${item.id}</td>
+            <td class="whitespace-nowrap px-6 py-4">${item.caracteristica}</td>
+            <td class="whitespace-nowrap px-6 py-4">${item.caracteristica2}</td>
+            <td class="whitespace-nowrap px-6 py-4">${item.caracteristica3}</td>
+            <td class="whitespace-nowrap px-6 py-4">${item.caracteristica4}</td>
+            <td class="whitespace-nowrap px-6 py-4">${item.caracteristica5}</td>
+            <td class="whitespace-nowrap px-6 py-4">${item.precio+""+item.simbolo}</td>
+            <td class="whitespace-nowrap px-6 py-4 text-gray-600">${item.precio2+""+item.simbolo}</td>
+            <td class="whitespace-nowrap px-6 py-4">
+                <div class="relative flex w-full flex-wrap flex-nowrap items-stretch">
+                    <input min="0" id='modal_input_${item.id}' type="number" class="focus:border-warning-600 focus:shadow-te-warning relative z-20 m-0 block w-14 min-w-0 flex-auto rounded-l border border-r-0 border-solid border-neutral-300 bg-transparent bg-white bg-clip-padding px-3 py-[0.25rem] text-center text-base font-normal leading-[1.6] text-neutral-700 outline-none transition ease-in-out focus:text-neutral-700 focus:outline-none" aria-label="Recipient" username="" value="1" aria-describedby="button-addon2" />
+                    <button onclick='Modal_Agregar_Carrito("${item.id}","modal_input_${item.id}")' data-te-ripple-init="" data-te-ripple-color="light" type="submit" class="opa hover:bg-warning-700 focus:bg-warning-700 active:bg-warning-800 relative rounded-r bg-black hover:bg-gray-800 transition-colors px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg" id="button-addon2">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"></path>
+                        </svg>
+                    </button>
+                </div>
+
+            </td>
+        </tr>
+
+        `);
                     });
 
                     modal.show();
@@ -1227,35 +1227,23 @@ session_start();
                             }
                         }
                     }
-
-
-
-
                 }
-
             }
 
             function Modal_Agregar_Carrito(id_producto, id_input) {
-
-
-
                 if (!validarString(id_producto, 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$&')) {
                     Swal.fire({
                         icon: 'Info',
                         title: 'Id del Producto No Valido'
-                    })
-                    return;
+                    }) return;
                 }
-
                 let cantidad = $(`#${id_input}`).val();
                 if (!validarMonto(cantidad)) {
                     Swal.fire({
                         icon: 'Info',
                         title: 'Monto No Valido'
-                    })
-                    return;
+                    }) return;
                 }
-
                 let arr_producto = filteredArray.find((item) => {
                     return item.id == id_producto
                 });
