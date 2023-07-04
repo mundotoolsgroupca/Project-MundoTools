@@ -1033,7 +1033,7 @@ if (isset($_SESSION['token'])) {
 
             async function modalinfoview(id_grupo) {
 
-                debugger
+
 
                 let arrresult = await $.ajax({ //obtenemos los datos del modal segundo el id_gupo  del producto
                     url: "../api/search/modalinfo.php",
