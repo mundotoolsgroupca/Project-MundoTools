@@ -51,30 +51,33 @@ const Carrito = {
       return;
     }
 
-    Carrito.list.map((item) => {
-      if (item.id == Productosarr.id) {
-        if (item.cantidad < Productosarr.stock) {
-          //si la cantidad solicitada es mayor a la que queremos
-          const Toast = Swal.mixin({
-            toast: true,
-            position: "top-end",
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.addEventListener("mouseenter", Swal.stopTimer);
-              toast.addEventListener("mouseleave", Swal.resumeTimer);
-            },
-          });
-
-          Toast.fire({
-            icon: "info",
-            title: "Cantidad Ingresada Supera el Stock Disponible",
-          });
-          return;
-        }
-      }
+    let carrito_data_filter = Carrito.list.find((item) => {
+      return item.id == id;
     });
+
+    if (id == carrito_data_filter.id) {
+      if (carrito_data_filter.stock < Count) {
+        //si la cantidad solicitada es mayor a la que queremos
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+
+          didOpen: (toast) => {
+            toast.addEventListener("mouseenter", Swal.stopTimer);
+            toast.addEventListener("mouseleave", Swal.resumeTimer);
+          },
+        });
+
+        Toast.fire({
+          icon: "info",
+          title: "Cantidad Ingresada Supera el Stock Disponible",
+        });
+        return;
+      }
+    }
 
     Productosarr.cantidad = Count;
     /*Validamos el Stock con la cantidad que Se Requiere */
