@@ -31,12 +31,13 @@ switch ($method) {
                     $id_grupo = htmlspecialchars($_GET['id_grupo'], ENT_QUOTES, 'UTF-8');
                     $id_grupo = eliminar_palabras_sql($id_grupo);
                 } else {
+                    http_response_code(409); //codigo de conflicto
                     // Log this as a warning and keep an eye on these attempts
                     $resultado = new stdClass();
                     $resultado->result = FALSE;
                     $resultado->icono = "error";
                     $resultado->titulo = "Error!";
-                    $resultado->mensaje = 'Parametro no Valido2';
+                    $resultado->mensaje = 'Parametro no Valido';
                     echo json_encode($resultado);
                     return;
                 }
