@@ -1096,9 +1096,7 @@ if (isset($_SESSION['token'])) {
             }
             <?php
 
-            if (isset($totales_array)) {
-                echo "let arrresult = " . json_encode($totales_array) . "\n    ";
-            }
+
 
             ?>
             const myModalEl = document.getElementById("modalinfo");
@@ -1147,7 +1145,7 @@ if (isset($_SESSION['token'])) {
 
 
 
-                let validar = arrresult.some(item => item.id_grupo === id_grupo);
+                let validar = arrresult.data.some(item => item.id_grupo === id_grupo);
 
                 if (validar) {
                     // Select the table body by ID or class
@@ -1162,7 +1160,7 @@ if (isset($_SESSION['token'])) {
                     let preciomodal = document.getElementById("preciomodal");
                     let modaldescripcion = document.getElementById("modaldescripcion");
 
-                    let data = arrresult.filter(item => item.id_grupo === id_grupo);
+                    let data = arrresult.data.filter(item => item.id_grupo === id_grupo);
                     data = data[0];
                     imgmodal.src = ".." + data.imagen;
                     nombreproductomodal.innerHTML = data.nombre;
@@ -1172,7 +1170,7 @@ if (isset($_SESSION['token'])) {
 
 
                     // Filter the array to get only the objects with id=2
-                    filteredArray = arrresult.filter(function(obj) {
+                    filteredArray = arrresult.data.filter(function(obj) {
                         return obj.id_grupo === data.id_grupo;
                     });
 
