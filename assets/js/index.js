@@ -28,7 +28,30 @@ const Carrito = {
   idcantidad: "Cantidad_produtos",
   idTotales: "CarritoTotales",
   add: (id, Count, Productosarr) => {
-    debugger
+    /*Validamos el Stock con la cantidad que Se Requiere */
+    debugger;
+    if (Count >= Productosarr.stock) {
+      //si la cantidad solicitada es mayor a la que queremos
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+      });
+
+      Toast.fire({
+        icon: "info",
+        title: "Cantidad Ingresada Supera el Stock Disponible",
+      });
+      return;
+    }
+    Productosarr.cantidad = Count;
+    /*Validamos el Stock con la cantidad que Se Requiere */
     let Datos = new ProductosTicket();
     let productoExistente = Carrito.list.find((producto) => producto.id === id);
 
