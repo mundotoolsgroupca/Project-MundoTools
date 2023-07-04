@@ -41,9 +41,9 @@ switch ($method) {
                     return;
                 }
 
+                include_once '../../php/conexion.php';
 
-
-                $consulta2 = "
+                $consulta = "
                     SELECT
                         t1.*,
                         t3.nombre,
@@ -72,7 +72,7 @@ switch ($method) {
 
 
 
-                $resultado2 = mysqli_query($conexion, $consulta2);
+                $resultado2 = mysqli_query($conexion, $consulta);
 
                 while ($row2 = mysqli_fetch_assoc($resultado2)) {
                     $precio2 = number_format($row2['precio2'], 2);
@@ -81,7 +81,7 @@ switch ($method) {
                     $row2['precio2'] = $precio2;
                     $row2['descripcion'] = str_replace('•', '<br>', $row2['descripcion']);
                 }
-                include_once '../../php/conexion.php';
+
                 $resultado = mysqli_query($conexion, $consulta);
                 if ($resultado) {
                     $json = [];
