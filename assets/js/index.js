@@ -62,7 +62,7 @@ const Carrito = {
 
     if (productoExistente) {
       let cantidadtotal = Number(productoExistente.cantidad) + Number(Count);
-      if (cantidadtotal <= Productosarr.cantidad) {
+      if (cantidadtotal <= Productosarr.stock) {
         productoExistente.cantidad = cantidadtotal;
       } else {
         const Toast = Swal.mixin({
