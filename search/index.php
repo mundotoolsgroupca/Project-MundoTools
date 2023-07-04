@@ -311,7 +311,7 @@ if (isset($_SESSION['token'])) {
 
                     <?php
                     $categoria = "";
-                    $totales_array = [];
+                    // $totales_array = [];
                     $order = isset($_GET['order']) ? $_GET['order'] : "ASC";
                     if (isset($_GET['query'])) {
 
@@ -399,86 +399,8 @@ if (isset($_SESSION['token'])) {
                         $row = mysqli_fetch_assoc($resultado);
 
 
-                        //*********** consulta pra obtener la data para cuando muestre el modal ****************************************
-                        $categoria =  isset($_GET['categoria']) ?   " And c4.categoria = " . htmlspecialchars($_GET['categoria'], ENT_QUOTES, 'UTF-8') : "";
-                        if ($query != "") {
-                            $consulta2 = "  
-                            
-                            SELECT
-                                t1.*,
-                                t3.nombre,
-                                t3.descripcion,
-                                t2.simbolo,
-                                t2.imagen 
-                            FROM
-                                productos t1
-                                INNER JOIN (
-                                                        SELECT
-                                                            c4.id_grupo,
-                                                            c2.simbolo,
-                                                            c4.imagen 
-                                                        FROM
-                                                            productos_agrupados c4
-                                                            INNER JOIN productos AS c1 ON c1.id = c4.id_grupo
-                                                            INNER JOIN moneda_ref AS c2 ON c2.cod_moneda = c1.moneda 
-                                                        WHERE	c4.nombre LIKE '%$query%' OR c1.id LIKE '%$query%' 
-                                                        ORDER BY
-                                                        c1.precio $order  
-                                                            LIMIT $results_per_page OFFSET $offset
-                                ) t2 ON t2.id_grupo = t1.id_grupo
-                                INNER JOIN productos_agrupados t3 ON t3.id_grupo = t1.id_grupo 
-                            ORDER BY
-                                t1.id ASC
-                        ";
-                        } elseif ($categoria != "") {
-
-                            $consulta2 = "
-
-                            SELECT
-                            t1.*,
-                            t3.nombre,
-                            t3.descripcion,
-                            t2.simbolo,
-                            t2.imagen 
-                            FROM
-                            productos t1
-                            INNER JOIN (
-                                SELECT
-                                                        c4.id_grupo,
-                                                        c2.simbolo,
-                                                        c4.imagen 
-                                                    FROM
-                                                        productos_agrupados c4
-                                                        INNER JOIN productos AS c1 ON c1.id = c4.id_grupo
-                                                        INNER JOIN moneda_ref AS c2 ON c2.cod_moneda = c1.moneda 
-                                                    WHERE	c4.categoria = '" . htmlspecialchars($_GET['categoria'], ENT_QUOTES, 'UTF-8') . "'
-                                                    ORDER BY
-                                                        c1.precio $order 
-                                                        LIMIT $results_per_page OFFSET $offset
-                            ) t2 ON t2.id_grupo = t1.id_grupo
-                            INNER JOIN productos_agrupados t3 ON t3.id_grupo = t1.id_grupo 
-                            ORDER BY
-                            t1.id ASC  ";
-                        }
-
-
-
-                        $resultado2 = mysqli_query($conexion, $consulta2);
-
-                        while ($row2 = mysqli_fetch_assoc($resultado2)) {
-                            $precio2 = number_format($row2['precio2'], 2);
-                            $precio = number_format($row2['precio'], 2);
-                            $row2['precio'] = $precio;
-                            $row2['precio2'] = $precio2;
-                            $row2['descripcion'] = str_replace('•', '<br>', $row2['descripcion']);
-                            array_push($totales_array, $row2);
-                        }
-
-                        //**************************************************************************** */
-
-
-                        echo "<p class='[ text-lg font-bold ]'>Categoria <label class='text-[#FBAA35]'>'" . $row['nombre'] . " ('" . count($totales_array) . "')'</label></p>";
-                        $categoria = "<p class='text-[#FBAA35] font-bold transition duration-150 ease-in-out hover:text-[#FBAA35] focus:text-[#FBAA35] active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-[#FBAA35]'>" . $row['nombre'] . " ('" . count($totales_array) . "')</p>";
+                        echo "<p class='[ text-lg font-bold ]'>Categoria <label class='text-[#FBAA35]'>'" . $row['nombre'] . " ('" . count($row) . "')'</label></p>";
+                        $categoria = "<p class='text-[#FBAA35] font-bold transition duration-150 ease-in-out hover:text-[#FBAA35] focus:text-[#FBAA35] active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-[#FBAA35]'>" . $row['nombre'] . " ('" . count($row) . "')</p>";
                     }
 
 
@@ -813,13 +735,14 @@ if (isset($_SESSION['token'])) {
                                         $stock = $data['result'][$i]['stock'];
 
                                         $count = 0;
+                                        /*
                                         foreach ($totales_array  as $object) {
                                             if ($object["id_grupo"] == $id_grupo) {
                                                 // Object found, increment count
                                                 $count++;
                                             }
                                         }
-
+*/
 
 
                                         echo "
@@ -1110,7 +1033,7 @@ if (isset($_SESSION['token'])) {
 
                 debugger
 
-                let arrresult = await $.ajax({
+                let arrresult = await $.ajax({ //obtenemos los datos del modal segundo el id_gupo  del producto
                     url: "../api/search/modalinfo.php",
                     headers: {
                         'x-csrf-token': $('meta[name="csrf-token"]').attr('content')
