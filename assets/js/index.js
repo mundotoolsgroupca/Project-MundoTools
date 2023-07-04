@@ -28,6 +28,7 @@ const Carrito = {
   idcantidad: "Cantidad_produtos",
   idTotales: "CarritoTotales",
   add: (id, Count, Productosarr) => {
+    debugger;
     /*Validamos el Stock con la cantidad que Se Requiere */
     if (Productosarr.stock < Count) {
       //si la cantidad solicitada es mayor a la que queremos
