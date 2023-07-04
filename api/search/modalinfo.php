@@ -35,7 +35,7 @@ switch ($method) {
                     $resultado->result = FALSE;
                     $resultado->icono = "error";
                     $resultado->titulo = "Error!";
-                    $resultado->mensaje = 'Parametro no Valido';
+                    $resultado->mensaje = 'Parametro no Valido2';
                     echo json_encode($resultado);
                     return;
                 }
