@@ -638,7 +638,7 @@ session_start();
                                         INNER JOIN moneda_ref AS c2 ON c2.cod_moneda = c1.moneda
                                         LEFT JOIN stock AS c5 ON c5.idProducto = c4.id_grupo 
                                     where 
-                                    c4.categoria = 3
+                                    c4.categoria = '" . htmlspecialchars($_GET['categoria'], ENT_QUOTES, 'UTF-8') . "'
                                     ORDER BY
                                         c1.precio $order  
                                         LIMIT $results_per_page OFFSET $offset"; //consulta para obtener los resultados segun la pagina 
