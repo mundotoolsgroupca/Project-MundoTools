@@ -151,7 +151,7 @@ session_start();
     </style>
 
 
-    <div class="absolute z-[200] w-full h-screen flex justify-center items-center">
+    <div class="absolute z-[200] w-full h-screen flex justify-center items-center bg-white">
         <span class="loader"></span>
     </div>
     <!-------Loader--------->
