@@ -55,7 +55,6 @@ const Carrito = {
       return item.id == id;
     });
 
-
     Productosarr.cantidad = Count;
     /*Validamos el Stock con la cantidad que Se Requiere */
     let Datos = new ProductosTicket();
@@ -196,4 +195,19 @@ const Carrito = {
     }
     return result;
   },
+};
+
+validarstock = (id, cantidad) => {
+  let stock = 0;
+  for (let i = 0; i < Carrito.list.length; i++) {
+    let producto = Carrito.list[i];
+    if (producto.id == id) {
+      stock = producto.stock;
+    }
+  }
+  if (cantidad > stock) {
+    return false;
+  } else {
+    return true;
+  }
 };
