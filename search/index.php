@@ -70,7 +70,7 @@ session_start();
             display: block;
             margin: 20px auto;
             position: relative;
-            border: 3px solid #FFF;
+            border: 3px solid #FBAA35;
             border-radius: 50%;
             box-sizing: border-box;
             animation: animloader 2s linear infinite;
