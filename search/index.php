@@ -1108,9 +1108,44 @@ if (isset($_SESSION['token'])) {
             let carritostorage = typeof localStorage.CARRITO == "undefined" ? [] : JSON.parse(localStorage.CARRITO);
             let filteredArray = [];
 
-            function modalinfoview(id_grupo) {
+            async function modalinfoview(id_grupo) {
 
                 debugger
+
+                let arrresult = await $.ajax({
+                    url: "../api/search/modalinfo.php",
+                    headers: {
+                        'x-csrf-token': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    type: 'GET',
+                    data: {
+                        id_grupo: id_grupo
+                    }
+                });
+
+                if (!data.result) {
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+
+                    Toast.fire({
+                        icon: 'error',
+                        title: data.mensaje
+                    })
+                    return;
+
+                }
+
+
+
 
                 let validar = arrresult.some(item => item.id_grupo === id_grupo);
 
