@@ -35,23 +35,11 @@ switch ($method) {
                     $resultado->result = FALSE;
                     $resultado->icono = "error";
                     $resultado->titulo = "Error!";
-                    $resultado->mensaje = 'Categoria no Valida';
-                    echo json_encode($resultado);
-                    return;
-                }
-                if (isset($_GET['query']) && validar_string($_GET['query'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$&')) {
-                    $query = htmlspecialchars($_GET['query'], ENT_QUOTES, 'UTF-8');
-                    $query = eliminar_palabras_sql($query);
-                } else {
-                    // Log this as a warning and keep an eye on these attempts
-                    $resultado = new stdClass();
-                    $resultado->result = FALSE;
-                    $resultado->icono = "error";
-                    $resultado->titulo = "Error!";
                     $resultado->mensaje = 'Parametro no Valido';
                     echo json_encode($resultado);
                     return;
                 }
+
 
                 if ($query != "") {
                     $consulta2 = "
