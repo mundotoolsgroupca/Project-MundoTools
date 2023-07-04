@@ -848,7 +848,7 @@ session_start();
                                                     $id
                                                 </div>
 
-                                                <div class='absolute w-full  flex justify-start z-[999] '>
+                                                <div class='absolute w-full  flex justify-start z-[50] '>
                                                     <div class='bg-gray-300 hover:bg-[#FBAA35] rounded-lg group/eyes transition-colors px-1 rounded-full'>
                                                         $count+
                                                     </div>
