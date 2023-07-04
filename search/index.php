@@ -1095,11 +1095,11 @@ session_start();
             let carritostorage = typeof localStorage.CARRITO == "undefined" ? [] : JSON.parse(localStorage.CARRITO);
             let filteredArray = [];
 
-            function modalinfoview(id) {
+            function modalinfoview(id_grupo) {
 
                 debugger
 
-                let validar = arrresult.some(item => item.id === id);
+                let validar = arrresult.some(item => item.id_grupo === id_grupo);
 
                 if (validar) {
                     // Select the table body by ID or class
@@ -1114,7 +1114,7 @@ session_start();
                     let preciomodal = document.getElementById("preciomodal");
                     let modaldescripcion = document.getElementById("modaldescripcion");
 
-                    let data = arrresult.filter(item => item.id === id);
+                    let data = arrresult.filter(item => item.id_grupo === id_grupo);
                     data = data[0];
                     imgmodal.src = ".." + data.imagen;
                     nombreproductomodal.innerHTML = data.nombre;
