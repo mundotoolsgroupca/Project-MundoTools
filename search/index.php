@@ -526,7 +526,7 @@ if (isset($_SESSION['token'])) {
                                     </div>
 
                                     <div>
-                                        <div class="flex flex-col h-40">
+                                        <div class="flex flex-col h-40 pl-3">
                                             <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                                                 <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
                                                     <div class="overflow-hidden">
