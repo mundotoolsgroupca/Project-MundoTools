@@ -811,7 +811,7 @@ session_start();
 
                                         echo "
                                             <div class='border border-2 hover:border-gray-400 rounded-lg p-3 '>
-                                            <div onclick='modalinfoview(`$id`)' class='group relative cursor-pointer transition-all mx-auto   w-full ' >
+                                            <div onclick='modalinfoview(`$id_grupo`)' class='group relative cursor-pointer transition-all mx-auto   w-full ' >
                                                 <div class='absolute  font-bold text-lg   w-full flex justify-end right-3 text-[#FBAA35]'>
                                                     $id
                                                 </div>
@@ -847,7 +847,7 @@ session_start();
                                                 </div>
                                                 <form>
                                                 <div class='relative    flex w-full flex-wrap items-stretch flex-nowrap'>
-                                                        <input min='0' id='$id' type='number'
+                                                        <input min='0' id='$id_grupo' type='number'
                                                         class='relative m-0 block z-20 w-14 text-center  min-w-0 flex-auto rounded-l border border-r-0 border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition ease-in-out   focus:border-warning-600 focus:text-neutral-700 focus:shadow-te-warning focus:outline-none '
                                                         aria-label='Recipient' username value='1' aria-describedby='button-addon2' />
                                                         <button   data-te-ripple-init data-te-ripple-color='light' type='submit' data-te-ripple-init data-te-ripple-color='warning'
