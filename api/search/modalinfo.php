@@ -9,11 +9,10 @@ switch ($method) {
         session_name("ecomercer_user_data");
         session_start();
 
-        echo json_encode($_SESSION);
-        return;
+
         if (!empty($http['X-Csrf-Token'])) {
 
-            if (!isset($_SESSION['usuario']['id'])) {
+            if (!isset($_SESSION['token'])) {
                 http_response_code(409); //codigo de conflicto
                 // Log this as a warning and keep an eye on these attempts
                 $resultado = new stdClass();
