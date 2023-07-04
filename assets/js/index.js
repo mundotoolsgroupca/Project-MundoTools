@@ -28,6 +28,7 @@ const Carrito = {
   idcantidad: "Cantidad_produtos",
   idTotales: "CarritoTotales",
   add: (id, Count, Productosarr) => {
+    debugger
     let Datos = new ProductosTicket();
     let productoExistente = Carrito.list.find((producto) => producto.id === id);
 
