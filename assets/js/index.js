@@ -62,7 +62,9 @@ const Carrito = {
 
     if (productoExistente) {
       let cantidadtotal = Number(productoExistente.cantidad) + Number(Count);
-      productoExistente.cantidad = cantidadtotal;
+      if (Productosarr.cantidad < cantidadtotal) {
+        productoExistente.cantidad = cantidadtotal;
+      }
     } else {
       Carrito.list.push({
         nombre: Productosarr.nombre,
