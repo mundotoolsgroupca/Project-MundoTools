@@ -74,21 +74,19 @@ switch ($method) {
 
 
                 $resultado2 = mysqli_query($conexion, $consulta);
-
+                $json = [];
                 while ($row2 = mysqli_fetch_assoc($resultado2)) {
                     $precio2 = number_format($row2['precio2'], 2);
                     $precio = number_format($row2['precio'], 2);
                     $row2['precio'] = $precio;
                     $row2['precio2'] = $precio2;
                     $row2['descripcion'] = str_replace('•', '<br>', $row2['descripcion']);
+                    array_push($json, $row);
                 }
 
                 $resultado = mysqli_query($conexion, $consulta);
                 if ($resultado) {
-                    $json = [];
-                    while ($row = mysqli_fetch_assoc($resultado)) {
-                        array_push($json, $row);
-                    }
+
                     http_response_code(200); //sucess
                     $resultado = new stdClass();
                     $resultado->result = TRUE;
