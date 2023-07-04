@@ -45,29 +45,32 @@ switch ($method) {
                 include_once '../../php/conexion.php';
 
                 $consulta = "
+
                     SELECT
                         t1.*,
                         t3.nombre,
                         t3.descripcion,
                         t2.simbolo,
-                        t2.imagen 
+                        t2.imagen,
+                        stock.cantidad AS stock 
                     FROM
-                        productos t1
+                        productos AS t1
                         INNER JOIN (
                         SELECT
                             c4.id_grupo,
                             c2.simbolo,
                             c4.imagen 
                         FROM
-                            productos_agrupados c4
+                            productos_agrupados AS c4
                             INNER JOIN productos AS c1 ON c1.id = c4.id_grupo
                             INNER JOIN moneda_ref AS c2 ON c2.cod_moneda = c1.moneda 
                         WHERE
                             c4.id_grupo = '$id_grupo' 
-                        ) t2 ON t2.id_grupo = t1.id_grupo
-                    INNER JOIN productos_agrupados t3 ON t3.id_grupo = t1.id_grupo 
-                ORDER BY
-                    t1.id ASC
+                        ) AS t2 ON t2.id_grupo = t1.id_grupo
+                        INNER JOIN productos_agrupados AS t3 ON t3.id_grupo = t1.id_grupo
+                        INNER JOIN stock ON t1.id = stock.idProducto 
+                    ORDER BY
+                        t1.id ASC 
                     ";
 
 
