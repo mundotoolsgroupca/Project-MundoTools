@@ -802,6 +802,9 @@ session_start();
                                             }
                                         }
 
+                                        echo "<script>console.log(" . json_encode($totales_array) . ");            </script>";
+                                        return;
+
                                         echo "
                                             <div class='border border-2 hover:border-gray-400 rounded-lg p-3 '>
                                             <div onclick='modalinfoview(`$id`)' class='group relative cursor-pointer transition-all mx-auto   w-full ' >
