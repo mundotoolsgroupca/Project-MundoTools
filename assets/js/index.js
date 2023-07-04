@@ -53,7 +53,7 @@ const Carrito = {
 
     Carrito.list.map((item) => {
       if (item.id == Productosarr.id) {
-        if (item.stock < Count) {
+        if (item.cantidad < Count) {
           //si la cantidad solicitada es mayor a la que queremos
           const Toast = Swal.mixin({
             toast: true,
