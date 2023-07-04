@@ -28,7 +28,6 @@ const Carrito = {
   idcantidad: "Cantidad_produtos",
   idTotales: "CarritoTotales",
   add: (id, Count, Productosarr) => {
-    debugger;
     /*Validamos el Stock con la cantidad que Se Requiere */
     if (Productosarr.stock < Count) {
       //si la cantidad solicitada es mayor a la que queremos
@@ -50,6 +49,32 @@ const Carrito = {
       });
       return;
     }
+
+    Carrito.list.map((item) => {
+      if (item.id == Productosarr.id) {
+        if (item.stock < Count) {
+          //si la cantidad solicitada es mayor a la que queremos
+          const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener("mouseenter", Swal.stopTimer);
+              toast.addEventListener("mouseleave", Swal.resumeTimer);
+            },
+          });
+
+          Toast.fire({
+            icon: "info",
+            title: "Cantidad Ingresada Supera el Stock Disponible",
+          });
+          return;
+        }
+      }
+    });
+
     Productosarr.cantidad = Count;
     /*Validamos el Stock con la cantidad que Se Requiere */
     let Datos = new ProductosTicket();
