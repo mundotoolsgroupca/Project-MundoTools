@@ -62,8 +62,26 @@ const Carrito = {
 
     if (productoExistente) {
       let cantidadtotal = Number(productoExistente.cantidad) + Number(Count);
-      if (Productosarr.cantidad < cantidadtotal) {
+      if (cantidadtotal <= Productosarr.cantidad) {
         productoExistente.cantidad = cantidadtotal;
+      } else {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener("mouseenter", Swal.stopTimer);
+            toast.addEventListener("mouseleave", Swal.resumeTimer);
+          },
+        });
+
+        Toast.fire({
+          icon: "info",
+          title: "Cantidad Ingresada Supera el Stock Disponible",
+        });
+        return;
       }
     } else {
       Carrito.list.push({
