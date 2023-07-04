@@ -619,7 +619,6 @@ if (isset($_SESSION['token'])) {
 
                                 if ($query != "") {
                                     $consulta = "
-
                                     SELECT
                                         c4.id_grupo AS id,
                                         c4.nombre,
@@ -638,13 +637,13 @@ if (isset($_SESSION['token'])) {
                                     WHERE
                                         c4.nombre LIKE '%$query%' OR c1.id LIKE '%$query%' 
                                     ORDER BY
-                                        c1.precio ASC 
+                                        c1.precio $order 
                                         LIMIT $results_per_page OFFSET $offset "; //consulta para obtener los resultados segun la pagina 
                                 } elseif ($categoria != "") {
                                     $consulta = "
 
                                     SELECT
-                                        c4.id_grupo as id,
+                                        c4.id_grupo AS id,
                                         c4.nombre,
                                         c4.categoria,
                                         c4.imagen,
@@ -652,21 +651,24 @@ if (isset($_SESSION['token'])) {
                                         c2.simbolo,
                                         c2.cod_moneda,
                                         c4.id_grupo,
-                                        c5.cantidad 
+                                        c5.cantidad,
+                                        count(c6.id) as cantidad2
                                     FROM
-                                        productos_agrupados c4 
+                                        productos_agrupados c4
                                         INNER JOIN productos AS c1 ON c1.id = c4.id_grupo
                                         INNER JOIN moneda_ref AS c2 ON c2.cod_moneda = c1.moneda
-                                        LEFT JOIN stock AS c5 ON c5.idProducto = c4.id_grupo 
-                                    where 
-                                    c4.categoria = '" . htmlspecialchars($_GET['categoria'], ENT_QUOTES, 'UTF-8') . "'
+                                        LEFT JOIN stock AS c5 ON c5.idProducto = c4.id_grupo
+                                        INNER JOIN productos as c6 on c6.id_grupo = c4.id_grupo
+                                    WHERE
+                                        c4.categoria = '" . htmlspecialchars($_GET['categoria'], ENT_QUOTES, 'UTF-8') . "'
+                                    GROUP BY C6.id_grupo
                                     ORDER BY
-                                        c1.precio $order  
-                                        LIMIT $results_per_page OFFSET $offset"; //consulta para obtener los resultados segun la pagina 
+                                    c1.precio $order
+                                    LIMIT $results_per_page OFFSET $offset"; //consulta para obtener los resultados segun la pagina 
                                 }
 
 
-                             
+
                                 $data = []; //variable que almacenara los resultados de la consulta
                                 $data['result'] = []; //cantida de paginas que tiene la consulta
                                 $data['num_pages'] = 0; //cantida de paginas que tiene la consulta
@@ -684,6 +686,7 @@ if (isset($_SESSION['token'])) {
                                         "simbolo" => $row['simbolo'],
                                         "cod_moneda" => intval($row['cod_moneda']),
                                         "stock" => intval($row['cantidad']),
+                                        "cantidad2" => intval($row['cantidad2']),
                                     ]);
                                 }
 
@@ -734,16 +737,7 @@ if (isset($_SESSION['token'])) {
                                         $precio = $data['result'][$i]['precio'];
                                         $simbolo = $data['result'][$i]['simbolo'];
                                         $stock = $data['result'][$i]['stock'];
-
-                                        $count = 0;
-                                        /*
-                                        foreach ($totales_array  as $object) {
-                                            if ($object["id_grupo"] == $id_grupo) {
-                                                // Object found, increment count
-                                                $count++;
-                                            }
-                                        }
-*/
+                                        $cantidad_agrupado = $data['result'][$i]['cantidad2'];
 
 
                                         echo "
@@ -755,7 +749,7 @@ if (isset($_SESSION['token'])) {
 
                                                 <div class='absolute w-full  flex justify-start z-[50] '>
                                                     <div class='bg-gray-300 hover:bg-[#FBAA35] rounded-lg group/eyes transition-colors px-1 rounded-full'>
-                                                        $count+
+                                                    $cantidad_agrupado+
                                                     </div>
                                                     
                                                 </div>
