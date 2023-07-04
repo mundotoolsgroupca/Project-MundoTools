@@ -741,7 +741,7 @@ function agregar_orden($_DataPOST, $carritostorage, $check_correo, $correo)
             $data = mysqli_fetch_assoc($resultado);
 
             // Check if there is enough stock for the requested quantity
-            if ($cantidad <= $data['cantidad']) {
+            if ($data['cantidad'] <= $cantidad) {
                 http_response_code(409); //codigo de conflicto
                 $resultado = new stdClass();
                 $resultado->result = FALSE;
