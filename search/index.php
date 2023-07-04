@@ -1021,7 +1021,7 @@ if (isset($_SESSION['token'])) {
             }
             <?php
 
-            echo "let search_data = parse.JSON(" . json_encode($data['result'])  . "));";
+            echo "let search_data = JSON.parse('" . json_encode($data['result'])  . "');";
 
             ?>
             const myModalEl = document.getElementById("modalinfo");
