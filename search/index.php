@@ -644,9 +644,7 @@ session_start();
                                         LIMIT $results_per_page OFFSET $offset"; //consulta para obtener los resultados segun la pagina 
                                 }
 
-                                echo $consulta;
-                                return;
-
+                              
                                 $data = []; //variable que almacenara los resultados de la consulta
                                 $data['result'] = []; //cantida de paginas que tiene la consulta
                                 $data['num_pages'] = 0; //cantida de paginas que tiene la consulta
@@ -702,36 +700,32 @@ session_start();
                                 } elseif ($categoria != "") {
 
                                     $consulta2 = "
-                                       
+
                                     SELECT
                                     t1.*,
                                     t3.nombre,
-                                    t3.descripcion ,
+                                    t3.descripcion,
                                     t2.simbolo,
-                                    t2.imagen
-                                          FROM
-                                              productos t1
-                                              INNER JOIN (
-                                              SELECT
-                                                  c4.id_grupo,
-                                                  c2.simbolo,
-                                                  c4.imagen
-                                              FROM
-                                                  productos AS c1
-                                                  INNER JOIN productos_agrupados c4 ON c4.id_grupo = c1.id_grupo 
-                                                  INNER JOIN moneda_ref AS c2 ON c2.cod_moneda = c1.moneda $categoria
-                                                  INNER JOIN stock AS c3 ON c1.id = c3.idProducto
-                                              GROUP BY
-                                                  c4.nombre 
-                                              ORDER BY
-                                                  c1.precio $order  
-                                                  LIMIT $results_per_page OFFSET $offset
-                                              ) t2 ON t2.id_grupo = t1.id_grupo
-                                              INNER JOIN productos_agrupados t3 ON t3.id_grupo = t1.id_grupo 
-                                          ORDER BY
-                                              t1.id ASC
-                            
-                                ";
+                                    t2.imagen 
+                                FROM
+                                    productos t1
+                                    INNER JOIN (
+                                        SELECT
+                                                                c4.id_grupo,
+                                                                c2.simbolo,
+                                                                c4.imagen 
+                                                            FROM
+                                                                productos_agrupados c4
+                                                                INNER JOIN productos AS c1 ON c1.id = c4.id_grupo
+                                                                INNER JOIN moneda_ref AS c2 ON c2.cod_moneda = c1.moneda 
+                                                            WHERE	c4.categoria = '" . htmlspecialchars($_GET['categoria'], ENT_QUOTES, 'UTF-8') . "'
+                                                            ORDER BY
+                                                                c1.precio $order 
+                                                                LIMIT $results_per_page OFFSET $offset
+                                    ) t2 ON t2.id_grupo = t1.id_grupo
+                                    INNER JOIN productos_agrupados t3 ON t3.id_grupo = t1.id_grupo 
+                                ORDER BY
+                                    t1.id ASC  ";
                                 }
 
 
