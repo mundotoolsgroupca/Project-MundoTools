@@ -401,14 +401,14 @@ session_start();
                             $row2['precio'] = $precio;
                             $row2['precio2'] = $precio2;
                             $row2['descripcion'] = str_replace('•', '<br>', $row2['descripcion']);
-                            array_push($totales, $row2);
+                            array_push($totales_array, $row2);
                         }
 
                         //**************************************************************************** */
 
 
-                        echo "<p class='[ text-lg font-bold ]'>Categoria <label class='text-[#FBAA35]'>'" . $row['nombre'] . " ('" . count($totales) . "')'</label></p>";
-                        $categoria = "<p class='text-[#FBAA35] font-bold transition duration-150 ease-in-out hover:text-[#FBAA35] focus:text-[#FBAA35] active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-[#FBAA35]'>" . $row['nombre'] . " ('" . count($totales) . "')</p>";
+                        echo "<p class='[ text-lg font-bold ]'>Categoria <label class='text-[#FBAA35]'>'" . $row['nombre'] . " ('" . count($totales_array) . "')'</label></p>";
+                        $categoria = "<p class='text-[#FBAA35] font-bold transition duration-150 ease-in-out hover:text-[#FBAA35] focus:text-[#FBAA35] active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-[#FBAA35]'>" . $row['nombre'] . " ('" . count($totales_array) . "')</p>";
                     }
                     ?>
 
