@@ -1,6 +1,17 @@
 <?php
 session_name("ecomercer_user_data");
 session_start();
+if (isset($_SESSION['token'])) {
+    // la variable si esta definida
+
+    if (empty($_SESSION['token']) || is_null($_SESSION['token'])) {
+        // la variable esta vacia o es null
+        $_SESSION['token'] = bin2hex(random_bytes(32));
+    }
+} else {
+    // la variable no esta definida
+    $_SESSION['token'] = bin2hex(random_bytes(32));
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
