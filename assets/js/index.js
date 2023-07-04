@@ -30,7 +30,7 @@ const Carrito = {
   add: (id, Count, Productosarr) => {
     /*Validamos el Stock con la cantidad que Se Requiere */
     debugger;
-    if (Count >= Productosarr.stock) {
+    if (Count > Productosarr.stock) {
       //si la cantidad solicitada es mayor a la que queremos
       const Toast = Swal.mixin({
         toast: true,
