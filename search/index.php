@@ -469,7 +469,7 @@ if (isset($_SESSION['token'])) {
 
 
                         <!-- Modal -->
-                        <div data-te-modal-init class="fixed left-0 top-0 z-[1055] p-5 hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none" id="modalinfo" tabindex="-1" aria-labelledby="modalinfoLabel" aria-hidden="true">
+                        <div data-te-modal-init class="fixed left-0 top-0 z-[1055] p-2 hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none" id="modalinfo" tabindex="-1" aria-labelledby="modalinfoLabel" aria-hidden="true">
                             <div data-te-modal-dialog-ref class="pointer-events-none relative h-[calc(100%-1rem)] w-auto translate-y-[-50px] opacity-0 transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:mt-7 min-[576px]:h-[calc(100%-3.5rem)] min-[576px]:max-w-[700px]">
                                 <div class="pointer-events-auto relative flex max-h-[100%] w-full flex-col overflow-hidden rounded-md border-none bg-white bg-clip-padding text-current shadow-lg outline-none dark:bg-neutral-600">
                                     <div class="flex  shadow-lg  flex-shrink-0items-center bg-[#FBAA35] text-white justify-between rounded-t-md border-b-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
