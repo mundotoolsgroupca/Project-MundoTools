@@ -1123,7 +1123,7 @@ if (isset($_SESSION['token'])) {
                     }
                 });
 
-                if (!data.result) {
+                if (!arrresult.result) {
                     const Toast = Swal.mixin({
                         toast: true,
                         position: 'top-end',
