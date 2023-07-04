@@ -1235,14 +1235,16 @@ session_start();
                     Swal.fire({
                         icon: 'Info',
                         title: 'Id del Producto No Valido'
-                    }) return;
+                    })
+                    return;
                 }
                 let cantidad = $(`#${id_input}`).val();
                 if (!validarMonto(cantidad)) {
                     Swal.fire({
                         icon: 'Info',
                         title: 'Monto No Valido'
-                    }) return;
+                    })
+                    return;
                 }
                 let arr_producto = filteredArray.find((item) => {
                     return item.id == id_producto
