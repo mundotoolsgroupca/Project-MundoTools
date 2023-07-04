@@ -686,7 +686,7 @@ if (isset($_SESSION['token'])) {
                                         "simbolo" => $row['simbolo'],
                                         "cod_moneda" => intval($row['cod_moneda']),
                                         "stock" => intval($row['cantidad']),
-                                        "cantidad2" => intval($row['cantidad2']),
+                                        "cantidad2" => $row['cantidad2'],
                                     ]);
                                 }
 
