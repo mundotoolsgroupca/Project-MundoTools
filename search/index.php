@@ -448,8 +448,7 @@ session_start();
                             t1.id ASC  ";
                         }
 
-                        echo $consulta2;
-                        return;
+                     
 
                         $resultado2 = mysqli_query($conexion, $consulta2);
 
