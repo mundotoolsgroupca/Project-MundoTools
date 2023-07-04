@@ -9,6 +9,8 @@ switch ($method) {
         session_name("ecomercer_user_data");
         session_start();
 
+        echo json_encode($_SESSION);
+        return;
         if (!empty($http['X-Csrf-Token'])) {
 
             if (!isset($_SESSION['usuario']['id'])) {
@@ -41,8 +43,8 @@ switch ($method) {
                 }
 
 
-                
-                    $consulta2 = "
+
+                $consulta2 = "
                     SELECT
                         t1.*,
                         t3.nombre,
@@ -67,7 +69,7 @@ switch ($method) {
                 ORDER BY
                     t1.id ASC
                     ";
-              
+
 
 
 
