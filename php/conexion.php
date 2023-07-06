@@ -5,7 +5,7 @@
 $dbhost = 'mundotoolsgroup.com';
 $dbuser = 'mundotools';
 $dbpass = 'wh3006Wv@';
-$dbname = 'db_mundotoolsgroup';
+$dbname = 'mundotools';
 
 
 /*
