@@ -989,7 +989,7 @@ if (isset($_SESSION['token'])) {
             $(document).ready(function() {
                 $("[class='fixed z-[200] w-full h-screen flex justify-center items-center bg-white']").fadeOut("slow"); //quitar el loader
                 localreaddata();
-                toggleView('1x1'); //stilo de vista de los resultados
+                toggleView('2x2'); //stilo de vista de los resultados
                 categorias();
             });
 
