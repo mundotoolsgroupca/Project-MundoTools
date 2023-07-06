@@ -498,127 +498,128 @@ if (isset($_SESSION['token'])) {
                                                 </div>
 
                                             </div>
-
-                                            <div class="lg:col-span-2 lg:row-span-2 lg:row-end-2">
-                                                <h1 id="nombreproductomodal" class="sm: text-2xl font-bold text-gray-900 sm:text-3xl capitalize"> </h1>
-                                                <div class="mt-10 flex flex-col items-center justify-between space-y-4 border-t border-b py-4   sm:space-y-0">
-                                                    <!-- Required font awesome   
-                                                <div class="flex items-end">
-                                                        <h1 id="preciomodal" class="text-3xl m-0 font-bold">0 $</h1>
-                                                    </div>
-                                                    -->
+                                            <!-- Required font awesome   
+                                                <div class="lg:col-span-2 lg:row-span-2 lg:row-end-2">
+                                                
+                                                    <h1 id="nombreproductomodal" class="sm: text-2xl font-bold text-gray-900 sm:text-3xl capitalize"> </h1>
+                                                    <div class="mt-10 flex flex-col items-center justify-between space-y-4 border-t border-b py-4   sm:space-y-0">
+                                                    
+                                                    <div class="flex items-end">
+                                                            <h1 id="preciomodal" class="text-3xl m-0 font-bold">0 $</h1>
+                                                        </div>
+                                                    
+                                                </div>
+                                            -->
+                                            <div class="lg:col-span-3">
+                                                <div class="border-b border-gray-300">
+                                                    <nav class="flex gap-4">
+                                                        <a href="#modaldescripcion" title="" class="border-b-2 border-[#FBAA35] py-4 text-sm font-medium text-gray-900 hover:border-gray-400 hover:text-gray-800"> Descripcion </a>
+                                                    </nav>
                                                 </div>
 
-                                                <div class="lg:col-span-3">
-                                                    <div class="border-b border-gray-300">
-                                                        <nav class="flex gap-4">
-                                                            <a href="#modaldescripcion" title="" class="border-b-2 border-[#FBAA35] py-4 text-sm font-medium text-gray-900 hover:border-gray-400 hover:text-gray-800"> Descripcion </a>
-                                                        </nav>
-                                                    </div>
-
-                                                    <div id="modaldescripcion" class=" flow-root sm:mt-12 break-words">
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-                                        </div>
-                                    </div>
-
-                                    <div class='p-3'>
-                                        <div class="flex flex-col h-40">
-                                            <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-                                                <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
-                                                    <div class="overflow-hidden">
-                                                        <table id="modal_tabla" class="min-w-full text-left text-sm font-light capitalize ">
-                                                            <thead class="text-white">
-
-                                                            </thead>
-                                                            <tbody>
-
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
+                                                <div id="modaldescripcion" class=" flow-root sm:mt-12 break-words">
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
 
-                                    <!--Modal footer-->
-                                    <div class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
-                                        <button type="button" class="inline-block rounded bg-[#FBAA35] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200" data-te-modal-dismiss data-te-ripple-init data-te-ripple-color="light">
-                                            Cerrar
-                                        </button>
 
                                     </div>
                                 </div>
+
+                                <div class='p-3'>
+                                    <div class="flex flex-col h-40">
+                                        <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                                            <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+                                                <div class="overflow-hidden">
+                                                    <table id="modal_tabla" class="min-w-full text-left text-sm font-light capitalize ">
+                                                        <thead class="text-white">
+
+                                                        </thead>
+                                                        <tbody>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--Modal footer-->
+                                <div class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
+                                    <button type="button" class="inline-block rounded bg-[#FBAA35] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200" data-te-modal-dismiss data-te-ripple-init data-te-ripple-color="light">
+                                        Cerrar
+                                    </button>
+
+                                </div>
                             </div>
                         </div>
-                        <div class="[ flex gap-1 items-center justify-end ] [ md:hidden  ] [ lg:hidden ]">
-                            <label>Modo</label>
-                            <div id="2x2" onclick="toggleView('2x2') ">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" />
-                                </svg>
-
-                            </div>
-                            <div id="1x1" onclick="toggleView('1x1')">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 7.5A2.25 2.25 0 017.5 5.25h9a2.25 2.25 0 012.25 2.25v9a2.25 2.25 0 01-2.25 2.25h-9a2.25 2.25 0 01-2.25-2.25v-9z" />
-                                </svg>
-                            </div>
-
+                    </div>
+                    <div class="[ flex gap-1 items-center justify-end ] [ md:hidden  ] [ lg:hidden ]">
+                        <label>Modo</label>
+                        <div id="2x2" onclick="toggleView('2x2') ">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" />
+                            </svg>
 
                         </div>
-                        <script>
-                            function toggleView(view) {
-                                if (view === '2x2') {
-                                    $('#result').removeClass('grid-cols-1');
-                                    $('#result').addClass('grid-cols-2');
-                                    $('#1x1').removeClass('text-[#FBAA35]');
-                                    $('#2x2').addClass('text-[#FBAA35]');
-                                } else if (view === '1x1') {
-                                    $('#result').removeClass('grid-cols-2');
-                                    $('#result').addClass('grid-cols-1');
-                                    $('#2x2').removeClass('text-[#FBAA35]');
-                                    $('#1x1').addClass('text-[#FBAA35]');
+                        <div id="1x1" onclick="toggleView('1x1')">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 7.5A2.25 2.25 0 017.5 5.25h9a2.25 2.25 0 012.25 2.25v9a2.25 2.25 0 01-2.25 2.25h-9a2.25 2.25 0 01-2.25-2.25v-9z" />
+                            </svg>
+                        </div>
+
+
+                    </div>
+                    <script>
+                        function toggleView(view) {
+                            if (view === '2x2') {
+                                $('#result').removeClass('grid-cols-1');
+                                $('#result').addClass('grid-cols-2');
+                                $('#1x1').removeClass('text-[#FBAA35]');
+                                $('#2x2').addClass('text-[#FBAA35]');
+                            } else if (view === '1x1') {
+                                $('#result').removeClass('grid-cols-2');
+                                $('#result').addClass('grid-cols-1');
+                                $('#2x2').removeClass('text-[#FBAA35]');
+                                $('#1x1').addClass('text-[#FBAA35]');
+                            }
+                        }
+                    </script>
+                    <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+                    <div id="result" class="[ mt-6 grid gap-x-2 gap-y-10   xl:gap-x-8 ] [ sm:grid-cols-2 ] [ lg:grid-cols-3 ] [ xl:grid-cols-4 ] [ 2xl:grid-cols-4 ]" style="font-family: Raleway;">
+
+
+                        <?php
+
+
+
+
+                        if (isset($_GET['query']) || isset($_GET['categoria'])) {
+
+
+                            // obtenemos la pagina por GET, en caso que esta variable no este declarada  por default seria 1
+                            $current_page =  1;
+                            if (isset($_GET['page'])) {
+                                if (is_int($_GET['page'])) {
+                                    $current_page = $_GET['page'];
                                 }
                             }
-                        </script>
-                        <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
-                        <div id="result" class="[ mt-6 grid gap-x-2 gap-y-10   xl:gap-x-8 ] [ sm:grid-cols-2 ] [ lg:grid-cols-3 ] [ xl:grid-cols-4 ] [ 2xl:grid-cols-4 ]" style="font-family: Raleway;">
 
+                            // contidad de Resultados por pagina
+                            $results_per_page = 50;
+                            //formula para calcular los resultados de la tabla segun la pagina en que se esta
+                            $offset = ($current_page - 1) * $results_per_page;
 
-                            <?php
-
-
-
-
-                            if (isset($_GET['query']) || isset($_GET['categoria'])) {
-
-
-                                // obtenemos la pagina por GET, en caso que esta variable no este declarada  por default seria 1
-                                $current_page =  1;
-                                if (isset($_GET['page'])) {
-                                    if (is_int($_GET['page'])) {
-                                        $current_page = $_GET['page'];
-                                    }
-                                }
-
-                                // contidad de Resultados por pagina
-                                $results_per_page = 50;
-                                //formula para calcular los resultados de la tabla segun la pagina en que se esta
-                                $offset = ($current_page - 1) * $results_per_page;
-
-                                $query = isset($_GET['query']) ? mysqli_real_escape_string($conexion, $_GET['query']) : "";
-                                $categoria =  isset($_GET['categoria']) ?   "and c4.categoria = " . htmlspecialchars($_GET['categoria'], ENT_QUOTES, 'UTF-8') : "";
+                            $query = isset($_GET['query']) ? mysqli_real_escape_string($conexion, $_GET['query']) : "";
+                            $categoria =  isset($_GET['categoria']) ?   "and c4.categoria = " . htmlspecialchars($_GET['categoria'], ENT_QUOTES, 'UTF-8') : "";
 
 
 
-                                include_once '../php/conexion.php';
+                            include_once '../php/conexion.php';
 
-                                if ($query != "") {
-                                    $consulta = "
+                            if ($query != "") {
+                                $consulta = "
 
                                     SELECT
                                         c4.id_grupo AS id,
@@ -646,8 +647,8 @@ if (isset($_SESSION['token'])) {
 
 
                                      "; //consulta para obtener los resultados segun la pagina 
-                                } elseif ($categoria != "") {
-                                    $consulta = "
+                            } elseif ($categoria != "") {
+                                $consulta = "
 
                                     SELECT
                                         c4.id_grupo AS id,
@@ -672,38 +673,38 @@ if (isset($_SESSION['token'])) {
                                     ORDER BY
                                     c1.precio $order
                                     LIMIT $results_per_page OFFSET $offset"; //consulta para obtener los resultados segun la pagina 
-                                }
+                            }
 
 
 
-                                $data = []; //variable que almacenara los resultados de la consulta
-                                $data['result'] = []; //cantida de paginas que tiene la consulta
-                                $data['num_pages'] = 0; //cantida de paginas que tiene la consulta
-                                $resultado = mysqli_query($conexion, $consulta);
-                                while ($row = mysqli_fetch_assoc($resultado)) {
+                            $data = []; //variable que almacenara los resultados de la consulta
+                            $data['result'] = []; //cantida de paginas que tiene la consulta
+                            $data['num_pages'] = 0; //cantida de paginas que tiene la consulta
+                            $resultado = mysqli_query($conexion, $consulta);
+                            while ($row = mysqli_fetch_assoc($resultado)) {
 
 
-                                    array_push($data['result'], [
-                                        "id" => $row['id'],
-                                        "id_grupo" => $row['id_grupo'],
-                                        "nombre" => $row['nombre'],
-                                        "categoria" => $row['categoria'],
-                                        "imagen" => $row['imagen'],
-                                        "precio" =>  floatval($row['precio']),
-                                        "simbolo" => $row['simbolo'],
-                                        "cod_moneda" => intval($row['cod_moneda']),
-                                        "stock" => intval($row['cantidad']),
-                                        "cantidad2" => $row['cantidad2'],
-                                    ]);
-                                }
+                                array_push($data['result'], [
+                                    "id" => $row['id'],
+                                    "id_grupo" => $row['id_grupo'],
+                                    "nombre" => $row['nombre'],
+                                    "categoria" => $row['categoria'],
+                                    "imagen" => $row['imagen'],
+                                    "precio" =>  floatval($row['precio']),
+                                    "simbolo" => $row['simbolo'],
+                                    "cod_moneda" => intval($row['cod_moneda']),
+                                    "stock" => intval($row['cantidad']),
+                                    "cantidad2" => $row['cantidad2'],
+                                ]);
+                            }
 
 
-                                //*********** consulta pra obtener la data para cuando muestre el modal ****************************************
+                            //*********** consulta pra obtener la data para cuando muestre el modal ****************************************
 
 
 
 
-                                /*
+                            /*
                                 $resultado2 = mysqli_query($conexion, $consulta2);
                                 $modaldata = [];
                                 while ($row2 = mysqli_fetch_assoc($resultado2)) {
@@ -715,39 +716,39 @@ if (isset($_SESSION['token'])) {
                                     array_push($modaldata, $row2);
                                 }
 */
-                                //**************************************************************************** */
+                            //**************************************************************************** */
 
 
-                                if ($query != "") {
-                                    $sql_count = "SELECT COUNT(*) as count FROM productos_agrupados WHERE nombre LIKE '%$query%'";
-                                } elseif ($categoria != "") {
-                                    $sql_count = "SELECT COUNT(*) as count FROM productos_agrupados WHERE  categoria ='" . htmlspecialchars($_GET['categoria'], ENT_QUOTES, 'UTF-8') . "' ";
-                                }
+                            if ($query != "") {
+                                $sql_count = "SELECT COUNT(*) as count FROM productos_agrupados WHERE nombre LIKE '%$query%'";
+                            } elseif ($categoria != "") {
+                                $sql_count = "SELECT COUNT(*) as count FROM productos_agrupados WHERE  categoria ='" . htmlspecialchars($_GET['categoria'], ENT_QUOTES, 'UTF-8') . "' ";
+                            }
 
-                                //consutla para obtener la cantida de paginas que tiene la consulta
-                                $count = mysqli_fetch_assoc(mysqli_query($conexion, $sql_count))['count'];
-                                $data['num_pages'] = ceil($count / $results_per_page); //agregarmos la cantidad de paginas que tiene al array principal 
+                            //consutla para obtener la cantida de paginas que tiene la consulta
+                            $count = mysqli_fetch_assoc(mysqli_query($conexion, $sql_count))['count'];
+                            $data['num_pages'] = ceil($count / $results_per_page); //agregarmos la cantidad de paginas que tiene al array principal 
 
-                                // http_response_code(200); //Success
-                                // echo json_encode($data); //retornamos los datos
-
-
-
-                                if (count($data['result']) != 0) {
-
-                                    for ($i = 0; $i < count($data['result']); $i++) {
-
-                                        $imagen = $data['result'][$i]['imagen'];
-                                        $id = $data['result'][$i]['id'];
-                                        $id_grupo = $data['result'][$i]['id_grupo'];
-                                        $nombre = (strlen($data['result'][$i]['nombre']) > 30) ? substr($data['result'][$i]['nombre'], 0, 30) . '...' : $data['result'][$i]['nombre'];
-                                        $precio = $data['result'][$i]['precio'];
-                                        $simbolo = $data['result'][$i]['simbolo'];
-                                        $stock = $data['result'][$i]['stock'];
-                                        $cantidad_agrupado = $data['result'][$i]['cantidad2'];
+                            // http_response_code(200); //Success
+                            // echo json_encode($data); //retornamos los datos
 
 
-                                        echo "
+
+                            if (count($data['result']) != 0) {
+
+                                for ($i = 0; $i < count($data['result']); $i++) {
+
+                                    $imagen = $data['result'][$i]['imagen'];
+                                    $id = $data['result'][$i]['id'];
+                                    $id_grupo = $data['result'][$i]['id_grupo'];
+                                    $nombre = (strlen($data['result'][$i]['nombre']) > 30) ? substr($data['result'][$i]['nombre'], 0, 30) . '...' : $data['result'][$i]['nombre'];
+                                    $precio = $data['result'][$i]['precio'];
+                                    $simbolo = $data['result'][$i]['simbolo'];
+                                    $stock = $data['result'][$i]['stock'];
+                                    $cantidad_agrupado = $data['result'][$i]['cantidad2'];
+
+
+                                    echo "
                                             <div class='border border-2 hover:border-gray-400 rounded-lg p-3 '>
                                             <div onclick='modalinfoview(`$id_grupo`)' class='group relative cursor-pointer transition-all mx-auto   w-full ' >
                                                 <div class='absolute  font-bold text-lg   w-full flex justify-end right-3 text-[#FBAA35]'>
@@ -801,37 +802,37 @@ if (isset($_SESSION['token'])) {
                                                     </form>
                                                 
                                             </div> ";
-                                    }
-                                    echo " </div>
+                                }
+                                echo " </div>
                                     <hr class='h-px my-8 bg-gray-200 border-0 dark:bg-gray-700'>
                                             <nav aria-label='Page navigation example'>
                                                 <ul class='list-style-none flex flex-wrap w-full justify-center [ md:justify-end ] [ lg:justify-end ]'>";
-                                    for ($j = 1; $j <= $data['num_pages']; $j++) {
+                                for ($j = 1; $j <= $data['num_pages']; $j++) {
 
-                                        if ($j != $current_page) {
-                                            echo "
+                                    if ($j != $current_page) {
+                                        echo "
                                                     <li>
                                                         <a class='relative block rounded bg-transparent px-3 py-1.5 text-sm text-neutral-600 transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white' href='?query=$query&page=$j&order=$order'>$j
                                                         <span class='absolute -m-px h-px w-px overflow-hidden whitespace-nowrap border-0 p-0 [clip:rect(0,0,0,0)]'>(current)</span>
                                                         </a> 
                                                     </li>
                                                 ";
-                                        } else {
-                                            echo "
+                                    } else {
+                                        echo "
                                                     <li>
                                                 <a class='relative block rounded bg-warning-100 px-3 py-1.5 text-sm font-medium text-warning-700 transition-all duration-300' href='#'>$current_page</a>
                                                     
                                                 </li>
                                                     ";
-                                        }
                                     }
-                                    echo "
+                                }
+                                echo "
                                             </ul>
                                         </nav>
                                     </div>";
-                                } else {
-                                    http_response_code(409); //error
-                                    echo "
+                            } else {
+                                http_response_code(409); //error
+                                echo "
                             
                                     <div id='search-empty' class='search-alert flex items-center justify-center space-x-4 mt-4  '>
                                         <svg class='w-6 h-6 text-gray-500' fill='currentColor' viewBox='0 0 20 20'>
@@ -843,84 +844,13 @@ if (isset($_SESSION['token'])) {
                                     </div>
                             
                                 "; //retornamos los datos
-                                }
                             }
+                        }
 
-                            ?>
-
-
-
+                        ?>
 
 
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="[ fixed flex z-30 justify-end bottom-0 right-0 ]" style="font-family: Raleway;" id="BtnTicket">
-                <div class="border  border-gray-300  rounded-lg   bg-white ">
-                    <h2 class="mb-0" id="headingTwo">
-                        <button class="group relative flex w-full items-center   border-0 bg-white py-2 px-3 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none  [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-warning [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] " type="button" data-te-collapse-init data-te-collapse-collapsed data-te-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            <div class="[ flex gap-1 items-center relative ]">
-
-                                <div id="newitemadd_status" class="[ hidden absolute w-full  ]">
-                                    <span class="animate-ping  absolute inline-flex h-3 w-3 bottom-2 left-3 rounded-full bg-warning-400 "></span>
-                                    <span class="absolute inline-flex h-3 w-3 bottom-2 left-3 rounded-full bg-[#FBAA35] "></span>
-
-                                </div>
-
-
-
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z">
-                                    </path>
-                                </svg>
-                                Carrito
-                                <label id="Cantidad_produtos">(0)</label>
-                            </div>
-
-                            <span class="ml-2 -mr-1 h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:mr-0 group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none ">
-
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                                </svg>
-                            </span>
-                        </button>
-                    </h2>
-                    <div id="collapseTwo" class="!visible hidden" data-te-collapse-item aria-labelledby="headingTwo" data-te-parent="#BtnTicket">
-
-                        <div class="[ h-full  w-72     py-4  ]">
-                            <div class="[ h-72 overflow-y-auto   ]">
-                                <div id="Carrito" class=" flex flex-col gap-3">
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="[ w-full  flex justify-between p-2 ]">
-                            <div class="[ w-full flex justify-start p-3 ]">
-                                <div>
-                                    Total:&nbsp
-                                </div>
-                                <div id="CarritoTotales" class="text-warning font-bold ">
-                                    0
-                                </div>
-                            </div>
-                            <div class="flex justify-center gap-3 ">
-
-                                <button onclick="Carrito.clear();" type="button" class="inline-block rounded bg-danger-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-danger-700 transition duration-150 ease-in-out hover:bg-danger-200 focus:bg-danger-100 focus:outline-none focus:ring-0 active:bg-danger-200">
-                                    Borrar
-                                </button>
-                                <button id="btncarritodetalle" type="button" class="inline-block rounded bg-success-700 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-success-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-success-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-success-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]">
-                                    Detalle
-                                </button>
-
-
-
-
-
-                            </div>
-
-                        </div>
 
 
 
@@ -928,182 +858,253 @@ if (isset($_SESSION['token'])) {
                 </div>
             </div>
         </div>
+        <div class="[ fixed flex z-30 justify-end bottom-0 right-0 ]" style="font-family: Raleway;" id="BtnTicket">
+            <div class="border  border-gray-300  rounded-lg   bg-white ">
+                <h2 class="mb-0" id="headingTwo">
+                    <button class="group relative flex w-full items-center   border-0 bg-white py-2 px-3 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none  [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-warning [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] " type="button" data-te-collapse-init data-te-collapse-collapsed data-te-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <div class="[ flex gap-1 items-center relative ]">
 
-        <footer data-aos="fade-up" id="contactanos" class="bg-[#FBAA35] text-center text-neutral-900   lg:text-left transition-all">
-            <!-- Main container div: holds the entire content of the footer, including four sections (Tailwind Elements, Products, Useful links, and Contact), with responsive styling and appropriate padding/margins. -->
-            <div class="mx-2 py-10 text-center md:text-left">
-                <div class="grid-1 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-                    <!-- Tailwind Elements section -->
-                    <div class="[ flex items-center  justify-center ] [ md:justify-start ] [ lg:justify-start ]">
-                        <a class="flex items-center [ w-24 h-10 ] [ md:w-32 md:h-32 ] [ lg:w-48 lg:h-20 ]" href="#">
-                            <img src="../assets/img/logo-white.png" alt="" srcset="" />
-                        </a>
+                            <div id="newitemadd_status" class="[ hidden absolute w-full  ]">
+                                <span class="animate-ping  absolute inline-flex h-3 w-3 bottom-2 left-3 rounded-full bg-warning-400 "></span>
+                                <span class="absolute inline-flex h-3 w-3 bottom-2 left-3 rounded-full bg-[#FBAA35] "></span>
+
+                            </div>
+
+
+
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z">
+                                </path>
+                            </svg>
+                            Carrito
+                            <label id="Cantidad_produtos">(0)</label>
+                        </div>
+
+                        <span class="ml-2 -mr-1 h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:mr-0 group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none ">
+
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                            </svg>
+                        </span>
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="!visible hidden" data-te-collapse-item aria-labelledby="headingTwo" data-te-parent="#BtnTicket">
+
+                    <div class="[ h-full  w-72     py-4  ]">
+                        <div class="[ h-72 overflow-y-auto   ]">
+                            <div id="Carrito" class=" flex flex-col gap-3">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="[ w-full  flex justify-between p-2 ]">
+                        <div class="[ w-full flex justify-start p-3 ]">
+                            <div>
+                                Total:&nbsp
+                            </div>
+                            <div id="CarritoTotales" class="text-warning font-bold ">
+                                0
+                            </div>
+                        </div>
+                        <div class="flex justify-center gap-3 ">
+
+                            <button onclick="Carrito.clear();" type="button" class="inline-block rounded bg-danger-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-danger-700 transition duration-150 ease-in-out hover:bg-danger-200 focus:bg-danger-100 focus:outline-none focus:ring-0 active:bg-danger-200">
+                                Borrar
+                            </button>
+                            <button id="btncarritodetalle" type="button" class="inline-block rounded bg-success-700 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-success-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-success-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-success-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]">
+                                Detalle
+                            </button>
+
+
+
+
+
+                        </div>
+
                     </div>
 
 
-                    <div class="[ hidden ] [ md:block ] [ lg:block ] "></div>
 
-                    <div class="[ hidden ] [ md:block ] [ lg:block ] "></div>
-
-                    <div>
-                        <h6 class="mb-4 flex justify-center font-semibold uppercase md:justify-start">
-                            Contacto
-                        </h6>
-                        <p class="mb-4 flex items-center justify-center md:justify-start">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="mr-3 h-5 w-5">
-                                <path d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z" />
-                                <path d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z" />
-                            </svg>
-                            <span class="[ text-[13px] ] [ md:text-base ] [ lg:text-base ]">
-                                galpón #8, del centro industrial Barcelona, ubicado en la av.
-                                Fuerzas armadas.</span>
-                        </p>
-                        <p class="mb-4 flex items-center justify-center md:justify-start">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="mr-3 h-5 w-5">
-                                <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />
-                                <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
-                            </svg>
-                            <a class="[ text-[13px] ] [ md:text-base ] [ lg:text-base ]" href="mailto:contacto@mundotoolsgroup.com">contacto@mundotoolsgroup.com</a>
-                        </p>
-                        <p class="mb-4 flex items-center justify-center md:justify-start">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="mr-3 h-5 w-5">
-                                <path fill-rule="evenodd" d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z" clip-rule="evenodd" />
-                            </svg>
-                            <a href="https://wa.me/+0">0</a>
-                        </p>
-                    </div>
                 </div>
             </div>
-
-            <!--Copyright section-->
-            <div class="bg-black p-6 text-center text-white/90">
-                <span>© 2023 Copyright:</span>
-                <a class="font-semibold text-white" href="./">Mundotools Group C.A Rif: J503585285</a>
-            </div>
-        </footer>
-        <div id="btn_subir" class=" fixed  bottom-3 left-3">
-            <a href="#social_bar">
-                <div class="rounded-full bg-[#FBAA35] hover:bg-[#FBAA15] cursor-pointer transition-colors p-3 ">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" text-white h-5 w-5">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75L12 3m0 0l3.75 3.75M12 3v18" />
-                    </svg>
-                </div>
-            </a>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
-        <script>
-            $(document).ready(function() {
-                $("[class='fixed z-[200] w-full h-screen flex justify-center items-center bg-white']").fadeOut("slow"); //quitar el loader
-                localreaddata();
-                toggleView('1x1'); //stilo de vista de los resultados
-                categorias();
+    </div>
+
+    <footer data-aos="fade-up" id="contactanos" class="bg-[#FBAA35] text-center text-neutral-900   lg:text-left transition-all">
+        <!-- Main container div: holds the entire content of the footer, including four sections (Tailwind Elements, Products, Useful links, and Contact), with responsive styling and appropriate padding/margins. -->
+        <div class="mx-2 py-10 text-center md:text-left">
+            <div class="grid-1 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+                <!-- Tailwind Elements section -->
+                <div class="[ flex items-center  justify-center ] [ md:justify-start ] [ lg:justify-start ]">
+                    <a class="flex items-center [ w-24 h-10 ] [ md:w-32 md:h-32 ] [ lg:w-48 lg:h-20 ]" href="#">
+                        <img src="../assets/img/logo-white.png" alt="" srcset="" />
+                    </a>
+                </div>
+
+
+                <div class="[ hidden ] [ md:block ] [ lg:block ] "></div>
+
+                <div class="[ hidden ] [ md:block ] [ lg:block ] "></div>
+
+                <div>
+                    <h6 class="mb-4 flex justify-center font-semibold uppercase md:justify-start">
+                        Contacto
+                    </h6>
+                    <p class="mb-4 flex items-center justify-center md:justify-start">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="mr-3 h-5 w-5">
+                            <path d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z" />
+                            <path d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z" />
+                        </svg>
+                        <span class="[ text-[13px] ] [ md:text-base ] [ lg:text-base ]">
+                            galpón #8, del centro industrial Barcelona, ubicado en la av.
+                            Fuerzas armadas.</span>
+                    </p>
+                    <p class="mb-4 flex items-center justify-center md:justify-start">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="mr-3 h-5 w-5">
+                            <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />
+                            <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
+                        </svg>
+                        <a class="[ text-[13px] ] [ md:text-base ] [ lg:text-base ]" href="mailto:contacto@mundotoolsgroup.com">contacto@mundotoolsgroup.com</a>
+                    </p>
+                    <p class="mb-4 flex items-center justify-center md:justify-start">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="mr-3 h-5 w-5">
+                            <path fill-rule="evenodd" d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z" clip-rule="evenodd" />
+                        </svg>
+                        <a href="https://wa.me/+0">0</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!--Copyright section-->
+        <div class="bg-black p-6 text-center text-white/90">
+            <span>© 2023 Copyright:</span>
+            <a class="font-semibold text-white" href="./">Mundotools Group C.A Rif: J503585285</a>
+        </div>
+    </footer>
+    <div id="btn_subir" class=" fixed  bottom-3 left-3">
+        <a href="#social_bar">
+            <div class="rounded-full bg-[#FBAA35] hover:bg-[#FBAA15] cursor-pointer transition-colors p-3 ">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" text-white h-5 w-5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75L12 3m0 0l3.75 3.75M12 3v18" />
+                </svg>
+            </div>
+        </a>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("[class='fixed z-[200] w-full h-screen flex justify-center items-center bg-white']").fadeOut("slow"); //quitar el loader
+            localreaddata();
+            toggleView('1x1'); //stilo de vista de los resultados
+            categorias();
+        });
+
+        async function categorias() {
+
+            const data = await $.ajax({
+                url: "../api/categorias/index.php",
+                type: 'GET',
             });
 
-            async function categorias() {
-
-                const data = await $.ajax({
-                    url: "../api/categorias/index.php",
-                    type: 'GET',
-                });
-
-                data.map((item) => {
-                    $('#navcategoria').append(`
+            data.map((item) => {
+                $('#navcategoria').append(`
         <li>
             <a href='../search/?categoria=${item.id}' class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600" href="#" data-te-dropdown-item-ref>${item.nombre}</a>
         </li>`);
 
-                    $('#navcategoria_mobile').append(`
+                $('#navcategoria_mobile').append(`
         <li>
             <a href='../search/?categoria=${item.id}' class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600" href="#" data-te-dropdown-item-ref>${item.nombre}</a>
         </li> `);
-                });
+            });
+
+        }
+        <?php
+
+        echo "let search_data = JSON.parse('" . json_encode($data['result'])  . "');";
+
+        ?>
+        const myModalEl = document.getElementById("modalinfo");
+        const modal = new te.Modal(myModalEl);
+
+        let productos = [];
+        let carritostorage = typeof localStorage.CARRITO == "undefined" ? [] : JSON.parse(localStorage.CARRITO);
+        let filteredArray = [];
+
+        async function modalinfoview(id_grupo) {
+
+
+
+            let arrresult = await $.ajax({ //obtenemos los datos del modal segundo el id_gupo  del producto
+                url: "../api/search/modalinfo.php",
+                headers: {
+                    'x-csrf-token': $('meta[name="csrf-token"]').attr('content')
+                },
+                type: 'GET',
+                data: {
+                    id_grupo: id_grupo
+                }
+            });
+
+            if (!arrresult.result) {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+
+                Toast.fire({
+                    icon: 'error',
+                    title: data.mensaje
+                })
+                return;
 
             }
-            <?php
-
-            echo "let search_data = JSON.parse('" . json_encode($data['result'])  . "');";
-
-            ?>
-            const myModalEl = document.getElementById("modalinfo");
-            const modal = new te.Modal(myModalEl);
-
-            let productos = [];
-            let carritostorage = typeof localStorage.CARRITO == "undefined" ? [] : JSON.parse(localStorage.CARRITO);
-            let filteredArray = [];
-
-            async function modalinfoview(id_grupo) {
 
 
 
-                let arrresult = await $.ajax({ //obtenemos los datos del modal segundo el id_gupo  del producto
-                    url: "../api/search/modalinfo.php",
-                    headers: {
-                        'x-csrf-token': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    type: 'GET',
-                    data: {
-                        id_grupo: id_grupo
-                    }
+
+            let validar = arrresult.data.some(item => item.id_grupo === id_grupo);
+
+            if (validar) {
+                // Select the table body by ID or class
+                var tableBody = $('#modal_tabla tbody'); // Replace "table-id" with the actual ID of your table
+
+                // Remove all rows from the table body
+                tableBody.find('tr').remove();
+                //$('#modal_tabla').html('');
+
+                let imgmodal = document.getElementById("imgmodal");
+                let nombreproductomodal = document.getElementById("nombreproductomodal");
+                let preciomodal = document.getElementById("preciomodal");
+                let modaldescripcion = document.getElementById("modaldescripcion");
+
+                let data = arrresult.data.filter(item => item.id_grupo === id_grupo);
+                data = data[0];
+                imgmodal.src = ".." + data.imagen;
+                nombreproductomodal.innerHTML = data.nombre;
+                //preciomodal.innerHTML = data.precio + "" + data.simbolo;
+                modaldescripcion.innerHTML = data.descripcion;
+
+
+
+                // Filter the array to get only the objects with id=2
+                filteredArray = arrresult.data.filter(function(obj) {
+                    return obj.id_grupo === data.id_grupo;
                 });
 
-                if (!arrresult.result) {
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: 3000,
-                        timerProgressBar: true,
-                        didOpen: (toast) => {
-                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                            toast.addEventListener('mouseleave', Swal.resumeTimer)
-                        }
-                    })
-
-                    Toast.fire({
-                        icon: 'error',
-                        title: data.mensaje
-                    })
-                    return;
-
-                }
-
-
-
-
-                let validar = arrresult.data.some(item => item.id_grupo === id_grupo);
-
-                if (validar) {
-                    // Select the table body by ID or class
-                    var tableBody = $('#modal_tabla tbody'); // Replace "table-id" with the actual ID of your table
-
-                    // Remove all rows from the table body
-                    tableBody.find('tr').remove();
-                    //$('#modal_tabla').html('');
-
-                    let imgmodal = document.getElementById("imgmodal");
-                    let nombreproductomodal = document.getElementById("nombreproductomodal");
-                    let preciomodal = document.getElementById("preciomodal");
-                    let modaldescripcion = document.getElementById("modaldescripcion");
-
-                    let data = arrresult.data.filter(item => item.id_grupo === id_grupo);
-                    data = data[0];
-                    imgmodal.src = ".." + data.imagen;
-                    nombreproductomodal.innerHTML = data.nombre;
-                    //preciomodal.innerHTML = data.precio + "" + data.simbolo;
-                    modaldescripcion.innerHTML = data.descripcion;
-
-
-
-                    // Filter the array to get only the objects with id=2
-                    filteredArray = arrresult.data.filter(function(obj) {
-                        return obj.id_grupo === data.id_grupo;
-                    });
-
-                    $('#modal_tabla > thead').html(`
+                $('#modal_tabla > thead').html(`
 
         `);
 
-                    $('#modal_tabla > thead').append(`
+                $('#modal_tabla > thead').append(`
         <tr class='bg-black'>
             <th scope="col" class="px-6 py-4">ID</th>
             <th scope="col" class="px-6 py-4">caracteristica1</th>
@@ -1117,8 +1118,8 @@ if (isset($_SESSION['token'])) {
         </tr>
         `);
 
-                    filteredArray.map((item) => {
-                        $('#modal_tabla > tbody').append(`
+                filteredArray.map((item) => {
+                    $('#modal_tabla > tbody').append(`
         <tr class="border-b dark:border-neutral-500 bg-[#FBAA35]">
             <td class="whitespace-nowrap px-6 py-4 font-medium">${item.id}</td>
             <td class="whitespace-nowrap px-6 py-4">${item.caracteristica}</td>
@@ -1142,174 +1143,174 @@ if (isset($_SESSION['token'])) {
         </tr>
 
         `);
-                    });
+                });
 
-                    modal.show();
+                modal.show();
 
-                    let table = document.getElementById('modal_tabla');
-                    let headers = table.querySelectorAll('thead th');
-                    let rows = table.querySelectorAll('tbody tr');
+                let table = document.getElementById('modal_tabla');
+                let headers = table.querySelectorAll('thead th');
+                let rows = table.querySelectorAll('tbody tr');
 
-                    for (let i = headers.length - 2; i >= 0; i--) { // cambiamos el límite del bucle
-                        let isEmpty = true;
-                        for (let j = 0; j < rows.length; j++) {
-                            let cell = rows[j].querySelectorAll('td')[i];
-                            if (cell.textContent.trim() !== '') {
-                                isEmpty = false;
-                                break;
-                            }
+                for (let i = headers.length - 2; i >= 0; i--) { // cambiamos el límite del bucle
+                    let isEmpty = true;
+                    for (let j = 0; j < rows.length; j++) {
+                        let cell = rows[j].querySelectorAll('td')[i];
+                        if (cell.textContent.trim() !== '') {
+                            isEmpty = false;
+                            break;
                         }
-                        if (isEmpty) {
-                            headers[i].remove();
-                            for (let j = 0; j < rows.length; j++) {
-                                rows[j].querySelectorAll('td')[i].remove();
-                            }
+                    }
+                    if (isEmpty) {
+                        headers[i].remove();
+                        for (let j = 0; j < rows.length; j++) {
+                            rows[j].querySelectorAll('td')[i].remove();
                         }
                     }
                 }
             }
+        }
 
-            function Modal_Agregar_Carrito(id_producto, id_input) {
-                if (!validarString(id_producto, 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$&')) {
-                    Swal.fire({
-                        icon: 'Info',
-                        title: 'Id del Producto No Valido'
-                    })
-                    return;
-                }
-                let cantidad = $(`#${id_input}`).val();
-                if (!validarMonto(cantidad)) {
-                    Swal.fire({
-                        icon: 'Info',
-                        title: 'Monto No Valido'
-                    })
-                    return;
-                }
-            
-                let arr_producto = filteredArray.find((item) => {
-                    return item.id == id_producto
+        function Modal_Agregar_Carrito(id_producto, id_input) {
+            if (!validarString(id_producto, 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$&')) {
+                Swal.fire({
+                    icon: 'Info',
+                    title: 'Id del Producto No Valido'
+                })
+                return;
+            }
+            let cantidad = $(`#${id_input}`).val();
+            if (!validarMonto(cantidad)) {
+                Swal.fire({
+                    icon: 'Info',
+                    title: 'Monto No Valido'
+                })
+                return;
+            }
+
+            let arr_producto = filteredArray.find((item) => {
+                return item.id == id_producto
+            });
+
+            if (typeof arr_producto == 'undefined') {
+                Swal.fire({
+                    icon: 'Info',
+                    title: 'Producto No Encontrado'
+                })
+                return;
+            }
+
+            Carrito.add(id_producto, cantidad, arr_producto);
+            $(`#${id_input}`).val(1);
+        }
+
+
+
+        function handlePriceFilter(selectEl) {
+
+            // get the selected value
+            var selectedValue = selectEl.value;
+
+            // parse the URL's query parameters
+            var searchParams = new URLSearchParams(window.location.search);
+
+            // check if the 'order' parameter exists
+            if (searchParams.has("order")) {
+                // update the value of the 'order' parameter
+                searchParams.set("order", selectedValue);
+            } else {
+                // add the 'order' parameter to the search parameters
+                searchParams.append("order", selectedValue);
+            }
+
+            // combine the updated search parameters with the URL
+            var newUrl = window.location.origin + window.location.pathname + "?" + searchParams.toString();
+
+            // navigate to the updated URL
+            window.location.href = newUrl;
+        }
+
+
+
+        function CategoriaFilter(id) {
+            // get the selected value
+            var selectedValue = id;
+
+            // parse the URL's query parameters
+            var searchParams = new URLSearchParams(window.location.search);
+
+            // check if the 'order' parameter exists
+            if (searchParams.has("categoria")) {
+                // update the value of the 'order' parameter
+                searchParams.set("categoria", selectedValue);
+            } else {
+                // add the 'order' parameter to the search parameters
+                searchParams.append("categoria", selectedValue);
+            }
+
+            // combine the updated search parameters with the URL
+            var newUrl = window.location.origin + window.location.pathname + "?" + searchParams.toString();
+
+            // navigate to the updated URL
+            window.location.href = newUrl;
+        }
+
+        var forms = document.querySelectorAll("#result form") // seleccionar todos los formularios
+        for (var i = 0; i < forms.length; i++) {
+            forms[i].addEventListener('submit', e => {
+                e.preventDefault();
+
+                let data = search_data.filter(item => item.id === e.target[0].id);
+                data = data[0];
+                let validar = Carrito.add(e.target[0].id, e.target[0].value, data);
+
+            });
+        }
+
+        function localreaddata() {
+
+            if (carritostorage.length != 0) {
+                carritostorage.map((item, index) => {
+                    Carrito.add(item.id, item.cantidad, carritostorage[index]);
                 });
-
-                if (typeof arr_producto == 'undefined') {
-                    Swal.fire({
-                        icon: 'Info',
-                        title: 'Producto No Encontrado'
-                    })
-                    return;
-                }
-
-                Carrito.add(id_producto, cantidad, arr_producto);
-                $(`#${id_input}`).val(1);
             }
 
 
+        }
 
-            function handlePriceFilter(selectEl) {
-
-                // get the selected value
-                var selectedValue = selectEl.value;
-
-                // parse the URL's query parameters
-                var searchParams = new URLSearchParams(window.location.search);
-
-                // check if the 'order' parameter exists
-                if (searchParams.has("order")) {
-                    // update the value of the 'order' parameter
-                    searchParams.set("order", selectedValue);
-                } else {
-                    // add the 'order' parameter to the search parameters
-                    searchParams.append("order", selectedValue);
-                }
-
-                // combine the updated search parameters with the URL
-                var newUrl = window.location.origin + window.location.pathname + "?" + searchParams.toString();
-
-                // navigate to the updated URL
-                window.location.href = newUrl;
+        const btncarritodetalle = document.querySelector('#btncarritodetalle');
+        btncarritodetalle.addEventListener('click', function() {
+            if (Carrito.list.length > 0) {
+                window.location.href = '../carrito/'
             }
+        });
 
+        $('#btn_subir').fadeOut(); //ocultar con animación
+        $(window).scroll(function() {
 
+            if ($(this).scrollTop() > 0) {
+                $('#btn_subir').fadeIn(); //mostrar con animación
+            } else {
 
-            function CategoriaFilter(id) {
-                // get the selected value
-                var selectedValue = id;
-
-                // parse the URL's query parameters
-                var searchParams = new URLSearchParams(window.location.search);
-
-                // check if the 'order' parameter exists
-                if (searchParams.has("categoria")) {
-                    // update the value of the 'order' parameter
-                    searchParams.set("categoria", selectedValue);
-                } else {
-                    // add the 'order' parameter to the search parameters
-                    searchParams.append("categoria", selectedValue);
-                }
-
-                // combine the updated search parameters with the URL
-                var newUrl = window.location.origin + window.location.pathname + "?" + searchParams.toString();
-
-                // navigate to the updated URL
-                window.location.href = newUrl;
+                $('#btn_subir').fadeOut(); //ocultar con animación
             }
+        });
 
-            var forms = document.querySelectorAll("#result form") // seleccionar todos los formularios
-            for (var i = 0; i < forms.length; i++) {
-                forms[i].addEventListener('submit', e => {
-                    e.preventDefault();
+        $("#btn_subir > a ").on("click", function(event) {
 
-                    let data = search_data.filter(item => item.id === e.target[0].id);
-                    data = data[0];
-                    let validar = Carrito.add(e.target[0].id, e.target[0].value, data);
+            var target = $(this.getAttribute("href"));
 
-                });
+            if (target.length) {
+                event.preventDefault();
+
+                $("html, body").animate({
+                        scrollTop: target.offset().top -
+                            ($(window).height() - target.outerHeight()) / 2,
+                    },
+                    1000
+                );
             }
-
-            function localreaddata() {
-
-                if (carritostorage.length != 0) {
-                    carritostorage.map((item, index) => {
-                        Carrito.add(item.id, item.cantidad, carritostorage[index]);
-                    });
-                }
-
-
-            }
-
-            const btncarritodetalle = document.querySelector('#btncarritodetalle');
-            btncarritodetalle.addEventListener('click', function() {
-                if (Carrito.list.length > 0) {
-                    window.location.href = '../carrito/'
-                }
-            });
-
-            $('#btn_subir').fadeOut(); //ocultar con animación
-            $(window).scroll(function() {
-
-                if ($(this).scrollTop() > 0) {
-                    $('#btn_subir').fadeIn(); //mostrar con animación
-                } else {
-
-                    $('#btn_subir').fadeOut(); //ocultar con animación
-                }
-            });
-
-            $("#btn_subir > a ").on("click", function(event) {
-
-                var target = $(this.getAttribute("href"));
-
-                if (target.length) {
-                    event.preventDefault();
-
-                    $("html, body").animate({
-                            scrollTop: target.offset().top -
-                                ($(window).height() - target.outerHeight()) / 2,
-                        },
-                        1000
-                    );
-                }
-            });
-        </script>
+        });
+    </script>
 </body>
 
 </html>
