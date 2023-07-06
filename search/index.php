@@ -740,6 +740,8 @@ if (isset($_SESSION['token'])) {
                                         $stock = $data['result'][$i]['stock'];
                                         $cantidad_agrupado = $data['result'][$i]['cantidad2'];
 
+                                        $imagen = explode(".", $imagen);
+                                        $imagen = $imagen[0] . "." . "jpg";
 
                                         echo "
                                             <div class='border border-2 hover:border-gray-400 rounded-lg p-3 '>
