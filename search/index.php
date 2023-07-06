@@ -501,14 +501,7 @@ if (isset($_SESSION['token'])) {
 
                                             <div class="lg:col-span-2 lg:row-span-2 lg:row-end-2">
                                                 <h1 id="nombreproductomodal" class="sm: text-2xl font-bold text-gray-900 sm:text-3xl capitalize"> </h1>
-                                                <!-- Required font awesome   
-                                                  
-                                                    <div class="mt-10 flex flex-col items-center justify-between space-y-4 border-t border-b py-4   sm:space-y-0">
-                                                    
-                                                    <div class="flex items-end">
-                                                            <h1 id="preciomodal" class="text-3xl m-0 font-bold">0 $</h1>
-                                                        </div>
-                                                     -->
+                                               
                                             </div>
 
                                             <div class="lg:col-span-3">
