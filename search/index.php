@@ -492,7 +492,7 @@ if (isset($_SESSION['token'])) {
                                                 <div class="lg:flex lg:justify-center lg:items-center">
                                                     <div class="lg:order-2 lg:ml-5">
                                                         <div class="max-w-xl overflow-hidden rounded-lg  mx-auto">
-                                                            <img id="imgmodal" onerror="this.onerror=null;this.src='../assets/img/imgerror.png'" class="[ mx-auto  object-cover ] [ h-[250px] w-[250px] ] [ lg:h-[400px] lg:w-full ] " src="" alt="">
+                                                            <img id="imgmodal" onerror="this.onerror=null;this.src='../assets/img/imgerror.png'" class="[ mx-auto  object-cover ] [ h-[250px]  ] [ lg:h-[400px] lg:w-full ] " src="" alt="">
                                                         </div>
                                                     </div>
                                                 </div>
