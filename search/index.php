@@ -500,7 +500,7 @@ if (isset($_SESSION['token'])) {
                                             </div>
 
                                             <div class="lg:col-span-2 lg:row-span-2 lg:row-end-2">
-                                                <h1 id="nombreproductomodal" class="sm:text-2xl font-bold text-gray-900 sm:text-3xl capitalize m-0"> </h1>
+                                                <h1 id="nombreproductomodal" class=" font-bold text-gray-900  text-lg capitalize m-0"> </h1>
 
 
                                                 <div class="lg:col-span-3">
