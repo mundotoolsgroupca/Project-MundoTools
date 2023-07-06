@@ -491,7 +491,7 @@ if (isset($_SESSION['token'])) {
                                             <div class="lg:col-span-3 lg:row-end-1">
                                                 <div class="lg:flex lg:justify-center lg:items-center">
                                                     <div class="lg:order-2 lg:ml-5">
-                                                        <div class="max-w-xl overflow-hidden rounded-lg">
+                                                        <div class="max-w-xl overflow-hidden rounded-lg  mx-auto">
                                                             <img id="imgmodal" onerror="this.onerror=null;this.src='../assets/img/imgerror.png'" class="h-[400px] w-full max-w-full object-cover" src="" alt="">
                                                         </div>
                                                     </div>
