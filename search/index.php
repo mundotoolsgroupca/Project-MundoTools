@@ -492,7 +492,7 @@ if (isset($_SESSION['token'])) {
                                                 <div class="lg:flex lg:justify-center lg:items-center">
                                                     <div class="lg:order-2 lg:ml-5">
                                                         <div class="max-w-xl overflow-hidden rounded-lg  mx-auto">
-                                                            <img id="imgmodal" onerror="this.onerror=null;this.src='../assets/img/imgerror.png'" class="[  w-full  object-cover ] [ md:h-[350px] md:w-[350px] ] [ lg:h-[400px] lg:max-w-full ]" src="" alt="">
+                                                            <img id="imgmodal" onerror="this.onerror=null;this.src='../assets/img/imgerror.png'" class="[  object-cover ] [ h-[350px] w-[350px] ] [ lg:h-[400px] lg:max-w-full ]" src="" alt="">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -501,7 +501,7 @@ if (isset($_SESSION['token'])) {
 
                                             <div class="lg:col-span-2 lg:row-span-2 lg:row-end-2">
                                                 <h1 id="nombreproductomodal" class="sm:text-2xl font-bold text-gray-900 sm:text-3xl capitalize m-0"> </h1>
-                                                
+
 
                                                 <div class="lg:col-span-3">
                                                     <div class="border-b border-gray-300">
@@ -1179,7 +1179,7 @@ if (isset($_SESSION['token'])) {
                     })
                     return;
                 }
-            
+
                 let arr_producto = filteredArray.find((item) => {
                     return item.id == id_producto
                 });
