@@ -487,7 +487,7 @@ if (isset($_SESSION['token'])) {
 
                                     <!--Modal body-->
                                     <div class="relative overflow-y-auto p-4">
-                                        <div class="lg:col-gap-12 xl:col-gap-16 mt-8 grid grid-cols-1 gap-12 lg:mt-12 lg:grid-cols-5 lg:gap-16">
+                                        <div class="lg:col-gap-12 xl:col-gap-16 mt-8 grid grid-cols-1   lg:mt-12 lg:grid-cols-5 lg:gap-16">
                                             <div class="lg:col-span-3 lg:row-end-1">
                                                 <div class="lg:flex lg:justify-center lg:items-center">
                                                     <div class="lg:order-2 lg:ml-5">
