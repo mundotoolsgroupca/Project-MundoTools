@@ -27,7 +27,7 @@ switch ($method) {
             if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'])) {
 
                 include_once '../../php/FuncionesGenerales.php';
-                if (isset($_GET['id_grupo']) && validar_int($_GET['id_grupo'])) {
+                if (isset($_GET['id_grupo']) && validar_string($_POST['id_grupo'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
                     $id_grupo = htmlspecialchars($_GET['id_grupo'], ENT_QUOTES, 'UTF-8');
                     $id_grupo = eliminar_palabras_sql($id_grupo);
                 } else {
