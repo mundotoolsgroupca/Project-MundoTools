@@ -510,7 +510,7 @@ if (isset($_SESSION['token'])) {
                                                         </nav>
                                                     </div>
 
-                                                    <div id="modaldescripcion" class=" flow-root sm:mt-12 break-words">
+                                                    <div id="modaldescripcion" class=" flow-root  break-words">
                                                     </div>
                                                 </div>
                                             </div>
