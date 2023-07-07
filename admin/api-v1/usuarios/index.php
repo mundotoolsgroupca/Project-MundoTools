@@ -216,6 +216,19 @@ switch ($method) {
                         echo json_encode($resultado);
                         break;
                     }
+                    if (isset($_POST['data']['clave']) && validar_string($_POST['data']['clave'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
+                        $clave =  $_POST['data']['clave'];
+                        $clave =  eliminar_palabras_sql($clave);
+                    } else {
+                        http_response_code(409); //codigo de conflicto
+                        $resultado = new stdClass();
+                        $resultado->result = FALSE;
+                        $resultado->icono = "error";
+                        $resultado->titulo = "Error!";
+                        $resultado->mensaje = 'Clave No Valido';
+                        echo json_encode($resultado);
+                        break;
+                    }
                      
 
 
