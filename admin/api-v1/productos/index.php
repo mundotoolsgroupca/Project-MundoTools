@@ -546,11 +546,7 @@ switch ($method) {
                         if ($stock != false) {
                             $consulta = "CALL adm_editar_producto( '$id_grupo', '$id', '0', '0', '0','0','0','0','0','0','$stock','" . $_SESSION['Usuario']['id'] . "','2')"; //editar el stock
                         }
-
-                        echo $consulta;
-                        return;
-
-
+ 
 
                         $resultado = mysqli_query($conexion, $consulta);
 
