@@ -303,7 +303,11 @@ function validar_string($string, $permitidos)
         return false; // La cadena solo contiene espacios en blanco
     }*/
     for ($i = 0; $i < strlen($string); $i++) {
-        if (strpos($permitidos, $string[$i]) === false && $string[$i] !== "\n") {
+        if (
+            strpos($permitidos, $string[$i]) === false &&
+            $string[$i] !== " " && // Agrega un espacio en blanco
+            $string[$i] !== "\n"
+        ) { // Agrega un salto de línea
             return false;
         }
     }
