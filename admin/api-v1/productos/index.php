@@ -537,17 +537,18 @@ switch ($method) {
                         if ($precio != false) {
 
                             $consulta = "CALL adm_editar_producto( '$id_grupo', '$id', '0', '0', '0','0','0','0','$precio','0','0','" . $_SESSION['Usuario']['id'] . "','1')"; //editar el precio
-                        } else if ($precio2 != false) {
+                        }
+
+                        if ($precio2 != false) {
                             $consulta = "CALL adm_editar_producto( '$id_grupo', '$id', '0', '0', '0','0','0','0','0','$precio2','0','" . $_SESSION['Usuario']['id'] . "','3')"; //editar el precio2
-                        } else if ($stock != false) {
+                        }
+
+                        if ($stock != false) {
                             $consulta = "CALL adm_editar_producto( '$id_grupo', '$id', '0', '0', '0','0','0','0','0','0','$stock','" . $_SESSION['Usuario']['id'] . "','2')"; //editar el stock
                         }
 
 
-                        echo $consulta;
-                        return;
 
-                        
                         $resultado = mysqli_query($conexion, $consulta);
 
                         $dataquery = mysqli_fetch_assoc($resultado);
