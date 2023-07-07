@@ -53,9 +53,9 @@
         $("#form_crear_usuario").on("submit", async function(event) {
 
             event.preventDefault();
-           
 
-            
+
+
 
             result = await $.ajax({
                 url: "./api-v1/usuarios/index.php",
@@ -76,6 +76,7 @@
 
                 },
                 success: (response) => {
+                    $('#crear_usuarioLoader').html(``);
                     $("#form_crear_usuario")[0].reset();
                     let Toast = Swal.mixin({
                         toast: true,
