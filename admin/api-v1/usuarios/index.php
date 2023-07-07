@@ -11,6 +11,7 @@ switch ($method) {
             if (!empty($http['X-Csrf-Token'])) {
 
                 if (!isset($_SESSION['token'])) {
+                    http_response_code(409); //codigo de conflicto
                     // Log this as a warning and keep an eye on these attempts
                     $resultado = new stdClass();
                     $resultado->result = FALSE;
@@ -23,8 +24,22 @@ switch ($method) {
 
                 if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'])) {
 
-                    echo json_encode($_POST);
-                    return;
+                    if (!isset($_POST['data'])) {
+                        http_response_code(409); //codigo de conflicto
+                        // Log this as a warning and keep an eye on these attempts
+                        $resultado = new stdClass();
+                        $resultado->result = FALSE;
+                        $resultado->icono = "error";
+                        $resultado->titulo = "Error!";
+                        $resultado->mensaje = 'Parametro No Valido';
+                        echo json_encode($resultado);
+                        break;
+                    }
+
+                    $formDataString = $_POST['data'];
+                    $formDataArray = array();
+                    parse_str($formDataString, $formDataArray);
+                    $_POST['data'] = $formDataArray;
 
                     if (isset($_POST['data']['Nombre']) && validar_string($_POST['data']['Nombre'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
                         $nombre =  $_POST['data']['Nombre'];
