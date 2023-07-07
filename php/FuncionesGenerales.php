@@ -302,12 +302,13 @@ function validar_string($string, $permitidos)
         return false; // La cadena solo contiene espacios en blanco
     }
     for ($i = 0; $i < strlen($string); $i++) {
-        if (strpos($permitidos, $string[$i]) === false) {
+        if (strpos($permitidos, $string[$i]) === false && $string[$i] !== "\n") {
             return false;
         }
     }
     return true;
 }
+
 function validar_SimboloMoneda($simbolo)
 {
     $simbolosPermitidos = array("$", "€", "£", "¥", "R$"); // Agregar aquí los símbolos permitidos
