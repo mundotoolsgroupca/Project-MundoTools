@@ -53,9 +53,9 @@
         $("#form_crear_usuario").on("submit", async function(event) {
 
             event.preventDefault();
-            debugger
+           
 
-            datos = JSON.stringify(datos);
+            
 
             result = await $.ajax({
                 url: "./api-v1/usuarios/index.php",
