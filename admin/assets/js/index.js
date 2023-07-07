@@ -61,6 +61,16 @@ const makeRandomId = (length) => { //creador de id random
   }
   return result;
 }
+async function modulo_usuarios() {
+  $("#principal").html(`<div class="inline-block h-4 w-4 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]" role="status"> <span class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span> </div>`);
+  let validar = await comprobarsession();
+  if (validar.data) {
+    $("#principal").load("./modulos/usuarios/index.php");
+  } else {
+    window.location.href = './php/logout.php';
+  }
+}
+ 
 
 async function comprobarsession() {
   let result = await $.ajax({
