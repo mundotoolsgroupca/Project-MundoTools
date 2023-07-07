@@ -81,8 +81,7 @@
                 url: "./api-v1/usuarios/index.php",
                 type: 'POST',
                 data: {
-                    data: $('#form_crear_usuario').serialize(),
-                    _method: "PUT"
+                    data: $('#form_crear_usuario').serialize()
                 },
                 dataType: "json",
                 headers: {
