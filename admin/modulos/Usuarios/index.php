@@ -76,8 +76,23 @@
 
                 },
                 success: (response) => {
-                    $('#crear_usuarioLoader').html(``);
+                    $("#form_crear_usuario")[0].reset();
+                    let Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    });
 
+                    Toast.fire({
+                        icon: 'success',
+                        title: response.mensaje
+                    });
                 },
                 error: function(xhr, status) {
                     $('#crear_usuarioLoader').html(``);
