@@ -26,8 +26,7 @@ switch ($method) {
                 // Configurar los encabezados de la respuesta
                 header('Content-Type: application/json');
                 $consulta = "
-                SELECT
-                *, 
+                SELECT 
                 vendedores.nombre_usuario, 
                 vendedores.nombre, 
                 vendedores.apellido, 
