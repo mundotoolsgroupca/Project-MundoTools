@@ -279,6 +279,9 @@ switch ($method) {
                         echo  json_encode($resultado);
                         break;
                     }
+
+                    echo $_POST['descripcion'];
+                    return;
                     if (isset($_POST['descripcion']) && validar_string($_POST['descripcion'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$&,:• ')) {
                         $descripcion = $_POST['descripcion'];
                         $descripcion = eliminar_palabras_sql($descripcion);
