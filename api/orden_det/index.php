@@ -45,23 +45,14 @@ switch ($method) {
                 include_once '../../php/conexion.php';
                 $consulta = "
                 SELECT
-                    productos.nombre, 
-                    ordenes_det.cantidad, 
-                    ordenes_det.precio
+                    productos_agrupados.nombre,
+                    ordenes_det.cantidad,
+                    ordenes_det.precio 
                 FROM
-                    ordenes_det
-                INNER JOIN
                     ordenes
-                ON 
-                    ordenes_det.orden_id = ordenes.id
-                INNER JOIN
-                    productos
-                ON 
-                    ordenes_det.producto_id = productos.id
-                INNER JOIN
-                    vendedores
-                ON 
-                    ordenes.id_vendedor = vendedores.id
+                    INNER JOIN ordenes_det ON ordenes.id = ordenes_det.orden_id
+                    INNER JOIN productos ON ordenes_det.producto_id = productos.id
+                    INNER JOIN productos_agrupados ON productos.id_grupo = productos_agrupados.id_grupo 
                 WHERE
                     ordenes_det.orden_id = '$orden_id'
                 and
