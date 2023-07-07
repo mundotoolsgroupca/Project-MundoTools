@@ -55,9 +55,12 @@
             event.preventDefault();
 
             result = await $.ajax({
-                url: "./api-v1/productos/agrupados.php",
+                url: "",
                 type: 'POST',
-                data: $('#form_crear_usuario').serialize(),
+                data: {
+                    data: $('#form_crear_usuario').serialize(),
+                    _method: "PUT"
+                },
                 headers: {
                     'x-csrf-token': $('meta[name="csrf-token"]').attr('content')
                 },
