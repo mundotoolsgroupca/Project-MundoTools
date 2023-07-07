@@ -99,9 +99,7 @@
                     });
                 },
                 dataType: 'json',
-                contentType: false,
-                cache: false,
-                processData: false,
+                cache: false, 
             });
 
 
