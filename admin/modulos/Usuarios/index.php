@@ -5,7 +5,7 @@
     <div class="[  rounded-lg bg-white p-6 shadow-lg   ]   [ lg:w-1/4 ]">
         <div class="[ flex items-center gap-1 flex-nowrap mb-3 ]">
             <p class="[ text-lg font-bold ]">Nuevo Usuario</p>
-            <span id="CategoriaLoader"></span>
+            <span id="crear_usuarioLoader"></span>
         </div>
 
         <form>
