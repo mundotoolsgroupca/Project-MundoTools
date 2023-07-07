@@ -55,7 +55,7 @@
             event.preventDefault();
 
             result = await $.ajax({
-                url: "./api-v1/usuarios/agrupados.php",
+                url: "./api-v1/usuarios/index.php",
                 type: 'POST',
                 data: {
                     data: $('#form_crear_usuario').serialize(),
