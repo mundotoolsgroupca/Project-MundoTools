@@ -23,6 +23,9 @@ switch ($method) {
 
                 if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'])) {
 
+                    echo json_encode($_POST);
+                    return;
+
                     if (isset($_POST['data']['Nombre']) && validar_string($_POST['data']['Nombre'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
                         $nombre =  $_POST['data']['Nombre'];
                         $nombre =  eliminar_palabras_sql($nombre);
