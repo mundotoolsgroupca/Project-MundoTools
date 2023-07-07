@@ -70,6 +70,17 @@
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
 
     <script>
+        async function Consultar_usuarios() {
+            const result = await $.ajax({
+                url: "./api-v1/usuarios/index.php",
+                type: 'GET',
+                headers: {
+                    'x-csrf-token': $('meta[name="csrf-token"]').attr('content')
+                },
+            })
+            return result
+        }
+
         $("#form_crear_usuario").on("submit", async function(event) {
 
             event.preventDefault();
