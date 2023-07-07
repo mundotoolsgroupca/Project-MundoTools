@@ -266,7 +266,7 @@ switch ($method) {
                         break;
                     }
 
-                    if (isset($_POST['nombreGrupo']) && validar_string($_POST['nombreGrupo'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$&,: ')) {
+                    if (isset($_POST['nombreGrupo']) && validar_string($_POST['nombreGrupo'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$&,:• ')) {
                         $nombreGrupo = $_POST['nombreGrupo'];
                         $nombreGrupo = eliminar_palabras_sql($nombreGrupo);
                     } else {
@@ -279,7 +279,7 @@ switch ($method) {
                         echo  json_encode($resultado);
                         break;
                     }
-                    if (isset($_POST['descripcion']) && validar_string($_POST['descripcion'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$&,: ')) {
+                    if (isset($_POST['descripcion']) && validar_string($_POST['descripcion'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$&,:• ')) {
                         $descripcion = $_POST['descripcion'];
                         $descripcion = eliminar_palabras_sql($descripcion);
                     } else {
