@@ -25,7 +25,17 @@ switch ($method) {
                 include_once '../../php/conexion.php';
                 // Configurar los encabezados de la respuesta
                 header('Content-Type: application/json');
-                $consulta = "SELECT * FROM vendedores ";
+                $consulta = "
+                SELECT
+                *, 
+                vendedores.nombre_usuario, 
+                vendedores.nombre, 
+                vendedores.apellido, 
+                vendedores.zona, 
+                vendedores.activo, 
+                vendedores.id
+            FROM
+                vendedores";
                 $resultado = mysqli_query($conexion, $consulta);
                 if ($resultado) { //* si realizo la consulta 
                     $data = [];
