@@ -296,10 +296,11 @@ function eliminar_palabras_sql($cadena)
 
 function validar_string($string, $permitidos)
 {
+    /*
     $string = trim($string);
     if (strlen($string) == 0) {
         return false; // La cadena solo contiene espacios en blanco
-    }
+    }*/
     for ($i = 0; $i < strlen($string); $i++) {
         if (strpos($permitidos, $string[$i]) === false) {
             return false;
