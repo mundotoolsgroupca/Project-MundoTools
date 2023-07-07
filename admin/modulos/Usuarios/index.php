@@ -71,14 +71,35 @@
 
     <script>
         async function Consultar_usuarios() {
-            const result = await $.ajax({
-                url: "./api-v1/usuarios/index.php",
-                type: 'GET',
-                headers: {
-                    'x-csrf-token': $('meta[name="csrf-token"]').attr('content')
-                },
-            })
-            return result
+            try {
+                const result = await $.ajax({
+                    url: "./api-v1/usuarios/index.php",
+                    type: 'GET',
+                    headers: {
+                        'x-csrf-token': $('meta[name="csrf-token"]').attr('content')
+                    },
+                })
+                return result
+            } catch (error) {
+                let Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                });
+
+                Toast.fire({
+                    icon: 'error',
+                    title: error.responseJSON.mensaje
+                });
+
+            }
+
         }
 
         $("#form_crear_usuario").on("submit", async function(event) {
