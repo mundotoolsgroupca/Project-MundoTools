@@ -457,8 +457,7 @@ switch ($method) {
 
                         $stock = isset($_POST['newdata']['stock']) ? $_POST['newdata']['stock'] : false;
 
-                        echo $stock;
-                        return;
+
                         if ($stock != false) {
                             if (validar_int($_POST['newdata']['stock'])) {
                                 $stock = $_POST['newdata']['stock'];
@@ -545,7 +544,10 @@ switch ($method) {
                         }
 
 
+                        echo $consulta;
+                        return;
 
+                        
                         $resultado = mysqli_query($conexion, $consulta);
 
                         $dataquery = mysqli_fetch_assoc($resultado);
