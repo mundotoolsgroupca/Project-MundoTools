@@ -456,6 +456,9 @@ switch ($method) {
 
 
                         $stock = isset($_POST['newdata']['stock']) ? $_POST['newdata']['stock'] : false;
+
+                        echo $stock;
+                        return;
                         if ($stock != false) {
                             if (validar_int($_POST['newdata']['stock'])) {
                                 $stock = $_POST['newdata']['stock'];
@@ -536,7 +539,7 @@ switch ($method) {
 
                             $consulta = "CALL adm_editar_producto( '$id_grupo', '$id', '0', '0', '0','0','0','0','$precio','0','0','" . $_SESSION['Usuario']['id'] . "','1')"; //editar el precio
                         } else if ($precio2 != false) {
-                            $consulta = "CALL adm_editar_producto( '$id_grupo', '$id', '0', '0', '0','0','0','0','0','$precio2','0','" . $_SESSION['Usuario']['id'] . "','3')"; //editar el precio
+                            $consulta = "CALL adm_editar_producto( '$id_grupo', '$id', '0', '0', '0','0','0','0','0','$precio2','0','" . $_SESSION['Usuario']['id'] . "','3')"; //editar el precio2
                         } else if ($stock != false) {
                             $consulta = "CALL adm_editar_producto( '$id_grupo', '$id', '0', '0', '0','0','0','0','0','0','$stock','" . $_SESSION['Usuario']['id'] . "','2')"; //editar el stock
                         }
