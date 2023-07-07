@@ -53,14 +53,18 @@
         $("#form_crear_usuario").on("submit", async function(event) {
 
             event.preventDefault();
+            debugger
+            let datos = {
+                data: $('#form_crear_usuario').serialize(),
+                _method: "PUT"
+            };
+            datos = JSON.stringify(datos);
 
             result = await $.ajax({
                 url: "./api-v1/usuarios/index.php",
                 type: 'POST',
-                data: {
-                    data: $('#form_crear_usuario').serialize(),
-                    _method: "PUT"
-                },
+                data: datos,
+                dataType: "json",
                 headers: {
                     'x-csrf-token': $('meta[name="csrf-token"]').attr('content')
                 },
