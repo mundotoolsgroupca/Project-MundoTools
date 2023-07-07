@@ -3,6 +3,8 @@
 $method = $_SERVER['REQUEST_METHOD'];
 switch ($method) {
     case 'POST':
+        echo json_encode($_POST);
+        return;
         if ($_POST['_method'] == "PUT") {
             session_name("ecomercer_admin_data");
             session_start();
@@ -75,7 +77,7 @@ switch ($method) {
                         echo json_encode($resultado);
                         break;
                     }
-                     
+
 
 
                     include_once '../../php/conexion.php';
