@@ -8,7 +8,7 @@
             <span id="crear_usuarioLoader"></span>
         </div>
 
-        <form>
+        <form id='form_crear_usuario'>
             <div class="grid md:grid-cols-2 md:gap-6">
                 <div class="relative z-0 w-full mb-6 group" data-te-input-wrapper-init>
                     <input maxlength="30" data-te-input-showcounter="true" name="Nombre" type="text" class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none  [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0" id="Nombre" placeholder="Name" required />
@@ -49,4 +49,55 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
 
+    <script>
+        $("#form_crear_usuario").on("submit", async function(event) {
+
+            event.preventDefault();
+
+            result = await $.ajax({
+                url: "./api-v1/productos/agrupados.php",
+                type: 'POST',
+                data: $('#form_crear_usuario').serialize(),
+                headers: {
+                    'x-csrf-token': $('meta[name="csrf-token"]').attr('content')
+                },
+
+                beforeSend: () => {
+                    $('#crear_usuarioLoader').html(`<div class="inline-block h-4 w-4 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]" role="status">
+                                    <span class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
+                                    </div>`);
+
+                },
+                success: (response) => {
+                    $('#crear_usuarioLoader').html(``);
+
+                },
+                error: function(xhr, status) {
+                    $('#crear_usuarioLoader').html(``);
+                    let Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    });
+
+                    Toast.fire({
+                        icon: 'error',
+                        title: xhr.responseJSON.mensaje
+                    });
+                },
+                dataType: 'json',
+                contentType: false,
+                cache: false,
+                processData: false,
+            });
+
+
+        });
+    </script>
 </div>
