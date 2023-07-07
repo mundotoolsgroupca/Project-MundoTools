@@ -24,9 +24,22 @@ switch ($method) {
             if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'])) {
 
                 include_once '../../php/FuncionesGenerales.php';
-                if (isset($_GET['fecha']) && validar_fecha($_GET['fecha'])) {
-                    $fecha = $_GET['fecha'];
-                    $fecha = eliminar_palabras_sql($fecha);
+                if (isset($_GET['fecha_desde']) && validar_fecha($_GET['fecha_desde'])) {
+                    $fecha_desde = $_GET['fecha_desde'];
+                    $fecha_desde = eliminar_palabras_sql($fecha_desde);
+                } else {
+                    // Log this as a warning and keep an eye on these attempts
+                    $resultado = new stdClass();
+                    $resultado->result = FALSE;
+                    $resultado->icono = "error";
+                    $resultado->titulo = "Error!";
+                    $resultado->mensaje = 'Fecha no Valida';
+                    echo json_encode($resultado);
+                    return;
+                }
+                if (isset($_GET['fecha_hasta']) && validar_fecha($_GET['fecha_hasta'])) {
+                    $fecha_hasta = $_GET['fecha_hasta'];
+                    $fecha_hasta = eliminar_palabras_sql($fecha_hasta);
                 } else {
                     // Log this as a warning and keep an eye on these attempts
                     $resultado = new stdClass();
@@ -53,9 +66,9 @@ switch ($method) {
                     FROM
                     ordenes
                     INNER JOIN moneda_ref ON ordenes.moneda = moneda_ref.cod_moneda
-                    WHERE
+                    WHERE 
                     ordenes.id_vendedor = '$id_vendedor'
-                    AND DATE(ordenes.fecha) = '$fecha';   ";
+                    AND DATE(ordenes.fecha) BETWEEN '$fecha_desde' AND '$fecha_hasta'";
 
                 include_once '../../php/conexion.php';
                 $resultado = mysqli_query($conexion, $consulta);

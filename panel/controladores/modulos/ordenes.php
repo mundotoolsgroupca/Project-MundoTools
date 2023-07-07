@@ -17,7 +17,10 @@ if (!isset($_SESSION['usuario'])) {
 
     <div class="flex flex-col overflow-x-auto p-3 bg-white rounded-lg  ">
         <div>
-            <input id="fechaOrdenes" type="date" value="<?php echo date('Y-m-d') ?>" class="w-full p-2 my-2 text-center border border-gray-300 rounded-md lg:w-auto focus:outline-none focus:ring-2 ring-blue-200">
+            <label>Desde</label>
+            <input id="fecha_desde" type="date" value="<?php echo date('Y-m-d') ?>" class="my-2 w-full rounded-md border border-gray-300 p-2 text-center ring-blue-200 focus:outline-none focus:ring-2 lg:w-auto" />
+            <label>hasta</label>
+            <input id="fecha_hasta" type="date" value="<?php echo date('Y-m-d') ?>" class="my-2 w-full rounded-md border border-gray-300 p-2 text-center ring-blue-200 focus:outline-none focus:ring-2 lg:w-auto" />
         </div>
         <div class="sm:-mx-6 lg:-mx-8">
             <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
@@ -134,7 +137,7 @@ if (!isset($_SESSION['usuario'])) {
 
     });
 
-    
+
 
 
     function tabla_ordenes_cosultar() {
@@ -146,7 +149,8 @@ if (!isset($_SESSION['usuario'])) {
                 'x-csrf-token': $('meta[name="csrf-token"]').attr('content')
             },
             data: {
-                fecha: $('#fechaOrdenes').val()
+                fecha_desde: $('#fecha_desde').val(),
+                fecha_hasta: $('#fecha_hasta').val()
             },
 
 
@@ -272,7 +276,11 @@ if (!isset($_SESSION['usuario'])) {
 
     }
 
-    $('#fechaOrdenes').change(function() {
+    $('#fecha_desde').change(function() {
+        tabla_ordenes_cosultar();
+    });
+
+    $('#fecha_hasta').change(function() {
         tabla_ordenes_cosultar();
     });
 
