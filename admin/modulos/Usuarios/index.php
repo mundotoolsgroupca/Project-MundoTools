@@ -217,7 +217,7 @@
                             "bSortable": false,
                             "mRender": function(data, type, value) {
                                 return `<button
-                                    onclick=''
+                                    onclick='modal_editar_usuario.show();'
                                     type="button"
                                     data-te-ripple-init
                                     data-te-ripple-color="primary"
