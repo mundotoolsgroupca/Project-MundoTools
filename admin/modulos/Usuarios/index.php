@@ -113,7 +113,7 @@
             let user_datatable = new DataTable('#user_datatable');
             mostrar_datos_tabla();
             let modal_editar_usuario = document.getElementById("modal_editar_usuario");
-            modal_editar_usuario = new te.Modal(myModalEl);
+            modal_editar_usuario = new te.Modal(modal_editar_usuario);
         });
 
         async function Consultar_usuarios() {
