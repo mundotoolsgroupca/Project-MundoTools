@@ -54,7 +54,7 @@ switch ($method) {
 
 
                     include_once '../../php/conexion.php';
-                    $consulta = "";
+                    $consulta = "CALL adm_activar_suspender_usuario('" . $_SESSION['Usuario']['id'] . "','$id_usuario','1')";
                     $resultado = mysqli_query($conexion, $consulta);
 
                     $dataquery = mysqli_fetch_assoc($resultado);

@@ -181,12 +181,10 @@
 
 
         async function activar_usuario() {
-            $('#modal_editar_activo').val('1');
             result = await $.ajax({
                 url: "./api-v1/usuarios/activar.php",
                 type: 'POST',
                 data: {
-                    activo: $('#modal_editar_activo').val(),
                     id_usuario: $('#modal_editar_id_usuario').val(),
                     _method: "PUT",
                 },
@@ -246,9 +244,68 @@
             });
         }
 
-        function suspender_usuario() {
-            $('#modal_editar_activo').val('0');
-            Editar_usuario();
+        async function suspender_usuario() {
+            result = await $.ajax({
+                url: "./api-v1/usuarios/suspender.php",
+                type: 'POST',
+                data: {
+                    id_usuario: $('#modal_editar_id_usuario').val(),
+                    _method: "PUT",
+                },
+                dataType: "json",
+                headers: {
+                    'x-csrf-token': $('meta[name="csrf-token"]').attr('content')
+                },
+
+                beforeSend: () => {
+                    $('#modal_editarLoader').html(`<div class="inline-block h-4 w-4 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]" role="status">
+                                    <span class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
+                                    </div>`);
+
+                },
+                success: (response) => {
+                    mostrar_datos_tabla();
+                    modal_editar_usuario.hide();
+                    $('#modal_editarLoader').html(``);
+                    let Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    });
+
+                    Toast.fire({
+                        icon: 'success',
+                        title: response.mensaje
+                    });
+                },
+                error: function(xhr, status) {
+                    $('#modal_editarLoader').html(``);
+                    let Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    });
+
+                    Toast.fire({
+                        icon: 'error',
+                        title: xhr.responseJSON.mensaje
+                    });
+                },
+                dataType: 'json',
+                cache: false,
+            });
         }
 
         $("#modal_editar_formulario").on("submit", async function(event) {
