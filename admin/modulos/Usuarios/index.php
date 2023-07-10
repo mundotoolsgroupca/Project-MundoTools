@@ -88,6 +88,7 @@
                 </div>
 
                 <!--Modal body-->
+                <p class="text-xl" id="modal_editar_titulo"></p>
                 <div class="relative p-4 flex flex-col gap-3">
                     <div class="relative w-full " data-te-input-wrapper-init>
                         <input modal_editar="input" maxlength="40" type="text" class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0" name="modal_editar_usuario_nombre" id="modal_editar_usuario_nombre" placeholder="Example label" />
@@ -162,6 +163,18 @@
                 }
 
             }
+
+            $('#user_datatable tbody').on('click', 'tr', function() {
+
+                let data = user_datatable.row(this).data();
+                $('#modal_editar_titulo').val(data.nombre_usuario);
+                
+                $('#modal_editar_usuario_nombre').val(data.nombre);
+                $("#modal_editar_usuario_apellido").val(data.apellido);
+                $("#modal_editar_usuario_nombre_de_usuario").val(data.nombre_usuario);
+
+
+            });
 
             async function mostrar_datos_tabla() {
 
