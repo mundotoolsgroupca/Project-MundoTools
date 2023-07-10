@@ -108,9 +108,9 @@
 
         }
 
-        function mostrar_datos_tabla() {
-            debugger
-            let data_usuarios = Consultar_usuarios();
+        async function mostrar_datos_tabla() {
+            
+            let data_usuarios = await Consultar_usuarios();
             tabla_det_temp = $('#user_datatable').DataTable({
                 "bDestroy": true,
                 order: [
