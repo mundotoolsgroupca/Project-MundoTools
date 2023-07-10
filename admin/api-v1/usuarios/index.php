@@ -92,7 +92,122 @@ switch ($method) {
                 break;
             }
 
+            if ($_POST['_method'] == "PUT") {
+
+                if (isset($_POST['data']['modal_editar_id_usuario']) && validar_int($_POST['data']['modal_editar_id_usuario'])) {
+                    $modal_editar_id_usuario =  $_POST['data']['modal_editar_id_usuario'];
+                    $modal_editar_id_usuario =  eliminar_palabras_sql($modal_editar_id_usuario);
+                } else {
+                    http_response_code(409); //codigo de conflicto
+                    $resultado = new stdClass();
+                    $resultado->result = FALSE;
+                    $resultado->icono = "error";
+                    $resultado->titulo = "Error!";
+                    $resultado->mensaje = 'Id Usuario No Valido';
+                    echo json_encode($resultado);
+                    break;
+                }
+                if (isset($_POST['data']['modal_editar_usuario_nombre']) && validar_string($_POST['data']['modal_editar_usuario_nombre'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
+                    $modal_editar_usuario_nombre =  $_POST['data']['modal_editar_usuario_nombre'];
+                    $modal_editar_usuario_nombre =  eliminar_palabras_sql($modal_editar_usuario_nombre);
+                } else {
+                    http_response_code(409); //codigo de conflicto
+                    $resultado = new stdClass();
+                    $resultado->result = FALSE;
+                    $resultado->icono = "error";
+                    $resultado->titulo = "Error!";
+                    $resultado->mensaje = 'Nombre No Valido';
+                    echo json_encode($resultado);
+                    break;
+                }
+                if (isset($_POST['data']['modal_editar_usuario_apellido']) && validar_string($_POST['data']['modal_editar_usuario_apellido'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
+                    $modal_editar_usuario_apellido =  $_POST['data']['modal_editar_usuario_apellido'];
+                    $modal_editar_usuario_apellido =  eliminar_palabras_sql($modal_editar_usuario_apellido);
+                } else {
+                    http_response_code(409); //codigo de conflicto
+                    $resultado = new stdClass();
+                    $resultado->result = FALSE;
+                    $resultado->icono = "error";
+                    $resultado->titulo = "Error!";
+                    $resultado->mensaje = 'Apellido No Valido';
+                    echo json_encode($resultado);
+                    break;
+                }
+                if (isset($_POST['data']['modal_editar_usuario_nombre_de_usuario']) && validar_string($_POST['data']['modal_editar_usuario_nombre_de_usuario'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
+                    $modal_editar_usuario_nombre_de_usuario =  $_POST['data']['modal_editar_usuario_nombre_de_usuario'];
+                    $modal_editar_usuario_nombre_de_usuario =  eliminar_palabras_sql($modal_editar_usuario_nombre_de_usuario);
+                } else {
+                    http_response_code(409); //codigo de conflicto
+                    $resultado = new stdClass();
+                    $resultado->result = FALSE;
+                    $resultado->icono = "error";
+                    $resultado->titulo = "Error!";
+                    $resultado->mensaje = 'Nombre de Usuario No Valido';
+                    echo json_encode($resultado);
+                    break;
+                }
+                if (isset($_POST['data']['modal_editar_activo']) && validar_int($_POST['data']['modal_editar_activo'])) {
+                    $modal_editar_activo =  $_POST['data']['modal_editar_activo'];
+                    $modal_editar_activo =  eliminar_palabras_sql($modal_editar_activo);
+                } else {
+                    http_response_code(409); //codigo de conflicto
+                    $resultado = new stdClass();
+                    $resultado->result = FALSE;
+                    $resultado->icono = "error";
+                    $resultado->titulo = "Error!";
+                    $resultado->mensaje = 'Status No Valido';
+                    echo json_encode($resultado);
+                    break;
+                }
+                $consulta = "CALL adm_editar_usuario('$modal_editar_id_usuario','$modal_editar_usuario_nombre','$modal_editar_usuario_apellido','$modal_editar_usuario_nombre_de_usuario','')";
+                $resultado = mysqli_query($conexion, $consulta);
+
+                $dataquery = mysqli_fetch_assoc($resultado);
+                if ($resultado) { //* si realizo la consulta sin problemas
+
+                    if ($dataquery['status'] == 1) {
+                        http_response_code(200);
+                        $resultado = new stdClass();
+                        $resultado->result = TRUE;
+                        $resultado->icono = "success";
+                        $resultado->titulo = "";
+                        $resultado->mensaje = $dataquery['msg'];
+                        $resultado->data = array(
+                            "status" => $dataquery['status'],
+                            "msg" => $dataquery['msg']
+                        );
+                        echo  json_encode($resultado);
+                        break;
+                    } elseif ($dataquery['status'] == 0) {
+                        http_response_code(409); //codigo de conflicto
+                        $resultado = new stdClass();
+                        $resultado->result = TRUE;
+                        $resultado->icono = "success";
+                        $resultado->titulo = "";
+                        $resultado->mensaje = $dataquery['msg'];
+                        $resultado->data = array(
+                            "status" => $dataquery['status'],
+                            "msg" => $dataquery['msg']
+                        );
+                        echo  json_encode($resultado);
+                        break;
+                    }
+                } else { //! si hubo un fallo 
+                    http_response_code(409); //codigo de conflicto
+                    $resultado = new stdClass();
+                    $resultado->result = false;
+                    $resultado->icono = "success";
+                    $resultado->titulo = "";
+                    $resultado->mensaje = "Error Interno";
+                    echo  json_encode($resultado);
+                    break;
+                }
+
+                break;
+            }
+
             if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'])) {
+
 
                 if (!isset($_POST['data'])) {
                     http_response_code(409); //codigo de conflicto

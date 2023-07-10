@@ -89,60 +89,97 @@
 
                 <!--Modal body-->
                 <p class="text-xl" id="modal_editar_titulo"></p>
-                <div class="relative p-4 flex flex-col gap-3">
-                    <div class="relative w-full " data-te-input-wrapper-init>
-                        <input modal_editar="input" maxlength="40" type="text" class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0" name="modal_editar_usuario_nombre" id="modal_editar_usuario_nombre" placeholder="Example label" />
-                        <label for="modal_editar_usuario_nombre" class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-neutral-200">Nombre
-                        </label>
-                    </div>
-                    <div class="relative w-full" data-te-input-wrapper-init>
-                        <input modal_editar="input" maxlength="40" type="text" class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0" name="modal_editar_usuario_apellido" id="modal_editar_usuario_apellido" placeholder="Example label" />
-                        <label for="modal_editar_usuario_apellido" class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-neutral-200">Apellido
-                        </label>
-                    </div>
-                    <div class="relative w-full" data-te-input-wrapper-init>
-                        <input modal_editar="input" maxlength="40" type="text" class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0" name="modal_editar_usuario_nombre_de_usuario" id="modal_editar_usuario_nombre_de_usuario" placeholder="Example label" />
-                        <label for="modal_editar_usuario_nombre_de_usuario" class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-neutral-200">Nombre de Usuario
-                        </label>
-                    </div>
-                    <div class="relative w-full" data-te-input-wrapper-init>
-                    </div>
+                <form id="modal_editar_formulario" method="post">
 
-                    <!--Modal footer-->
-                    <div class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
-                        <button type="button" class="inline-block rounded bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200" data-te-modal-dismiss data-te-ripple-init data-te-ripple-color="light">
-                            Close
-                        </button>
-                        <button type="button" class="ml-1 inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]" data-te-ripple-init data-te-ripple-color="light">
-                            Save changes
-                        </button>
-                    </div>
-                </div>
+                    <input modal_editar="input" type="text" class="hidden" name="modal_editar_id_usuario" id="modal_editar_id_usuario" />
+                    <input modal_editar="input" type="text" class="hidden" name="modal_editar_activo" id="modal_editar_id_usuario" />
+                    <div class="relative p-4 flex flex-col gap-3">
+                        <div class="relative w-full " data-te-input-wrapper-init>
+                            <input modal_editar="input" maxlength="30" type="text" class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0" name="modal_editar_usuario_nombre" id="modal_editar_usuario_nombre" placeholder="Example label" />
+                            <label for="modal_editar_usuario_nombre" class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-neutral-200">Nombre
+                            </label>
+                        </div>
+                        <div class="relative w-full" data-te-input-wrapper-init>
+                            <input modal_editar="input" maxlength="30" type="text" class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0" name="modal_editar_usuario_apellido" id="modal_editar_usuario_apellido" placeholder="Example label" />
+                            <label for="modal_editar_usuario_apellido" class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-neutral-200">Apellido
+                            </label>
+                        </div>
+                        <div class="relative w-full" data-te-input-wrapper-init>
+                            <input modal_editar="input" maxlength="20" type="text" class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0" name="modal_editar_usuario_nombre_de_usuario" id="modal_editar_usuario_nombre_de_usuario" placeholder="Example label" />
+                            <label for="modal_editar_usuario_nombre_de_usuario" class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-neutral-200">Nombre de Usuario
+                            </label>
+                        </div>
+                        <div class="relative w-full" data-te-input-wrapper-init>
+                        </div>
+
+                        <!--Modal footer-->
+                        <div class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
+                            <button type="button" class="inline-block rounded bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200" data-te-modal-dismiss data-te-ripple-init data-te-ripple-color="light">
+                                Close
+                            </button>
+                            <button type="button" class="ml-1 inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]" data-te-ripple-init data-te-ripple-color="light">
+                                Save changes
+                            </button>
+                        </div>
+                </form>
             </div>
         </div>
+    </div>
 
-        <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
 
-        <script>
-            // A $( document ).ready() block.
-            $(document).ready(function() {
-                let user_datatable = new DataTable('#user_datatable');
-                mostrar_datos_tabla();
-                let modal_editar_usuario_box = document.getElementById("modal_editar_usuario");
-                modal_editar_usuario = new te.Modal(modal_editar_usuario_box);
-            });
+    <script>
+        // A $( document ).ready() block.
+        $(document).ready(function() {
+            let user_datatable = new DataTable('#user_datatable');
+            mostrar_datos_tabla();
+            let modal_editar_usuario_box = document.getElementById("modal_editar_usuario");
+            modal_editar_usuario = new te.Modal(modal_editar_usuario_box);
+        });
 
-            async function Consultar_usuarios() {
-                try {
-                    let data_usuarios = await $.ajax({
-                        url: "./api-v1/usuarios/index.php",
-                        type: 'GET',
-                        headers: {
-                            'x-csrf-token': $('meta[name="csrf-token"]').attr('content')
-                        },
-                    })
-                    return data_usuarios
-                } catch (error) {
+        $("#modal_editar_formulario").on("submit", async function(event) {
+            event.preventDefault();
+
+            result = await $.ajax({
+                url: "./api-v1/usuarios/index.php",
+                type: 'POST',
+                data: {
+                    data: $('#modal_editar_formulario').serialize(),
+                    _method: "PUT"
+                },
+                dataType: "json",
+                headers: {
+                    'x-csrf-token': $('meta[name="csrf-token"]').attr('content')
+                },
+
+                beforeSend: () => {
+                    $('#crear_usuarioLoader').html(`<div class="inline-block h-4 w-4 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]" role="status">
+                                    <span class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
+                                    </div>`);
+
+                },
+                success: (response) => {
+                    mostrar_datos_tabla();
+                    $('#crear_usuarioLoader').html(``);
+                    let Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    });
+
+                    Toast.fire({
+                        icon: 'success',
+                        title: response.mensaje
+                    });
+                },
+                error: function(xhr, status) {
+                    $('#crear_usuarioLoader').html(``);
                     let Toast = Swal.mixin({
                         toast: true,
                         position: 'top-end',
@@ -157,79 +194,115 @@
 
                     Toast.fire({
                         icon: 'error',
-                        title: error.responseJSON.mensaje
+                        title: xhr.responseJSON.mensaje
                     });
+                },
+                dataType: 'json',
+                cache: false,
+            });
 
-                }
+
+        });
+
+        async function Consultar_usuarios() {
+            try {
+                let data_usuarios = await $.ajax({
+                    url: "./api-v1/usuarios/index.php",
+                    type: 'GET',
+                    headers: {
+                        'x-csrf-token': $('meta[name="csrf-token"]').attr('content')
+                    },
+                })
+                return data_usuarios
+            } catch (error) {
+                let Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                });
+
+                Toast.fire({
+                    icon: 'error',
+                    title: error.responseJSON.mensaje
+                });
 
             }
 
-            $('#user_datatable tbody').on('click', 'tr', function() {
+        }
 
-                let data = user_datatable.row(this).data();
-                $('#modal_editar_titulo').val(data.nombre_usuario);
+        $('#user_datatable tbody').on('click', 'tr', function() {
 
-                $('#modal_editar_usuario_nombre').val(data.nombre);
-                $("#modal_editar_usuario_apellido").val(data.apellido);
-                $("#modal_editar_usuario_nombre_de_usuario").val(data.nombre_usuario);
+            let data = user_datatable.row(this).data();
+            $('#modal_editar_titulo').val(data.nombre_usuario);
+            $('#modal_editar_activo').val(data.activo);
+
+            $('#modal_editar_usuario_nombre').val(data.nombre);
+            $("#modal_editar_usuario_apellido").val(data.apellido);
+            $("#modal_editar_usuario_nombre_de_usuario").val(data.nombre_usuario);
 
 
-            });
+        });
 
-            async function mostrar_datos_tabla() {
+        async function mostrar_datos_tabla() {
 
-                let data_usuarios = await Consultar_usuarios();
-                user_datatable = $('#user_datatable').DataTable({
-                    "bDestroy": true,
-                    order: [
-                        [0, 'desc']
-                    ],
-                    paging: true,
-                    targets: 20,
-                    "pageLength": 1000,
-                    scrollY: '40vh',
-                    "processing": true,
-                    "autoWidth": false,
-                    language: {
-                        //?dataTable en Español
-                        url: '//cdn.datatables.net/plug-ins/1.12.0/i18n/es-ES.json',
-                        //? input de buscar tengo un texto
-                        searchPlaceholder: "Filtrar"
+            let data_usuarios = await Consultar_usuarios();
+            user_datatable = $('#user_datatable').DataTable({
+                "bDestroy": true,
+                order: [
+                    [0, 'desc']
+                ],
+                paging: true,
+                targets: 20,
+                "pageLength": 1000,
+                scrollY: '40vh',
+                "processing": true,
+                "autoWidth": false,
+                language: {
+                    //?dataTable en Español
+                    url: '//cdn.datatables.net/plug-ins/1.12.0/i18n/es-ES.json',
+                    //? input de buscar tengo un texto
+                    searchPlaceholder: "Filtrar"
 
+                },
+                "data": data_usuarios.data,
+                "columns": [{
+                        "data": "nombre_usuario"
                     },
-                    "data": data_usuarios.data,
-                    "columns": [{
-                            "data": "nombre_usuario"
-                        },
 
-                        {
-                            "data": "nombre"
-                        },
+                    {
+                        "data": "nombre"
+                    },
 
-                        {
-                            "data": null,
-                            "bSortable": false,
-                            "mRender": function(data, type, value) {
+                    {
+                        "data": null,
+                        "bSortable": false,
+                        "mRender": function(data, type, value) {
 
-                                if (data.activo == 1) {
-                                    return `<span
+                            if (data.activo == 1) {
+                                return `<span
                                 class="inline-block whitespace-nowrap rounded-full bg-success-100 px-[0.65em] pb-[0.25em] pt-[0.35em] text-center align-baseline text-[0.75em] font-bold leading-none text-success-700">
                                 Activo
                                 </span>`;
-                                } else {
-                                    return `<span
+                            } else {
+                                return `<span
                                 class="inline-block whitespace-nowrap rounded-full bg-secondary-100 px-[0.65em] pb-[0.25em] pt-[0.35em] text-center align-baseline text-[0.75em] font-bold leading-none text-secondary-800">
                                 Suspendido
                                 </span>`;
-                                }
-
                             }
-                        },
-                        {
-                            "data": null,
-                            "bSortable": false,
-                            "mRender": function(data, type, value) {
-                                return `<button
+
+                        }
+                    },
+                    {
+                        "data": null,
+                        "bSortable": false,
+                        "mRender": function(data, type, value) {
+                            return `<button
                                     onclick='modal_editar_usuario.show();'
                                     type="button"
                                     data-te-ripple-init
@@ -240,85 +313,85 @@
                                     <path d="M3.5 5.75c0-.69.56-1.25 1.25-1.25H10A.75.75 0 0010 3H4.75A2.75 2.75 0 002 5.75v9.5A2.75 2.75 0 004.75 18h9.5A2.75 2.75 0 0017 15.25V10a.75.75 0 00-1.5 0v5.25c0 .69-.56 1.25-1.25 1.25h-9.5c-.69 0-1.25-.56-1.25-1.25v-9.5z" />
                                     </svg> 
                                     </button>`;
-                            }
                         }
+                    }
 
-                    ],
-                    responsive: true,
-                });
-
-
-            }
-
-            $("#form_crear_usuario").on("submit", async function(event) {
-
-                event.preventDefault();
+                ],
+                responsive: true,
+            });
 
 
+        }
+
+        $("#form_crear_usuario").on("submit", async function(event) {
+
+            event.preventDefault();
 
 
-                result = await $.ajax({
-                    url: "./api-v1/usuarios/index.php",
-                    type: 'POST',
-                    data: {
-                        data: $('#form_crear_usuario').serialize()
-                    },
-                    dataType: "json",
-                    headers: {
-                        'x-csrf-token': $('meta[name="csrf-token"]').attr('content')
-                    },
 
-                    beforeSend: () => {
-                        $('#crear_usuarioLoader').html(`<div class="inline-block h-4 w-4 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]" role="status">
+
+            result = await $.ajax({
+                url: "./api-v1/usuarios/index.php",
+                type: 'POST',
+                data: {
+                    data: $('#form_crear_usuario').serialize()
+                },
+                dataType: "json",
+                headers: {
+                    'x-csrf-token': $('meta[name="csrf-token"]').attr('content')
+                },
+
+                beforeSend: () => {
+                    $('#crear_usuarioLoader').html(`<div class="inline-block h-4 w-4 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]" role="status">
                                     <span class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
                                     </div>`);
 
-                    },
-                    success: (response) => {
-                        mostrar_datos_tabla();
-                        $('#crear_usuarioLoader').html(``);
-                        $("#form_crear_usuario")[0].reset();
-                        let Toast = Swal.mixin({
-                            toast: true,
-                            position: 'top-end',
-                            showConfirmButton: false,
-                            timer: 3000,
-                            timerProgressBar: true,
-                            didOpen: (toast) => {
-                                toast.addEventListener('mouseenter', Swal.stopTimer)
-                                toast.addEventListener('mouseleave', Swal.resumeTimer)
-                            }
-                        });
+                },
+                success: (response) => {
+                    mostrar_datos_tabla();
+                    $('#crear_usuarioLoader').html(``);
+                    $("#form_crear_usuario")[0].reset();
+                    let Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    });
 
-                        Toast.fire({
-                            icon: 'success',
-                            title: response.mensaje
-                        });
-                    },
-                    error: function(xhr, status) {
-                        $('#crear_usuarioLoader').html(``);
-                        let Toast = Swal.mixin({
-                            toast: true,
-                            position: 'top-end',
-                            showConfirmButton: false,
-                            timer: 3000,
-                            timerProgressBar: true,
-                            didOpen: (toast) => {
-                                toast.addEventListener('mouseenter', Swal.stopTimer)
-                                toast.addEventListener('mouseleave', Swal.resumeTimer)
-                            }
-                        });
+                    Toast.fire({
+                        icon: 'success',
+                        title: response.mensaje
+                    });
+                },
+                error: function(xhr, status) {
+                    $('#crear_usuarioLoader').html(``);
+                    let Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    });
 
-                        Toast.fire({
-                            icon: 'error',
-                            title: xhr.responseJSON.mensaje
-                        });
-                    },
-                    dataType: 'json',
-                    cache: false,
-                });
-
-
+                    Toast.fire({
+                        icon: 'error',
+                        title: xhr.responseJSON.mensaje
+                    });
+                },
+                dataType: 'json',
+                cache: false,
             });
-        </script>
-    </div>
+
+
+        });
+    </script>
+</div>
