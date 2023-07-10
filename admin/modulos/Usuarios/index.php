@@ -164,15 +164,19 @@
         });
 
 
+        let timeoutId = setTimeout(function() {
+            $("#modal_editar_usuario_clave").attr("type", "password");
+        }, 5000);
+
         function generar_pass() {
             let pass = generarClave();
             $("#modal_editar_usuario_clave").attr("type", "text");
             $('#modal_editar_usuario_clave').focus();
             $('#modal_editar_usuario_clave').val(pass);
-            setTimeout(function() {
+            clearTimeout(timeoutId); // Limpiar el intervalo anterior
+            timeoutId = setTimeout(function() {
                 $("#modal_editar_usuario_clave").attr("type", "password");
             }, 5000);
-
         }
 
 
