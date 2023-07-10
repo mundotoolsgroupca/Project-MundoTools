@@ -128,7 +128,7 @@
                     searchPlaceholder: "Filtrar"
 
                 },
-                "data": data_srv.data,
+                "data": data_usuarios.data,
                 "columns": [{
                         "data": "nombre_usuario"
                     },
