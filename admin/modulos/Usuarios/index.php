@@ -168,7 +168,7 @@
             $('#modal_editar_usuario_clave').val(pass);
             setTimeout(function() {
                 $("#modal_editar_usuario_clave").attr("type", "password");
-            }, 50000);
+            }, 5000);
 
         }
 
