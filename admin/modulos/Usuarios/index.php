@@ -109,7 +109,7 @@
         }
 
         async function mostrar_datos_tabla() {
-            
+
             let data_usuarios = await Consultar_usuarios();
             tabla_det_temp = $('#user_datatable').DataTable({
                 "bDestroy": true,
@@ -190,6 +190,7 @@
 
                 },
                 success: (response) => {
+                    mostrar_datos_tabla();
                     $('#crear_usuarioLoader').html(``);
                     $("#form_crear_usuario")[0].reset();
                     let Toast = Swal.mixin({
