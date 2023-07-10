@@ -112,8 +112,8 @@
         $(document).ready(function() {
             let user_datatable = new DataTable('#user_datatable');
             mostrar_datos_tabla();
-            let modal_editar_usuario = document.getElementById("modal_editar_usuario");
-            modal_editar_usuario = new te.Modal(modal_editar_usuario);
+            let modal_editar_usuario_box = document.getElementById("modal_editar_usuario");
+            modal_editar_usuario = new te.Modal(modal_editar_usuario_box);
         });
 
         async function Consultar_usuarios() {
