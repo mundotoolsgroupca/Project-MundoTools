@@ -150,7 +150,7 @@ switch ($method) {
                     break;
                 }
 
-                if (isset($_POST['data']['modal_editar_usuario_clave']) && validar_string($_POST['data']['modal_editar_usuario_clave'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
+                if (isset($_POST['data']['modal_editar_usuario_clave']) && validar_string2($_POST['data']['modal_editar_usuario_clave'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
                     $modal_editar_usuario_clave =  $_POST['data']['modal_editar_usuario_clave'];
                     $modal_editar_usuario_clave =  eliminar_palabras_sql($modal_editar_usuario_clave);
                 } else {
