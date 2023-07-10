@@ -120,8 +120,13 @@
                             </label>
                         </div>
                         ---->
-                        <div class="relative w-full" data-te-input-wrapper-init>
+                        <div id="modal_editar_btn_suspender" class="relative w-full" data-te-input-wrapper-init>
                             <button onclick="suspender_usuario()" type="button" class="inline-block rounded bg-danger px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#dc4c64] transition duration-150 ease-in-out hover:bg-danger-600 hover:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.3),0_4px_18px_0_rgba(220,76,100,0.2)] focus:bg-danger-600 focus:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.3),0_4px_18px_0_rgba(220,76,100,0.2)] focus:outline-none focus:ring-0 active:bg-danger-700 active:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.3),0_4px_18px_0_rgba(220,76,100,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(220,76,100,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.2),0_4px_18px_0_rgba(220,76,100,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.2),0_4px_18px_0_rgba(220,76,100,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.2),0_4px_18px_0_rgba(220,76,100,0.1)]">
+                                Suspender
+                            </button>
+                        </div>
+                        <div id="modal_editar_btn_activar" class="relative w-full" data-te-input-wrapper-init>
+                            <button onclick="activar_usuario()" type="button" class="inline-block rounded bg-danger px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#dc4c64] transition duration-150 ease-in-out hover:bg-danger-600 hover:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.3),0_4px_18px_0_rgba(220,76,100,0.2)] focus:bg-danger-600 focus:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.3),0_4px_18px_0_rgba(220,76,100,0.2)] focus:outline-none focus:ring-0 active:bg-danger-700 active:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.3),0_4px_18px_0_rgba(220,76,100,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(220,76,100,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.2),0_4px_18px_0_rgba(220,76,100,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.2),0_4px_18px_0_rgba(220,76,100,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.2),0_4px_18px_0_rgba(220,76,100,0.1)]">
                                 Suspender
                             </button>
                         </div>
@@ -267,6 +272,18 @@
             data = user_datatable.row(this).data();
             $('#modal_editar_id_usuario').val(data.id);
             $('#modal_editar_activo').val(data.activo);
+
+            if (data.activo == 1) {
+                $('#modal_editar_btn_suspender').removeClass('hidden');
+                $('#modal_editar_btn_activar').addClass('hidden');
+            }
+
+
+            if (data.activo == 0) {
+                $('#modal_editar_btn_suspender').addClass('hidden');
+                $('#modal_editar_btn_activar').removeClass('hidden');
+            }
+
 
             $('#modal_editar_usuario_nombre').val(data.nombre);
             $("#modal_editar_usuario_apellido").val(data.apellido);
