@@ -158,11 +158,6 @@
                         }
                     },
 
-                    {
-                        "data": "precio"
-                    },
-
-
                 ],
                 responsive: true,
             });
