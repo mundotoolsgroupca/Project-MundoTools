@@ -152,10 +152,12 @@
         });
 
         function activar_usuario() {
+            $('#modal_editar_activo').val('1');
             Editar_usuario();
         }
 
         function suspender_usuario() {
+            $('#modal_editar_activo').val('0');
             Editar_usuario();
         }
 
