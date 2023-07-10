@@ -150,8 +150,19 @@ switch ($method) {
                     break;
                 }
                 if (isset($_POST['data']['modal_editar_activo']) && validar_int($_POST['data']['modal_editar_activo'])) {
+
                     $modal_editar_activo =  $_POST['data']['modal_editar_activo'];
                     $modal_editar_activo =  eliminar_palabras_sql($modal_editar_activo);
+                    if ($modal_editar_activo != "0" && $modal_editar_activo != "1") {
+                        http_response_code(409); //codigo de conflicto
+                        $resultado = new stdClass();
+                        $resultado->result = FALSE;
+                        $resultado->icono = "error";
+                        $resultado->titulo = "Error!";
+                        $resultado->mensaje = 'Codigo no Valido No Valido';
+                        echo json_encode($resultado);
+                        break;
+                    }
                 } else {
                     http_response_code(409); //codigo de conflicto
                     $resultado = new stdClass();
