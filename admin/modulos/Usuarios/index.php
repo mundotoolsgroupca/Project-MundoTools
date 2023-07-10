@@ -89,7 +89,7 @@
 
                 <!--Modal body-->
 
-                <div class="[ flex items-center gap-1 flex-nowrap mb-3 ]">
+                <div class="[ flex items-center gap-1 flex-nowrap mb-3 p-4 ]">
                     <p id="modal_editar_titulo" class="[ text-lg font-bold ]"></p>
                     <span id="modal_editarLoader"></span>
                 </div>
