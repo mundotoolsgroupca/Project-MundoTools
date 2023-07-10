@@ -109,6 +109,7 @@
         }
 
         function mostrar_datos_tabla() {
+            debugger
             let data_usuarios = Consultar_usuarios();
             tabla_det_temp = $('#user_datatable').DataTable({
                 "bDestroy": true,
