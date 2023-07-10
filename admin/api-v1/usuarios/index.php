@@ -176,7 +176,7 @@ switch ($method) {
                     break;
                 }
                 include_once '../../php/conexion.php';
-                $consulta = "CALL adm_editar_usuario('$modal_editar_id_usuario','$modal_editar_usuario_nombre','$modal_editar_usuario_apellido','$modal_editar_usuario_nombre_de_usuario','')";
+                $consulta = "CALL adm_editar_usuario('$modal_editar_id_usuario','$modal_editar_usuario_nombre','$modal_editar_usuario_apellido','$modal_editar_usuario_nombre_de_usuario','$modal_editar_activo')";
                 $resultado = mysqli_query($conexion, $consulta);
 
                 $dataquery = mysqli_fetch_assoc($resultado);
