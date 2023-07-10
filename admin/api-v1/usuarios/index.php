@@ -175,6 +175,7 @@ switch ($method) {
                     echo json_encode($resultado);
                     break;
                 }
+                include_once '../../php/conexion.php';
                 $consulta = "CALL adm_editar_usuario('$modal_editar_id_usuario','$modal_editar_usuario_nombre','$modal_editar_usuario_apellido','$modal_editar_usuario_nombre_de_usuario','')";
                 $resultado = mysqli_query($conexion, $consulta);
 
