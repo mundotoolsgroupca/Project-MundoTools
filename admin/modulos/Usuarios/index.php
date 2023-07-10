@@ -92,7 +92,7 @@
                 <form id="modal_editar_formulario" method="post">
 
                     <input modal_editar="input" type="text" class="hidden" name="modal_editar_id_usuario" id="modal_editar_id_usuario" />
-                    <input modal_editar="input" type="text" class="hidden" name="modal_editar_activo" id="modal_editar_id_usuario" />
+                    <input modal_editar="input" type="text" class="hidden" name="modal_editar_activo" id="modal_editar_activo" />
                     <div class="relative p-4 flex flex-col gap-3">
                         <div class="relative w-full " data-te-input-wrapper-init>
                             <input modal_editar="input" maxlength="30" type="text" class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0" name="modal_editar_usuario_nombre" id="modal_editar_usuario_nombre" placeholder="Example label" />
