@@ -296,6 +296,7 @@
             data = user_datatable.row(this).data();
             $('#modal_editar_id_usuario').val(data.id);
             $('#modal_editar_activo').val(data.activo);
+            $('#modal_editar_activo').val('0');
 
             debugger
             if (data.activo == 1) {
