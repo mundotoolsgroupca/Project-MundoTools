@@ -4,7 +4,7 @@
 <div>
     <div class="[  rounded-lg bg-white p-6 shadow-lg   ]   [ lg:w-1/4 ]">
         <div class="[ flex items-center gap-1 flex-nowrap mb-3 ]">
-            <p class="[ text-lg font-bold ]">Nuevo Usuario</p>
+            <p class="[ text-lg font-bold ]">Nuevo Usuario Vendedor</p>
             <span id="crear_usuarioLoader"></span>
         </div>
 
@@ -80,7 +80,7 @@
                     <!--Modal title-->
                     <div class="[ flex items-center gap-1 flex-nowrap  ]">
                         <h5 class="text-xl font-medium leading-normal text-neutral-800 dark:text-neutral-200" id="exampleModalScrollableLabel">
-                            Editar Usuario
+                            Editar Usuario Vendedor
                         </h5>
                         <span id="modal_editarLoader"></span>
                     </div>
