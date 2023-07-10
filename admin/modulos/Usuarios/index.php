@@ -88,8 +88,14 @@
                 </div>
 
                 <!--Modal body-->
-                <p class="text-xl" id="modal_editar_titulo"></p>
+
+                <div class="[ flex items-center gap-1 flex-nowrap mb-3 ]">
+                    <p id="modal_editar_titulo" class="[ text-lg font-bold ]"></p>
+                    <span id="modal_editarLoader"></span>
+                </div>
+               
                 <form id="modal_editar_formulario" method="post">
+
 
                     <input modal_editar="input" type="text" class="hidden" name="modal_editar_id_usuario" id="modal_editar_id_usuario" />
                     <input modal_editar="input" type="text" class="hidden" name="modal_editar_activo" id="modal_editar_activo" />
@@ -153,7 +159,7 @@
                 },
 
                 beforeSend: () => {
-                    $('#crear_usuarioLoader').html(`<div class="inline-block h-4 w-4 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]" role="status">
+                    $('#modal_editarLoader').html(`<div class="inline-block h-4 w-4 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]" role="status">
                                     <span class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
                                     </div>`);
 
@@ -161,7 +167,7 @@
                 success: (response) => {
                     mostrar_datos_tabla();
                     modal_editar_usuario.hide();
-                    $('#crear_usuarioLoader').html(``);
+                    $('#modal_editarLoader').html(``);
                     let Toast = Swal.mixin({
                         toast: true,
                         position: 'top-end',
@@ -180,7 +186,7 @@
                     });
                 },
                 error: function(xhr, status) {
-                    $('#crear_usuarioLoader').html(``);
+                    $('#modal_editarLoader').html(``);
                     let Toast = Swal.mixin({
                         toast: true,
                         position: 'top-end',
