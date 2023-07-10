@@ -151,9 +151,20 @@
             modal_editar_usuario = new te.Modal(modal_editar_usuario_box);
         });
 
+        function activar_usuario() {
+            Editar_usuario();
+        }
+
+        function suspender_usuario() {
+            Editar_usuario();
+        }
+
         $("#modal_editar_formulario").on("submit", async function(event) {
             event.preventDefault();
+            Editar_usuario();
+        });
 
+        async function Editar_usuario() {
             result = await $.ajax({
                 url: "./api-v1/usuarios/index.php",
                 type: 'POST',
@@ -215,9 +226,7 @@
                 dataType: 'json',
                 cache: false,
             });
-
-
-        });
+        }
 
         async function Consultar_usuarios() {
             try {
