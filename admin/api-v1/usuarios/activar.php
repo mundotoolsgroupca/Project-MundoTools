@@ -25,19 +25,7 @@ switch ($method) {
 
                 if ($_POST['_method'] == "PUT") {
 
-                    if (isset($_POST['activo']) && validar_int($_POST['activo'])) {
-                        $activo =  $_POST['activo'];
-                        $activo =  eliminar_palabras_sql($activo);
-                    } else {
-                        http_response_code(409); //codigo de conflicto
-                        $resultado = new stdClass();
-                        $resultado->result = FALSE;
-                        $resultado->icono = "error";
-                        $resultado->titulo = "Error!";
-                        $resultado->mensaje = 'Parametro No Valido';
-                        echo json_encode($resultado);
-                        break;
-                    }
+                    
                     if (isset($_POST['id_usuario']) && validar_string($_POST['id_usuario'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
                         $id_usuario = $_POST['id_usuario'];
                         $id_usuario = eliminar_palabras_sql($id_usuario);
