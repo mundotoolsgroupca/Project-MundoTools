@@ -149,6 +149,21 @@ switch ($method) {
                     echo json_encode($resultado);
                     break;
                 }
+
+                if (isset($_POST['data']['modal_editar_usuario_clave']) && validar_string($_POST['data']['modal_editar_usuario_clave'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
+                    $modal_editar_usuario_clave =  $_POST['data']['modal_editar_usuario_clave'];
+                    $modal_editar_usuario_clave =  eliminar_palabras_sql($modal_editar_usuario_clave);
+                } else {
+                    http_response_code(409); //codigo de conflicto
+                    $resultado = new stdClass();
+                    $resultado->result = FALSE;
+                    $resultado->icono = "error";
+                    $resultado->titulo = "Error!";
+                    $resultado->mensaje = 'Clave No Valida';
+                    echo json_encode($resultado);
+                    break;
+                }
+
                 if (isset($_POST['data']['modal_editar_activo']) && validar_int($_POST['data']['modal_editar_activo'])) {
 
                     $modal_editar_activo =  $_POST['data']['modal_editar_activo'];
@@ -174,7 +189,7 @@ switch ($method) {
                     break;
                 }
                 include_once '../../php/conexion.php';
-                $consulta = "CALL adm_editar_usuario('$modal_editar_id_usuario','$modal_editar_usuario_nombre','$modal_editar_usuario_apellido','$modal_editar_activo')";
+                $consulta = "CALL adm_editar_usuario('$modal_editar_id_usuario','$modal_editar_usuario_nombre','$modal_editar_usuario_apellido','$modal_editar_usuario_clave','$modal_editar_activo')";
                 $resultado = mysqli_query($conexion, $consulta);
 
                 $dataquery = mysqli_fetch_assoc($resultado);
