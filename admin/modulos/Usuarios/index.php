@@ -50,7 +50,7 @@
                 <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
                         <div class="overflow-hidden">
-                            <table class="min-w-full text-center text-sm font-light">
+                            <table id="user_datatable" class="min-w-full text-center text-sm font-light">
                                 <thead class="border-b bg-neutral-800 font-medium text-white dark:border-neutral-500 dark:bg-neutral-900">
                                     <tr>
                                         <th scope="col" class=" px-6 py-4">Nombre de Usuario</th>
@@ -70,21 +70,22 @@
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
 
     <script>
-
-    
-
-
+        // A $( document ).ready() block.
+        $(document).ready(function() {
+            let user_datatable = new DataTable('#user_datatable');
+            mostrar_datos_tabla();
+        });
 
         async function Consultar_usuarios() {
             try {
-                const result = await $.ajax({
+                let data_usuarios = await $.ajax({
                     url: "./api-v1/usuarios/index.php",
                     type: 'GET',
                     headers: {
                         'x-csrf-token': $('meta[name="csrf-token"]').attr('content')
                     },
                 })
-                return result
+                return data_usuarios
             } catch (error) {
                 let Toast = Swal.mixin({
                     toast: true,
@@ -104,6 +105,67 @@
                 });
 
             }
+
+        }
+
+        function mostrar_datos_tabla() {
+            let data_usuarios = Consultar_usuarios();
+            tabla_det_temp = $('#user_datatable').DataTable({
+                "bDestroy": true,
+                order: [
+                    [0, 'desc']
+                ],
+                paging: true,
+                targets: 20,
+                "pageLength": 1000,
+                scrollY: '40vh',
+                "processing": true,
+                "autoWidth": false,
+                language: {
+                    //?dataTable en Español
+                    url: '//cdn.datatables.net/plug-ins/1.12.0/i18n/es-ES.json',
+                    //? input de buscar tengo un texto
+                    searchPlaceholder: "Filtrar"
+
+                },
+                "data": data_srv.data,
+                "columns": [{
+                        "data": "nombre_usuario"
+                    },
+
+                    {
+                        "data": "nombre"
+                    },
+
+                    {
+                        "data": null,
+                        "bSortable": false,
+                        "mRender": function(data, type, value) {
+
+                            if (data.activo == 1) {
+                                return `<span
+                                class="inline-block whitespace-nowrap rounded-full bg-success-100 px-[0.65em] pb-[0.25em] pt-[0.35em] text-center align-baseline text-[0.75em] font-bold leading-none text-success-700">
+                                Activo
+                                </span>`;
+                            } else {
+                                return `<span
+                                class="inline-block whitespace-nowrap rounded-full bg-secondary-100 px-[0.65em] pb-[0.25em] pt-[0.35em] text-center align-baseline text-[0.75em] font-bold leading-none text-secondary-800">
+                                Suspendido
+                                </span>`;
+                            }
+
+                        }
+                    },
+
+                    {
+                        "data": "precio"
+                    },
+
+
+                ],
+                responsive: true,
+            });
+
 
         }
 
