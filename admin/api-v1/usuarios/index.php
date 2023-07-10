@@ -317,7 +317,7 @@ switch ($method) {
                 include_once '../../php/conexion.php';
                 // Configurar los encabezados de la respuesta
                 header('Content-Type: application/json');
-                $consulta = "CALL adm_agregar_usuario('$nombre_usuario','$nombre','$apellido','','$clave')";
+                $consulta = "CALL adm_agregar_usuario('$nombre_usuario','$nombre','$apellido','','$clave','" . $_SESSION['Usuario']['id'] . "')";
                 $resultado = mysqli_query($conexion, $consulta);
                 $data = mysqli_fetch_assoc($resultado);
                 if ($resultado) { //* si realizo la consulta 
