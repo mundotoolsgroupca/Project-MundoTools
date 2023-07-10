@@ -160,6 +160,7 @@
                 },
                 success: (response) => {
                     mostrar_datos_tabla();
+                    modal_editar_usuario.hide();
                     $('#crear_usuarioLoader').html(``);
                     let Toast = Swal.mixin({
                         toast: true,
