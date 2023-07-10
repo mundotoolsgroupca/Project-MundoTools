@@ -76,7 +76,7 @@
             <div class="pointer-events-auto relative flex w-full flex-col rounded-md border-none bg-white bg-clip-padding text-current shadow-lg outline-none dark:bg-neutral-600">
                 <div class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
                     <!--Modal title-->
-                    <div class="[ flex items-center gap-1 flex-nowrap mb-1 p-4 ]">
+                    <div class="[ flex items-center gap-1 flex-nowrap  ]">
                         <h5 class="text-xl font-medium leading-normal text-neutral-800 dark:text-neutral-200" id="exampleModalScrollableLabel">
                             Editar Usuario
                         </h5>
