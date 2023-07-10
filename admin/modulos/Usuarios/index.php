@@ -273,6 +273,7 @@
             $('#modal_editar_id_usuario').val(data.id);
             $('#modal_editar_activo').val(data.activo);
 
+            debugger
             if (data.activo == 1) {
                 $('#modal_editar_btn_suspender').removeClass('hidden');
                 $('#modal_editar_btn_activar').addClass('hidden');
