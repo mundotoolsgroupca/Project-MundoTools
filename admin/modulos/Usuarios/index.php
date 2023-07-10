@@ -168,7 +168,7 @@
 
                 let data = user_datatable.row(this).data();
                 $('#modal_editar_titulo').val(data.nombre_usuario);
-                
+
                 $('#modal_editar_usuario_nombre').val(data.nombre);
                 $("#modal_editar_usuario_apellido").val(data.apellido);
                 $("#modal_editar_usuario_nombre_de_usuario").val(data.nombre_usuario);
@@ -179,7 +179,7 @@
             async function mostrar_datos_tabla() {
 
                 let data_usuarios = await Consultar_usuarios();
-                tabla_det_temp = $('#user_datatable').DataTable({
+                user_datatable = $('#user_datatable').DataTable({
                     "bDestroy": true,
                     order: [
                         [0, 'desc']
