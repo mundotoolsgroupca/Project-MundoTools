@@ -76,9 +76,13 @@
             <div class="pointer-events-auto relative flex w-full flex-col rounded-md border-none bg-white bg-clip-padding text-current shadow-lg outline-none dark:bg-neutral-600">
                 <div class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
                     <!--Modal title-->
-                    <h5 class="text-xl font-medium leading-normal text-neutral-800 dark:text-neutral-200" id="exampleModalScrollableLabel">
-                        Editar Usuario
-                    </h5>
+                    <div class="[ flex items-center gap-1 flex-nowrap mb-1 p-4 ]">
+                        <h5 class="text-xl font-medium leading-normal text-neutral-800 dark:text-neutral-200" id="exampleModalScrollableLabel">
+                            Editar Usuario
+                        </h5>
+                        <span id="modal_editarLoader"></span>
+                    </div>
+
                     <!--Close button-->
                     <button type="button" class="box-content rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none" data-te-modal-dismiss aria-label="Close">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
@@ -89,11 +93,8 @@
 
                 <!--Modal body-->
 
-                <div class="[ flex items-center gap-1 flex-nowrap mb-3 pl-4 ]">
-                    <p id="modal_editar_titulo" class="[ text-lg font-bold ]"></p>
-                    <span id="modal_editarLoader"></span>
-                </div>
-               
+
+
                 <form id="modal_editar_formulario" method="post">
 
 
