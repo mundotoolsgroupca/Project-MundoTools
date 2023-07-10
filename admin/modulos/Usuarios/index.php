@@ -240,6 +240,7 @@
 
             let data = user_datatable.row(this).data();
             $('#modal_editar_titulo').val(data.nombre_usuario);
+            $('#modal_editar_id_usuario').val(data.id);
             $('#modal_editar_activo').val(data.activo);
 
             $('#modal_editar_usuario_nombre').val(data.nombre);
