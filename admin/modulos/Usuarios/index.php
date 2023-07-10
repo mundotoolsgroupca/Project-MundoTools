@@ -246,8 +246,7 @@
 
         $('#user_datatable tbody').on('click', 'tr', function() {
 
-            let data = user_datatable.row(this).data();
-            $('#modal_editar_titulo').html(data.nombre_usuario);
+            let data = user_datatable.row(this).data(); 
             $('#modal_editar_id_usuario').val(data.id);
             $('#modal_editar_activo').val(data.activo);
 
