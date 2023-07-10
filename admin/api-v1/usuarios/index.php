@@ -93,6 +93,22 @@ switch ($method) {
             }
 
             if ($_POST['_method'] == "PUT") {
+                if (!isset($_POST['data'])) {
+                    http_response_code(409); //codigo de conflicto
+                    // Log this as a warning and keep an eye on these attempts
+                    $resultado = new stdClass();
+                    $resultado->result = FALSE;
+                    $resultado->icono = "error";
+                    $resultado->titulo = "Error!";
+                    $resultado->mensaje = 'Parametro No Valido';
+                    echo json_encode($resultado);
+                    break;
+                }
+
+                $formDataString = $_POST['data'];
+                $formDataArray = array();
+                parse_str($formDataString, $formDataArray);
+                $_POST['data'] = $formDataArray;
 
                 if (isset($_POST['data']['modal_editar_id_usuario']) && validar_int($_POST['data']['modal_editar_id_usuario'])) {
                     $modal_editar_id_usuario =  $_POST['data']['modal_editar_id_usuario'];
