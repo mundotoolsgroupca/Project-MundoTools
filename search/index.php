@@ -372,6 +372,20 @@ if (isset($_SESSION['token'])) {
                             
                             
                             ";
+                        } else {
+                            http_response_code(409); //error
+                            echo "
+                    
+                            <div id='search-empty' class='search-alert flex items-center justify-center space-x-4 mt-4  '>
+                                <svg class='w-6 h-6 text-gray-500' fill='currentColor' viewBox='0 0 20 20'>
+                                    <path fill-rule='evenodd'
+                                        d='M10 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16zM12 7h-4a1 1 0 0 1 0-2h4a1 1 0 0 1 0 2zm-3 4a1 1 0 1 1 2 0a1 1 0 0 1-2 0z'
+                                        clip-rule='evenodd' />
+                                </svg>
+                                <p class='text-gray-500'>Vaya.. no se Encontro Ningun Producto</p>
+                            </div>
+                    
+                        "; //retornamos los datos
                         }
                     } elseif (isset($_GET['categoria']) && validar_int($_GET['categoria'])) {
 
@@ -401,6 +415,20 @@ if (isset($_SESSION['token'])) {
 
                         echo "<p class='[ text-lg font-bold ]'>Categoria <label class='text-[#FBAA35]'>'" . $row['nombre'] . " ('" . count($row) . "')'</label></p>";
                         $categoria = "<p class='text-[#FBAA35] font-bold transition duration-150 ease-in-out hover:text-[#FBAA35] focus:text-[#FBAA35] active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-[#FBAA35]'>" . $row['nombre'] . " ('" . count($row) . "')</p>";
+                    } else {
+                        http_response_code(409); //error
+                        echo "
+                
+                        <div id='search-empty' class='search-alert flex items-center justify-center space-x-4 mt-4  '>
+                            <svg class='w-6 h-6 text-gray-500' fill='currentColor' viewBox='0 0 20 20'>
+                                <path fill-rule='evenodd'
+                                    d='M10 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16zM12 7h-4a1 1 0 0 1 0-2h4a1 1 0 0 1 0 2zm-3 4a1 1 0 1 1 2 0a1 1 0 0 1-2 0z'
+                                    clip-rule='evenodd' />
+                            </svg>
+                            <p class='text-gray-500'>Vaya.. no se Encontro Ningun Producto</p>
+                        </div>
+                
+                    "; //retornamos los datos
                     }
 
 
@@ -1084,7 +1112,7 @@ if (isset($_SESSION['token'])) {
                     nombreproductomodal.innerHTML = data.nombre;
                     //preciomodal.innerHTML = data.precio + "" + data.simbolo;
 
-                   // data.descripcion = data.descripcion.replace("•", "<br>");
+                    // data.descripcion = data.descripcion.replace("•", "<br>");
                     modaldescripcion.innerText = data.descripcion;
 
 
