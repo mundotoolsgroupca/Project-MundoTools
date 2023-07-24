@@ -927,7 +927,7 @@
 
                     if (response.data.length == 0) {
                         $('#ModalAgregar_agrupados_formulario').find('input:not(#ModalAgregar_agrupadosID)').val('');
-                        $('#ModalAgregar_agrupadosidproducto').val('ModalAgregar_agrupadosID');
+                        $('#ModalAgregar_agrupadosidproducto').val($('#ModalAgregar_agrupadosID').val());
                         modal_agregar_producto.show();
                     }
 
