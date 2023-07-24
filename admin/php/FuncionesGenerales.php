@@ -308,6 +308,20 @@ function validar_string($string, $permitidos)
     return true;
 }
 
+function validar_string2($string, $permitidos) //incluye que no permita solo caracteres en blanco
+{
+    $string = trim($string);
+    if (strlen($string) == 0) {
+        return false; // La cadena solo contiene espacios en blanco
+    }
+    for ($i = 0; $i < strlen($string); $i++) {
+        if (strpos($permitidos, $string[$i]) === false && $string[$i] !== "\n") {
+            return false;
+        }
+    }
+    return true;
+}
+
 
 function validar_int($valor)
 {
