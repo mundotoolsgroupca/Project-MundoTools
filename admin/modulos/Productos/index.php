@@ -925,6 +925,10 @@
                 $('#titulo_tabla_agrupadosLoader').html(``);
                 if (response.result == true) {
 
+                    if (response.data.length == 0) {
+                        $('#ModalAgregar_agrupados_formulario')[0].reset();
+                        modal_agregar_producto.show();
+                    }
 
                     tabla_agrupados_data = $('#tabla_agrupados_producto').DataTable({
                         "bDestroy": true,
