@@ -1084,7 +1084,7 @@ if (isset($_SESSION['token'])) {
                     nombreproductomodal.innerHTML = data.nombre;
                     //preciomodal.innerHTML = data.precio + "" + data.simbolo;
 
-                    data.descripcion = data.descripcion.replace("•", "<br>");
+                   // data.descripcion = data.descripcion.replace("•", "<br>");
                     modaldescripcion.innerText = data.descripcion;
 
 
