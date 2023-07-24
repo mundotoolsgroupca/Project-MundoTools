@@ -165,10 +165,8 @@
                             </div>
 
                             <div class="relative flex w-full flex-wrap items-stretch">
-                                <select style="width: 100%;z-index:99" class="w-full" name="ModalEditarCategoria" disabled id="ModalEditarCategoria" required>
-
-                                </select>
-
+                                <label class="flex items-center whitespace-nowrap rounded-l border border-r-0 border-solid border-neutral-300 px-3 py-[0.25rem] text-center text-base font-normal leading-[1.6] text-neutral-700 dark:border-neutral-600 dark:bg-zinc-800 dark:text-neutral-200 dark:placeholder:text-neutral-200" for="ModalEditarCategoria">Categoria</label>
+                                <select class="form-select relative m-0 block w-[1px] min-w-0 flex-auto appearance-none rounded-r border border-solid border-neutral-300 bg-white bg-clip-padding bg-no-repeat px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition ease-in-out focus:z-[3] focus:border-primary-600 focus:bg-white focus:text-neutral-700 focus:outline-none dark:border-neutral-600 dark:bg-zinc-800 dark:text-neutral-200 dark:placeholder:text-neutral-200" name="ModalEditarCategoria" id="ModalEditarCategoria">
 
                                 </select>
                             </div>
@@ -452,7 +450,6 @@
 <script id="tailwindelements_script" src="./assets/js/tw-elements.umd.min.js"></script>
 <script>
     $('#categoria').select2();
-    $('#ModalEditarCategoria').select2();
 
     if (typeof tabla_grupos_producto === 'undefined') {
         let tabla_grupos_producto = new DataTable('#tabla_grupos_producto');
