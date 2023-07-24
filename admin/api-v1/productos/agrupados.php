@@ -280,8 +280,8 @@ switch ($method) {
                         break;
                     }
 
-                   
-                    if (isset($_POST['descripcion']) && validar_string($_POST['descripcion'], 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890áéíóúÁÉÍÓÚñÑüÜ.,_-+*\!#$%&/()=?¡¿')) {
+
+                    if (isset($_POST['descripcion']) && $_POST['descripcion'] != "") {
                         $descripcion = $_POST['descripcion'];
                         $descripcion = eliminar_palabras_sql($descripcion);
                     } else {
