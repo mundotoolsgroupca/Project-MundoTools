@@ -1503,6 +1503,7 @@
                         tabla_productos_agrupados_consultar(id_grupo);
                         // Limpiar el formulario
                         form.reset();
+                        $('#id_grupo').val('');
 
                     } else if (response.data.status == 0) {
                         let Toast = Swal.mixin({
