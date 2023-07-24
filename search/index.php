@@ -618,6 +618,22 @@ if (isset($_SESSION['token'])) {
 
                             if (isset($_GET['query']) || isset($_GET['categoria'])) {
 
+                                if ($_GET['query'] == "") {
+                                    http_response_code(409); //error
+                                    echo "
+                            
+                                    <div id='search-empty' class='search-alert flex items-center justify-center space-x-4 mt-4  '>
+                                        <svg class='w-6 h-6 text-gray-500' fill='currentColor' viewBox='0 0 20 20'>
+                                            <path fill-rule='evenodd'
+                                                d='M10 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16zM12 7h-4a1 1 0 0 1 0-2h4a1 1 0 0 1 0 2zm-3 4a1 1 0 1 1 2 0a1 1 0 0 1-2 0z'
+                                                clip-rule='evenodd' />
+                                        </svg>
+                                        <p class='text-gray-500'>Vaya.. no se Encontro Ningun Producto</p>
+                                    </div>
+                            
+                                "; //retornamos los datos
+                                }
+
 
                                 // obtenemos la pagina por GET, en caso que esta variable no este declarada  por default seria 1
                                 $current_page =  1;
@@ -736,7 +752,7 @@ if (isset($_SESSION['token'])) {
                                     $row2['descripcion'] = str_replace('•', '<br>', $row2['descripcion']);
                                     array_push($modaldata, $row2);
                                 }
-*/
+                                */
                                 //**************************************************************************** */
 
 
