@@ -1502,7 +1502,7 @@
                         let id_grupo = $("#ModalAgregar_agrupadosID").val();
                         tabla_productos_agrupados_consultar(id_grupo);
                         // Limpiar el formulario
-                        form.reset();
+                        $('#ModalAgregar_agrupados_formulario').find('input:not(#ModalAgregar_agrupadosID)').val('');
                         $('#id_grupo').val('');
 
                     } else if (response.data.status == 0) {
