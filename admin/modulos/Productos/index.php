@@ -165,7 +165,7 @@
                             </div>
 
                             <div class="relative flex w-full flex-wrap items-stretch">
-                                <select style="width: 100%;" class="w-full" name="ModalEditarCategoria" disabled id="ModalEditarCategoria" required>
+                                <select style="width: 100%;z-index:99" class="w-full" name="ModalEditarCategoria" disabled id="ModalEditarCategoria" required>
 
                                 </select>
 
