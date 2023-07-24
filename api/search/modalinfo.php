@@ -83,7 +83,7 @@ switch ($method) {
                     $precio = number_format($row2['precio'], 2);
                     $row2['precio'] = $precio;
                     $row2['precio2'] = $precio2;
-                    $row2['descripcion'] = str_replace('•', '<br>', $row2['descripcion']);
+                   // $row2['descripcion'] = str_replace('•', '<br>', $row2['descripcion']);
                     array_push($json, $row2);
                 }
 
