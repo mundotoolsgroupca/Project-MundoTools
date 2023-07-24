@@ -1083,6 +1083,8 @@ if (isset($_SESSION['token'])) {
                     imgmodal.src = ".." + data.imagen;
                     nombreproductomodal.innerHTML = data.nombre;
                     //preciomodal.innerHTML = data.precio + "" + data.simbolo;
+
+                    data.descripcion = data.descripcion.replace("•", "<br>");
                     modaldescripcion.innerHTML = data.descripcion;
 
 
