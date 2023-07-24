@@ -55,7 +55,7 @@
                 </div>
 
                 <div class="[ mb-6 w-full ]">
-                    <select class="w-full" name="categoria" disabled id="categoria" required>
+                    <select style="width: 100%;" class="w-full" name="categoria" disabled id="categoria" required>
 
                     </select>
                 </div>
