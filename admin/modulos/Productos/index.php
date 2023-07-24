@@ -4,6 +4,7 @@
 <!---------Select2-------->
 <link rel="stylesheet" href="./assets/css/select2.css" />
 <script src="./assets/js/select2.js"></script>
+
 <div class="[ h-full flex gap-3 flex-col ] [ lg:flex-row ]">
     <!-- Modulo -->
     <div class="[ h-auto  rounded-lg  bg-white p-6 shadow-lg w-full ] [   md:overflow-y-auto ] [ lg:w-1/5   lg:overflow-y-auto ]">
@@ -449,9 +450,8 @@
 
 <script id="tailwindelements_script" src="./assets/js/tw-elements.umd.min.js"></script>
 <script>
-    $(document).ready(function() {
-        $('#categoria').select2();
-    });
+    $('#categoria').select2();
+
     if (typeof tabla_grupos_producto === 'undefined') {
         let tabla_grupos_producto = new DataTable('#tabla_grupos_producto');
     }
