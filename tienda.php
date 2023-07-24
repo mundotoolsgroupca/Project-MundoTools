@@ -98,7 +98,7 @@ session_start();
                     </a>
                 </div>
                 <div class="[ lg:w-3/4 ]">
-                    <form action="./search/" method="get">
+                    <form id="buscador" action="./search/" method="get">
                         <div class="flex gap-1 items-center flex-col [ md:flex-row ] [ lg:flex-row ]">
                             <div class="[    items-center justify-between w-full  ] [ lg:w-full ]" id="navbar-sticky">
                                 <div class="relative   flex w-full flex-wrap items-stretch">
@@ -389,6 +389,12 @@ session_start();
 
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
     <script>
+        document.getElementById('buscador').addEventListener('submit', function(e) {
+            const input = document.querySelector('form input');
+            if (input.value.trim() === '') {
+                e.preventDefault();
+            }
+        });
         $(document).ready(async function() {
             //Productos();
 

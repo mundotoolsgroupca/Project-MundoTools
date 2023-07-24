@@ -112,7 +112,7 @@ if (!isset($_SESSION['usuario'])) {
                         </a>
                     </div>
                     <div class="[ lg:w-3/4 ]">
-                        <form action="../search/" method="get">
+                        <form id="buscador" action="../search/" method="get">
                             <div class="flex gap-1 items-center flex-col [ md:flex-row ] [ lg:flex-row ]">
                                 <div class="[    items-center justify-between w-full  ] [ lg:w-full ]" id="navbar-sticky">
                                     <div class="relative   flex w-full flex-wrap items-stretch flex-nowrap">
@@ -316,6 +316,12 @@ if (!isset($_SESSION['usuario'])) {
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
 
     <script>
+        document.getElementById('buscador').addEventListener('submit', function(e) {
+            const input = document.querySelector('form input');
+            if (input.value.trim() === '') {
+                e.preventDefault();
+            }
+        });
         modulo_perfil();
 
         $("#navaside_mobile > div > div > ul > li").click(function() {
