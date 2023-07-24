@@ -1,19 +1,19 @@
 <?php
 
 // Parámetros de conexión a la base de datos
-
+/*
 $dbhost = 'mundotoolsgroup.com';
 $dbuser = 'mundotools';
 $dbpass = 'wh3006Wv@';
 $dbname = 'mundotools';
+*/
 
 
-/*
 $dbhost = 'localhost';
 $dbuser = 'root';
 $dbpass = '';
-$dbname = 'mundotoolgroupbd';
-*/
+$dbname = 'mundotoolgroupbd3';
+
 // Conexión a la base de datos
 $conexion = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 mysqli_set_charset($conexion, "utf8");

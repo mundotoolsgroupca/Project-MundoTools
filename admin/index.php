@@ -27,7 +27,9 @@ if (!isset($_SESSION['Usuario'])) { //si no existe una session sale del sistema
     <!---------PDFMAKER-------->
     <script src="./assets/js/pdfmake.min.js"></script>
     <script src="./assets/js/vfs_fonts.js"></script>
-
+    <!---------Select2-------->
+    <link rel="stylesheet" href="./assets/css/select2.css" />
+    <script src="./assets/js/select2.js"></script>
 
 
     <meta name="csrf-token" content="<?php echo $_SESSION['token']; ?>">
