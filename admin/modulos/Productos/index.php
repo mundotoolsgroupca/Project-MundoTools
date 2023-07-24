@@ -51,10 +51,9 @@
                 </div>
 
                 <div class="[ mb-6 w-full ]">
-                    <select name="categoria" disabled id="categoria" data-te-select-init required>
+                    <select name="categoria" disabled id="categoria" required>
 
                     </select>
-                    <label data-te-select-label-ref>Categoria</label>
                 </div>
                 <div class="[ mb-6 w-full ]">
                     <label for="formFile" class="mb-2 inline-block text-neutral-700 dark:text-neutral-200">Imagen del Producto</label>
