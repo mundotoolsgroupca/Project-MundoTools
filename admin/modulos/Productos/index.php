@@ -446,6 +446,9 @@
 
 <script id="tailwindelements_script" src="./assets/js/tw-elements.umd.min.js"></script>
 <script>
+    $(document).ready(function() {
+        $('#categoria').select2();
+    });
     if (typeof tabla_grupos_producto === 'undefined') {
         let tabla_grupos_producto = new DataTable('#tabla_grupos_producto');
     }
