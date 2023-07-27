@@ -315,7 +315,7 @@ if (isset($_SESSION['token'])) {
                     $order = isset($_GET['order']) ? $_GET['order'] : "ASC";
                     if (isset($_GET['query'])) {
 
-                        if (strlen(trim($_GET['query'])) > 2 ) {
+                        if (strlen(trim($_GET['query'])) > 2) {
 
 
                             $query = mysqli_real_escape_string($conexion, $query);
@@ -733,7 +733,7 @@ if (isset($_SESSION['token'])) {
 
 
 
-                                if (strlen(trim($_GET['query'])) <= 2 ) { //solo permite busqueda de 2 letras
+                                if (isset($_GET['query']) && strlen(trim($_GET['query'])) <= 2) { //solo permite busqueda de 2 letras
                                     http_response_code(409); //error
                                     echo "
                             
