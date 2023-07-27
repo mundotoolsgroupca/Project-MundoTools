@@ -610,7 +610,7 @@ if (isset($_SESSION['token'])) {
                                 }
                             }
 
-                            if (VerificarpalabraNoPermitida($_GET['query']) == false || isset($_GET['categoria'])) {
+                            if (isset($_GET['categoria'])) {
 
 
 
