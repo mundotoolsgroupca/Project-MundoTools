@@ -585,18 +585,11 @@ if (isset($_SESSION['token'])) {
 
                             <?php
 
+                            if (isset($_GET['query'])) {
+                                if (VerificarpalabraNoPermitida($_GET['query'])) {
+                                    http_response_code(409); //error
+                                    echo "
 
-
-
-                            if (isset($_GET['query']) || isset($_GET['categoria'])) {
-
-
-                                if (isset($_GET['query'])) {
-
-                                    if (VerificarpalabraNoPermitida($_GET['query'])) {
-                                        http_response_code(409); //error
-                                        echo "
-                                
                                         <div id='search-empty' class='search-alert flex items-center justify-center space-x-4 mt-4  '>
                                             <svg class='w-6 h-6 text-gray-500' fill='currentColor' viewBox='0 0 20 20'>
                                                 <path fill-rule='evenodd'
@@ -605,10 +598,15 @@ if (isset($_SESSION['token'])) {
                                             </svg>
                                             <p class='text-gray-500'>Vaya.. no se Encontro Ningun Producto</p>
                                         </div>
-                                
+
                                     "; //retornamos los datosv
-                                    }
                                 }
+                            }
+
+                            if (isset($_GET['query']) || isset($_GET['categoria'])) {
+
+
+
 
 
                                 // obtenemos la pagina por GET, en caso que esta variable no este declarada  por default seria 1
