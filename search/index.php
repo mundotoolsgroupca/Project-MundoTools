@@ -633,9 +633,11 @@ if (isset($_SESSION['token'])) {
                                         LEFT JOIN stock AS c5 ON c5.idProducto = c4.id_grupo
                                         INNER JOIN productos as c6 on c6.id_grupo = c4.id_grupo
                                     WHERE ";
-                                    foreach ($palabras as $palabra) {
-                                        $consulta .= "c4.nombre LIKE '%$palabra%' OR c1.id LIKE '%$palabra%' OR ";
+
+                                    for ($i=0; $i < count($palabras) ; $i++) { 
+                                        $consulta .= "c4.nombre LIKE '%$palabra[$i]%' OR c1.id LIKE '%$palabra[$i]%' OR ";
                                     }
+                                  
 
                                     // Eliminar el último operador OR
                                     $consulta = substr($consulta, 0, -4);
