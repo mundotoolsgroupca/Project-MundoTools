@@ -313,74 +313,67 @@ if (isset($_SESSION['token'])) {
                     $categoria = "";
                     // $totales_array = [];
                     $order = isset($_GET['order']) ? $_GET['order'] : "ASC";
-
                     if (isset($_GET['query'])) {
-                        if (VerificarpalabraNoPermitida($_GET['query'])) {
-                            http_response_code(409); //error
-                            echo ""; //retornamos los datosv
-                        } else {
-                            if (strlen(trim($_GET['query'])) != 0) {
+
+                        if (strlen(trim($_GET['query'])) != 0) {
 
 
-                                $query = mysqli_real_escape_string($conexion, $query);
-                                $categoriaselected = isset($_GET['categoria']) ? htmlspecialchars($_GET['categoria'], ENT_QUOTES, 'UTF-8')  : "";
-                                $consulta = "
-                                SELECT
-                                    c2.categoria,
-                                    c1.nombre,
-                                    COUNT( * ) AS total_count 
-                                FROM
-                                    categorias AS c1
-                                    INNER JOIN productos_agrupados AS c2 ON c1.id = c2.categoria
-                                    INNER JOIN productos AS c3 ON c3.id_grupo = c2.id_grupo 
-                                WHERE
-                                    c2.nombre LIKE '%$query%' 
-                                GROUP BY
-                                    c2.categoria";
+                            $query = mysqli_real_escape_string($conexion, $query);
+                            $categoriaselected = isset($_GET['categoria']) ? htmlspecialchars($_GET['categoria'], ENT_QUOTES, 'UTF-8')  : "";
+                            $consulta = "
+                            SELECT
+                                c2.categoria,
+                                c1.nombre,
+                                COUNT( * ) AS total_count 
+                            FROM
+                                categorias AS c1
+                                INNER JOIN productos_agrupados AS c2 ON c1.id = c2.categoria
+                                INNER JOIN productos AS c3 ON c3.id_grupo = c2.id_grupo 
+                            WHERE
+                                c2.nombre LIKE '%$query%' 
+                            GROUP BY
+                                c2.categoria";
 
-                                $resultado = mysqli_query($conexion, $consulta);
+                            $resultado = mysqli_query($conexion, $consulta);
 
-                                echo "
-                                    <p class='[ text-lg font-bold ]'>Categorías Encontradas con el Termino <label class='text-[#FBAA35]'>'$query'</label></p>
-                                    <div class='w-full ml-2 mt-2'>";
+                            echo "
+                                <p class='[ text-lg font-bold ]'>Categorías Encontradas con el Termino <label class='text-[#FBAA35]'>'$query'</label></p>
+                                <div class='w-full ml-2 mt-2'>";
 
 
 
-                                while ($row = mysqli_fetch_assoc($resultado)) {
+                            while ($row = mysqli_fetch_assoc($resultado)) {
 
-                                    $id = $row['categoria'];
+                                $id = $row['categoria'];
 
-                                    $nombre = $row['nombre'];
-                                    $total_count = $row['total_count'];
+                                $nombre = $row['nombre'];
+                                $total_count = $row['total_count'];
 
-                                    if ($id == $categoriaselected) {
-                                        $categoria .= " 
-                                            <a href='javascript:CategoriaFilter($id)' class='text-[#FBAA35] font-bold transition duration-150 ease-in-out hover:text-[#FBAA35] focus:text-[#FBAA35] active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-[#FBAA35]'>
-                                                $nombre ($total_count)
-                                            </a> 
-                                            <br>
-                                            ";
-                                    } else {
-                                        $categoria .= "
-                                             <a href='javascript:CategoriaFilter($id)' class='group text-black text-sm transition duration-150 ease-in-out hover:text-[#FBAA35] focus:text-[#FBAA35] active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-[#FBAA35]'>
-                                               <label class='text-gray-400 group-hover:text-[#FBAA35]'> $nombre</label> ($total_count)
-                                            </a> 
-                                            <br>
-                                            ";
-                                    }
+                                if ($id == $categoriaselected) {
+                                    $categoria .= " 
+                                        <a href='javascript:CategoriaFilter($id)' class='text-[#FBAA35] font-bold transition duration-150 ease-in-out hover:text-[#FBAA35] focus:text-[#FBAA35] active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-[#FBAA35]'>
+                                            $nombre ($total_count)
+                                        </a> 
+                                        <br>
+                                        ";
+                                } else {
+                                    $categoria .= "
+                                         <a href='javascript:CategoriaFilter($id)' class='group text-black text-sm transition duration-150 ease-in-out hover:text-[#FBAA35] focus:text-[#FBAA35] active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-[#FBAA35]'>
+                                           <label class='text-gray-400 group-hover:text-[#FBAA35]'> $nombre</label> ($total_count)
+                                        </a> 
+                                        <br>
+                                        ";
                                 }
-                                echo $categoria;
-                                echo "  </div>
-                                
-                               
-                                
-                                
-                                ";
                             }
+                            echo $categoria;
+                            echo "  </div>
+                            
+                           
+                            
+                            
+                            ";
                         }
-                    }
-
-                    if (isset($_GET['categoria']) && validar_int($_GET['categoria'])) {
+                    } elseif (isset($_GET['categoria']) && validar_int($_GET['categoria'])) {
 
                         $query = isset($_GET['query']) ? mysqli_real_escape_string($conexion, $_GET['query']) : "";
 
@@ -592,28 +585,10 @@ if (isset($_SESSION['token'])) {
 
                             <?php
 
-                            if (isset($_GET['query'])) {
-                                if (VerificarpalabraNoPermitida($_GET['query'])) {
-                                    http_response_code(409); //error
-                                    echo "
-
-                                        <div id='search-empty' class='search-alert flex items-center justify-center space-x-4 mt-4  '>
-                                            <svg class='w-6 h-6 text-gray-500' fill='currentColor' viewBox='0 0 20 20'>
-                                                <path fill-rule='evenodd'
-                                                    d='M10 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16zM12 7h-4a1 1 0 0 1 0-2h4a1 1 0 0 1 0 2zm-3 4a1 1 0 1 1 2 0a1 1 0 0 1-2 0z'
-                                                    clip-rule='evenodd' />
-                                            </svg>
-                                            <p class='text-gray-500'>Vaya.. no se Encontro Ningun Producto</p>
-                                        </div>
-
-                                    "; //retornamos los datosv
-                                }
-                            }
-
-                            if (isset($_GET['categoria'])) {
 
 
 
+                            if (isset($_GET['query']) || isset($_GET['categoria'])) {
 
 
                                 // obtenemos la pagina por GET, en caso que esta variable no este declarada  por default seria 1
@@ -640,65 +615,65 @@ if (isset($_SESSION['token'])) {
 
                                     $palabras = explode(" ", $query);
                                     $consulta = "
-                                        SELECT
-                                            c4.id_grupo AS id,
-                                            c4.nombre,
-                                            c4.categoria,
-                                            c4.imagen,
-                                            c1.precio,
-                                            c2.simbolo,
-                                            c2.cod_moneda,
-                                            c4.id_grupo,
-                                            c5.cantidad,
-                                            count(c6.id) as cantidad2
-                                        FROM
-                                            productos_agrupados c4
-                                            INNER JOIN productos AS c1 ON c1.id = c4.id_grupo
-                                            INNER JOIN moneda_ref AS c2 ON c2.cod_moneda = c1.moneda
-                                            LEFT JOIN stock AS c5 ON c5.idProducto = c4.id_grupo
-                                            INNER JOIN productos as c6 on c6.id_grupo = c4.id_grupo
-                                        WHERE 
-                                        c1.id LIKE '%$query%'
-                                        ";
+                                    SELECT
+                                        c4.id_grupo AS id,
+                                        c4.nombre,
+                                        c4.categoria,
+                                        c4.imagen,
+                                        c1.precio,
+                                        c2.simbolo,
+                                        c2.cod_moneda,
+                                        c4.id_grupo,
+                                        c5.cantidad,
+                                        count(c6.id) as cantidad2
+                                    FROM
+                                        productos_agrupados c4
+                                        INNER JOIN productos AS c1 ON c1.id = c4.id_grupo
+                                        INNER JOIN moneda_ref AS c2 ON c2.cod_moneda = c1.moneda
+                                        LEFT JOIN stock AS c5 ON c5.idProducto = c4.id_grupo
+                                        INNER JOIN productos as c6 on c6.id_grupo = c4.id_grupo
+                                    WHERE 
+                                    c1.id LIKE '%$query%'
+                                    ";
                                     foreach ($palabras as $palabra) {
                                         $consulta .= "or c4.nombre LIKE '%$palabra%'";
                                     }
 
                                     // Completar la consulta
                                     $consulta .= "
-                                        GROUP BY C6.id_grupo
-                                        ORDER BY
-                                        c1.precio $order
-                                        LIMIT $results_per_page OFFSET $offset";
+                                    GROUP BY C6.id_grupo
+                                    ORDER BY
+                                    c1.precio $order
+                                    LIMIT $results_per_page OFFSET $offset";
                                 } elseif ($categoria != "") {
                                     $consulta = "
 
-                                        SELECT
-                                            c4.id_grupo AS id,
-                                            c4.nombre,
-                                            c4.categoria,
-                                            c4.imagen,
-                                            c1.precio,
-                                            c2.simbolo,
-                                            c2.cod_moneda,
-                                            c4.id_grupo,
-                                            c5.cantidad,
-                                            count(c6.id) as cantidad2
-                                        FROM
-                                            productos_agrupados c4
-                                            INNER JOIN productos AS c1 ON c1.id = c4.id_grupo
-                                            INNER JOIN moneda_ref AS c2 ON c2.cod_moneda = c1.moneda
-                                            LEFT JOIN stock AS c5 ON c5.idProducto = c4.id_grupo
-                                            INNER JOIN productos as c6 on c6.id_grupo = c4.id_grupo
-                                        WHERE
-                                            c4.categoria = '" . htmlspecialchars($_GET['categoria'], ENT_QUOTES, 'UTF-8') . "'
-                                        GROUP BY C6.id_grupo
-                                        ORDER BY
-                                        c1.precio $order
-                                        LIMIT $results_per_page OFFSET $offset"; //consulta para obtener los resultados segun la pagina 
+                                    SELECT
+                                        c4.id_grupo AS id,
+                                        c4.nombre,
+                                        c4.categoria,
+                                        c4.imagen,
+                                        c1.precio,
+                                        c2.simbolo,
+                                        c2.cod_moneda,
+                                        c4.id_grupo,
+                                        c5.cantidad,
+                                        count(c6.id) as cantidad2
+                                    FROM
+                                        productos_agrupados c4
+                                        INNER JOIN productos AS c1 ON c1.id = c4.id_grupo
+                                        INNER JOIN moneda_ref AS c2 ON c2.cod_moneda = c1.moneda
+                                        LEFT JOIN stock AS c5 ON c5.idProducto = c4.id_grupo
+                                        INNER JOIN productos as c6 on c6.id_grupo = c4.id_grupo
+                                    WHERE
+                                        c4.categoria = '" . htmlspecialchars($_GET['categoria'], ENT_QUOTES, 'UTF-8') . "'
+                                    GROUP BY C6.id_grupo
+                                    ORDER BY
+                                    c1.precio $order
+                                    LIMIT $results_per_page OFFSET $offset"; //consulta para obtener los resultados segun la pagina 
                                 }
 
-
+                               
 
                                 $data = []; //variable que almacenara los resultados de la consulta
                                 $data['result'] = []; //cantida de paginas que tiene la consulta
@@ -728,17 +703,17 @@ if (isset($_SESSION['token'])) {
 
 
                                 /*
-                                    $resultado2 = mysqli_query($conexion, $consulta2);
-                                    $modaldata = [];
-                                    while ($row2 = mysqli_fetch_assoc($resultado2)) {
-                                        $precio2 = number_format($row2['precio2'], 2);
-                                        $precio = number_format($row2['precio'], 2);
-                                        $row2['precio'] = $precio;
-                                        $row2['precio2'] = $precio2;
-                                        $row2['descripcion'] = str_replace('•', '<br>', $row2['descripcion']);
-                                        array_push($modaldata, $row2);
-                                    }
-                                        */
+                                $resultado2 = mysqli_query($conexion, $consulta2);
+                                $modaldata = [];
+                                while ($row2 = mysqli_fetch_assoc($resultado2)) {
+                                    $precio2 = number_format($row2['precio2'], 2);
+                                    $precio = number_format($row2['precio'], 2);
+                                    $row2['precio'] = $precio;
+                                    $row2['precio2'] = $precio2;
+                                    $row2['descripcion'] = str_replace('•', '<br>', $row2['descripcion']);
+                                    array_push($modaldata, $row2);
+                                }
+*/
                                 //**************************************************************************** */
 
 
@@ -1048,14 +1023,10 @@ if (isset($_SESSION['token'])) {
                 });
 
             }
-
             <?php
 
-            if (isset($data['result'])) {
-                echo "let search_data = JSON.parse('" . json_encode($data['result'])  . "');";
-            } else {
-                echo "";
-            }
+            echo "let search_data = JSON.parse('" . json_encode($data['result'])  . "');";
+
             ?>
             const myModalEl = document.getElementById("modalinfo");
             const modal = new te.Modal(myModalEl);
