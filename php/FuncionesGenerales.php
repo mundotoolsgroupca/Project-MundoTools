@@ -296,14 +296,24 @@ function eliminar_palabras_sql($cadena)
 }
 
 
-function VerificarpalabraNoPermitida($palabra)
+function VerificarpalabraNoPermitida($cadena)
 {
-    $palabrasPermitidas = ["da","de","di","do","du","wa","we","w","wi","wo","wu" ]; // lista de palabras no permitidas
-    if (in_array($palabra, $palabrasPermitidas)) {
-        return true; // la palabra esta en la lista
-    } else {
-        return false; // la palabra no está en la lista
+    $palabras_no_deseadas = array(
+        "/\bDE\b\s/i",
+        "/\bEL\b\s/i",
+        "/\bLA\b\s/i",
+        "/\bLO\b\s/i",
+        "/\bLOS\b\s/i",
+        "/\bLAS\b\s/i",
+        "/\bUN\b\s/i",
+        "/\bUNA\b\s/i",
+        "/\bUNOS\b\s/i",
+        "/\bUNAS\b\s/i"
+    );
+    foreach ($palabras_no_deseadas as $palabra) {
+        $cadena = preg_replace($palabra, '', $cadena);
     }
+    return $cadena;
 }
 
 function validar_string($string, $permitidos)

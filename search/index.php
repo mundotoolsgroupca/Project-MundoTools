@@ -626,6 +626,8 @@ if (isset($_SESSION['token'])) {
 
                                 if ($query != "") {
 
+                                    $query = VerificarpalabraNoPermitida($query); //seliminan las palabras no permitidas
+
                                     $palabras = explode(" ", $query);
                                     $consulta = "
                                     SELECT
@@ -638,13 +640,12 @@ if (isset($_SESSION['token'])) {
                                         c2.cod_moneda,
                                         c4.id_grupo,
                                         c5.cantidad,
-                                        count(c6.id) as cantidad2
+                                        count( c1.id ) AS cantidad2 
                                     FROM
                                         productos_agrupados c4
                                         INNER JOIN productos AS c1 ON c1.id_grupo = c4.id_grupo
                                         INNER JOIN moneda_ref AS c2 ON c2.cod_moneda = c1.moneda
                                         LEFT JOIN stock AS c5 ON c5.idProducto = c4.id_grupo
-                                        INNER JOIN productos as c6 on c6.id_grupo = c4.id_grupo
                                     WHERE 
                                     c1.id LIKE '%$query%'
                                     ";
@@ -654,7 +655,8 @@ if (isset($_SESSION['token'])) {
 
                                     // Completar la consulta
                                     $consulta .= "
-                                    GROUP BY C6.id_grupo
+                                    GROUP BY
+	                                    C1.id_grupo 
                                     ORDER BY
                                     c1.precio $order
                                     LIMIT $results_per_page OFFSET $offset";
@@ -762,7 +764,7 @@ if (isset($_SESSION['token'])) {
                                     } else {
                                         if (count($data['result']) != 0) {
 
-                                            
+
                                             for ($i = 0; $i < count($data['result']); $i++) {
 
                                                 $imagen = $data['result'][$i]['imagen'];
@@ -877,7 +879,7 @@ if (isset($_SESSION['token'])) {
 
                                     if (count($data['result']) != 0) {
 
-                                       
+
                                         for ($i = 0; $i < count($data['result']); $i++) {
 
                                             $imagen = $data['result'][$i]['imagen'];
@@ -908,7 +910,7 @@ if (isset($_SESSION['token'])) {
                                                             data-te-animation-start='onLoad'
                                                             data-te-animation='[fade-in_1s_ease-in-out]'
                                                 
-                                                            src='../$imagen" .'?v=1'." onerror=\"this.onerror=null;this.src='../assets/img/imgerror.png'\"\"  title='$nombre' loading='lazy' alt='$nombre' class='mx-auto  hover:scale-150 transition-all   w-full object-cover object-center [ lg:w-44 lg:h-44 ]  ' />
+                                                            src='../$imagen" . '?v=1' . " onerror=\"this.onerror=null;this.src='../assets/img/imgerror.png'\"\"  title='$nombre' loading='lazy' alt='$nombre' class='mx-auto  hover:scale-150 transition-all   w-full object-cover object-center [ lg:w-44 lg:h-44 ]  ' />
                                                         </div>
                                                         <div class='[ cursor-pointer  ]' >
                                                             <div class='mt-4 flex justify-between'>
