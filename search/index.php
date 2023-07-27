@@ -612,8 +612,9 @@ if (isset($_SESSION['token'])) {
                                 include_once '../php/conexion.php';
 
                                 if ($query != "") {
-                                    $consulta = "
 
+                                    $palabras = explode(" ", $query);
+                                    $consulta = "
                                     SELECT
                                         c4.id_grupo AS id,
                                         c4.nombre,
@@ -631,15 +632,19 @@ if (isset($_SESSION['token'])) {
                                         INNER JOIN moneda_ref AS c2 ON c2.cod_moneda = c1.moneda
                                         LEFT JOIN stock AS c5 ON c5.idProducto = c4.id_grupo
                                         INNER JOIN productos as c6 on c6.id_grupo = c4.id_grupo
-                                    WHERE
-                                        c4.nombre LIKE '%$query%' OR c1.id LIKE '%$query%' 
+                                    WHERE ";
+                                    foreach ($palabras as $palabra) {
+                                        $consulta .= "c4.nombre LIKE '%$palabra%' OR c1.id LIKE '%$palabra%' OR ";
+                                    }
+
+                                    // Eliminar el último operador OR
+                                    $consulta = substr($consulta, 0, -4);
+                                    // Completar la consulta
+                                    $consulta .= "
                                     GROUP BY C6.id_grupo
                                     ORDER BY
                                     c1.precio $order
-                                    LIMIT $results_per_page OFFSET $offset
-
-
-                                     "; //consulta para obtener los resultados segun la pagina 
+                                    LIMIT $results_per_page OFFSET $offset";
                                 } elseif ($categoria != "") {
                                     $consulta = "
 
