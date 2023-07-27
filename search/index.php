@@ -733,7 +733,7 @@ if (isset($_SESSION['token'])) {
 
 
 
-                                if (strlen(trim($_GET['query'])) > 2 ) {
+                                if (strlen(trim($_GET['query'])) > 2 ) { //solo permite busqueda de 2 letras
                                     http_response_code(409); //error
                                     echo "
                             
