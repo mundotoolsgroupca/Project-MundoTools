@@ -750,6 +750,7 @@ if (isset($_SESSION['token'])) {
                                 } else {
                                     if (count($data['result']) != 0) {
 
+                                        echo "hola";
                                         for ($i = 0; $i < count($data['result']); $i++) {
 
                                             $imagen = $data['result'][$i]['imagen'];
@@ -859,10 +860,6 @@ if (isset($_SESSION['token'])) {
                                     "; //retornamos los datos
                                     }
                                 }
-
-                                echo "hola";
-
-                               
                             }
 
                             ?>
