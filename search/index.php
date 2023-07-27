@@ -628,7 +628,7 @@ if (isset($_SESSION['token'])) {
                                         count(c6.id) as cantidad2
                                     FROM
                                         productos_agrupados c4
-                                        INNER JOIN productos AS c1 ON c1.id = c4.id_grupo
+                                        INNER JOIN productos AS c1 ON c1.id_grupo = c4.id_grupo
                                         INNER JOIN moneda_ref AS c2 ON c2.cod_moneda = c1.moneda
                                         LEFT JOIN stock AS c5 ON c5.idProducto = c4.id_grupo
                                         INNER JOIN productos as c6 on c6.id_grupo = c4.id_grupo
