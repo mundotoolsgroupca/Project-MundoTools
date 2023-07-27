@@ -315,7 +315,7 @@ if (isset($_SESSION['token'])) {
                     $order = isset($_GET['order']) ? $_GET['order'] : "ASC";
                     if (isset($_GET['query'])) {
 
-                        if (strlen(trim($_GET['query'])) != 0) {
+                        if (strlen(trim($_GET['query'])) > 1 ) {
 
 
                             $query = mysqli_real_escape_string($conexion, $query);
