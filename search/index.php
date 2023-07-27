@@ -1044,14 +1044,11 @@ if (isset($_SESSION['token'])) {
 
             <?php
 
-            try {
+            if (isset($data['result'])) {
                 echo "let search_data = JSON.parse('" . json_encode($data['result'])  . "');";
-            } catch (\Throwable $th) {
+            } else {
                 echo "";
             }
-
-
-
             ?>
             const myModalEl = document.getElementById("modalinfo");
             const modal = new te.Modal(myModalEl);
