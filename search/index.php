@@ -313,67 +313,74 @@ if (isset($_SESSION['token'])) {
                     $categoria = "";
                     // $totales_array = [];
                     $order = isset($_GET['order']) ? $_GET['order'] : "ASC";
+
                     if (isset($_GET['query'])) {
-
-                        if (strlen(trim($_GET['query'])) != 0) {
-
-
-                            $query = mysqli_real_escape_string($conexion, $query);
-                            $categoriaselected = isset($_GET['categoria']) ? htmlspecialchars($_GET['categoria'], ENT_QUOTES, 'UTF-8')  : "";
-                            $consulta = "
-                            SELECT
-                                c2.categoria,
-                                c1.nombre,
-                                COUNT( * ) AS total_count 
-                            FROM
-                                categorias AS c1
-                                INNER JOIN productos_agrupados AS c2 ON c1.id = c2.categoria
-                                INNER JOIN productos AS c3 ON c3.id_grupo = c2.id_grupo 
-                            WHERE
-                                c2.nombre LIKE '%$query%' 
-                            GROUP BY
-                                c2.categoria";
-
-                            $resultado = mysqli_query($conexion, $consulta);
-
-                            echo "
-                                <p class='[ text-lg font-bold ]'>Categorías Encontradas con el Termino <label class='text-[#FBAA35]'>'$query'</label></p>
-                                <div class='w-full ml-2 mt-2'>";
+                        if (VerificarpalabraNoPermitida($_GET['query'])) {
+                            http_response_code(409); //error
+                            echo ""; //retornamos los datosv
+                        } else {
+                            if (strlen(trim($_GET['query'])) != 0) {
 
 
+                                $query = mysqli_real_escape_string($conexion, $query);
+                                $categoriaselected = isset($_GET['categoria']) ? htmlspecialchars($_GET['categoria'], ENT_QUOTES, 'UTF-8')  : "";
+                                $consulta = "
+                                SELECT
+                                    c2.categoria,
+                                    c1.nombre,
+                                    COUNT( * ) AS total_count 
+                                FROM
+                                    categorias AS c1
+                                    INNER JOIN productos_agrupados AS c2 ON c1.id = c2.categoria
+                                    INNER JOIN productos AS c3 ON c3.id_grupo = c2.id_grupo 
+                                WHERE
+                                    c2.nombre LIKE '%$query%' 
+                                GROUP BY
+                                    c2.categoria";
 
-                            while ($row = mysqli_fetch_assoc($resultado)) {
+                                $resultado = mysqli_query($conexion, $consulta);
 
-                                $id = $row['categoria'];
+                                echo "
+                                    <p class='[ text-lg font-bold ]'>Categorías Encontradas con el Termino <label class='text-[#FBAA35]'>'$query'</label></p>
+                                    <div class='w-full ml-2 mt-2'>";
 
-                                $nombre = $row['nombre'];
-                                $total_count = $row['total_count'];
 
-                                if ($id == $categoriaselected) {
-                                    $categoria .= " 
-                                        <a href='javascript:CategoriaFilter($id)' class='text-[#FBAA35] font-bold transition duration-150 ease-in-out hover:text-[#FBAA35] focus:text-[#FBAA35] active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-[#FBAA35]'>
-                                            $nombre ($total_count)
-                                        </a> 
-                                        <br>
-                                        ";
-                                } else {
-                                    $categoria .= "
-                                         <a href='javascript:CategoriaFilter($id)' class='group text-black text-sm transition duration-150 ease-in-out hover:text-[#FBAA35] focus:text-[#FBAA35] active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-[#FBAA35]'>
-                                           <label class='text-gray-400 group-hover:text-[#FBAA35]'> $nombre</label> ($total_count)
-                                        </a> 
-                                        <br>
-                                        ";
+
+                                while ($row = mysqli_fetch_assoc($resultado)) {
+
+                                    $id = $row['categoria'];
+
+                                    $nombre = $row['nombre'];
+                                    $total_count = $row['total_count'];
+
+                                    if ($id == $categoriaselected) {
+                                        $categoria .= " 
+                                            <a href='javascript:CategoriaFilter($id)' class='text-[#FBAA35] font-bold transition duration-150 ease-in-out hover:text-[#FBAA35] focus:text-[#FBAA35] active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-[#FBAA35]'>
+                                                $nombre ($total_count)
+                                            </a> 
+                                            <br>
+                                            ";
+                                    } else {
+                                        $categoria .= "
+                                             <a href='javascript:CategoriaFilter($id)' class='group text-black text-sm transition duration-150 ease-in-out hover:text-[#FBAA35] focus:text-[#FBAA35] active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-[#FBAA35]'>
+                                               <label class='text-gray-400 group-hover:text-[#FBAA35]'> $nombre</label> ($total_count)
+                                            </a> 
+                                            <br>
+                                            ";
+                                    }
                                 }
+                                echo $categoria;
+                                echo "  </div>
+                                
+                               
+                                
+                                
+                                ";
                             }
-                            echo $categoria;
-                            echo "  </div>
-                            
-                           
-                            
-                            
-                            ";
                         }
-                    } elseif (isset($_GET['categoria']) && validar_int($_GET['categoria'])) {
+                    }
+
+                    if (isset($_GET['categoria']) && validar_int($_GET['categoria'])) {
 
                         $query = isset($_GET['query']) ? mysqli_real_escape_string($conexion, $_GET['query']) : "";
 
