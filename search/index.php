@@ -764,7 +764,7 @@ if (isset($_SESSION['token'])) {
                                                         data-te-animation-start='onLoad'
                                                         data-te-animation='[fade-in_1s_ease-in-out]'
                                             
-                                                        src='../$imagen".'v='.rand()."' onerror=\"this.onerror=null;this.src='../assets/img/imgerror.png'\"\"  title='$nombre' loading='lazy' alt='$nombre' class='mx-auto  hover:scale-150 transition-all   w-full object-cover object-center [ lg:w-44 lg:h-44 ]  ' />
+                                                        src='../$imagen".'?v='.rand()."' onerror=\"this.onerror=null;this.src='../assets/img/imgerror.png'\"\"  title='$nombre' loading='lazy' alt='$nombre' class='mx-auto  hover:scale-150 transition-all   w-full object-cover object-center [ lg:w-44 lg:h-44 ]  ' />
                                                     </div>
                                                     <div class='[ cursor-pointer  ]' >
                                                         <div class='mt-4 flex justify-between'>
