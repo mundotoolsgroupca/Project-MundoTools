@@ -748,6 +748,8 @@ if (isset($_SESSION['token'])) {
                                         "; //retornamos los datos
                                     }
                                 } else {
+
+                                    echo json_encode($data['result']);
                                     if (count($data['result']) != 0) {
 
                                         echo "hola";
