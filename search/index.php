@@ -405,7 +405,7 @@ if (isset($_SESSION['token'])) {
                             ON
                                 c1.id = c2.categoria
                             WHERE
-                                c1.id = 'categoriaselected'
+                                c1.id = '$categoriaselected'
                         ";
                         $resultado = mysqli_query($conexion, $consulta);
 
