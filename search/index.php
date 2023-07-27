@@ -733,7 +733,7 @@ if (isset($_SESSION['token'])) {
 
 
 
-                                if (strlen(trim($_GET['query'])) > 2 ) { //solo permite busqueda de 2 letras
+                                if (strlen(trim($_GET['query'])) <= 2 ) { //solo permite busqueda de 2 letras
                                     http_response_code(409); //error
                                     echo "
                             
@@ -746,7 +746,7 @@ if (isset($_SESSION['token'])) {
                                         <p class='text-gray-500'>Vaya.. no se Encontro Ningun Producto</p>
                                     </div>
                             
-                                "; //retornamos los datos
+                                    "; //retornamos los datos
                                 } else {
                                     if (count($data['result']) != 0) {
 
