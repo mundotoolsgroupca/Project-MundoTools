@@ -1041,9 +1041,16 @@ if (isset($_SESSION['token'])) {
                 });
 
             }
+
             <?php
 
-            echo "let search_data = JSON.parse('" . json_encode($data['result'])  . "');";
+            try {
+                echo "let search_data = JSON.parse('" . json_encode($data['result'])  . "');";
+            } catch (\Throwable $th) {
+                echo "";
+            }
+
+
 
             ?>
             const myModalEl = document.getElementById("modalinfo");
