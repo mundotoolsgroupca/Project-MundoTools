@@ -298,7 +298,7 @@ function eliminar_palabras_sql($cadena)
 
 function VerificarpalabraNoPermitida($palabra)
 {
-    $palabrasPermitidas = ["de" ]; // lista de palabras no permitidas
+    $palabrasPermitidas = ["da","de","di","do","du","wa","we","w","wi","wo","wu" ]; // lista de palabras no permitidas
     if (in_array($palabra, $palabrasPermitidas)) {
         return true; // la palabra esta en la lista
     } else {
