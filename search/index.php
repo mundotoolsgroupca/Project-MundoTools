@@ -392,8 +392,21 @@ if (isset($_SESSION['token'])) {
                         //formula para calcular los resultados de la tabla segun la pagina en que se esta
                         $offset = ($current_page - 1) * $results_per_page;
 
-                        $consulta = "
-                        SELECT * FROM `categorias` WHERE  id = '$categoriaselected' ";
+
+                        //SELECT * FROM `categorias` WHERE  id = '$categoriaselected'
+                        $consulta = " 
+                        SELECT
+                                c2.categoria,
+                                c1.nombre,
+                                COUNT(*) AS total_count
+                            FROM
+                                categorias AS c1
+                            INNER JOIN productos_agrupados AS c2
+                            ON
+                                c1.id = c2.categoria
+                            WHERE
+                                c1.id = 'categoriaselected'
+                        ";
                         $resultado = mysqli_query($conexion, $consulta);
 
                         $row = mysqli_fetch_assoc($resultado);
