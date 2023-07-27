@@ -746,10 +746,122 @@ if (isset($_SESSION['token'])) {
                                         </div>
                                 
                                         "; //retornamos los datos
+                                    } else {
+                                        if (count($data['result']) != 0) {
+
+                                            echo "hola";
+                                            for ($i = 0; $i < count($data['result']); $i++) {
+
+                                                $imagen = $data['result'][$i]['imagen'];
+                                                $id = $data['result'][$i]['id'];
+                                                $id_grupo = $data['result'][$i]['id_grupo'];
+                                                $nombre = (strlen($data['result'][$i]['nombre']) > 30) ? substr($data['result'][$i]['nombre'], 0, 30) . '...' : $data['result'][$i]['nombre'];
+                                                $precio = $data['result'][$i]['precio'];
+                                                $simbolo = $data['result'][$i]['simbolo'];
+                                                $stock = $data['result'][$i]['stock'];
+                                                $cantidad_agrupado = $data['result'][$i]['cantidad2'];
+
+                                                echo "
+                                                    <div class='border border-2 hover:border-gray-400 rounded-lg p-3 '>
+                                                    <div onclick='modalinfoview(`$id_grupo`)' class='group relative cursor-pointer transition-all mx-auto   w-full ' >
+                                                        <div class='absolute  font-bold text-lg   w-full flex justify-end right-3 text-[#FBAA35]'>
+                                                            $id
+                                                        </div>
+        
+                                                        <div class='absolute w-full  flex justify-start z-[50] '>
+                                                            <div class='bg-gray-300 hover:bg-[#FBAA35] rounded-lg group/eyes transition-colors px-1 rounded-full'>
+                                                            $cantidad_agrupado+
+                                                            </div>
+                                                            
+                                                        </div>
+        
+                                                            <div class=' m-auto aspect-h-1 aspect-w-1 h-auto lg:aspect-none  overflow-hidden rounded-md    '>
+                                                                <img data-te-animation-init
+                                                                data-te-animation-start='onLoad'
+                                                                data-te-animation='[fade-in_1s_ease-in-out]'
+                                                    
+                                                                src='../$imagen" . '?v=' . rand() . "' onerror=\"this.onerror=null;this.src='../assets/img/imgerror.png'\"\"  title='$nombre' loading='lazy' alt='$nombre' class='mx-auto  hover:scale-150 transition-all   w-full object-cover object-center [ lg:w-44 lg:h-44 ]  ' />
+                                                            </div>
+                                                            <div class='[ cursor-pointer  ]' >
+                                                                <div class='mt-4 flex justify-between'>
+                                                                    <div class='w-full'>
+                                                                    <h3 class='text-sm text-gray-700'>
+                                                                        
+                                                                        <p class=' [ text-[15px] w-full text-center text-black bg-[#FBAA35] uppercase font-bold ] [ md:text-md ] [ lg:text-lg ]' style='font-family: `Montserrat`, cursive;' >$nombre</p>
+                                                                    </h3>
+                                                                    <hr class='h-px my-3 bg-gray-200 border-0 dark:bg-gray-700'>
+                                                                    <label class='font-bold'>Ref: $precio$simbolo</label>
+                                                                    <p class='mt-1 text-[12px] font-bold text-gray-500 break-words'>Disponibles: $stock</p>
+                                                                    </div>
+                                                                    <p class='text-sm font-medium text-gray-900'></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <form>
+                                                        <div class='relative    flex w-full flex-wrap items-stretch flex-nowrap'>
+                                                                <input min='0' id='$id_grupo' type='number'
+                                                                class='relative m-0 block z-20 w-14 text-center  min-w-0 flex-auto rounded-l border border-r-0 border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition ease-in-out   focus:border-warning-600 focus:text-neutral-700 focus:shadow-te-warning focus:outline-none '
+                                                                aria-label='Recipient' username value='1' aria-describedby='button-addon2' />
+                                                                <button   data-te-ripple-init data-te-ripple-color='light' type='submit' data-te-ripple-init data-te-ripple-color='warning'
+                                                                class='relative   rounded-r bg-[#FBAA35] opa px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-warning-700 hover:shadow-lg   focus:bg-warning-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-warning-800 active:shadow-lg'
+                                                                type='button' id='button-addon2'>
+                                                                <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor'
+                                                                    class='h-4 w-4'>
+                                                                    <path stroke-linecap='round' stroke-linejoin='round'
+                                                                    d='M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z' />
+                                                                </svg>
+                                                                </button>
+                                                            </div>
+                                                            </form>
+                                                        
+                                                    </div> ";
+                                            }
+                                            echo " </div>
+                                            <hr class='h-px my-8 bg-gray-200 border-0 dark:bg-gray-700'>
+                                                    <nav aria-label='Page navigation example'>
+                                                        <ul class='list-style-none flex flex-wrap w-full justify-center [ md:justify-end ] [ lg:justify-end ]'>";
+                                            for ($j = 1; $j <= $data['num_pages']; $j++) {
+
+                                                if ($j != $current_page) {
+                                                    echo "
+                                                            <li>
+                                                                <a class='relative block rounded bg-transparent px-3 py-1.5 text-sm text-neutral-600 transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white' href='?query=$query&page=$j&order=$order'>$j
+                                                                <span class='absolute -m-px h-px w-px overflow-hidden whitespace-nowrap border-0 p-0 [clip:rect(0,0,0,0)]'>(current)</span>
+                                                                </a> 
+                                                            </li>
+                                                        ";
+                                                } else {
+                                                    echo "
+                                                            <li>
+                                                        <a class='relative block rounded bg-warning-100 px-3 py-1.5 text-sm font-medium text-warning-700 transition-all duration-300' href='#'>$current_page</a>
+                                                            
+                                                        </li>
+                                                            ";
+                                                }
+                                            }
+                                            echo "
+                                                    </ul>
+                                                </nav>
+                                            </div>";
+                                        } else {
+                                            http_response_code(409); //error
+                                            echo "
+                                    
+                                            <div id='search-empty' class='search-alert flex items-center justify-center space-x-4 mt-4  '>
+                                                <svg class='w-6 h-6 text-gray-500' fill='currentColor' viewBox='0 0 20 20'>
+                                                    <path fill-rule='evenodd'
+                                                        d='M10 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16zM12 7h-4a1 1 0 0 1 0-2h4a1 1 0 0 1 0 2zm-3 4a1 1 0 1 1 2 0a1 1 0 0 1-2 0z'
+                                                        clip-rule='evenodd' />
+                                                </svg>
+                                                <p class='text-gray-500'>Vaya.. no se Encontro Ningun Producto</p>
+                                            </div>
+                                    
+                                        "; //retornamos los datos
+                                        }
                                     }
                                 } else {
 
-                                    echo json_encode($data['result']);
+
                                     if (count($data['result']) != 0) {
 
                                         echo "hola";
