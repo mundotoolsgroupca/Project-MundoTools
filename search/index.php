@@ -860,6 +860,8 @@ if (isset($_SESSION['token'])) {
                                     }
                                 }
 
+                                echo "hola";
+
                                
                             }
 
