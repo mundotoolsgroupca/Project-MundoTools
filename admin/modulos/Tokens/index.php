@@ -21,7 +21,7 @@ if (!isset($_SESSION['Usuario'])) { //si no existe una session sale del sistema
 
         <div class="[ flex gap-1 flex-col items-center justify-center   ] [ lg:flex-row lg:justify-between ]">
             <div>
-                <input id="TokenOrdenes" type="date" value="2023-05-22" class="w-full p-2 my-2 text-center border border-gray-300 rounded-md lg:w-auto focus:outline-none focus:ring-2 ring-blue-200">
+                <input id="TokenOrdenesFecha" type="date" value="<?php echo date("Y-m-d");  ?>" class="w-full p-2 my-2 text-center border border-gray-300 rounded-md lg:w-auto focus:outline-none focus:ring-2 ring-blue-200">
             </div>
 
             <button onclick="tabla_tokens_consultar()" type="button" data-te-ripple-init="" data-te-ripple-color="light" class="flex gap-1 inline-block rounded bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200">
@@ -78,6 +78,9 @@ if (!isset($_SESSION['Usuario'])) { //si no existe una session sale del sistema
 
             // especifica si será una petición POST o GET
             type: 'GET',
+            data: {
+                fecha: $('#TokenOrdenesFecha').val();
+            },
 
             // el tipo de información que se espera de respuesta
             dataType: 'json',

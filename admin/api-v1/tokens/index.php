@@ -6,7 +6,7 @@ switch ($method) {
         session_name("ecomercer_admin_data");
         session_start();
         $http = getallheaders();
-        if (!empty($http['X-Csrf-Token'] )) {
+        if (!empty($http['X-Csrf-Token'])) {
 
             if (!isset($_SESSION['token'])) {
                 // Log this as a warning and keep an eye on these attempts
@@ -20,8 +20,8 @@ switch ($method) {
             }
 
 
-            if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'] )) {
-                /*
+            if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'])) {
+
                 if (isset($_GET['fecha']) && validar_fecha($_GET['fecha'], 'Y-m-d')) {
                     $fecha = $_GET['fecha'];
                 } else {
@@ -36,23 +36,26 @@ switch ($method) {
                     echo  json_encode($resultado);
                     break;
                 }
-*/
+
                 include_once '../../php/conexion.php';
                 // Configurar los encabezados de la respuesta
                 header('Content-Type: application/json');
 
                 $consulta = "
                 SELECT
-                vendedores.nombre_usuario,
-                vendedores_tokens.id,
-                vendedores_tokens.fecha_creacion,
-                vendedores_tokens.fecha_vencimiento,
-                vendedores_tokens.token,
-                vendedores_tokens.`status`,
-                vendedores_tokens.`responsable`
+                    vendedores.nombre_usuario,
+                    vendedores_tokens.id,
+                    vendedores_tokens.fecha_creacion,
+                    vendedores_tokens.fecha_vencimiento,
+                    vendedores_tokens.token,
+                    vendedores_tokens.`status`,
+                    vendedores_tokens.`responsable`
                 FROM
-                vendedores_tokens
-                INNER JOIN vendedores ON vendedores_tokens.id_vendedor = vendedores.id
+                    vendedores_tokens
+                    INNER JOIN vendedores ON vendedores_tokens.id_vendedor = vendedores.id
+                where
+                    vendedores_tokens.fecha_creacion = '$fecha'
+                
                 ";
                 $resultado = mysqli_query($conexion, $consulta);
                 $data = [];
