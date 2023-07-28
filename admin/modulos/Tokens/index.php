@@ -79,7 +79,7 @@ if (!isset($_SESSION['Usuario'])) { //si no existe una session sale del sistema
             // especifica si será una petición POST o GET
             type: 'GET',
             data: {
-                fecha: $('#TokenOrdenesFecha').val();
+                fecha: $('#TokenOrdenesFecha').val()
             },
 
             // el tipo de información que se espera de respuesta
