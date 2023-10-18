@@ -443,7 +443,7 @@ if (isset($_SESSION['token'])) {
                         ?>
                     </div>
                 </div>
-                <div class='!visible hidden mb-2' id='ordenarmobile' style="font-family: Raleway;" data-te-collapse-item> <!--contenido de modo telefono de ordenar---->
+                <!----- <div class='!visible hidden mb-2' id='ordenarmobile' style="font-family: Raleway;" data-te-collapse-item>  
                     <div class='block rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700 dark:text-neutral-50'>
 
                         <select class="w-full" onchange="handlePriceFilter(this)" data-te-select-init>
@@ -474,11 +474,11 @@ if (isset($_SESSION['token'])) {
 
                     </div>
                 </div>
-
+--->
 
                 <div class="[ bg-white shadow-lg ] [ lg:w-4/5   lg:p-3 lg:rounded-lg ] [ p-3 ]" style="font-family: Raleway;">
 
-
+                            <!--------
                     <div class="[ w-full hidden justify-between items-center ] [ md:flex ] [ lg:flex ]">
                         <p class="[ text-xl ]">Resultados</p>
                         <select onchange="handlePriceFilter(this)" data-te-select-init>
@@ -488,6 +488,8 @@ if (isset($_SESSION['token'])) {
                         </select>
                         <label data-te-select-label-ref>Ordenar Por</label>
                     </div>
+
+                    ---->
                     <div class="space-y-2">
 
 
