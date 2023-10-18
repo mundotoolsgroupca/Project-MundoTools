@@ -604,7 +604,7 @@ if (isset($_SESSION['token'])) {
                                 }
                             }
                         </script>
-                        <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+                        <hr class="h-px my-8 bg-gray-200 border-0 ">
                         <div id="result" class="[ mt-6 grid gap-x-2 gap-y-10   xl:gap-x-8 ] [ sm:grid-cols-2 ] [ lg:grid-cols-3 ] [ xl:grid-cols-4 ] [ 2xl:grid-cols-4 ]" style="font-family: Raleway;">
 
 
@@ -844,7 +844,7 @@ if (isset($_SESSION['token'])) {
                                                     </div> ";
                                             }
                                             echo " </div>
-                                            <hr class='h-px my-8 bg-gray-200 border-0 dark:bg-gray-700'>
+                                            <hr class='h-px my-8 bg-gray-200 border-0 '>
                                                     <nav aria-label='Page navigation example'>
                                                         <ul class='list-style-none flex flex-wrap w-full justify-center [ md:justify-end ] [ lg:justify-end ]'>";
                                             for ($j = 1; $j <= $data['num_pages']; $j++) {
@@ -960,7 +960,7 @@ if (isset($_SESSION['token'])) {
                                                 </div> ";
                                         }
                                         echo " </div>
-                                        <hr class='h-px my-8 bg-gray-200 border-0 dark:bg-gray-700'>
+                                        <hr class='h-px my-8 bg-gray-200 border-0 '>
                                                 <nav aria-label='Page navigation example'>
                                                     <ul class='list-style-none flex flex-wrap w-full justify-center [ md:justify-end ] [ lg:justify-end ]'>";
                                         for ($j = 1; $j <= $data['num_pages']; $j++) {
