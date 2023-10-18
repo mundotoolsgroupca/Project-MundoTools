@@ -7,7 +7,10 @@ switch ($method) {
         // Configurar los encabezados de la respuesta
         header('Content-Type: application/json');
 
-        $consulta = " SELECT categorias.* FROM  categorias ";
+        $consulta = " SELECT categorias.*
+        FROM categorias
+        ORDER BY orden ASC;
+        ";
         $resultado = mysqli_query($conexion, $consulta);
         if ($resultado) {
             $data = [];

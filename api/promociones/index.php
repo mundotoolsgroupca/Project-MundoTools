@@ -17,21 +17,23 @@ switch ($method) {
 
                     $consulta = "
                     SELECT
-                    c.nombre AS categoria,
-                    c.id AS id,
-                    CONCAT (
-                        '{ \"productos\" : [',
-                        GROUP_CONCAT(
-                            JSON_OBJECT( 'id', pa.id_grupo, 'nombre', pa.nombre, 'imagen', pa.imagen, 'categoria', pa.categoria ) 
-                        limit 9
-                        ),
-                        ']}' 
-                    ) AS datos_categoria 
-                FROM
-                    productos_agrupados pa 
-                    INNER JOIN categorias AS c ON pa.categoria = c.id 
-                GROUP BY
-                    c.nombre";
+                        c.nombre AS categoria,
+                        c.id AS id,
+                        CONCAT (
+                            '{ \"productos\" : [',
+                            GROUP_CONCAT(
+                                JSON_OBJECT('id', pa.id_grupo, 'nombre', pa.nombre, 'imagen', pa.imagen, 'categoria', pa.categoria)
+                                ORDER BY pa.id_grupo ASC
+                                LIMIT 9
+                            ),
+                            ']}'
+                        ) AS datos_categoria
+                    FROM
+                        productos_agrupados pa
+                        INNER JOIN categorias AS c ON pa.categoria = c.id
+                    GROUP BY
+                        c.nombre
+                    ORDER BY c.orden ASC; ";
 
 
                     $resultado = mysqli_query($conexion, $consulta);

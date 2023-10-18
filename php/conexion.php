@@ -2,7 +2,8 @@
 
 // Parámetros de conexión a la base de datos
 
-$dbhost = 'mundotoolsgroup.com';
+
+$dbhost = 'localhost';
 $dbuser = 'mundotools';
 $dbpass = 'wh3006Wv@';
 $dbname = 'mundotools';

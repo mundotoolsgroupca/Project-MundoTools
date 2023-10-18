@@ -10,13 +10,17 @@ session_start();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--------Jquery------->
+
+    <!-- Jquery -->
     <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
-    <!---------Tailwind-------->
+
+    <!-- Tailwind -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
     <script src="https://cdn.tailwindcss.com/3.3.0"></script>
+
     <link rel="icon" href="./assets/img/logo-color.png" />
+
     <script>
         tailwind.config = {
             darkMode: "class",
@@ -32,14 +36,18 @@ session_start();
             },
         };
     </script>
-    <!---------Color Thief Obtener color predominante de una imagen-------->
+
+    <!-- Color Thief Obtener color predominante de una imagen -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
     <script src="./assets/js/index.js?v=<?php echo rand(); ?>"></script>
-    <!------google font ----->
+    <script src="./assets/js/FuncionesGenerales.js?v=<?php echo rand(); ?>"></script>
+
+    <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@200&display=swap" rel="stylesheet">
-    <title>Tienda</title>
+
+    <title>Productos</title>
 </head>
 
 <body class="bg-white">
@@ -102,7 +110,7 @@ session_start();
                         <div class="flex gap-1 items-center flex-col [ md:flex-row ] [ lg:flex-row ]">
                             <div class="[    items-center justify-between w-full  ] [ lg:w-full ]" id="navbar-sticky">
                                 <div class="relative   flex w-full flex-wrap items-stretch">
-                                    <input type="Buscar" value="" placeholder="Buscar Productos" class="placeholder-gray-700  relative m-0 -mr-0.5 block w-32 min-w-0 flex-auto  border-b border-black   bg-transparent bg-clip-padding px-3 py-[0.25rem] text-sm font-normal leading-[1.6] text-black outline-none transition duration-200 ease-in-out " name="query" aria-label="Search" aria-describedby="button-addon1" />
+                                    <input type="Buscar" value="" oninput="validarCaracteres(this,40)" placeholder="Buscar Productos" class="placeholder-gray-700  relative m-0 -mr-0.5 block w-32 min-w-0 flex-auto  border-b border-black   bg-transparent bg-clip-padding px-3 py-[0.25rem] text-sm font-normal leading-[1.6] text-black outline-none transition duration-200 ease-in-out " name="query" aria-label="Search" aria-describedby="button-addon1" />
                                     <!--Search button-->
 
                                 </div>
@@ -139,7 +147,7 @@ session_start();
                             isset($_SESSION['usuario']['nombre']) ?
                                 " <span class='text-white'>" . $_SESSION['usuario']['nombre'] . "</span> <img src='https://unavatar.io/midudev' class='rounded-full' style='height: 25px; width: 25px' alt='' loading='lazy' />"
                                 :
-                                " <a class='text-white text-[15px]  [ lg:text-lg ]' href='./login'>" . "Inicia Sesion" . "</a>";
+                                " <a class='text-white hidden text-[15px]  [ lg:text-lg ]' href='./login'>" . "Inicia Sesion" . "</a>";
                             ?>
                         </a>
                         <!-- Second dropdown menu -->
@@ -247,7 +255,7 @@ session_start();
             <div id="item_list" class="[  grid max-w-6xl  grid-cols-1 gap-6 p-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ] [ lg:mx-auto ]">
             </div>
 
-            <div class="[ fixed flex justify-end bottom-0 right-0 text-sm  ]" id="BtnTicket">
+            <div class="[ fixed flex justify-end bottom-0 right-0 text-sm hidden ]" id="BtnTicket">
                 <div class="border  border-gray-300  rounded-lg   bg-white ">
                     <h2 class="mb-0" id="headingTwo">
                         <button class="group relative flex w-full items-center   border-0 bg-white py-2 px-3 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none  [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-warning [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] " type="button" data-te-collapse-init data-te-collapse-collapsed data-te-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">

@@ -10,7 +10,7 @@ switch ($method) {
         session_start();
 
 
-        if (!empty($http['X-Csrf-Token'])) {
+        if (!empty($http['x-csrf-token'])) {
 
             if (!isset($_SESSION['token'])) {
                 http_response_code(409); //codigo de conflicto
@@ -24,7 +24,7 @@ switch ($method) {
                 return;
             }
 
-            if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'])) {
+            if (hash_equals($_SESSION['token'], $http['x-csrf-token'])) {
 
                 include_once '../../php/FuncionesGenerales.php';
                 if (isset($_GET['id_grupo']) && validar_string($_GET['id_grupo'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {

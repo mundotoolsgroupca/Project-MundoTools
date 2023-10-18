@@ -11,6 +11,13 @@ function validarString(string, permitidos) {
   return true;
 }
 
+function validarCaracteres(input, maxcaracteres) {
+  // Limitar la longitud máxima a 10 caracteres
+  if (input.value.length > maxcaracteres) {
+    input.value = input.value.slice(0, maxcaracteres);
+  }
+}
+
 function validarMonto(monto) {
   let regex = /^\d+(?:\.\d{0,2})?$/; // expresión regular para verificar el formato de número
   if (!regex.test(monto)) {

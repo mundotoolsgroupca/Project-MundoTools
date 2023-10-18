@@ -15,7 +15,7 @@ switch ($method) {
             session_name("ecomercer_admin_data");
             session_start();
             $http = getallheaders();
-            if (!empty($http['X-Csrf-Token'])) {
+            if (!empty($http['x-csrf-token'])) {
 
                 if (!isset($_SESSION['token'])) {
                     // Log this as a warning and keep an eye on these attempts
@@ -29,7 +29,7 @@ switch ($method) {
                 }
 
 
-                if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'])) {
+                if (hash_equals($_SESSION['token'], $http['x-csrf-token'])) {
                     $consulta = "
                         SELECT
                         c1.id_grupo,
@@ -95,7 +95,7 @@ switch ($method) {
             session_name("ecomercer_admin_data");
             session_start();
             $http = getallheaders();
-            if (!empty($http['X-Csrf-Token'])) {
+            if (!empty($http['x-csrf-token'])) {
 
                 if (!isset($_SESSION['token'])) {
                     // Log this as a warning and keep an eye on these attempts
@@ -109,7 +109,7 @@ switch ($method) {
                 }
 
 
-                if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'])) {
+                if (hash_equals($_SESSION['token'], $http['x-csrf-token'])) {
 
                     if (isset($_GET['id']) && validar_string($_GET['id'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
                         $id = $_GET['id'];
@@ -210,7 +210,7 @@ switch ($method) {
         session_name("ecomercer_admin_data");
         session_start();
         $http = getallheaders();
-        if (!empty($http['X-Csrf-Token'])) {
+        if (!empty($http['x-csrf-token'])) {
 
             if (!isset($_SESSION['token'])) {
                 // Log this as a warning and keep an eye on these attempts
@@ -224,7 +224,7 @@ switch ($method) {
             }
 
 
-            if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'])) {
+            if (hash_equals($_SESSION['token'], $http['x-csrf-token'])) {
 
                 if (!isset($_SESSION['Usuario'])) {
                     // Log this as a warning and keep an eye on these attempts

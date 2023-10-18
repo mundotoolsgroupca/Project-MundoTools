@@ -20,50 +20,60 @@ if (isset($_SESSION['token'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!------google font ----->
-    <link href="../assets/fuentes/VisbyRoundCF-DemiBold.ttf">
-    <!------SweetAlert ----->
+
+    <!-- Google Font -->
+    <link href="../assets/fuentes/VisbyRoundCF-DemiBold.ttf" rel="stylesheet">
+
+    <!-- SweetAlert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <!------google font ----->
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@200&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap" rel="stylesheet">
-    <!--------Jquery------->
+
+    <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
-    <!---------Tailwind-------->
+
+    <!-- Tailwind -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
     <link rel="icon" href="../assets/img/logo-color.png" />
 
     <meta name="csrf-token" content="<?php echo $_SESSION['token']; ?>">
+
     <script src="https://cdn.tailwindcss.com/3.3.0"></script>
     <script>
         tailwind.config = {
-            darkMode: "class",
-            theme: {
-                fontFamily: {
-                    sans: ["Roboto", "sans-serif"],
-                    body: ["Roboto", "sans-serif"],
-                    mono: ["ui-monospace", "monospace"],
+                darkMode: "class",
+                theme: {
+                    fontFamily: {
+                        sans: ["Roboto", "sans-serif"],
+                        body: ["Roboto", "sans-serif"],
+                        mono: ["ui-monospace", "monospace"],
+                    },
                 },
-            },
-            corePlugins: {
-                preflight: false,
-            },
-        };
+                corePlugins: {
+                    preflight: false,
+                };
     </script>
-    <!---------Color Thief Obtener color predominante de una imagen-------->
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
     <script src="../assets/js/index.js?v=<?php echo rand(); ?>"></script>
     <script src="../assets/js/FuncionesGenerales.js?v=<?php echo rand(); ?>"></script>
-    <title><?php if (isset($_GET['query'])) {
-                echo $_GET['query'];
-            } else {
-                echo "MundoTools";
-            } ?> - Buscar</title>
+
+    <title>
+        <?php
+        if (isset($_GET['query'])) {
+            echo $_GET['query'];
+        } else {
+            echo "MundoTools";
+        }
+        ?>
+        - Buscar
+    </title>
 </head>
 
 <style>
@@ -192,7 +202,7 @@ if (isset($_SESSION['token'])) {
                     <div class="flex gap-1 items-center flex-col [ md:flex-row ] [ lg:flex-row ]">
                         <div class="[    items-center justify-between w-full  ] [ lg:w-full ]" id="navbar-sticky">
                             <div class="relative   flex w-full flex-wrap items-stretch">
-                                <input type="Buscar" value="<?php
+                                <input oninput="validarCaracteres(this,40)" type="Buscar" value="<?php
                                                             include_once '../php/conexion.php';
                                                             include_once '../php/FuncionesGenerales.php';
                                                             if (isset($_GET['query'])) {
@@ -238,7 +248,7 @@ if (isset($_SESSION['token'])) {
                         isset($_SESSION['usuario']['nombre']) ?
                             " <span class='text-white'>" . $_SESSION['usuario']['nombre'] . "</span> <img src='https://unavatar.io/midudev' class='rounded-full' style='height: 25px; width: 25px' alt='' loading='lazy' />"
                             :
-                            " <a class='text-white text-[15px]  [ lg:text-lg ]' href='../login'>" . "Inicia Sesion" . "</a>";
+                            " <a class='text-white hidden text-[15px]  [ lg:text-lg ]' href='../login'>" . "Inicia Sesion" . "</a>";
                         ?>
                     </a>
                     <!-- Second dropdown menu -->
@@ -805,14 +815,14 @@ if (isset($_SESSION['token'])) {
                                                                         <p class=' [ text-[15px] w-full text-center text-black bg-[#FBAA35] uppercase font-bold ] [ md:text-md ] [ lg:text-lg ]' style='font-family: `Montserrat`, cursive;' >$nombre</p>
                                                                     </h3>
                                                                     <hr class='h-px my-3 bg-gray-200 border-0 dark:bg-gray-700'>
-                                                                    <label class='font-bold'>Ref: $precio$simbolo</label>
-                                                                    <p class='mt-1 text-[12px] font-bold text-gray-500 break-words'>Disponibles: $stock</p>
+                                                                    <!-- <label class='font-bold'>Ref: $precio$simbolo</label>
+                                                                    <p class='mt-1 text-[12px] font-bold text-gray-500 break-words'>Disponibles: $stock</p> -->
                                                                     </div>
                                                                     <p class='text-sm font-medium text-gray-900'></p>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <form>
+                                                        <!-- <form>
                                                         <div class='relative    flex w-full flex-wrap items-stretch flex-nowrap'>
                                                                 <input min='0' id='$id_grupo' type='number'
                                                                 class='relative m-0 block z-20 w-14 text-center  min-w-0 flex-auto rounded-l border border-r-0 border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition ease-in-out   focus:border-warning-600 focus:text-neutral-700 focus:shadow-te-warning focus:outline-none '
@@ -826,8 +836,8 @@ if (isset($_SESSION['token'])) {
                                                                     d='M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z' />
                                                                 </svg>
                                                                 </button>
-                                                            </div>
-                                                            </form>
+                                                        </div>
+                                                    </form> -->
                                                         
                                                     </div> ";
                                             }
@@ -919,30 +929,31 @@ if (isset($_SESSION['token'])) {
                                                                     
                                                                     <p class=' [ text-[15px] w-full text-center text-black bg-[#FBAA35] uppercase font-bold ] [ md:text-md ] [ lg:text-lg ]' style='font-family: `Montserrat`, cursive;' >$nombre</p>
                                                                 </h3>
-                                                                <hr class='h-px my-3 bg-gray-200 border-0 dark:bg-gray-700'>
-                                                                <label class='font-bold'>Ref: $precio$simbolo</label>
-                                                                <p class='mt-1 text-[12px] font-bold text-gray-500 break-words'>Disponibles: $stock</p>
+                                                                <!-- <hr class='h-px my-3 bg-gray-200 border-0 dark:bg-gray-700'>
+                                                                    <label class='font-bold'>Ref: $precio$simbolo</label>
+                                                                    <p class='mt-1 text-[12px] font-bold text-gray-500 break-words'>Disponibles: $stock</p> -->
                                                                 </div>
                                                                 <p class='text-sm font-medium text-gray-900'></p>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <form>
-                                                    <div class='relative    flex w-full flex-wrap items-stretch flex-nowrap'>
+                                                    <!-- <form>
+                                                        <div class='relative    flex w-full flex-wrap items-stretch flex-nowrap'>
                                                             <input min='0' id='$id_grupo' type='number'
-                                                            class='relative m-0 block z-20 w-14 text-center  min-w-0 flex-auto rounded-l border border-r-0 border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition ease-in-out   focus:border-warning-600 focus:text-neutral-700 focus:shadow-te-warning focus:outline-none '
-                                                            aria-label='Recipient' username value='1' aria-describedby='button-addon2' />
-                                                            <button   data-te-ripple-init data-te-ripple-color='light' type='submit' data-te-ripple-init data-te-ripple-color='warning'
-                                                            class='relative   rounded-r bg-[#FBAA35] opa px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-warning-700 hover:shadow-lg   focus:bg-warning-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-warning-800 active:shadow-lg'
-                                                            type='button' id='button-addon2'>
-                                                            <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor'
-                                                                class='h-4 w-4'>
-                                                                <path stroke-linecap='round' stroke-linejoin='round'
-                                                                d='M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z' />
-                                                            </svg>
+                                                                class='relative m-0 block z-20 w-14 text-center  min-w-0 flex-auto rounded-l border border-r-0 border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition ease-in-out   focus:border-warning-600 focus:text-neutral-700 focus:shadow-te-warning focus:outline-none '
+                                                                aria-label='Recipient' username value='1' aria-describedby='button-addon2' />
+                                                            <button data-te-ripple-init data-te-ripple-color='light' type='submit' data-te-ripple-init
+                                                                data-te-ripple-color='warning'
+                                                                class='relative   rounded-r bg-[#FBAA35] opa px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-warning-700 hover:shadow-lg   focus:bg-warning-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-warning-800 active:shadow-lg'
+                                                                type='button' id='button-addon2'>
+                                                                <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5'
+                                                                    stroke='currentColor' class='h-4 w-4'>
+                                                                    <path stroke-linecap='round' stroke-linejoin='round'
+                                                                        d='M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z' />
+                                                                </svg>
                                                             </button>
                                                         </div>
-                                                        </form>
+                                                    </form> -->
                                                     
                                                 </div> ";
                                         }
@@ -1002,7 +1013,7 @@ if (isset($_SESSION['token'])) {
                     </div>
                 </div>
             </div>
-            <div class="[ fixed flex z-30 justify-end bottom-0 right-0 ]" style="font-family: Raleway;" id="BtnTicket">
+            <div class="[ fixed flex z-30 justify-end bottom-0 right-0 hidden ]" style="font-family: Raleway;" id="BtnTicket">
                 <div class="border  border-gray-300  rounded-lg   bg-white ">
                     <h2 class="mb-0" id="headingTwo">
                         <button class="group relative flex w-full items-center   border-0 bg-white py-2 px-3 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none  [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-warning [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] " type="button" data-te-collapse-init data-te-collapse-collapsed data-te-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -1252,49 +1263,51 @@ if (isset($_SESSION['token'])) {
                         return obj.id_grupo === data.id_grupo;
                     });
 
-                    $('#modal_tabla > thead').html(`
-
-        `);
+                    $('#modal_tabla > thead').html(``);
 
                     $('#modal_tabla > thead').append(`
-        <tr class='bg-black'>
-            <th scope="col" class="px-6 py-4">ID</th>
-            <th scope="col" class="px-6 py-4">caracteristica1</th>
-            <th scope="col" class="px-6 py-4">caracteristica2</th>
-            <th scope="col" class="px-6 py-4">caracteristica3</th>
-            <th scope="col" class="px-6 py-4">caracteristica4</th>
-            <th scope="col" class="px-6 py-4">caracteristica5</th>
-            <th scope="col" class="px-6 py-4">Precio</th>
-            <th scope="col" class="px-6 py-4">Precio2</th>
-            <th scope="col" class="px-6 py-4"></th>
-        </tr>
-        `);
+                        <tr class='bg-black'>
+                            <th scope="col" class="px-6 py-4">ID</th>
+                            <th scope="col" class="px-6 py-4">caracteristica1</th>
+                            <th scope="col" class="px-6 py-4">caracteristica2</th>
+                            <th scope="col" class="px-6 py-4">caracteristica3</th>
+                            <th scope="col" class="px-6 py-4">caracteristica4</th>
+                           <th scope="col" class="px-6 py-4">caracteristica5</th>
+                            <!-- <th scope="col" class="px-6 py-4">Precio</th>
+                            <th scope="col" class="px-6 py-4">Precio2</th>
+                            <th scope="col" class="px-6 py-4"></th> -->
+                        </tr> `);
 
                     filteredArray.map((item) => {
                         $('#modal_tabla > tbody').append(`
-        <tr class="border-b dark:border-neutral-500 bg-[#FBAA35]">
-            <td class="whitespace-nowrap px-6 py-4 font-medium">${item.id}</td>
-            <td class="whitespace-nowrap px-6 py-4">${item.caracteristica}</td>
-            <td class="whitespace-nowrap px-6 py-4">${item.caracteristica2}</td>
-            <td class="whitespace-nowrap px-6 py-4">${item.caracteristica3}</td>
-            <td class="whitespace-nowrap px-6 py-4">${item.caracteristica4}</td>
-            <td class="whitespace-nowrap px-6 py-4">${item.caracteristica5}</td>
-            <td class="whitespace-nowrap px-6 py-4">${item.precio+""+item.simbolo}</td>
-            <td class="whitespace-nowrap px-6 py-4 text-gray-600">${item.precio2+""+item.simbolo}</td>
-            <td class="whitespace-nowrap px-6 py-4">
-                <div class="relative flex w-full flex-wrap flex-nowrap items-stretch">
-                    <input min="0" id='modal_input_${item.id}' type="number" class="focus:border-warning-600 focus:shadow-te-warning relative z-20 m-0 block w-14 min-w-0 flex-auto rounded-l border border-r-0 border-solid border-neutral-300 bg-transparent bg-white bg-clip-padding px-3 py-[0.25rem] text-center text-base font-normal leading-[1.6] text-neutral-700 outline-none transition ease-in-out focus:text-neutral-700 focus:outline-none" aria-label="Recipient" username="" value="1" aria-describedby="button-addon2" />
-                    <button onclick='Modal_Agregar_Carrito("${item.id}","modal_input_${item.id}")' data-te-ripple-init="" data-te-ripple-color="light" type="submit" class="opa hover:bg-warning-700 focus:bg-warning-700 active:bg-warning-800 relative rounded-r bg-black hover:bg-gray-800 transition-colors px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg" id="button-addon2">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"></path>
-                        </svg>
-                    </button>
-                </div>
-
-            </td>
-        </tr>
-
-        `);
+                        <tr class="border-b dark:border-neutral-500 bg-[#FBAA35]">
+                            <td class="whitespace-nowrap px-6 py-4 font-medium">${item.id}</td>
+                            <td class="whitespace-nowrap px-6 py-4">${item.caracteristica}</td>
+                            <td class="whitespace-nowrap px-6 py-4">${item.caracteristica2}</td>
+                            <td class="whitespace-nowrap px-6 py-4">${item.caracteristica3}</td>
+                            <td class="whitespace-nowrap px-6 py-4">${item.caracteristica4}</td>
+                            <td class="whitespace-nowrap px-6 py-4">${item.caracteristica5}</td>
+                            <!-- <td class="whitespace-nowrap px-6 py-4">${item.precio+""+item.simbolo}</td>
+                            <td class="whitespace-nowrap px-6 py-4 text-gray-600">${item.precio2+""+item.simbolo}</td> -->
+                            <!-- <td class="whitespace-nowrap px-6 py-4">
+                            <div class="relative flex w-full flex-wrap flex-nowrap items-stretch">
+                                <input min="0" id='modal_input_${item.id}' type="number"
+                                    class="focus:border-warning-600 focus:shadow-te-warning relative z-20 m-0 block w-14 min-w-0 flex-auto rounded-l border border-r-0 border-solid border-neutral-300 bg-transparent bg-white bg-clip-padding px-3 py-[0.25rem] text-center text-base font-normal leading-[1.6] text-neutral-700 outline-none transition ease-in-out focus:text-neutral-700 focus:outline-none"
+                                    aria-label="Recipient" username="" value="1" aria-describedby="button-addon2" />
+                                <button onclick='Modal_Agregar_Carrito("${item.id}","modal_input_${item.id}")' data-te-ripple-init=""
+                                    data-te-ripple-color="light" type="submit"
+                                    class="opa hover:bg-warning-700 focus:bg-warning-700 active:bg-warning-800 relative rounded-r bg-black hover:bg-gray-800 transition-colors px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg"
+                                    id="button-addon2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                        stroke="currentColor" class="h-4 w-4">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z">
+                                        </path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </td> -->
+                        </tr>`);
                     });
 
                     modal.show();
@@ -1303,7 +1316,9 @@ if (isset($_SESSION['token'])) {
                     let headers = table.querySelectorAll('thead th');
                     let rows = table.querySelectorAll('tbody tr');
 
-                    for (let i = headers.length - 2; i >= 0; i--) { // cambiamos el límite del bucle
+
+                    for (let i = headers.length - 1; i >= 0; i--) { // cambiamos el límite del bucle
+
                         let isEmpty = true;
                         for (let j = 0; j < rows.length; j++) {
                             let cell = rows[j].querySelectorAll('td')[i];

@@ -6,7 +6,7 @@ switch ($method) {
         session_name("ecomercer_admin_data");
  session_start(); 
         $http = getallheaders();
-        if (!empty($http['X-Csrf-Token'] )) {
+        if (!empty($http['x-csrf-token'] )) {
             if (!isset($_SESSION['token'])) {
                 // Log this as a warning and keep an eye on these attempts
                 $resultado = new stdClass();
@@ -19,7 +19,7 @@ switch ($method) {
             }
 
 
-            if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'] )) {
+            if (hash_equals($_SESSION['token'], $http['x-csrf-token'] )) {
 
                 include_once '../../php/conexion.php';
                 // Configurar los encabezados de la respuesta

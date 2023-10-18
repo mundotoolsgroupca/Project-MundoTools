@@ -13,7 +13,7 @@ switch ($method) {
             session_name("ecomercer_admin_data");
             session_start();
             $http = getallheaders();
-            if (!empty($http['X-Csrf-Token'] )) {
+            if (!empty($http['x-csrf-token'] )) {
 
                 if (!isset($_SESSION['token'])) {
                     // Log this as a warning and keep an eye on these attempts
@@ -26,7 +26,7 @@ switch ($method) {
                     break;
                 }
 
-                if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'] )) {
+                if (hash_equals($_SESSION['token'], $http['x-csrf-token'] )) {
 
                     $consulta = " SELECT categorias.* FROM  categorias ";
 
@@ -70,7 +70,7 @@ switch ($method) {
             session_name("ecomercer_admin_data");
             session_start();
             $http = getallheaders();
-            if (!empty($http['X-Csrf-Token'] )) {
+            if (!empty($http['x-csrf-token'] )) {
 
                 if (!isset($_SESSION['token'])) {
                     // Log this as a warning and keep an eye on these attempts
@@ -83,7 +83,7 @@ switch ($method) {
                     break;
                 }
 
-                if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'] )) {
+                if (hash_equals($_SESSION['token'], $http['x-csrf-token'] )) {
                     if (isset($_GET['id']) && validar_int($_GET['id'])) {
                         $idCategoria = $_GET['id'];
                     } else {
@@ -163,7 +163,7 @@ switch ($method) {
             session_start();
             include_once '../../php/FuncionesGenerales.php';
             $http = getallheaders();
-            if (!empty($http['X-Csrf-Token'] )) {
+            if (!empty($http['x-csrf-token'] )) {
 
                 if (!isset($_SESSION['token'])) {
                     // Log this as a warning and keep an eye on these attempts
@@ -176,7 +176,7 @@ switch ($method) {
                     break;
                 }
 
-                if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'] )) {
+                if (hash_equals($_SESSION['token'], $http['x-csrf-token'] )) {
 
                     if (isset($_POST['nuevacategoria']) && validar_string($_POST['nuevacategoria'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
                         $nuevacategoria = $_POST['nuevacategoria'];
@@ -256,7 +256,7 @@ switch ($method) {
             session_start();
             include_once '../../php/FuncionesGenerales.php';
             $http = getallheaders();
-            if (!empty($http['X-Csrf-Token'] )) {
+            if (!empty($http['x-csrf-token'] )) {
 
                 if (!isset($_SESSION['token'])) {
                     // Log this as a warning and keep an eye on these attempts
@@ -269,7 +269,7 @@ switch ($method) {
                     break;
                 }
 
-                if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'] )) {
+                if (hash_equals($_SESSION['token'], $http['x-csrf-token'] )) {
 
                     if (isset($_POST['newdata']['nombre']) && validar_string($_POST['newdata']['nombre'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
                         $newname =  $_POST['newdata']['nombre'];

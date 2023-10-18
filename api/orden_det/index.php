@@ -7,7 +7,7 @@ switch ($method) {
         session_name("ecomercer_user_data");
         session_start();
         $http = getallheaders();
-        if (!empty($http['X-Csrf-Token'] )) {
+        if (!empty($http['x-csrf-token'] )) {
 
             if (!isset($_SESSION['usuario'])) {
                 http_response_code(409); //codigo de conflicto
@@ -21,7 +21,7 @@ switch ($method) {
                 return;
             }
 
-            if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'] )) {
+            if (hash_equals($_SESSION['token'], $http['x-csrf-token'] )) {
                 include_once '../../php/FuncionesGenerales.php';
 
                 if (isset($_GET['orden_id']) && validar_int($_GET['orden_id'])) {
