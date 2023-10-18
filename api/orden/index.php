@@ -8,7 +8,7 @@ switch ($method) {
         session_name("ecomercer_user_data");
         session_start();
 
-        if (!empty($http['x-csrf-token'])) {
+        if (!empty($http['X-Csrf-Token'])) {
 
             if (!isset($_SESSION['usuario']['id'])) {
                 // Log this as a warning and keep an eye on these attempts
@@ -21,7 +21,7 @@ switch ($method) {
                 return;
             }
 
-            if (hash_equals($_SESSION['token'], $http['x-csrf-token'])) {
+            if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'])) {
 
                 include_once '../../php/FuncionesGenerales.php';
                 if (isset($_GET['fecha_desde']) && validar_fecha($_GET['fecha_desde'])) {
@@ -121,10 +121,10 @@ switch ($method) {
             $http = getallheaders();
             session_name("ecomercer_user_data");
             session_start();
-            if (!empty($http['x-csrf-token'])) {
+            if (!empty($http['X-Csrf-Token'])) {
 
 
-                if (hash_equals($_SESSION['token'], $http['x-csrf-token'])) {
+                if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'])) {
                     include_once '../../php/FuncionesGenerales.php';
                     include_once '../../php/conexion.php';
 

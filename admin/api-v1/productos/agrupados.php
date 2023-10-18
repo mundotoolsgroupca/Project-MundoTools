@@ -8,7 +8,7 @@ switch ($method) {
             session_name("ecomercer_admin_data");
             session_start();
             $http = getallheaders();
-            if (!empty($http['x-csrf-token'])) {
+            if (!empty($http['X-Csrf-Token'])) {
 
 
                 if (!isset($_SESSION['token'])) {
@@ -21,7 +21,7 @@ switch ($method) {
                     echo json_encode($resultado);
                     break;
                 }
-                if (hash_equals($_SESSION['token'], $http['x-csrf-token'])) {
+                if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'])) {
 
                     include_once '../../php/FuncionesGenerales.php';
 
@@ -131,7 +131,7 @@ switch ($method) {
             session_name("ecomercer_admin_data");
             session_start();
             $http = getallheaders();
-            if (!empty($http['x-csrf-token'])) {
+            if (!empty($http['X-Csrf-Token'])) {
 
                 if (!isset($_SESSION['token'])) {
                     // Log this as a warning and keep an eye on these attempts
@@ -145,7 +145,7 @@ switch ($method) {
                 }
 
 
-                if (hash_equals($_SESSION['token'], $http['x-csrf-token'])) {
+                if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'])) {
 
                     if (isset($_GET['id_grupo']) && validar_string($_GET['id_grupo'], 'abcdefghijklmnopqrstuvwxyzñáéíóúàèìòùâêîôûäëïöüÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÄËÏÖÜÑABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*._-$& ')) {
                         $id_grupo = $_GET['id_grupo'];
@@ -235,7 +235,7 @@ switch ($method) {
         session_name("ecomercer_admin_data");
         session_start();
         $http = getallheaders();
-        if (!empty($http['x-csrf-token'])) {
+        if (!empty($http['X-Csrf-Token'])) {
 
 
             if (!isset($_SESSION['token'])) {
@@ -248,7 +248,7 @@ switch ($method) {
                 echo json_encode($resultado);
                 break;
             }
-            if (hash_equals($_SESSION['token'], $http['x-csrf-token'])) {
+            if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'])) {
                 if (!isset($_POST['_method'])) {
 
 

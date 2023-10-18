@@ -8,7 +8,7 @@ switch ($method) {
         session_start();
         include_once '../../php/FuncionesGenerales.php';
         $http = getallheaders();
-        if (!empty($http['x-csrf-token'])) {
+        if (!empty($http['X-Csrf-Token'])) {
 
             if (!isset($_SESSION['token'])) {
                 http_response_code(409); //codigo de conflicto
@@ -21,7 +21,7 @@ switch ($method) {
                 echo json_encode($resultado);
                 break;
             }
-            if (hash_equals($_SESSION['token'], $http['x-csrf-token'])) {
+            if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'])) {
 
                 if ($_POST['_method'] == "PUT") {
 

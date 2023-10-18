@@ -14,7 +14,7 @@ switch ($method) {
         $http = getallheaders();
 
 
-        if (!empty($http['x-csrf-token'])) {
+        if (!empty($http['X-Csrf-Token'])) {
 
             if (!isset($_SESSION['Usuario'])) {
                 // Log this as a warning and keep an eye on these attempts
@@ -27,7 +27,7 @@ switch ($method) {
                 return;
             }
 
-            if (hash_equals($_SESSION['token'], $http['x-csrf-token'])) {
+            if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'])) {
 
                 if (isset($_POST['modal_idorden_temp'])) {
                     $id_orden = $_POST['modal_idorden_temp'];

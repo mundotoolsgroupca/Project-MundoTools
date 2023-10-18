@@ -7,7 +7,7 @@ switch ($method) {
         session_name("ecomercer_admin_data");
  session_start(); 
         $http = getallheaders();
-        if (!empty($http['x-csrf-token'] )) {
+        if (!empty($http['X-Csrf-Token'] )) {
             if (!isset($_SESSION['token'])) {
                 // Log this as a warning and keep an eye on these attempts
                 $resultado = new stdClass();
@@ -19,7 +19,7 @@ switch ($method) {
                 break;
             }
 
-            if (hash_equals($_SESSION['token'], $http['x-csrf-token'] )) {
+            if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'] )) {
 
 
 

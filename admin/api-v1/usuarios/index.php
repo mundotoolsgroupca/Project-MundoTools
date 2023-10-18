@@ -7,7 +7,7 @@ switch ($method) {
         session_start();
         include_once '../../php/FuncionesGenerales.php';
         $http = getallheaders();
-        if (!empty($http['x-csrf-token'])) {
+        if (!empty($http['X-Csrf-Token'])) {
 
             if (!isset($_SESSION['token'])) {
                 http_response_code(409); //codigo de conflicto
@@ -21,7 +21,7 @@ switch ($method) {
                 break;
             }
 
-            if (hash_equals($_SESSION['token'], $http['x-csrf-token'])) {
+            if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'])) {
                 include_once '../../php/conexion.php';
                 // Configurar los encabezados de la respuesta
                 header('Content-Type: application/json');
@@ -78,7 +78,7 @@ switch ($method) {
         session_start();
         include_once '../../php/FuncionesGenerales.php';
         $http = getallheaders();
-        if (!empty($http['x-csrf-token'])) {
+        if (!empty($http['X-Csrf-Token'])) {
 
             if (!isset($_SESSION['token'])) {
                 http_response_code(409); //codigo de conflicto
@@ -94,7 +94,7 @@ switch ($method) {
 
 
 
-            if (hash_equals($_SESSION['token'], $http['x-csrf-token'])) {
+            if (hash_equals($_SESSION['token'], $http['X-Csrf-Token'])) {
                 if (!isset($_POST['_method'])) {
 
                     if (!isset($_POST['data'])) {
