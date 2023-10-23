@@ -203,15 +203,15 @@ if (isset($_SESSION['token'])) {
                         <div class="[    items-center justify-between w-full  ] [ lg:w-full ]" id="navbar-sticky">
                             <div class="relative   flex w-full flex-wrap items-stretch">
                                 <input oninput="validarCaracteres(this,40)" type="Buscar" value="<?php
-                                                            include_once '../php/conexion.php';
-                                                            include_once '../php/FuncionesGenerales.php';
-                                                            if (isset($_GET['query'])) {
-                                                                $query = htmlspecialchars($_GET['query'], ENT_QUOTES, 'UTF-8');
-                                                                // $query = mysqli_real_escape_string($conexion, $_GET['query']);
-                                                                echo $query;
-                                                            } else {
-                                                                echo "";
-                                                            } ?>" placeholder="Buscar Productos" class="placeholder-gray-700  relative m-0 -mr-0.5 block w-32 min-w-0 flex-auto  border-b border-black   bg-transparent bg-clip-padding px-3 py-[0.25rem] text-sm font-normal leading-[1.6] text-black outline-none transition duration-200 ease-in-out " name="query" aria-label="Search" aria-describedby="button-addon1" />
+                                                                                                    include_once '../php/conexion.php';
+                                                                                                    include_once '../php/FuncionesGenerales.php';
+                                                                                                    if (isset($_GET['query'])) {
+                                                                                                        $query = htmlspecialchars($_GET['query'], ENT_QUOTES, 'UTF-8');
+                                                                                                        // $query = mysqli_real_escape_string($conexion, $_GET['query']);
+                                                                                                        echo $query;
+                                                                                                    } else {
+                                                                                                        echo "";
+                                                                                                    } ?>" placeholder="Buscar Productos" class="placeholder-gray-700  relative m-0 -mr-0.5 block w-32 min-w-0 flex-auto  border-b border-black   bg-transparent bg-clip-padding px-3 py-[0.25rem] text-sm font-normal leading-[1.6] text-black outline-none transition duration-200 ease-in-out " name="query" aria-label="Search" aria-describedby="button-addon1" />
                                 <!--Search button-->
 
                             </div>
@@ -478,7 +478,7 @@ if (isset($_SESSION['token'])) {
 
                 <div class="[ bg-white shadow-lg ] [ lg:w-4/5   lg:p-3 lg:rounded-lg ] [ p-3 ]" style="font-family: Raleway;">
 
-                            <!--------
+                    <!--------
                     <div class="[ w-full hidden justify-between items-center ] [ md:flex ] [ lg:flex ]">
                         <p class="[ text-xl ]">Resultados</p>
                         <select onchange="handlePriceFilter(this)" data-te-select-init>
@@ -511,65 +511,67 @@ if (isset($_SESSION['token'])) {
                                     </div>
 
                                     <!--Modal body-->
-                                    <div class="relative overflow-y-auto p-4">
-                                        <div class="lg:col-gap-12 xl:col-gap-16 mt-8 grid grid-cols-1   lg:mt-12 lg:grid-cols-5 lg:gap-16">
-                                            <div class="lg:col-span-3 lg:row-end-1">
-                                                <div class="lg:flex lg:justify-center lg:items-center">
-                                                    <div class="lg:order-2 lg:ml-5">
-                                                        <div class="max-w-xl overflow-hidden rounded-lg  mx-auto">
-                                                            <img id="imgmodal" onerror="this.onerror=null;this.src='../assets/img/imgerror.png'" class="[ mx-auto  object-cover ] [ h-[250px]  ] [ lg:w-full ] " src="" alt="">
+                                    <div class="overflow-y-auto">
+                                        <div class="relative overflow-y-auto p-4">
+                                            <div class="lg:col-gap-12 xl:col-gap-16 mt-8 grid grid-cols-1   lg:mt-12 lg:grid-cols-5 lg:gap-16">
+                                                <div class="lg:col-span-3 lg:row-end-1">
+                                                    <div class="lg:flex lg:justify-center lg:items-center">
+                                                        <div class="lg:order-2 lg:ml-5">
+                                                            <div class="max-w-xl overflow-hidden rounded-lg  mx-auto">
+                                                                <img id="imgmodal" onerror="this.onerror=null;this.src='../assets/img/imgerror.png'" class="[ mx-auto  object-cover ] [ h-[250px]  ] [ lg:w-full ] " src="" alt="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="lg:col-span-2 lg:row-span-2 lg:row-end-2">
+                                                    <h1 id="nombreproductomodal" class=" font-bold text-gray-900  text-lg capitalize m-0"> </h1>
+
+
+                                                    <div class="lg:col-span-3">
+                                                        <div class="border-b border-gray-300">
+                                                            <nav class="flex gap-4">
+                                                                <a href="#modaldescripcion" title="" class="border-b-2 border-[#FBAA35] py-4 text-sm font-medium text-gray-900 hover:border-gray-400 hover:text-gray-800"> Descripcion </a>
+                                                            </nav>
+                                                        </div>
+
+                                                        <div id="modaldescripcion" class=" flow-root  break-words">
                                                         </div>
                                                     </div>
                                                 </div>
 
+
                                             </div>
-
-                                            <div class="lg:col-span-2 lg:row-span-2 lg:row-end-2">
-                                                <h1 id="nombreproductomodal" class=" font-bold text-gray-900  text-lg capitalize m-0"> </h1>
-
-
-                                                <div class="lg:col-span-3">
-                                                    <div class="border-b border-gray-300">
-                                                        <nav class="flex gap-4">
-                                                            <a href="#modaldescripcion" title="" class="border-b-2 border-[#FBAA35] py-4 text-sm font-medium text-gray-900 hover:border-gray-400 hover:text-gray-800"> Descripcion </a>
-                                                        </nav>
-                                                    </div>
-
-                                                    <div id="modaldescripcion" class=" flow-root  break-words">
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
                                         </div>
-                                    </div>
 
-                                    <div class='p-3'>
-                                        <div class="flex flex-col max-h-72">
-                                            <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-                                                <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
-                                                    <div class="overflow-hidden">
-                                                        <table id="modal_tabla" class="min-w-full text-left text-sm font-light capitalize ">
-                                                            <thead class="text-white">
+                                        <div class='p-3'>
+                                            <div class="flex flex-col max-h-72">
+                                                <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                                                    <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+                                                        <div class="overflow-hidden">
+                                                            <table id="modal_tabla" class="min-w-full text-left text-sm font-light capitalize ">
+                                                                <thead class="text-white">
 
-                                                            </thead>
-                                                            <tbody>
+                                                                </thead>
+                                                                <tbody>
 
-                                                            </tbody>
-                                                        </table>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <!--Modal footer-->
                                     <div class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
                                         <button type="button" class="inline-block rounded bg-[#FBAA35] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200" data-te-modal-dismiss data-te-ripple-init data-te-ripple-color="light">
                                             Cerrar
                                         </button>
 
                                     </div>
+
                                 </div>
                             </div>
                         </div>
