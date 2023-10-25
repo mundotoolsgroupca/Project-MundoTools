@@ -1069,16 +1069,26 @@
     function editar_producto_agrupado() {
         let inputFields = document.querySelectorAll('[modal_editar="input"]');
         let inputValues = [
-            inputFields[4].value,
-            inputFields[3].value,
-            inputFields[2].value,
-            inputFields[1].value,
             inputFields[0].value,
+            inputFields[1].value,
+            inputFields[2].value,
+            inputFields[3].value,
+            inputFields[4].value,
         ];
-        inputValues.sort();
-        inputValues.forEach((value, index) => inputFields[inputFields.length - 1 - index].value = value);
+
+        // Función personalizada para comparar los valores
+        function compareValues(a, b) {
+            if (a === '' && b !== '') return 1;
+            if (a !== '' && b === '') return -1;
+            return 0;
+        }
+
+        // Ordena los valores utilizando la función de comparación
+        inputValues.sort(compareValues);
+
+        // Asigna los valores ordenados a los campos de entrada
         inputFields.forEach((input, index) => {
-            if (index >= inputValues.length) input.value = '';
+            input.value = inputValues[index];
         });
 
         $.ajax({
